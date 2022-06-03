@@ -1,5 +1,5 @@
 {
-	"name": "vitamin",
+	"name": "@zgunz42/portfolio",
 	"license": "MIT",
 	"private": true,
 	"version": "0.0.0",
@@ -32,15 +32,16 @@
 		"@mantine/spotlight": "^4.2.7",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
+		"react-helmet": "^6.1.0",
 		"react-query": "3.39.1",
-		"react-router-dom": "6.3.0"
+		"react-router-dom": "6.3.0",
+		"tabler-icons-react": "^1.48.1"
 	},
 	"devDependencies": {
 		"@babel/core": "7.18.2",
 		"@babel/preset-env": "7.18.2",
 		"@cypress/code-coverage": "3.10.0",
 		"@nabla/vite-plugin-eslint": "1.4.0",
-		"@tailwindcss/forms": "0.5.2",
 		"@testing-library/cypress": "8.0.2",
 		"@testing-library/dom": "8.13.0",
 		"@testing-library/jest-dom": "5.16.4",
@@ -50,6 +51,7 @@
 		"@types/css-mediaquery": "0.1.1",
 		"@types/react": "17.0.45",
 		"@types/react-dom": "17.0.17",
+		"@types/react-helmet": "^6.1.5",
 		"@types/react-router-dom": "5.3.3",
 		"@types/testing-library__jest-dom": "5.14.3",
 		"@typescript-eslint/eslint-plugin": "5.27.0",

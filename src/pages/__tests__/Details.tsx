@@ -16,7 +16,7 @@ async function renderDetailsPage(route = 'apple'): Promise<void> {
 		</Routes>
 	)
 
-	await waitForElementToBeRemoved(screen.queryByText('Loading...'))
+	await waitForElementToBeRemoved(screen.queryAllByTestId('loader-element'))
 }
 
 describe('<Details />', () => {

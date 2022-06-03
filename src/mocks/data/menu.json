@@ -1,0 +1,29 @@
+{
+	"links": [
+		{
+			"link": "/home",
+			"label": "Home"
+		},
+		{
+			"link": "/skill",
+			"label": "Skill"
+		},
+		{
+			"link": "/project",
+			"label": "Project"
+		},
+		{
+			"link": "/blogs",
+			"label": "Blogs"
+		},
+		{
+			"link": "/contact",
+			"label": "Contact"
+		},
+		{
+			"link": "/download-cv",
+			"label": "Download CV",
+			"hightlight": true
+		}
+	]
+}

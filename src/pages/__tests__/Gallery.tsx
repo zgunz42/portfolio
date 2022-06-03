@@ -7,7 +7,7 @@ import renderWithProviders, {
 
 async function renderGalleryPage(): Promise<void> {
 	renderWithProviders(<GalleryPage />)
-	await waitForElementToBeRemoved(screen.queryByText('Loading...'))
+	await waitForElementToBeRemoved(screen.queryAllByTestId('loader-element'))
 }
 
 describe('<Gallery />', () => {

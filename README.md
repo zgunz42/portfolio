@@ -1,8 +1,8 @@
-# Vitamin
+# Adi Gunawan - Portfolio
 
-[![codecov](https://codecov.io/gh/wtchnm/Vitamin/branch/main/graph/badge.svg?token=H9BBAKGYI0)](https://codecov.io/gh/wtchnm/Vitamin) ![Test workflow](https://github.com/wtchnm/Vitamin/actions/workflows/test.yml/badge.svg) ![CodeQL workflow](https://github.com/wtchnm/Vitamin/actions/workflows/codeql-analysis.yml/badge.svg) [![Total alerts](https://img.shields.io/lgtm/alerts/g/wtchnm/Vitamin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/wtchnm/Vitamin/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/wtchnm/Vitamin.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/wtchnm/Vitamin/context:javascript) [![Vitamin](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/etow1b&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/etow1b/runs) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/wtchnm/Vitamin/blob/main/LICENSE)
+[![codecov](https://codecov.io/gh/zgunz42/portfolio/branch/main/graph/badge.svg?token=H9BBAKGYI0)](https://codecov.io/gh/zgunz42/portfolio) ![Test workflow](https://github.com/zgunz42/portfolio/actions/workflows/test.yml/badge.svg) ![CodeQL workflow](https://github.com/zgunz42/portfolio/actions/workflows/codeql-analysis.yml/badge.svg) [![Total alerts](https://img.shields.io/lgtm/alerts/g/zgunz42/portfolio.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/zgunz42/portfolio/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/zgunz42/portfolio.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/zgunz42/portfolio/context:javascript) [![Vitamin](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/etow1b&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/etow1b/runs) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/zgunz42/portfolio/blob/main/LICENSE)
 
-Opinionated Vite starter template.
+Using Vitamin Starter template
 
 ## Features
 
@@ -14,6 +14,7 @@ Opinionated Vite starter template.
 - Write e2e tests with [Cypress](https://www.cypress.io).
 - GitHub Actions for automatic [dependency updates](https://renovatebot.com/), [CodeQL Analysis](https://securitylab.github.com/tools/codeql), running tests and code coverage with [Codecov](https://about.codecov.io/).
 - Deploy to [Vercel](vercel.com) with pre-configured [SPA fallback](https://vercel.com/docs/configuration#routes/advanced/spa-fallback).
+- Mantine UI for roboust development
 
 ## Getting started
 
@@ -31,14 +32,14 @@ pnpm install
 
 ### Before you start coding
 
-- [ ] If you don't plan to use GitHub Actions, delete the `.github` directory.
-- [ ] Clean up the `cypress/integration/index.spec.ts` file.
-- [ ] Change the `favicon.png`, `apple-touch-icon.png`, `android-chrome-192x192.png` and `android-chrome-512x512.png`. [favicon.io](https://favicon.io) is a cool tool for generating these assets.
-- [ ] In the `src` folder, remove the `__tests__`, `api` and `components` folder and the `types.ts` file.
-- [ ] If you don't plan to use `react-query`, remove the query client logic in the `main.tsx` file.
-- [ ] Change the title, description and theme color in the `index.html` and `vite.config.ts`. The [Inter](https://rsms.me/inter/) font is included, so remove it if you want.
-- [ ] Modify or delete the `LICENSE` file.
-- [ ] Change the `name` field in package.json.
+- [x] If you don't plan to use GitHub Actions, delete the `.github` directory.
+- [x] Clean up the `cypress/integration/index.spec.ts` file.
+- [x] Change the `favicon.png`, `apple-touch-icon.png`, `android-chrome-192x192.png` and `android-chrome-512x512.png`. [favicon.io](https://favicon.io) is a cool tool for generating these assets.
+- [x] In the `src` folder, remove the `__tests__`, `api` and `components` folder and the `types.ts` file.
+- [x] If you don't plan to use `react-query`, remove the query client logic in the `main.tsx` file.
+- [x] Change the title, description and theme color in the `index.html` and `vite.config.ts`. The [Inter](https://rsms.me/inter/) font is included, so remove it if you want.
+- [x] Modify or delete the `LICENSE` file.
+- [x] Change the `name` field in package.json.
 
 ## Scripts
 

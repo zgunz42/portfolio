@@ -6,9 +6,8 @@ import type { ReactElement } from 'react'
 import { lazy, Suspense, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-const Gallery = lazy(async () => import('pages/Gallery'))
 const Details = lazy(async () => import('pages/Details'))
-
+const Home = lazy(async () => import('pages/Home'))
 export default function App(): ReactElement {
 	const [colorScheme, setColorScheme] = useState<ColorScheme>('light')
 	const toggleColorScheme = (value?: ColorScheme): void =>
@@ -23,7 +22,7 @@ export default function App(): ReactElement {
 					<BrowserRouter>
 						<Suspense fallback={<LoadingOrError />}>
 							<Routes>
-								<Route path='/' element={<Gallery />} />
+								<Route path='/' element={<Home />} />
 								<Route path=':fruitName' element={<Details />} />
 							</Routes>
 						</Suspense>

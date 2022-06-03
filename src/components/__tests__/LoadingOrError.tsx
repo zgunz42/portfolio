@@ -5,11 +5,12 @@ describe('<LoadingOrError />', () => {
 	it('renders', () => {
 		render(<LoadingOrError />)
 
-		expect(screen.getByText('Loading...')).toBeInTheDocument()
+		expect(screen.getByTestId('loader-element')).toBeInTheDocument()
 	})
-	it('renders with an error message', () => {
+	it('renders with an error message', async () => {
 		render(<LoadingOrError error={new Error('Failed to fetch')} />)
+		const selector = screen.getByTestId('error-title-element')
 
-		expect(screen.getByText('Failed to fetch')).toBeInTheDocument()
+		expect(selector).toHaveTextContent('Failed to fetch')
 	})
 })
