@@ -2,6 +2,6 @@
 	"baseUrl": "http://localhost:4173/",
 	"fileServerFolder": "dist",
 	"fixturesFolder": false,
-	"projectId": "etow1b",
+	"projectId": "s1u9ek",
 	"integrationFolder": "cypress/e2e"
 }
