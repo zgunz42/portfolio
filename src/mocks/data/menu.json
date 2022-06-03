@@ -1,20 +1,29 @@
 {
 	"links": [
 		{
-			"link": "/about",
-			"label": "Features"
+			"link": "/home",
+			"label": "Home"
 		},
 		{
-			"link": "/pricing",
-			"label": "Pricing"
+			"link": "/skill",
+			"label": "Skill"
 		},
 		{
-			"link": "/learn",
-			"label": "Learn"
+			"link": "/project",
+			"label": "Project"
 		},
 		{
-			"link": "/community",
-			"label": "Community"
+			"link": "/blogs",
+			"label": "Blogs"
+		},
+		{
+			"link": "/contact",
+			"label": "Contact"
+		},
+		{
+			"link": "/download-cv",
+			"label": "Download CV",
+			"hightlight": true
 		}
 	]
 }

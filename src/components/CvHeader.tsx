@@ -55,11 +55,23 @@ const useStyles = createStyles(theme => ({
 			color:
 				theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7]
 		}
+	},
+	hightlight: {
+		'&, &:hover': {
+			backgroundColor:
+				theme.colorScheme === 'dark'
+					? theme.fn.rgba(theme.colors[theme.primaryColor][9], 1)
+					: theme.colors[theme.primaryColor][7],
+			color:
+				theme.colorScheme === 'dark'
+					? theme.colors.dark[7]
+					: theme.colors.gray[0]
+		}
 	}
 }))
 
 interface CvHeaderProperties {
-	links: { link: string; label: string }[]
+	links: { link: string; label: string; hightlight?: boolean }[]
 }
 
 export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
@@ -72,7 +84,8 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 			key={link.label}
 			href={link.link}
 			className={cx(classes.link, {
-				[classes.linkActive]: active === link.link
+				[classes.linkActive]: active === link.link,
+				[classes.hightlight]: link.hightlight
 			})}
 			// eslint-disable-next-line react/jsx-handler-names, @typescript-eslint/explicit-function-return-type
 			onClick={event => {
@@ -87,7 +100,7 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 	return (
 		<Header height={60} mb={120}>
 			<Container className={classes.header}>
-				<CvLogo />
+				<CvLogo height={30} />
 				<Group spacing={5} className={classes.links}>
 					{items}
 				</Group>

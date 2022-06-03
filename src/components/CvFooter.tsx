@@ -7,6 +7,10 @@ import CvLogo from './CvLogo'
 const useStyles = createStyles(theme => ({
 	footer: {
 		marginTop: 120,
+		backgroundColor:
+			theme.colorScheme === 'dark'
+				? theme.colors.dark[7]
+				: theme.colors.gray[0],
 		borderTop: `1px solid ${
 			theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
 		}`
@@ -56,7 +60,7 @@ export default function CvFooterCentered({
 	return (
 		<div className={classes.footer}>
 			<div className={classes.inner}>
-				<CvLogo />
+				<CvLogo height={50} />
 
 				<Group className={classes.links}>{items}</Group>
 

@@ -1,4 +1,4 @@
-import { Box, Center, Loader, Title } from '@mantine/core'
+import { Loader, Stack, Title } from '@mantine/core'
 import type { ReactElement } from 'react'
 import CvIconCat from './CvIconCat'
 import CvLogo from './CvLogo'
@@ -11,17 +11,17 @@ export default function LoadingOrError({ error }: Properties): ReactElement {
 		<div className='flex min-h-screen items-center justify-center'>
 			<h1 className='text-xl' data-testid='LoadingOrError'>
 				{error ? (
-					<Box>
-						<CvIconCat />
-						<Title mt={8} color='red'>
+					<Stack align='center'>
+						<CvIconCat height={50} />
+						<Title mt={12} color='red'>
 							error.message
 						</Title>
-					</Box>
+					</Stack>
 				) : (
-					<Center>
-						<CvLogo />
-						<Loader mt={12} />
-					</Center>
+					<Stack align='center'>
+						<CvLogo height={50} />
+						<Loader color='gray' mt={12} />
+					</Stack>
 				)}
 			</h1>
 		</div>
