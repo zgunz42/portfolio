@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
 		clearMocks: true,
 		coverage: {
 			enabled: true,
-			'100': true,
+			'70': true,
 			reporter: ['text', 'lcov'],
 			reportsDirectory: 'coverage/jest'
 		}
