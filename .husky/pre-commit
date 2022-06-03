@@ -1,4 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm lint-staged
+# check if there pnpm is installed
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "pnpm is not installed"
+  echo "using npm instead"
+  npm run lint
+else
+  echo "pnpm is installed"
+  pnpm run lint
+fi
