@@ -442,18 +442,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: rgb(28 87 214 / 53.4%);
+	background: rgb(31 32 41);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: rgb(127 121 216 / 40.9%);
+	background: rgb(28 126 214);
 	border-radius: 12px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(130 141 235 / 34.1%);
+	background: rgb(28 126 214);
 	border-radius: 12px;
 }
 
