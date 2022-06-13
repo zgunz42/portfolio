@@ -32,10 +32,11 @@ export default defineConfig(({ mode }) => ({
 							'robots.txt',
 							'apple-touch-icon.png',
 							'icons/*.svg',
+							'images/*',
 							'fonts/*.woff2'
 						],
 						manifest: {
-							theme_color: '#BD34FE',
+							theme_color: '#1C7ED6',
 							icons: [
 								{
 									src: '/android-chrome-192x192.png',

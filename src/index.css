@@ -13,6 +13,8 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
 *,
 ::before,
 ::after {
@@ -40,6 +42,7 @@ html {
 	-moz-tab-size: 4; /* 3 */
 	tab-size: 4; /* 3 */
 	font-family: theme(
+		Raleway,
 		'fontFamily.sans',
 		ui-sans-serif,
 		system-ui,
@@ -66,6 +69,8 @@ html {
 body {
 	margin: 0; /* 1 */
 	line-height: inherit; /* 2 */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /*
@@ -222,7 +227,7 @@ button,
 [type='submit'] {
 	-webkit-appearance: button; /* 1 */
 	/*background-color: transparent;  Mantineと競合してボタンが透明になってしまうためコメントアウト */
-	background-image: none; /* 2 */
+	/* background-image: none; 2 */
 }
 
 /*
@@ -357,6 +362,7 @@ Set the default cursor for buttons.
 button,
 [role='button'] {
 	cursor: pointer;
+	background-color: inherit;
 }
 
 /*
@@ -401,33 +407,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 [hidden] {
 	display: none;
 }
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-	@font-face {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
-		src: url('/fonts/Inter-Regular.woff2') format('woff2');
-	}
-	@font-face {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: 500;
-		font-display: swap;
-		src: url('/fonts/Inter-Medium.woff2') format('woff2');
-	}
-	@font-face {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: 700;
-		font-display: swap;
-		src: url('/fonts/Inter-Bold.woff2') format('woff2');
-	}
-}
 
 /* Brand color */
 .facebook-color {
@@ -450,7 +432,47 @@ Ensure the default browser behavior of the `hidden` attribute.
 	background-color: #0077b5;
 }
 
+/* --------- */
+/*Scrollbar   */
+/* --------- */
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgb(28 87 214 / 53.4%);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(127 121 216 / 40.9%);
+	border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(130 141 235 / 34.1%);
+	border-radius: 12px;
+}
+
 /* Article Style */
 article img {
 	min-width: 100%;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+main.mantine-AppShell-main {
+	padding: 0;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.page .mantine-Stack-root {
+	background-image: linear-gradient(
+		to bottom,
+		rgb(31 32 41),
+		rgb(31 32 41),
+		rgb(31 32 41/5%)
+	) !important;
 }

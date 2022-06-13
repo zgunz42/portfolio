@@ -12,7 +12,12 @@ const useStyles = createStyles(theme => ({
 		alignItems: 'center',
 		height: '100%'
 	},
-
+	outerHeader: {
+		backgroundColor: '#1b1a2ea9',
+		border: 'none',
+		boxShadow: '0px 10px 10px 0px rgba(9, 5, 29, 0.171)',
+		backdropFilter: 'blur(15px)'
+	},
 	links: {
 		[theme.fn.smallerThan('xs')]: {
 			display: 'none'
@@ -98,9 +103,9 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 	))
 
 	return (
-		<Header height={60} mb={120}>
+		<Header className={classes.outerHeader} height={60}>
 			<Container className={classes.header}>
-				<CvLogo height={30} />
+				<CvLogo width={116.243} height={30} />
 				<Group spacing={5} className={classes.links}>
 					{items}
 				</Group>
@@ -110,6 +115,7 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 					// eslint-disable-next-line react/jsx-handler-names, @typescript-eslint/explicit-function-return-type
 					onClick={() => toggleOpened()}
 					className={classes.burger}
+					color='white'
 					size='sm'
 				/>
 			</Container>

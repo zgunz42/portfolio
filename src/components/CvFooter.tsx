@@ -60,7 +60,7 @@ export default function CvFooterCentered({
 	return (
 		<div className={classes.footer}>
 			<div className={classes.inner}>
-				<CvLogo height={50} />
+				<CvLogo width={116.243 * 2} height={30 * 2} />
 
 				<Group className={classes.links}>{items}</Group>
 
