@@ -1,52 +1,52 @@
 [
 	{
 		"title": "Framework Nodejs Terbaik",
-		"description": "Create your nextjs awesome bot by the power of nodejs",
+		"description": "Kerangka kerja NodeJs terbaik yang saya sukai di dalamnya\n",
 		"thumbnail": "http://placeimg.com/640/480/robot",
 		"publishedAt": "2022-06-28T14:34:09.275Z",
-		"label": ["nextjs", "react"],
+		"label": ["opinion", "nodejs"],
 		"commentId": 14,
-		"readTime": 2,
+		"readTime": 1,
 		"link": "best-nodejs-framework"
 	},
 	{
-		"title": "Kirim Email Menggunakan Golang",
-		"description": "Nisi amet ut nam deserunt excepturi non. Nihil similique ea ab facere beatae. Aut quod quibusdam consequatur. Tenetur enim quis. Ipsum et ut natus eligendi et qui ipsam blanditiis.",
+		"title": "Kirim Email Menggunakan Echo",
+		"description": "Kirim Email Menggunakan Golang Dengan Kekuatan SMTP\npakai Echo (Golang Framework)\n",
 		"thumbnail": "http://placeimg.com/640/480/tank",
 		"publishedAt": "2022-06-26T03:34:09.275Z",
 		"label": ["golang", "smtp"],
 		"commentId": 14,
-		"readTime": 2,
+		"readTime": 1,
 		"link": "send-email-using-golang"
 	},
 	{
 		"title": "Menggunakan Kembali Typescript Type Definition",
-		"description": "Create your nextjs awesome bot by the power of nodejs",
+		"description": "Reusing existing type providing by the library into your\n",
 		"thumbnail": "http://placeimg.com/640/480/robot",
 		"publishedAt": "2022-06-25T17:34:09.275Z",
 		"label": ["nextjs", "react"],
 		"commentId": 14,
-		"readTime": 2,
+		"readTime": 1,
 		"link": "reuse-type-in-typescript"
 	},
 	{
-		"title": "Craete Todo App With Golang",
-		"description": "Mollitia et numquam sed et facere est et repellendus ea.",
+		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
+		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
+		"thumbnail": "http://placeimg.com/640/480/robot",
+		"publishedAt": "2022-06-25T14:34:09.275Z",
+		"label": ["nextjs", "react"],
+		"commentId": 14,
+		"readTime": 1,
+		"link": "convert-image-to-svg"
+	},
+	{
+		"title": "Membuat Todo App With Golang",
+		"description": "Create working todo app backend api to manage daily schedlue\n",
 		"thumbnail": "http://placeimg.com/640/480/robot",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
 		"label": ["golang", "echo"],
 		"commentId": 15,
 		"readTime": 1,
 		"link": "create-todo-app-with-golang"
-	},
-	{
-		"title": "Integrasi Mantine dan Tailwind Css",
-		"description": "Create your nextjs awesome bot by the power of nodejs",
-		"thumbnail": "http://placeimg.com/640/480/robot",
-		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["tailwind", "css"],
-		"commentId": 14,
-		"readTime": 2,
-		"link": "integrate-tailwindcss-with-mantine"
 	}
 ]

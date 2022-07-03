@@ -7,7 +7,10 @@ import useLocale from './useLocale'
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function useConfig(): UseQueryResult<IConfig> {
 	const { locale } = useLocale()
-	const result = useQuery('getConfig', getConfig.bind(undefined, locale))
+	const result = useQuery(
+		['getConfig', locale],
+		getConfig.bind(undefined, locale)
+	)
 
 	return result
 }

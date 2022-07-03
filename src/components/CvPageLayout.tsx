@@ -1,9 +1,7 @@
 /* eslint-disable unicorn/no-keyword-prefix */
 import { AppShell, useMantineColorScheme } from '@mantine/core'
-import { links as EnLinks } from 'data/langs/en-US/menu.json'
-import { links as IDLinks } from 'data/langs/id-ID/menu.json'
+import useLocale from 'hooks/useLocale'
 import type { PropsWithChildren, ReactElement } from 'react'
-import { useIntl } from 'react-intl'
 import CvFooterCentered from './CvFooter'
 import CvHeader from './CvHeader'
 
@@ -17,15 +15,14 @@ function CvPageLayout({
 }: PropsWithChildren<Properties>): ReactElement {
 	const { colorScheme } = useMantineColorScheme()
 	const dark = colorScheme === 'dark'
-	const intl = useIntl()
-	const links = intl.locale === 'en' ? EnLinks : IDLinks
+	const { menu } = useLocale()
 	return (
 		<AppShell
 			className={`${dark ? 'bg-gray-900' : 'bg-gray-100'} relative ${
 				className ?? ''
 			}`}
-			header={<CvHeader links={links} />}
-			footer={<CvFooterCentered links={links} />}
+			header={<CvHeader links={menu} />}
+			footer={<CvFooterCentered links={menu} />}
 			fixed
 		>
 			<div className='min-h-screen pt-16'>{children}</div>

@@ -1,4 +1,6 @@
 import { Languages } from 'constant'
+import { links as EnLinks } from 'data/langs/en-US/menu.json'
+import { links as IDLinks } from 'data/langs/id-ID/menu.json'
 import { useIntl } from 'react-intl'
 
 // eslint-disable-next-line @typescript-eslint/no-type-alias
@@ -18,9 +20,19 @@ export default function useLocale() {
 			language = Languages['1']
 			break
 		default:
-			console.log('Unknown locale')
-			console.log(locale)
 			language = Languages['0']
+			break
+	}
+	let menu
+	switch (language) {
+		case Languages['0']:
+			menu = EnLinks
+			break
+		case Languages['1']:
+			menu = IDLinks
+			break
+		default:
+			menu = EnLinks
 			break
 	}
 	return {
@@ -30,6 +42,7 @@ export default function useLocale() {
 			values?: TransMarkdownType['1'],
 			options?: TransMarkdownType['2']
 		): T => $t({ id }, values, options) as unknown as T,
-		locale: language
+		locale: language,
+		menu
 	}
 }

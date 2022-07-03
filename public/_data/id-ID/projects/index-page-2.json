@@ -1,12 +1,12 @@
 [
 	{
-		"name": "Svelte SlideIT",
-		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
+		"name": "Otonan Website",
+		"description": "Undangan digital otonan (hari lahir bali) dengan fitur ucapan\nserta hitung mundur\n",
 		"pinned": true,
-		"tags": ["svelte", "js"],
-		"thumbnail": "http://placeimg.com/640/480/carousel",
-		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
-		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
-		"link": "slideit"
+		"tags": ["nextjs", "react"],
+		"thumbnail": "http://placeimg.com/640/480/birthday",
+		"demoUrl": "http://otonan.netlify.app",
+		"sourceUrl": "http://otonan.netlify.app",
+		"link": "otonan"
 	}
 ]

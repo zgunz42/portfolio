@@ -12,9 +12,9 @@ function useProjectList() {
 		IProjectList[],
 		unknown,
 		IProjectList[],
-		'getProjectList'
+		['getProjectList', string]
 	>(
-		'getProjectList',
+		['getProjectList', locale],
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		async ({ pageParam }) =>
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument

@@ -124,7 +124,7 @@ function AboutPage(): ReactElement {
 			<Stack align='stretch' justify='center'>
 				<Helmet>
 					<title>
-						{$t('about.title')} | {data?.name}
+						{$t('about.title')} | {data?.fullName}
 					</title>
 				</Helmet>
 				<Container className='mt-12'>

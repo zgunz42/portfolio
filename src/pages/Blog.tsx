@@ -78,12 +78,13 @@ function BlogPage(): ReactElement {
 							}}
 						>
 							<Button
+								variant='subtle'
 								leftIcon={<ArrowWaveLeftDown />}
 								rightIcon={<ArrowWaveRightDown />}
 								className='mx-auto block'
 								onClick={onLoadMore}
 							>
-								Load More
+								{$t('site.loadMore')}
 							</Button>
 						</Box>
 					) : undefined}

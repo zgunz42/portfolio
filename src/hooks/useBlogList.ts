@@ -12,9 +12,9 @@ function useBlogList() {
 		IBlogListItem[],
 		unknown,
 		IBlogListItem[],
-		'getBlogList'
+		['getBlogList', string]
 	>(
-		'getBlogList',
+		['getBlogList', locale],
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		async ({ pageParam }) => getBlogListPaged(pageParam ?? FirstPage, locale),
 		{

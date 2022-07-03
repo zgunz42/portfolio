@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Android Hot Movie",
-		"description": "Aplikasi menampikan list movie diambail dari API IMDB\n",
+		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
 		"pinned": true,
 		"tags": ["android", "java"],
 		"thumbnail": "http://placeimg.com/640/480/movie",
@@ -23,7 +23,7 @@
 		"name": "EggBox IoT",
 		"description": "Monitor suhu dan perputaran incubator menggunakan \nperangkat IoT(NodeMCU) dan server(Nestjs) melalui \nmosquito\n",
 		"pinned": true,
-		"tags": ["arduion", "c++"],
+		"tags": ["arduino", "c++"],
 		"thumbnail": "http://placeimg.com/640/480/iot",
 		"demoUrl": "https://github.com/zgunz42/egg-incubator-iot",
 		"sourceUrl": "https://github.com/zgunz42/egg-incubator-iot",
@@ -40,16 +40,6 @@
 		"link": "pawiwahan"
 	},
 	{
-		"name": "Otonan Website",
-		"description": "Undangan digital otonan (hari lahir bali) dengan fitur ucapan\nserta hitung mundur\n",
-		"pinned": true,
-		"tags": ["nextjs", "react"],
-		"thumbnail": "http://placeimg.com/640/480/birthday",
-		"demoUrl": "http://otonan.netlify.app",
-		"sourceUrl": "http://otonan.netlify.app",
-		"link": "otonan"
-	},
-	{
 		"name": "Svelte SlideIT",
 		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
 		"pinned": true,
@@ -58,5 +48,15 @@
 		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
 		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
 		"link": "slideit"
+	},
+	{
+		"name": "Otonan Website",
+		"description": "Undangan digital otonan (hari lahir bali) dengan fitur ucapan\nserta hitung mundur\n",
+		"pinned": true,
+		"tags": ["nextjs", "react"],
+		"thumbnail": "http://placeimg.com/640/480/birthday",
+		"demoUrl": "http://otonan.netlify.app",
+		"sourceUrl": "http://otonan.netlify.app",
+		"link": "otonan"
 	}
 ]

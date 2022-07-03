@@ -8,6 +8,7 @@ import {
 	BrandTwitter,
 	BrandWhatsapp
 } from 'tabler-icons-react'
+import CvLanguageSwitcher from './CvLanguageSwitcher'
 import CvLogo from './CvLogo'
 
 const useStyles = createStyles(theme => ({
@@ -66,9 +67,15 @@ export default function CvFooterCentered({
 	return (
 		<div className={classes.footer}>
 			<div className={classes.inner}>
-				<CvLogo width={116.243 * 1.5} height={30 * 1.5} />
-
-				<Group className={classes.links}>{items}</Group>
+				<CvLogo
+					className='hidden md:block'
+					width={116.243 * 1.5}
+					height={30 * 1.5}
+				/>
+				<CvLanguageSwitcher size='xs' />
+			</div>
+			<div className={classes.inner}>
+				<Group className={`${classes.links} ml-3`}>{items}</Group>
 
 				<Group spacing={0} position='right' noWrap>
 					<ActionIcon className='hover:scale-125 hover:text-facebook' size='lg'>

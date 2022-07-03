@@ -15,28 +15,28 @@ sourceUrl: https://github.com/zgunz42/svelte-slideit
 
 ### Hello SlideIt
 
-SlideIt is a slider and carousel build on top of [Glidejs](https://glidejs.com/). I build this because other
-svelte component like _[svelte-carousel](https://github.com/beyonk-adventures/svelte-carousel/blob/master/README.md)_
-did not support responsive because can't handle it [Siema](https://github.com/pawelgrzybek/siema). Other reason i need
-carousel API like owlcarousel but use vanilla js for less depedency.
+SlideIt adalah slider dan carousel build di atas [Glidejs](https://glidejs.com/). Saya membangun ini karena yang lain
+Svelte Component Suka _[svelte-carousel](https://github.com/beyonk-adventures/svelte-carousel/blob/master/README.md)_
+tidak mendukung responsif karena tidak bisa menanganinya [Siema](https://github.com/pawelgrzybek/siema). Alasan lain yang saya butuhkan
+Carousel API Seperti Owlcarousel Tapi Gunakan Vanilla JS Untuk Kurang Ketergantungan.
 
 Core feature:
 
-- [x] Responsive config options
-- [x] Port all glidejs event to svelte custom event
-- [x] Many slot that can you fill with "any html tag"
-- [x] Glidejs css imported in style tag thank to **svelte-preprocess**
+- Opsi konfigurasi responsif
+- Acara Port All GlideJs to Svelte Custom Event
+- Banyak slot yang dapat Anda isi "any html tag"
+- Glidejs css diimpor dalam tag gaya terima kasih **svelte-preprocess**
 
 ## Event Name
 
-All event name from Glidejs has been rename `a.b` into `aB`, so if want to listen
-into some event like this.
+Semua Nama Acara dari GlideJs telah diganti nama `a.b` ke `aB`, Jadi jika ingin mendengarkan
+ke dalam beberapa peristiwa seperti ini.
 
 ```sveltehtml
 <SlideIt on:montBefore={handler} />
 ```
 
-It will listen into `mount.before` of Glidejs event name
+Itu akan mendengarkan `mount.before` Nama Acara GlideJS
 
 ## Render Carousel Item
 
@@ -52,6 +52,6 @@ It will listen into `mount.before` of Glidejs event name
 
 _TODO_
 
-## Same Config as Glide js
+## Konfigurasi yang sama dengan Glide JS
 
-See glidejs documentation https://glidejs.com/docs/options/
+Lihat dokumentasi GlideJS https://glidejs.com/docs/options/

@@ -41,7 +41,25 @@ export const ColumnSM = 2 // in px
 export const ColumnXS = 1 // in px
 
 export const Languages = ['en-US', 'id-ID'] as const
-
+// eslint-disable-next-line @typescript-eslint/no-type-alias
+export type TypeLanguages = typeof Languages[number]
+export interface IChoiceItem {
+	flag: string
+	name: string
+	value: TypeLanguages
+}
+export const LanguageChoice: IChoiceItem[] = [
+	{
+		flag: 'indonesia_flag.svg',
+		name: 'Bahasa Indonesia',
+		value: Languages['1']
+	},
+	{
+		flag: 'united-states_flag.svg',
+		name: 'English',
+		value: Languages['0']
+	}
+]
 // Data Model
 export const FirstPage = 1
 export const PageSize = 5

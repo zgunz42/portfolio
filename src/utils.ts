@@ -1,5 +1,6 @@
 import * as blurhash from 'blurhash'
-import { IconSize } from 'constant'
+import type { TypeLanguages } from 'constant'
+import { IconSize, Languages } from 'constant'
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import { useLayoutEffect, useState } from 'react'
 // eslint-disable-next-line import/prefer-default-export
@@ -21,6 +22,24 @@ export function useMediaQuery(query: string): boolean {
 	}, [query])
 
 	return matches
+}
+
+export function localeName(label: string): TypeLanguages {
+	switch (label) {
+		case Languages[0]:
+			return Languages[0]
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		case Languages[1]:
+			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+			return Languages[1]
+		default:
+			return Languages[0]
+	}
+}
+
+export function getBrowserLanguage(): TypeLanguages {
+	const browserLanguage = navigator.language.split('-')[0]
+	return localeName(browserLanguage)
 }
 
 export function composeImageUrl(

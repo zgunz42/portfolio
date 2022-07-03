@@ -2,6 +2,7 @@
 	"home.pinned": "Proyek Disematkan",
 	"home.projects": "Seluruh Proyek",
 	"contact": "Kontak",
+	"widget.language.title": "Bahasa Sistem",
 	"schedule_added": "Berhasil menambahkan jadwal",
 	"schedule_added_message": "Jadwal telah ditambahkan ke pemilik portfolio",
 	"site.description": "FullStack Developer dan IOT antusias",
@@ -44,5 +45,6 @@
 	"send_direct_message": "Buat Janji Panggilan",
 	"lets_connect": "Ayo Terhubung",
 	"contact_text": "Untuk keperluan pekerjaan dan bisnis terkait dengan saya bisa kontak beberapa channel di bawah ini. Selain itu bisa mengisi kontak form beserta dengan keperluan di sebelah kanan.",
-	"blog.list.loadMoreError": "Tidak ada data lagi untuk ditampilkan"
+	"blog.list.loadMoreError": "Tidak ada data lagi untuk ditampilkan",
+	"site.loadMore": "Tampilkan Lebih"
 }
