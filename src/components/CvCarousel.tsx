@@ -3,6 +3,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Box, createStyles } from '@mantine/core'
+import useWindowSize from '@rehooks/window-size'
 import { PietileCarousel } from 'pietile-carousel'
 import type * as React from 'react'
 
@@ -18,9 +19,7 @@ interface CvCarouselProperties<C = any> {
 
 const useStyles = createStyles(() => ({
 	carouselStyle: {
-		width: '100%',
-		// change mouse cursor to grab
-		cursor: 'grab'
+		width: '100%'
 	},
 	itemStyle: {
 		width: '100%',
@@ -36,9 +35,14 @@ export default function CvCarousel({
 	velocity,
 	transition
 }: CvCarouselProperties): React.ReactElement {
-	const { classes } = useStyles()
+	const { classes, theme } = useStyles()
+	const { innerWidth } = useWindowSize()
 	return (
-		<PietileCarousel count={4} margin={12} className={classes.carouselStyle}>
+		<PietileCarousel
+			count={innerWidth < theme.breakpoints.md ? 2 : 4}
+			margin={12}
+			className={classes.carouselStyle}
+		>
 			{items.map((child, index) => (
 				<Box className={classes.itemStyle} key={index}>
 					{children(child)}

@@ -10,7 +10,15 @@ import {
 import { useBooleanToggle, useMediaQuery, useScrollLock } from '@mantine/hooks'
 import CvLogo from 'components/CvLogo'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import {
+	Apps,
+	Ballpen,
+	FileDownload,
+	Home,
+	User,
+	Wallpaper
+} from 'tabler-icons-react'
 
 const useStyles = createStyles(theme => ({
 	header: {
@@ -53,7 +61,10 @@ const useStyles = createStyles(theme => ({
 	},
 
 	link: {
-		display: 'block',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		gap: 4,
 		lineHeight: 1,
 		padding: '8px 12px',
 		borderRadius: theme.radius.sm,
@@ -73,6 +84,8 @@ const useStyles = createStyles(theme => ({
 		},
 		[theme.fn.smallerThan('xs')]: {
 			padding: '12px 16px',
+			justifyContent: 'start',
+			gap: 18,
 			width: '100%'
 		}
 	},
@@ -105,7 +118,7 @@ const useStyles = createStyles(theme => ({
 }))
 
 interface CvHeaderProperties {
-	links: { link: string; label: string; hightlight?: boolean }[]
+	links: { link: string; icon?: string; label: string; hightlight?: boolean }[]
 }
 
 const scaleY = {
@@ -117,7 +130,6 @@ const scaleY = {
 
 export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 	const [opened, toggleOpened] = useBooleanToggle(false)
-	const [active, setActive] = useState(links[0].link)
 	const { classes, cx } = useStyles()
 	const [scrollLocked, setScrollLocked] = useScrollLock()
 	const isMobile = useMediaQuery('(max-width: 755px)')
@@ -127,28 +139,57 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 		setScrollLocked(!scrollLocked)
 	}
 
-	const items = links.map(link => (
-		<a
-			key={link.label}
-			href={link.link}
-			className={cx(classes.link, {
-				[classes.linkActive]: active === link.link,
-				[classes.hightlight]: link.hightlight
-			})}
-			// eslint-disable-next-line react/jsx-handler-names, @typescript-eslint/explicit-function-return-type
-			onClick={event => {
-				event.preventDefault()
-				setActive(link.link)
-			}}
-		>
-			{link.label}
-		</a>
-	))
+	const items = links.map(link => {
+		let Icon: typeof Home | undefined
+		switch (link.icon) {
+			case 'home':
+				Icon = Home
+				break
+			case 'user':
+				Icon = User
+				break
+			case 'app':
+				Icon = Apps
+				break
+			case 'download':
+				Icon = FileDownload
+				break
+			case 'contact':
+				Icon = Wallpaper
+				break
+			case 'blog':
+				Icon = Ballpen
+				break
+			default:
+				Icon = undefined
+				break
+		}
+		return (
+			<NavLink className='w-full md:w-auto' key={link.label} to={link.link}>
+				{
+					// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+					({ isActive }) => (
+						<span
+							className={cx(classes.link, {
+								[classes.linkActive]: isActive,
+								[classes.hightlight]: link.hightlight
+							})}
+						>
+							{Icon ? <Icon style={{ paddingBottom: 4 }} /> : undefined}
+							<span>{link.label}</span>
+						</span>
+					)
+				}
+			</NavLink>
+		)
+	})
 
 	return (
 		<Header className={classes.outerHeader} height={60}>
 			<Container className={classes.header}>
-				<CvLogo className={classes.logo} width={116.243} height={30} />
+				<Link to='/'>
+					<CvLogo className={classes.logo} width={116.243} height={30} />
+				</Link>
 				{isMobile ? (
 					<Transition
 						mounted={opened}

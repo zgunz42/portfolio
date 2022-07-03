@@ -1,31 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {
-	ActionIcon,
-	Badge,
-	Button,
+	AspectRatio,
+	Box,
 	Card,
 	createStyles,
 	Group,
 	Image,
-	Text
+	Paper,
+	Text,
+	Title
 } from '@mantine/core'
+import { useViewportSize } from '@mantine/hooks'
+import { motion } from 'framer-motion'
 import type { ReactElement } from 'react'
-import { Heart } from 'tabler-icons-react'
+import { useState } from 'react'
+import { Share as ShareIcon, Star as StarIcon } from 'tabler-icons-react'
+import { titlecase } from 'utils'
 
 const useStyles = createStyles(theme => ({
 	card: {
+		minHeight: '240px',
 		backgroundColor:
 			theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white
-	},
-
-	section: {
-		borderBottom: `1px solid ${
-			theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
-		}`,
-		minHeight: '98px',
-		paddingLeft: theme.spacing.md,
-		paddingRight: theme.spacing.md,
-		paddingBottom: theme.spacing.md
 	},
 
 	like: {
@@ -36,57 +33,130 @@ const useStyles = createStyles(theme => ({
 		textTransform: 'uppercase',
 		fontSize: theme.fontSizes.xs,
 		fontWeight: 700
+	},
+	actionCard: {
+		color: theme.colors[theme.primaryColor][5],
+		display: 'flex',
+		gap: theme.spacing.xs / 2,
+		alignItems: 'center',
+		'.label': {
+			lineHeight: '0.5em'
+		},
+		'&:hover': {
+			color: '#fff',
+			transition: 'color position 0.2s ease-in-out',
+			transform: 'translateY(-4px)',
+			backgroundColor: theme.colors[theme.primaryColor][6]
+		}
 	}
 }))
 
 interface BadgeCardProperties {
 	image: string
 	title: string
-	country: string
 	description: string
 }
 
 export default function CvRepoCard({
 	image,
 	title,
-	description,
-	country
+	description
 }: BadgeCardProperties): ReactElement {
-	const { classes } = useStyles()
+	const { height, width } = useViewportSize()
+	const { classes, theme } = useStyles()
+	const [scale, setScale] = useState(720)
+	const onHoverStart = (): void => {
+		setScale(420)
+	}
 
+	const onHoverEnd = (): void => {
+		setScale(720)
+	}
 	return (
-		<Card withBorder radius='md' p='md' className={classes.card}>
-			<Card.Section className='relative'>
-				<Image src={image} alt={title} height={180} />
-				<Badge className='absolute bottom-2 right-2' size='sm'>
-					{country}
-				</Badge>
-			</Card.Section>
-
-			<Card.Section className={classes.section} mt='md'>
-				<Group position='apart'>
-					<Text
-						size='lg'
-						weight={500}
-						lineClamp={1}
-						className='overflow-hidden'
+		<motion.div
+			whileHover={{
+				scale: 1.05,
+				transition: { duration: 300 / 1000 }
+			}}
+			onHoverStart={onHoverStart}
+			onTapStart={onHoverStart}
+			onTouchEndCapture={onHoverEnd}
+			onHoverEnd={onHoverEnd}
+			whileTap={{
+				scale: 1.05,
+				transition: { duration: 300 / 1000 }
+			}}
+		>
+			<Card
+				withBorder
+				radius='md'
+				className={`${classes.card} p-2 md:p-4`}
+				style={{
+					maxWidth: width <= 600 ? width - theme.spacing.md * 2 : 980 / 3
+				}}
+			>
+				<Box className='relative'>
+					<AspectRatio
+						ratio={1080 / scale}
+						sx={{
+							maxWidth:
+								width <= 600 ? width - (theme.spacing.md + 8) * 2 : 980 / 3
+						}}
 					>
-						{title}
-					</Text>
-				</Group>
-				<Text size='sm' mt='xs' lineClamp={2}>
-					{description}
-				</Text>
-			</Card.Section>
+						<Image
+							src={image}
+							className='overflow-hidden rounded-lg'
+							radius={theme.radius.md}
+							alt={title}
+							withPlaceholder
+						/>
+					</AspectRatio>
+					<Box className='absolute bottom-0 left-0 right-0 -mb-3 pl-2'>
+						<Group spacing={4}>
+							<Paper
+								className={classes.actionCard}
+								shadow='lg'
+								radius='lg'
+								p='xs'
+								withBorder
+							>
+								<ShareIcon size={16} />
+							</Paper>
+							<Paper
+								className={classes.actionCard}
+								shadow='lg'
+								radius='lg'
+								p='xs'
+								withBorder
+							>
+								<StarIcon size={16} />
+								{/* <Text className='label'>0</Text> */}
+							</Paper>
+						</Group>
+					</Box>
+				</Box>
 
-			<Group mt='xs'>
-				<Button radius='md' style={{ flex: 1 }}>
-					Show details
-				</Button>
-				<ActionIcon variant='default' radius='md' size={36}>
-					<Heart size={18} className={classes.like} />
-				</ActionIcon>
-			</Group>
-		</Card>
+				<Box
+					className='mx-2 mt-4 mb-6'
+					style={{
+						maxWidth:
+							width <= 600 ? width - (theme.spacing.md + 8) * 2 : 980 / 3
+					}}
+				>
+					<Group position='apart'>
+						<Title className='line-clamp-1' order={4}>
+							{titlecase(title)}
+						</Title>
+					</Group>
+					{scale !== 720 && (
+						<motion.div>
+							<Text size='sm' mt='xs' lineClamp={3}>
+								{description}
+							</Text>
+						</motion.div>
+					)}
+				</Box>
+			</Card>
+		</motion.div>
 	)
 }

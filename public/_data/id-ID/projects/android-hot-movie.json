@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "Android Hot Movie",
+		"description": "Aplikasi menampikan list movie diambail dari API IMDB\n",
+		"pinned": true,
+		"tags": ["android", "java"],
+		"thumbnail": "http://placeimg.com/640/480/movie",
+		"demoUrl": "https://github.com/zgunz42/hot-movie",
+		"sourceUrl": "https://github.com/zgunz42/hot-movie"
+	},
+	"body": "## Intermezo\n\nOtonan merupakan landing page undangan ulang tahun yang bisa di akses online dengan menggunakan browser. Otonan bisa di gunakan untuk memberi ucapan sekaligus dengan memberikan lokasi acara serta fitur hitung mundur yang akan membantu mengingatkan pemerima undangan\n\n## Fitur Website\n\nFitur unggulan dari website undangan digital otonan adalah\n\n- [x] Foto galery interaktif pengguna\n- [x] Countdown menuju acara akan berlangsung\n- [x] Navigasi dan peta menuju lokasi acara\n- [x] Form memberikan ucapan kepada pembuat acara\n\n## Teknologi\n\nUntuk teknologi yang digunakan dalam aplikasi ini adalah menggunakan **nextjs** sebagai alat untuk membuat page dan menggunakan **tailwindcss** untuk melakukan modifikasi css dan membantu untuk melakukan transisi antara halaman awal dengan isi undangan\n\nAgar bisa menerima form ucapan saya menggunakan fiture firebase yaitu **firestore** untuk menampung kiriman ucapan yang diterima\n"
+}

@@ -1,50 +1,28 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Box, Button, Center, SimpleGrid } from '@mantine/core'
-import { getGithubRepositories } from 'api'
+import { Box, Button, SimpleGrid, Text } from '@mantine/core'
 import CvRepoCard from 'components/CvRepoCard'
+import {
+	ColumnMD,
+	ColumnSM,
+	ColumnXS,
+	ScreenSizeMD,
+	ScreenSizeSM,
+	ScreenSizeXS
+} from 'constant'
+import useLocale from 'hooks/useLocale'
+import useProjectList from 'hooks/useProjectList'
+import { flatten } from 'lodash'
 import type { ReactElement } from 'react'
-import { useState } from 'react'
-import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
+import { ArrowWaveLeftDown, ArrowWaveRightDown } from 'tabler-icons-react'
+import useAppStyles from 'themes/styles'
 
-interface Properties {
-	username: string
-}
+export default function CvGithubRepos(): ReactElement {
+	const { classes } = useAppStyles()
+	const { data, fetchNextPage, isLoadMoreError } = useProjectList()
+	const { $t } = useLocale()
 
-const firstPage = 1
-const pageSize = 10
-export default function CvGithubRepos({ username }: Properties): ReactElement {
-	const [page, setPage] = useState(firstPage)
-	const { data, error, isError, isLoading } = useQuery(
-		[`get${username}_repo`, page],
-		getGithubRepositories.bind(undefined, username, page, pageSize)
-	)
-
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	const onLoadMore = (): void => setPage(page + 1)
-
-	if (isLoading) {
-		// show skeleton loading
-		return <div>Loading...</div>
-	}
-
-	if (isError) {
-		// show error
-		return (
-			<div>
-				{String(error)}
-				<Button onClick={onLoadMore}>Retry</Button>
-			</div>
-		)
-	}
-
-	if (data === undefined) {
-		// show empty state
-		return <div>Empty</div>
-	}
-
-	if (data.length === 0) {
-		// show empty state
-		return <div>Empty</div>
+	const onLoadMore = (): void => {
+		void fetchNextPage()
 	}
 
 	return (
@@ -52,24 +30,59 @@ export default function CvGithubRepos({ username }: Properties): ReactElement {
 			<SimpleGrid
 				cols={4}
 				breakpoints={[
-					{ maxWidth: 980, cols: 3, spacing: 'md' },
-					{ maxWidth: 755, cols: 2, spacing: 'sm' },
-					{ maxWidth: 600, cols: 1, spacing: 'sm' }
+					{ maxWidth: ScreenSizeMD, cols: ColumnMD, spacing: 'md' },
+					{ maxWidth: ScreenSizeSM, cols: ColumnSM, spacing: 'sm' },
+					{ maxWidth: ScreenSizeXS, cols: ColumnXS, spacing: 'xs' }
 				]}
 			>
-				{data.map(repo => (
-					<CvRepoCard
-						key={repo.id}
-						title={repo.name}
-						description={repo.description ?? ''}
-						country='Indonesia'
-						image='/images/placeholder.png'
-					/>
-				))}
+				{data === undefined ? (
+					<Text>Loading...</Text>
+				) : (
+					flatten(data.pages).map(project => (
+						<Link
+							className='block cursor-pointer'
+							key={project.link}
+							// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+							to={`/projects/${project.link}`}
+						>
+							<CvRepoCard
+								title={project.name}
+								description={project.description}
+								image={project.thumbnail}
+							/>
+						</Link>
+					))
+				)}
 			</SimpleGrid>
-			<Center mt='md'>
-				<Button onClick={onLoadMore}>Load More</Button>
-			</Center>
+			<Box
+				className='w-fill mt-8'
+				style={{
+					maxWidth: '100vw'
+				}}
+			>
+				{data !== undefined && data.pages.length > 0 && !isLoadMoreError ? (
+					<Box
+						className='w-fill mt-8'
+						style={{
+							maxWidth: '100vw'
+						}}
+					>
+						<Button
+							leftIcon={<ArrowWaveLeftDown />}
+							rightIcon={<ArrowWaveRightDown />}
+							className='mx-auto block'
+							onClick={onLoadMore}
+						>
+							Load More
+						</Button>
+					</Box>
+				) : undefined}
+				{isLoadMoreError ? (
+					<Text className={`${classes.text} mt-8 text-center`}>
+						{$t('blog.list.loadMoreError')}
+					</Text>
+				) : undefined}
+			</Box>
 		</Box>
 	)
 }

@@ -1,21 +1,41 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { Text } from '@mantine/core'
+import type { IProjectList } from 'api'
+import { getPinnedProjects } from 'api'
 import CvCarousel from 'components/CvCarousel'
 import CvRepoCard from 'components/CvRepoCard'
+import useLocale from 'hooks/useLocale'
 import type { ReactElement } from 'react'
+import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 
 export default function CvGithubTopProject(): ReactElement {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	const items: number[] = [1, 2, 3, 4, 5, 6, 7, 8]
+	const { locale } = useLocale()
+	const { data } = useQuery(
+		['pinProject', locale],
+		getPinnedProjects.bind(undefined, locale)
+	)
+
+	if (data === undefined) {
+		return <Text>Loading...</Text>
+	}
 
 	return (
-		<CvCarousel items={items}>
-			{(item: number): ReactElement => (
-				<CvRepoCard
-					key={item}
-					title={`${item} title`}
-					description={`${item} description`}
-					country='Indonesia'
-					image='/images/placeholder.png'
-				/>
+		<CvCarousel items={data}>
+			{(item: IProjectList): ReactElement => (
+				<Link
+					className='block cursor-pointer'
+					key={item.link}
+					// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+					to={`/projects/${item.link}`}
+				>
+					<CvRepoCard
+						title={item.name}
+						description={item.description}
+						image={item.thumbnail}
+					/>
+				</Link>
 			)}
 		</CvCarousel>
 	)

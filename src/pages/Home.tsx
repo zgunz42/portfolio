@@ -7,14 +7,14 @@ import {
 	Stack,
 	Title
 } from '@mantine/core'
-import { getGithubUser } from 'api'
 import CvHero from 'components/CvHero'
 import CvPageLayout from 'components/CvPageLayout'
 import CvGithubRepos from 'containers/CvGithubRepos'
 import CvGithubTopProject from 'containers/CvGithubTopProject'
+import useConfig from 'hooks/useConfig'
+import useLocale from 'hooks/useLocale'
 import type { ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
-import { useQuery } from 'react-query'
 
 const useStyles = createStyles(theme => ({
 	title: {
@@ -24,52 +24,24 @@ const useStyles = createStyles(theme => ({
 				? theme.colors.gray[0]
 				: theme.colors.gray[8],
 		marginBottom: theme.spacing.lg
+	},
+	notSelectable: {
+		userSelect: 'none'
 	}
 }))
 
-const skills = [
-	{
-		name: 'javascript',
-		level: 'advanced',
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		experience: 5
-	},
-	{
-		name: 'react',
-		level: 'advanced',
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		experience: 5
-	},
-	{
-		name: 'nodejs',
-		level: 'advanced',
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		experience: 5
-	},
-	{
-		name: 'typescript',
-		level: 'advanced',
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		experience: 4
-	}
-]
-
 function HomePage(): ReactElement {
 	const { classes } = useStyles()
-	const { data, isFetching, isError } = useQuery(
-		'profile',
-		getGithubUser.bind(undefined, 'zgunz42')
-	)
+	const { data, isFetching, isError } = useConfig()
 
 	let heroElement = <Skeleton height='100vh' />
-
+	const { $t } = useLocale()
 	if (!isFetching && !isError && data) {
 		heroElement = (
 			<CvHero
-				avatarUrl={data.avatarURL}
-				skills={skills}
-				bio={data.bio}
-				name={data.name}
+				bio={data.about.intro}
+				github={data.github}
+				name={data.fullName}
 			/>
 		)
 	}
@@ -78,23 +50,21 @@ function HomePage(): ReactElement {
 		<CvPageLayout className='page'>
 			<Stack align='stretch' justify='center'>
 				<Helmet>
-					<title>Adi Gunawan | FullStack Developer and IOT antusias</title>
+					<title>Adi Gunawan | {$t('site.description')}</title>
 				</Helmet>
 				{heroElement}
-				<Container>
-					<Title order={2} className={classes.title}>
-						Top Project
-					</Title>
-					<Box>
+				<Container className='md:w-full'>
+					<Box className={`${classes.notSelectable} mb-8`}>
+						<Title order={2} className={classes.title}>
+							{$t('home.pinned')}
+						</Title>
 						<CvGithubTopProject />
 					</Box>
-				</Container>
-				<Container>
-					<Title order={2} className={classes.title}>
-						My Project
-					</Title>
 					<Box>
-						<CvGithubRepos username='zgunz42' />
+						<Title order={2} className={classes.title}>
+							{$t('home.projects')}
+						</Title>
+						<CvGithubRepos />
 					</Box>
 				</Container>
 			</Stack>

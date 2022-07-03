@@ -20,8 +20,12 @@ export default function LoadingOrError({ error }: Properties): ReactElement {
 					</Stack>
 				) : (
 					<Stack align='center'>
-						<CvLogo width={116.243 * 2} height={30 * 2} />
-						<Loader data-testid='loader-element' aria-label='loading' mt={12} />
+						<CvLogo className='h-24 w-24' />
+						<Loader
+							data-testid='loader-element'
+							aria-label='loading'
+							className='mt-8'
+						/>
 					</Stack>
 				)}
 			</h1>

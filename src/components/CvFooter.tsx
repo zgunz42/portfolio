@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { ActionIcon, Anchor, createStyles, Group } from '@mantine/core'
 import type { ReactElement } from 'react'
-import { BrandInstagram, BrandTwitter, BrandYoutube } from 'tabler-icons-react'
+import {
+	BrandFacebook,
+	BrandInstagram,
+	BrandLinkedin,
+	BrandTwitter,
+	BrandWhatsapp
+} from 'tabler-icons-react'
 import CvLogo from './CvLogo'
 
 const useStyles = createStyles(theme => ({
@@ -60,19 +66,28 @@ export default function CvFooterCentered({
 	return (
 		<div className={classes.footer}>
 			<div className={classes.inner}>
-				<CvLogo width={116.243 * 2} height={30 * 2} />
+				<CvLogo width={116.243 * 1.5} height={30 * 1.5} />
 
 				<Group className={classes.links}>{items}</Group>
 
 				<Group spacing={0} position='right' noWrap>
-					<ActionIcon size='lg'>
+					<ActionIcon className='hover:scale-125 hover:text-facebook' size='lg'>
+						<BrandFacebook size={18} />
+					</ActionIcon>
+					<ActionIcon className='hover:scale-125 hover:text-twitter' size='lg'>
 						<BrandTwitter size={18} />
 					</ActionIcon>
-					<ActionIcon size='lg'>
-						<BrandYoutube size={18} />
-					</ActionIcon>
-					<ActionIcon size='lg'>
+					<ActionIcon
+						className='hover:scale-125 hover:text-instagram'
+						size='lg'
+					>
 						<BrandInstagram size={18} />
+					</ActionIcon>
+					<ActionIcon className='hover:scale-125 hover:text-linkedin' size='lg'>
+						<BrandLinkedin size={18} />
+					</ActionIcon>
+					<ActionIcon className='hover:scale-125 hover:text-whatsapp' size='lg'>
+						<BrandWhatsapp size={18} />
 					</ActionIcon>
 				</Group>
 			</div>
