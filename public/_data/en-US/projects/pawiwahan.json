@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "Pawiwahan Website",
+		"description": "Simple online wedding invitation website\n",
+		"pinned": true,
+		"tags": ["nextjs", "react"],
+		"thumbnail": "http://placeimg.com/640/480/weeding",
+		"demoUrl": "http://pawiwahan.netlify.app",
+		"sourceUrl": "http://pawiwahan.netlify.app"
+	},
+	"body": "# Description Will Be Soon Added\n"
+}

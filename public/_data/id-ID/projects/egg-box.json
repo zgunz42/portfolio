@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "EggBox IoT",
+		"description": "Monitor suhu dan perputaran incubator menggunakan \nperangkat IoT(NodeMCU) dan server(Nestjs) melalui \nmosquito\n",
+		"pinned": true,
+		"tags": ["arduino", "c++"],
+		"thumbnail": "http://placeimg.com/640/480/iot",
+		"demoUrl": "https://github.com/zgunz42/egg-incubator-iot",
+		"sourceUrl": "https://github.com/zgunz42/egg-incubator-iot"
+	},
+	"body": "# Description Will Be Soon Added\n"
+}

@@ -1,0 +1,35 @@
+{
+	"links": [
+		{
+			"link": "/",
+			"icon": "home",
+			"label": "Beranda"
+		},
+		{
+			"link": "/about",
+			"icon": "user",
+			"label": "Tentang"
+		},
+		{
+			"link": "/projects",
+			"icon": "app",
+			"label": "Proyek"
+		},
+		{
+			"link": "/blogs",
+			"icon": "blog",
+			"label": "Blog"
+		},
+		{
+			"link": "/contact",
+			"icon": "contact",
+			"label": "Kontak"
+		},
+		{
+			"link": "/download-cv",
+			"icon": "download",
+			"hightlight": true,
+			"label": "CV Saya"
+		}
+	]
+}

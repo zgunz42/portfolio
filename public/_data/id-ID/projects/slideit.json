@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "Svelte SlideIT",
+		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
+		"pinned": true,
+		"tags": ["svelte", "js"],
+		"thumbnail": "http://placeimg.com/640/480/carousel",
+		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
+		"sourceUrl": "https://github.com/zgunz42/svelte-slideit"
+	},
+	"body": "![npm-publish](https://github.com/zgunz42/svelte-slideit/workflows/npm-publish/badge.svg) [![svelte-v2](https://img.shields.io/badge/svelte-v2-orange.svg)](https://v2.svelte.dev) [![svelte-v3](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://svelte.dev)\n\n### Hello SlideIt\n\nSlideIt adalah slider dan carousel build di atas [Glidejs](https://glidejs.com/). Saya membangun ini karena yang lain\nSvelte Component Suka _[svelte-carousel](https://github.com/beyonk-adventures/svelte-carousel/blob/master/README.md)_\ntidak mendukung responsif karena tidak bisa menanganinya [Siema](https://github.com/pawelgrzybek/siema). Alasan lain yang saya butuhkan\nCarousel API Seperti Owlcarousel Tapi Gunakan Vanilla JS Untuk Kurang Ketergantungan.\n\nCore feature:\n\n- Opsi konfigurasi responsif\n- Acara Port All GlideJs to Svelte Custom Event\n- Banyak slot yang dapat Anda isi \"any html tag\"\n- Glidejs css diimpor dalam tag gaya terima kasih **svelte-preprocess**\n\n## Event Name\n\nSemua Nama Acara dari GlideJs telah diganti nama `a.b` ke `aB`, Jadi jika ingin mendengarkan\nke dalam beberapa peristiwa seperti ini.\n\n```sveltehtml\n<SlideIt on:montBefore={handler} />\n```\n\nItu akan mendengarkan `mount.before` Nama Acara GlideJS\n\n## Render Carousel Item\n\n```sveltehtml\n<SlideIt items={[4,5,6]}>\n    <div slot=\"item\" let:item>\n        <p>{item}</p>\n    </div>\n</SlideIt>\n```\n\n## Render Control and Bullet\n\n_TODO_\n\n## Konfigurasi yang sama dengan Glide JS\n\nLihat dokumentasi GlideJS https://glidejs.com/docs/options/\n"
+}

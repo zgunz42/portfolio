@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Loader, Stack, Title } from '@mantine/core'
 import type { ReactElement } from 'react'
 import CvIconCat from './CvIconCat'
@@ -19,12 +20,11 @@ export default function LoadingOrError({ error }: Properties): ReactElement {
 					</Stack>
 				) : (
 					<Stack align='center'>
-						<CvLogo height={50} />
+						<CvLogo className='h-24 w-24' />
 						<Loader
 							data-testid='loader-element'
 							aria-label='loading'
-							color='gray'
-							mt={12}
+							className='mt-8'
 						/>
 					</Stack>
 				)}

@@ -1,0 +1,62 @@
+[
+	{
+		"name": "Android Hot Movie",
+		"description": "The application displays a list of movies taken from IMDB API\n",
+		"pinned": true,
+		"tags": ["android", "java"],
+		"thumbnail": "http://placeimg.com/640/480/movie",
+		"demoUrl": "https://github.com/zgunz42/hot-movie",
+		"sourceUrl": "https://github.com/zgunz42/hot-movie",
+		"link": "android-hot-movie"
+	},
+	{
+		"name": "E-Balian Chatboot",
+		"description": "Chatbot Hindu Good Day Using Data on Scrap Online\n",
+		"pinned": true,
+		"tags": ["nestjs", "scrap"],
+		"thumbnail": "http://placeimg.com/640/480/eggs",
+		"demoUrl": "https://t.me/@ibalian_bot",
+		"sourceUrl": "https://github.com/zgunz42/e-balian",
+		"link": "ebalian-chatbot"
+	},
+	{
+		"name": "EggBox IoT",
+		"description": "Monitor temperature and incubator turnover using\nIoT devices (nodemcu) and server (nestjs) through\nMosquito\n",
+		"pinned": true,
+		"tags": ["arduino", "c++"],
+		"thumbnail": "http://placeimg.com/640/480/iot",
+		"demoUrl": "https://github.com/zgunz42/egg-incubator-iot",
+		"sourceUrl": "https://github.com/zgunz42/egg-incubator-iot",
+		"link": "egg-box"
+	},
+	{
+		"name": "Pawiwahan Website",
+		"description": "Simple online wedding invitation website\n",
+		"pinned": true,
+		"tags": ["nextjs", "react"],
+		"thumbnail": "http://placeimg.com/640/480/weeding",
+		"demoUrl": "http://pawiwahan.netlify.app",
+		"sourceUrl": "http://pawiwahan.netlify.app",
+		"link": "pawiwahan"
+	},
+	{
+		"name": "Svelte SlideIT",
+		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
+		"pinned": true,
+		"tags": ["svelte", "js"],
+		"thumbnail": "http://placeimg.com/640/480/carousel",
+		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
+		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
+		"link": "slideit"
+	},
+	{
+		"name": "Otonan Website",
+		"description": "Digital Otonan Invitation (Birthday of Bali) with greeting features\nand countdown\n",
+		"pinned": true,
+		"tags": ["nextjs", "react"],
+		"thumbnail": "http://placeimg.com/640/480/birthday",
+		"demoUrl": "http://otonan.netlify.app",
+		"sourceUrl": "http://otonan.netlify.app",
+		"link": "otonan"
+	}
+]

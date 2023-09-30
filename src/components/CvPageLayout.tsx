@@ -1,23 +1,37 @@
+/* eslint-disable unicorn/no-keyword-prefix */
 import { AppShell, useMantineColorScheme } from '@mantine/core'
-import { links } from 'mocks/data/menu.json'
-import type { ReactElement } from 'react'
+import useLocale from 'hooks/useLocale'
+import type { PropsWithChildren, ReactElement } from 'react'
 import CvFooterCentered from './CvFooter'
 import CvHeader from './CvHeader'
 
 interface Properties {
-	children: ReactElement | undefined
+	className?: string
 }
 
-export default function CvPageLayout({ children }: Properties): ReactElement {
+function CvPageLayout({
+	children,
+	className
+}: PropsWithChildren<Properties>): ReactElement {
 	const { colorScheme } = useMantineColorScheme()
 	const dark = colorScheme === 'dark'
+	const { menu } = useLocale()
 	return (
 		<AppShell
-			className={`${dark ? 'bg-gray-900' : 'bg-gray-100'} relative`}
-			header={<CvHeader links={links} />}
-			footer={<CvFooterCentered links={links} />}
+			className={`${dark ? 'bg-gray-900' : 'bg-gray-100'} relative ${
+				className ?? ''
+			}`}
+			header={<CvHeader links={menu} />}
+			footer={<CvFooterCentered links={menu} />}
+			fixed
 		>
-			<div className='min-h-screen'>{children}</div>
+			<div className='min-h-screen pt-16'>{children}</div>
 		</AppShell>
 	)
 }
+
+CvPageLayout.defaultProps = {
+	className: undefined
+}
+
+export default CvPageLayout

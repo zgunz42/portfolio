@@ -1,0 +1,164 @@
+{
+	"name": "devbox",
+	"birthdate": "1995-08-01T05:31:32.099Z",
+	"avatar": "https://avatars.githubusercontent.com/u/11344981?v=4",
+	"background": "https://i.ibb.co/mhTvXNw/cv-bg.png",
+	"jargon": "Full-stack developer and IoT antusias.",
+	"github": "zgunz42",
+	"repository": "portfolio",
+	"quote": "A thousand problems, a million solutions that we can have.",
+	"email": "adi_gunawan@live.com",
+	"phone": "+6283115541165",
+	"fullName": "I Kadek Adi Gunawan",
+	"contact": {
+		"address": "Jl. Denpasar - Gilimanuk, Kec.Pekutatn, Bali, Indonesia 82262",
+		"phone": "+6283115541165",
+		"email": "adi_gunawan@live.com",
+		"github": "@zgunz42",
+		"instagram": "@adi.bite",
+		"linkedin": "@zgunz42"
+	},
+	"skills": [
+		{
+			"name": "Frontend Web Development",
+			"techs": ["react", "css", "html", "js"]
+		},
+		{
+			"name": "Backend Web Development",
+			"techs": ["node", "express", "mongodb", "mysql"]
+		},
+		{
+			"name": "Devops",
+			"techs": ["docker", "kubernetes", "aws"]
+		},
+		{
+			"name": "Database",
+			"techs": ["mongodb", "mysql"]
+		},
+		{
+			"name": "Other",
+			"techs": ["git", "github", "gitlab", "bitbucket"]
+		}
+	],
+	"about": {
+		"intro": "Hi, introduce me Andi Gunawan from Bali, Indonesia.I started a programing career since graduating from high school and started studying through online courses\n",
+		"jobExperiences": [
+			{
+				"company": "Bungamata",
+				"location": "Dalung, Bali",
+				"position": "Junior Software Engginer",
+				"startAt": "2017-07-01T05:31:32.099Z",
+				"endAt": "2018-01-08T05:31:32.099Z",
+				"description": "Create a wordpress template, develop\nMarketplace Platform Buying and Selling Images, Making Applications\nfor hotel visitors feedback in the form of rating\n"
+			},
+			{
+				"company": "Sindata",
+				"location": "DKI Jakarta",
+				"position": "Remote Front End Develope",
+				"startAt": "2020-03-01T05:31:32.099Z",
+				"endAt": "2020-11-08T05:31:32.099Z",
+				"description": "Frontend transition from the previous use\nJS React Library becomes VUEJS using\nQuasar framework\n"
+			}
+		],
+		"educations": [
+			{
+				"type": "school",
+				"name": "SMA Negeri 1 Pekutatan",
+				"startAt": "2017-07-01T05:31:32.099Z",
+				"graduationAt": "2018-01-08T05:31:32.099Z",
+				"location": "Pekutatan, Bali, Indonesia",
+				"description": "Study computer science, majoring\nNatural Sciences and participate in MIPA competitions such as chemistry\n"
+			}
+		],
+		"languages": [
+			{
+				"name": "Bahasa Indonesia",
+				"level": "Native"
+			},
+			{
+				"name": "Bahasa Inggris",
+				"level": "Advanced"
+			}
+		],
+		"hobby": [
+			"Cat lover",
+			"IoT (Internet of Things)",
+			"Startus (usaha rintisan)",
+			"Make games (2D, 3D)",
+			"Weeb (manga dan anime)",
+			"Digital Drawing"
+		],
+		"skills": [
+			{
+				"icon": "react-original",
+				"group": "Frontend Development",
+				"name": "React",
+				"level": 90
+			},
+			{
+				"icon": "nodejs-original",
+				"name": "NodeJS",
+				"level": 90
+			},
+			{
+				"icon": "typescript-original",
+				"name": "typescript",
+				"level": 90
+			},
+			{
+				"icon": "javascript-original",
+				"name": "JavaScript",
+				"level": 90
+			},
+			{
+				"icon": "go-original",
+				"name": "Go",
+				"level": 90
+			},
+			{
+				"icon": "mysql-original",
+				"name": "MySQL",
+				"level": 90
+			},
+			{
+				"icon": "php-original",
+				"name": "PHP",
+				"level": 90
+			},
+			{
+				"icon": "mongodb-original",
+				"name": "MongoDB",
+				"level": 90
+			}
+		],
+		"tools": [
+			{
+				"icon": "github-original",
+				"name": "Github",
+				"hasColor": true
+			},
+			{
+				"icon": "visualstudio-plain",
+				"name": "VSCode",
+				"hasColor": true
+			},
+			{
+				"icon": "gimp-plain",
+				"name": "GIMP"
+			},
+			{
+				"icon": "inkscape-original-wordmark",
+				"name": "Inkscape"
+			},
+			{
+				"icon": "chrome-plain",
+				"name": "Chrome"
+			},
+			{
+				"icon": "trello-plain",
+				"name": "Trello"
+			}
+		]
+	},
+	"about.hobby[0]": "Cat Lover"
+}

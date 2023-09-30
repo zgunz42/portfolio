@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Framework Nodejs Terbaik",
+		"description": "The best Nodejs framework that I'm love with in it\n",
+		"thumbnail": "http://placeimg.com/640/480/robot",
+		"publishedAt": "2022-06-28T14:34:09.275Z",
+		"label": ["opinion", "nodejs"],
+		"commentId": 14,
+		"readTime": 1,
+		"link": "best-nodejs-framework"
+	},
+	{
+		"title": "Send an email using Echo (Golang Framework)",
+		"description": "Send email using golang with power of SMTP\n",
+		"thumbnail": "http://placeimg.com/640/480/tank",
+		"publishedAt": "2022-06-26T03:34:09.275Z",
+		"label": ["golang", "smtp"],
+		"commentId": 14,
+		"readTime": 1,
+		"link": "send-email-using-golang"
+	},
+	{
+		"title": "Reuse type definition typescript",
+		"description": "Reusing existing type providing by the library into your\n",
+		"thumbnail": "http://placeimg.com/640/480/robot",
+		"publishedAt": "2022-06-25T17:34:09.275Z",
+		"label": ["nextjs", "react"],
+		"commentId": 14,
+		"readTime": 1,
+		"link": "reuse-type-in-typescript"
+	},
+	{
+		"title": "Craete Todo App With Golang",
+		"description": "Create working todo app backend api to manage daily schedlue\n",
+		"thumbnail": "http://placeimg.com/640/480/robot",
+		"publishedAt": "2022-06-25T14:34:09.275Z",
+		"label": ["golang", "echo"],
+		"commentId": 15,
+		"readTime": 1,
+		"link": "create-todo-app-with-golang"
+	},
+	{
+		"title": "Make Awesome Bot With NextJS",
+		"description": "Create your nextjs awesome bot by the power of nodejs",
+		"thumbnail": "http://placeimg.com/640/480/robot",
+		"publishedAt": "2022-06-25T14:34:09.275Z",
+		"commentId": 14,
+		"label": ["golang", "echo"],
+		"readTime": 1,
+		"link": "make-awesome-bot-nextjs"
+	}
+]

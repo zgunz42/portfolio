@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "Svelte SlideIT",
+		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
+		"pinned": true,
+		"tags": ["svelte", "js"],
+		"thumbnail": "http://placeimg.com/640/480/carousel",
+		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
+		"sourceUrl": "https://github.com/zgunz42/svelte-slideit"
+	},
+	"body": "![npm-publish](https://github.com/zgunz42/svelte-slideit/workflows/npm-publish/badge.svg) [![svelte-v2](https://img.shields.io/badge/svelte-v2-orange.svg)](https://v2.svelte.dev) [![svelte-v3](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://svelte.dev)\n\n### Hello SlideIt\n\nSlideIt is a slider and carousel build on top of [Glidejs](https://glidejs.com/). I build this because other\nsvelte component like _[svelte-carousel](https://github.com/beyonk-adventures/svelte-carousel/blob/master/README.md)_\ndid not support responsive because can't handle it [Siema](https://github.com/pawelgrzybek/siema). Other reason i need\ncarousel API like owlcarousel but use vanilla js for less depedency.\n\nCore feature:\n\n- [x] Responsive config options\n- [x] Port all glidejs event to svelte custom event\n- [x] Many slot that can you fill with \"any html tag\"\n- [x] Glidejs css imported in style tag thank to **svelte-preprocess**\n\n## Event Name\n\nAll event name from Glidejs has been rename `a.b` into `aB`, so if want to listen\ninto some event like this.\n\n```sveltehtml\n<SlideIt on:montBefore={handler} />\n```\n\nIt will listen into `mount.before` of Glidejs event name\n\n## Render Carousel Item\n\n```sveltehtml\n<SlideIt items={[4,5,6]}>\n    <div slot=\"item\" let:item>\n        <p>{item}</p>\n    </div>\n</SlideIt>\n```\n\n## Render Control and Bullet\n\n_TODO_\n\n## Same Config as Glide js\n\nSee glidejs documentation https://glidejs.com/docs/options/\n"
+}

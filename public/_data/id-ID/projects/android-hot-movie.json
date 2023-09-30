@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "Android Hot Movie",
+		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
+		"pinned": true,
+		"tags": ["android", "java"],
+		"thumbnail": "http://placeimg.com/640/480/movie",
+		"demoUrl": "https://github.com/zgunz42/hot-movie",
+		"sourceUrl": "https://github.com/zgunz42/hot-movie"
+	},
+	"body": "## Apa ini\n\nAndroid Hot Move adalah aplikasi Android untuk menampilkan film terpanas berdasarkan API IMDB\n"
+}

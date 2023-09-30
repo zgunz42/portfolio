@@ -1,0 +1,12 @@
+{
+	"attributes": {
+		"name": "EggBox IoT",
+		"description": "Monitor temperature and incubator turnover using\nIoT devices (nodemcu) and server (nestjs) through\nMosquito\n",
+		"pinned": true,
+		"tags": ["arduino", "c++"],
+		"thumbnail": "http://placeimg.com/640/480/iot",
+		"demoUrl": "https://github.com/zgunz42/egg-incubator-iot",
+		"sourceUrl": "https://github.com/zgunz42/egg-incubator-iot"
+	},
+	"body": "# Description Will Be Soon Added\n"
+}
