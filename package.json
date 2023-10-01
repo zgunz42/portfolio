@@ -99,7 +99,7 @@
 		"babel-loader": "8.2.5",
 		"babel-plugin-formatjs": "^10.3.24",
 		"c8": "7.11.3",
-		"commitizen": "4.2.4",
+		"commitizen": "4.3.0",
 		"css-mediaquery": "0.1.2",
 		"cypress": "9.7.0",
 		"cz-conventional-changelog": "3.3.0",
