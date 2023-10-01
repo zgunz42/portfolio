@@ -1,5 +1,15 @@
 [
 	{
+		"name": "E-Balian Chatboot",
+		"description": "Chatbot Hindu Good Day Using Data on Scrap Online\n",
+		"pinned": true,
+		"tags": ["nestjs", "scrap"],
+		"thumbnail": "/images/ebalian.jpeg",
+		"demoUrl": "https://t.me/@ibalian_bot",
+		"sourceUrl": "https://github.com/zgunz42/e-balian",
+		"link": "ebalian-chatbot"
+	},
+	{
 		"name": "Android Hot Movie",
 		"description": "The application displays a list of movies taken from IMDB API\n",
 		"pinned": true,
@@ -8,26 +18,6 @@
 		"demoUrl": "https://github.com/zgunz42/hot-movie",
 		"sourceUrl": "https://github.com/zgunz42/hot-movie",
 		"link": "android-hot-movie"
-	},
-	{
-		"name": "Svelte SlideIT",
-		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
-		"pinned": true,
-		"tags": ["svelte", "js"],
-		"thumbnail": "/images/carousel_addon.png",
-		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
-		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
-		"link": "slideit"
-	},
-	{
-		"name": "Otonan Website",
-		"description": "Digital Otonan Invitation (Birthday of Bali) with greeting features\nand countdown\n",
-		"pinned": true,
-		"tags": ["nextjs", "react"],
-		"thumbnail": "/images/birthday.png",
-		"demoUrl": "http://otonan.netlify.app",
-		"sourceUrl": "http://otonan.netlify.app",
-		"link": "otonan"
 	},
 	{
 		"name": "EggBox IoT",
@@ -40,13 +30,23 @@
 		"link": "egg-box"
 	},
 	{
-		"name": "E-Balian Chatboot",
-		"description": "Chatbot Hindu Good Day Using Data on Scrap Online\n",
+		"name": "Svelte SlideIT",
+		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
 		"pinned": true,
-		"tags": ["nestjs", "scrap"],
-		"thumbnail": "/images/ebalian.jpeg",
-		"demoUrl": "https://t.me/@ibalian_bot",
-		"sourceUrl": "https://github.com/zgunz42/e-balian",
-		"link": "ebalian-chatbot"
+		"tags": ["svelte", "js"],
+		"thumbnail": "/images/carousel_addon.png",
+		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
+		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
+		"link": "slideit"
+	},
+	{
+		"name": "Pawiwahan Website",
+		"description": "Simple online wedding invitation website\n",
+		"pinned": true,
+		"tags": ["nextjs", "react"],
+		"thumbnail": "/images/weeding.png",
+		"demoUrl": "http://pawiwahan.netlify.app",
+		"sourceUrl": "http://pawiwahan.netlify.app",
+		"link": "pawiwahan"
 	}
 ]

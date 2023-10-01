@@ -1,5 +1,15 @@
 [
 	{
+		"name": "E-Balian Chatboot",
+		"description": "Chatbot hari baik Hindu menggunakan data di scrap online\n",
+		"pinned": true,
+		"tags": ["nestjs", "scrap"],
+		"thumbnail": "/images/ebalian.jpeg",
+		"demoUrl": "https://t.me/@ibalian_bot",
+		"sourceUrl": "https://github.com/zgunz42/e-balian",
+		"link": "ebalian-chatbot"
+	},
+	{
 		"name": "EggBox IoT",
 		"description": "Monitor suhu dan perputaran incubator menggunakan \nperangkat IoT(NodeMCU) dan server(Nestjs) melalui \nmosquito\n",
 		"pinned": true,
@@ -8,16 +18,6 @@
 		"demoUrl": "https://github.com/zgunz42/egg-incubator-iot",
 		"sourceUrl": "https://github.com/zgunz42/egg-incubator-iot",
 		"link": "egg-box"
-	},
-	{
-		"name": "Android Hot Movie",
-		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
-		"pinned": true,
-		"tags": ["android", "java"],
-		"thumbnail": "/images/hot_movie.jpg",
-		"demoUrl": "https://github.com/zgunz42/hot-movie",
-		"sourceUrl": "https://github.com/zgunz42/hot-movie",
-		"link": "android-hot-movie"
 	},
 	{
 		"name": "Otonan Website",
@@ -30,14 +30,14 @@
 		"link": "otonan"
 	},
 	{
-		"name": "E-Balian Chatboot",
-		"description": "Chatbot hari baik Hindu menggunakan data di scrap online\n",
+		"name": "Android Hot Movie",
+		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
 		"pinned": true,
-		"tags": ["nestjs", "scrap"],
-		"thumbnail": "/images/ebalian.jpeg",
-		"demoUrl": "https://t.me/@ibalian_bot",
-		"sourceUrl": "https://github.com/zgunz42/e-balian",
-		"link": "ebalian-chatbot"
+		"tags": ["android", "java"],
+		"thumbnail": "/images/hot_movie.jpg",
+		"demoUrl": "https://github.com/zgunz42/hot-movie",
+		"sourceUrl": "https://github.com/zgunz42/hot-movie",
+		"link": "android-hot-movie"
 	},
 	{
 		"name": "Svelte SlideIT",

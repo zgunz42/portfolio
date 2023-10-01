@@ -1,12 +1,12 @@
 [
 	{
-		"name": "Pawiwahan Website",
-		"description": "Simple online wedding invitation website\n",
+		"name": "Otonan Website",
+		"description": "Digital Otonan Invitation (Birthday of Bali) with greeting features\nand countdown\n",
 		"pinned": true,
 		"tags": ["nextjs", "react"],
-		"thumbnail": "/images/weeding.png",
-		"demoUrl": "http://pawiwahan.netlify.app",
-		"sourceUrl": "http://pawiwahan.netlify.app",
-		"link": "pawiwahan"
+		"thumbnail": "/images/birthday.png",
+		"demoUrl": "http://otonan.netlify.app",
+		"sourceUrl": "http://otonan.netlify.app",
+		"link": "otonan"
 	}
 ]
