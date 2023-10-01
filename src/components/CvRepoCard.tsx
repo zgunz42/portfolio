@@ -48,6 +48,14 @@ const useStyles = createStyles(theme => ({
 			transform: 'translateY(-4px)',
 			backgroundColor: theme.colors[theme.primaryColor][6]
 		}
+	},
+	imgHero: {
+		maxWidth: '100%',
+		height: 'auto',
+		'figure,figure>div': {
+			height: '100%',
+			width: '100%'
+		}
 	}
 }))
 
@@ -63,7 +71,7 @@ export default function CvRepoCard({
 	description
 }: BadgeCardProperties): ReactElement {
 	const { height, width } = useViewportSize()
-	const { classes, theme } = useStyles()
+	const { classes, theme, cx } = useStyles()
 	const [scale, setScale] = useState(720)
 	const onHoverStart = (): void => {
 		setScale(420)
@@ -105,7 +113,7 @@ export default function CvRepoCard({
 					>
 						<Image
 							src={image}
-							className='overflow-hidden rounded-lg'
+							className={cx(classes.imgHero, 'overflow-hidden rounded-lg')}
 							radius={theme.radius.md}
 							alt={title}
 							withPlaceholder

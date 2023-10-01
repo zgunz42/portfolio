@@ -6,11 +6,25 @@ pinned: true
 tags:
   - android
   - java
-thumbnail: http://placeimg.com/640/480/movie
+thumbnail: /images/hot_movie.jpg
 demoUrl: https://github.com/zgunz42/hot-movie
 sourceUrl: https://github.com/zgunz42/hot-movie
 ---
 
 ## What Is This
 
-Android Hot Move is android app to show hottest movie based on IMDB API
+**Android Hot Move** is an Android application designed to display the hottest films based on the IMDB API.
+
+1. **Access to the IMDB Database**: The Android Hot Move application retrieves data about films from IMDB, which is one of the leading sources for film information. IMDB has a rich database of film information, including titles, release years, ratings, summaries, cast, directors, and more.
+
+2. **Hottest Films**: The application showcases films that are currently considered "hottest." This may mean films that are gaining significant attention from audiences, critics, or are at the top of the IMDB charts.
+
+3. **Browsing Functionality**: Users can browse the list of films in various ways, such as by genre, release year, or IMDB rating. This provides flexibility for users to discover films according to their preferences.
+
+4. **Comprehensive Film Information**: Each film entry in this application typically includes detailed information about the film, including a poster, plot summary, rating, and a list of the main cast.
+
+5. **Additional Features**: In addition, the application may have additional features such as film trailers, user reviews, recommendations based on user preferences, and more.
+
+6. **Regular Data Updates**: Film data in this application is likely to be periodically updated from the IMDB API to ensure that the list of films displayed is always up-to-date with the latest trends.
+
+It's important to note that this application does not provide films for direct viewing but rather serves as a tool for exploring and discovering films that match the user's interests. Users may need to use other platforms, such as streaming services or online purchases, to watch the films they find through this application.

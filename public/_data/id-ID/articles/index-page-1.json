@@ -2,7 +2,7 @@
 	{
 		"title": "Framework Nodejs Terbaik",
 		"description": "Kerangka kerja NodeJs terbaik yang saya sukai di dalamnya\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"thumbnail": "/images/node_js.jpeg",
 		"publishedAt": "2022-06-28T14:34:09.275Z",
 		"label": ["opinion", "nodejs"],
 		"commentId": 14,
@@ -30,14 +30,14 @@
 		"link": "reuse-type-in-typescript"
 	},
 	{
-		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
-		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
+		"title": "Integrasi Mantine dan Tailwind Css",
+		"description": "Mengintegrasikan dua perpustakaan CSS yang mengagumkan untuk berbunyi desain Anda\ndan komponen\n",
 		"thumbnail": "http://placeimg.com/640/480/robot",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["nextjs", "react"],
+		"label": ["tailwind", "css"],
 		"commentId": 14,
 		"readTime": 1,
-		"link": "convert-image-to-svg"
+		"link": "integrate-tailwindcss-with-mantine"
 	},
 	{
 		"title": "Membuat Todo App With Golang",

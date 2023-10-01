@@ -25,17 +25,27 @@ import { useNavigate, useParams } from 'react-router-dom'
 const useStyle = createStyles(() => ({
 	articleBody: {
 		letterSpacing: '0.01em',
-		lineHeight: '1.5em'
+		lineHeight: '1.5em',
+		'ol, ul, menu': {
+			listStyle: 'inherit'
+		}
 	},
 	wrapper: {
 		margin: '0 auto',
 		padding: '0 1em',
 		maxWidth: '800px'
+	},
+	imgHero: {
+		maxWidth: '100%',
+		height: 'auto',
+		'figure,figure>div': {
+			height: '100%'
+		}
 	}
 }))
 
 function ProjectDetailPage(): ReactElement {
-	const { classes } = useStyle()
+	const { classes, cx } = useStyle()
 	const { projectSlug } = useParams()
 	const { $t, locale } = useLocale()
 	const navigate = useNavigate()
@@ -72,7 +82,7 @@ function ProjectDetailPage(): ReactElement {
 					</TypographyStylesProvider>
 					<Box className='mt-8 mb-12 h-72 w-full overflow-hidden rounded-md text-right'>
 						<Image
-							className=' h-72 w-full object-cover'
+							className={cx(classes.imgHero, ' h-72 w-full object-cover')}
 							src={data.attributes.thumbnail}
 							withPlaceholder
 						/>

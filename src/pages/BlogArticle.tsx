@@ -25,18 +25,28 @@ import useAppStyles from 'themes/styles'
 const useStyle = createStyles(() => ({
 	articleBody: {
 		letterSpacing: '0.01em',
-		lineHeight: '1.5em'
+		lineHeight: '1.5em',
+		'ol, ul, menu': {
+			listStyle: 'inherit'
+		}
 	},
 	wrapper: {
 		margin: '0 auto',
 		padding: '0 1em',
 		maxWidth: '800px'
+	},
+	imgArticle: {
+		maxWidth: '100%',
+		height: 'auto',
+		'figure,figure>div': {
+			height: '100%'
+		}
 	}
 }))
 
 /** Blog post article page */
 function BlogArticlePage(): ReactElement {
-	const { classes, theme } = useStyle()
+	const { classes, theme, cx } = useStyle()
 	const { locale } = useLocale()
 	const { classes: appClasses } = useAppStyles()
 	const { articleSlug } = useParams()
@@ -69,7 +79,10 @@ function BlogArticlePage(): ReactElement {
 					<Title>{data.attributes.title}</Title>
 					<Text className='mt-4 mb-12'>Diterbitkan {publishAt}</Text>
 					<Image
-						className='mb-4 mt-12 h-64 overflow-hidden rounded-md object-cover shadow-md'
+						className={cx(
+							classes.imgArticle,
+							'mb-4 mt-12 h-64 overflow-hidden rounded-md object-cover shadow-md'
+						)}
 						src={data.attributes.thumbnail}
 						alt={data.attributes.title}
 						withPlaceholder

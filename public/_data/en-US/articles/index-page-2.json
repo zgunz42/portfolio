@@ -6,27 +6,27 @@
 		"publishedAt": "2022-06-25T14:34:09.275Z",
 		"label": ["tailwind", "css"],
 		"commentId": 14,
-		"readTime": 1,
+		"readTime": 3,
 		"link": "integrate-tailwindcss-with-mantine"
 	},
 	{
 		"title": "Changing the image to Vector Graphic (SVG)",
 		"description": "Save time to convert image into svg automaticaly\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"thumbnail": "/images/image_to_vector.jpeg",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
 		"label": ["nextjs", "react"],
 		"commentId": 14,
-		"readTime": 1,
+		"readTime": 3,
 		"link": "convert-image-to-svg"
 	},
 	{
 		"title": "Anime I watch every week",
-		"description": "Anime that add to daily schedule to watching to\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"description": "Exciting Anime Shows to Watch This Season!\n",
+		"thumbnail": "/images/image_anime.jpeg",
 		"publishedAt": "2022-06-20T14:34:09.275Z",
 		"label": ["anime", "opinion"],
 		"commentId": 14,
-		"readTime": 1,
+		"readTime": 2,
 		"link": "anime-i-watch-everyweek"
 	}
 ]

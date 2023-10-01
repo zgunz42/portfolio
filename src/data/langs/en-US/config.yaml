@@ -7,11 +7,11 @@ github: zgunz42
 repository: portfolio
 quote: A thousand problems, a million solutions that we can have.
 email: adi_gunawan@live.com
-phone: '+6283115541165'
+phone: '+6289507368132'
 fullName: I Kadek Adi Gunawan
 contact:
   address: Jl. Denpasar - Gilimanuk, Kec.Pekutatn, Bali, Indonesia 82262
-  phone: '+6283115541165'
+  phone: '+6289507368132'
   email: adi_gunawan@live.com
   github: '@zgunz42'
   instagram: '@adi.bite'
@@ -23,30 +23,32 @@ skills:
       - css
       - html
       - js
+      - vue
   - name: Backend Web Development
     techs:
       - node
       - express
-      - mongodb
-      - mysql
-  - name: Devops
+      - golang
+  - name: Mobile Development
     techs:
-      - docker
-      - kubernetes
-      - aws
+      - flutter
+      - react native
   - name: Database
     techs:
       - mongodb
       - mysql
+      - postgresql
+      - redis
   - name: Other
     techs:
       - git
       - github
       - gitlab
       - bitbucket
+      - rabbitmq
 about:
   intro: |
-    Hi, introduce me Andi Gunawan from Bali, Indonesia.I started a programing career since graduating from high school and started studying through online courses
+    Halo, saya Adi Gunawan dari Bali, Indonesia! Saya memulai karier pemrograman setelah lulus sekolah dan belajar secara online. Bali yang indah memberi inspirasi dalam pengembangan skill pemrograman saya.
   jobExperiences:
     - company: Bungamata
       location: Dalung, Bali
@@ -66,6 +68,15 @@ about:
         Frontend transition from the previous use
         JS React Library becomes VUEJS using
         Quasar framework
+    - company: PT. DHI
+      location: 'Bali, Indonesia'
+      position: Backend Golang Developer
+      startAt: '2022-08-29T05:31:32.099Z'
+      endAt: '2023-08-29T05:31:32.099Z'
+      description: |
+        Migration from monolithic to microservices
+        using golang, manage hotel management system. Develop smarthome system 
+        deploy to google home
   educations:
     - type: school
       name: SMA Negeri 1 Pekutatan

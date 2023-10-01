@@ -8,11 +8,11 @@
 	"repository": "portfolio",
 	"quote": "Seribu masalah, sejuta solusi yang dapat kita miliki.",
 	"email": "adi_gunawan@live.com",
-	"phone": "+6283115541165",
+	"phone": "+6289507368132",
 	"fullName": "I Kadek Adi Gunawan",
 	"contact": {
 		"address": "Jl. Denpasar - Gilimanuk, Kec.Pekutatn, Bali, Indonesia 82262",
-		"phone": "+6283115541165",
+		"phone": "+6289507368132",
 		"email": "adi_gunawan@live.com",
 		"github": "@zgunz42",
 		"instagram": "@adi.bite",
@@ -21,27 +21,27 @@
 	"skills": [
 		{
 			"name": "Frontend Web Development",
-			"techs": ["react", "css", "html", "js"]
+			"techs": ["react", "css", "html", "js", "vue"]
 		},
 		{
 			"name": "Backend Web Development",
-			"techs": ["node", "express", "mongodb", "mysql"]
+			"techs": ["node", "express", "mongodb", "golang"]
 		},
 		{
-			"name": "Devops",
-			"techs": ["docker", "kubernetes", "aws"]
+			"name": "Mobile Development",
+			"techs": ["flutter", "react native"]
 		},
 		{
 			"name": "Database",
-			"techs": ["mongodb", "mysql"]
+			"techs": ["mongodb", "mysql", "postgresql", "redis"]
 		},
 		{
 			"name": "Other",
-			"techs": ["git", "github", "gitlab", "bitbucket"]
+			"techs": ["git", "github", "gitlab", "bitbucket", "rabbitmq"]
 		}
 	],
 	"about": {
-		"intro": "Hai, perkenalkan saya Adi Gunwan dari Bali, Indonesia. \nSaya memulai karir programing sejak lulus SMA dan mulai \nbelajar melalui kursus online\n",
+		"intro": "Halo, saya Adi Gunawan dari Bali, Indonesia! Saya memulai karier \npemrograman setelah lulus sekolah dan belajar secara online. \nBali yang indah memberi inspirasi dalam pengembangan skill pemrograman saya.\n",
 		"jobExperiences": [
 			{
 				"company": "Bungamata",
@@ -58,6 +58,14 @@
 				"startAt": "2020-03-01T05:31:32.099Z",
 				"endAt": "2020-11-08T05:31:32.099Z",
 				"description": "Transisi frontend dari yang sebelumnnya menggunakan \nlibrary react js menjadi vuejs dengan menggunakan \nframework quasar\n"
+			},
+			{
+				"company": "PT. DHI",
+				"location": "Bali, Indonesia",
+				"position": "Backend Golang Developer",
+				"startAt": "2022-08-29T05:31:32.099Z",
+				"endAt": "2023-08-29T05:31:32.099Z",
+				"description": "Bermigrasi dari monolitik ke layanan mikro menggunakan golang,\npengembangan sistem manajemen hotel.\nSistem rumah pintar dan diterapkan ke google home\n"
 			}
 		],
 		"educations": [
@@ -113,7 +121,7 @@
 			{
 				"icon": "go-original",
 				"name": "Go",
-				"level": 90
+				"level": 95
 			},
 			{
 				"icon": "mysql-original",
@@ -126,8 +134,8 @@
 				"level": 90
 			},
 			{
-				"icon": "mongodb-original",
-				"name": "MongoDB",
+				"icon": "flutter-original",
+				"name": "Flutter",
 				"level": 90
 			}
 		],

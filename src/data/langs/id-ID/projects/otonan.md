@@ -7,7 +7,7 @@ pinned: true
 tags:
   - nextjs
   - react
-thumbnail: http://placeimg.com/640/480/birthday
+thumbnail: /images/birthday.png
 demoUrl: http://otonan.netlify.app
 sourceUrl: http://otonan.netlify.app
 ---

@@ -6,12 +6,10 @@ pinned: true
 tags:
   - svelte
   - js
-thumbnail: http://placeimg.com/640/480/carousel
+thumbnail: /images/carousel_addon.png
 demoUrl: https://github.com/zgunz42/svelte-slideit
 sourceUrl: https://github.com/zgunz42/svelte-slideit
 ---
-
-![npm-publish](https://github.com/zgunz42/svelte-slideit/workflows/npm-publish/badge.svg) [![svelte-v2](https://img.shields.io/badge/svelte-v2-orange.svg)](https://v2.svelte.dev) [![svelte-v3](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://svelte.dev)
 
 ### Hello SlideIt
 

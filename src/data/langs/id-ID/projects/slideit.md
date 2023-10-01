@@ -6,7 +6,7 @@ pinned: true
 tags:
   - svelte
   - js
-thumbnail: http://placeimg.com/640/480/carousel
+thumbnail: /images/carousel_addon.png
 demoUrl: https://github.com/zgunz42/svelte-slideit
 sourceUrl: https://github.com/zgunz42/svelte-slideit
 ---

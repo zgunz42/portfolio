@@ -1,15 +1,5 @@
 [
 	{
-		"title": "Integrasi Mantine dan Tailwind Css",
-		"description": "Mengintegrasikan dua perpustakaan CSS yang mengagumkan untuk berbunyi desain Anda\ndan komponen\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
-		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["tailwind", "css"],
-		"commentId": 14,
-		"readTime": 1,
-		"link": "integrate-tailwindcss-with-mantine"
-	},
-	{
 		"title": "Buat bot yang luar biasa dengan NextJs",
 		"description": "Buat Bot Awesome NextJs Anda dengan kekuatan NodeJS",
 		"thumbnail": "http://placeimg.com/640/480/robot",
@@ -20,13 +10,23 @@
 		"link": "make-awesome-bot-nextjs"
 	},
 	{
+		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
+		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
+		"thumbnail": "/images/image_to_vector.jpeg",
+		"publishedAt": "2022-06-25T14:34:09.275Z",
+		"label": ["nextjs", "react"],
+		"commentId": 14,
+		"readTime": 1,
+		"link": "convert-image-to-svg"
+	},
+	{
 		"title": "Anime Yang Saya Tonton Setiap Minggu",
 		"description": "Anime yang menambah jadwal harian untuk menonton\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"thumbnail": "/images/image_anime.jpeg",
 		"publishedAt": "2022-06-20T14:34:09.275Z",
 		"label": ["anime", "opinion"],
 		"commentId": 14,
-		"readTime": 1,
+		"readTime": 2,
 		"link": "anime-i-watch-everyweek"
 	}
 ]

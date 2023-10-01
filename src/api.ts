@@ -174,7 +174,7 @@ export async function getPinnedProjects(
 }
 
 export async function getProjectListPaged(
-	page: number | string,
+	page: number,
 	language: string
 ): Promise<IProjectList[]> {
 	const result = await fetch(
@@ -193,7 +193,7 @@ export async function getProjectListPaged(
 }
 
 export async function getBlogListPaged(
-	page: number | string,
+	page: number,
 	language: string
 ): Promise<IBlogListItem[]> {
 	const result = await fetch(

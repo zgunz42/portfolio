@@ -8,11 +8,11 @@
 	"repository": "portfolio",
 	"quote": "A thousand problems, a million solutions that we can have.",
 	"email": "adi_gunawan@live.com",
-	"phone": "+6283115541165",
+	"phone": "+6289507368132",
 	"fullName": "I Kadek Adi Gunawan",
 	"contact": {
 		"address": "Jl. Denpasar - Gilimanuk, Kec.Pekutatn, Bali, Indonesia 82262",
-		"phone": "+6283115541165",
+		"phone": "+6289507368132",
 		"email": "adi_gunawan@live.com",
 		"github": "@zgunz42",
 		"instagram": "@adi.bite",
@@ -21,27 +21,27 @@
 	"skills": [
 		{
 			"name": "Frontend Web Development",
-			"techs": ["react", "css", "html", "js"]
+			"techs": ["react", "css", "html", "js", "vue"]
 		},
 		{
 			"name": "Backend Web Development",
-			"techs": ["node", "express", "mongodb", "mysql"]
+			"techs": ["node", "express", "golang"]
 		},
 		{
-			"name": "Devops",
-			"techs": ["docker", "kubernetes", "aws"]
+			"name": "Mobile Development",
+			"techs": ["flutter", "react native"]
 		},
 		{
 			"name": "Database",
-			"techs": ["mongodb", "mysql"]
+			"techs": ["mongodb", "mysql", "postgresql", "redis"]
 		},
 		{
 			"name": "Other",
-			"techs": ["git", "github", "gitlab", "bitbucket"]
+			"techs": ["git", "github", "gitlab", "bitbucket", "rabbitmq"]
 		}
 	],
 	"about": {
-		"intro": "Hi, introduce me Andi Gunawan from Bali, Indonesia.I started a programing career since graduating from high school and started studying through online courses\n",
+		"intro": "Halo, saya Adi Gunawan dari Bali, Indonesia! Saya memulai karier pemrograman setelah lulus sekolah dan belajar secara online. Bali yang indah memberi inspirasi dalam pengembangan skill pemrograman saya.\n",
 		"jobExperiences": [
 			{
 				"company": "Bungamata",
@@ -58,6 +58,14 @@
 				"startAt": "2020-03-01T05:31:32.099Z",
 				"endAt": "2020-11-08T05:31:32.099Z",
 				"description": "Frontend transition from the previous use\nJS React Library becomes VUEJS using\nQuasar framework\n"
+			},
+			{
+				"company": "PT. DHI",
+				"location": "Bali, Indonesia",
+				"position": "Backend Golang Developer",
+				"startAt": "2022-08-29T05:31:32.099Z",
+				"endAt": "2023-08-29T05:31:32.099Z",
+				"description": "Migration from monolithic to microservices\nusing golang, manage hotel management system. Develop smarthome system \ndeploy to google home\n"
 			}
 		],
 		"educations": [

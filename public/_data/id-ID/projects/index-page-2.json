@@ -1,12 +1,12 @@
 [
 	{
-		"name": "Otonan Website",
-		"description": "Undangan digital otonan (hari lahir bali) dengan fitur ucapan\nserta hitung mundur\n",
+		"name": "Pawiwahan Website",
+		"description": "Website undangan acara pernikahan online sederhana\n",
 		"pinned": true,
 		"tags": ["nextjs", "react"],
-		"thumbnail": "http://placeimg.com/640/480/birthday",
-		"demoUrl": "http://otonan.netlify.app",
-		"sourceUrl": "http://otonan.netlify.app",
-		"link": "otonan"
+		"thumbnail": "/images/weeding.png",
+		"demoUrl": "http://pawiwahan.netlify.app",
+		"sourceUrl": "http://pawiwahan.netlify.app",
+		"link": "pawiwahan"
 	}
 ]

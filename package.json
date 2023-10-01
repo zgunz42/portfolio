@@ -12,6 +12,7 @@
 		"preview:test": "start-server-and-test preview http://localhost:4173",
 		"test": "vitest",
 		"cli": "ts-node --transpile-only --project ./tsconfig.cli.json ./src/cli.ts",
+		"cli:translate": "pnpm cli compile ./src/data/langs -d -o ./public/_data",
 		"test:ci": "vitest run",
 		"lang:extract": "formatjs extract",
 		"lang:extract:gen": "pnpm run lang:extract -- 'src/**/*.ts*' --ignore='**/*.d.ts' --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
