@@ -6,7 +6,6 @@ const withPWA = nextPwa({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPWA({
-	distDir: './dist', // Changes the build output directory to `./dist/`.
 	i18n: {
 		locales: ['en-US', 'id-ID'],
 		defaultLocale: 'id-ID'
