@@ -3,7 +3,8 @@ import { getArticleList, getProjectList } from 'api'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+	const baseUrl =
+		process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL
 	const articleItems = await getArticleList('id-ID')
 	const projectItems = await getProjectList('id-ID')
 	const articleLinks = articleItems.map<MetadataRoute.Sitemap[0]>(item => ({
