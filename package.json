@@ -28,7 +28,7 @@
 		"validate": "run-p lint test:ci test:e2e:headless"
 	},
 	"dependencies": {
-		"@apollo/client": "^3.6.8",
+		"@apollo/client": "3.6.8",
 		"@giscus/react": "^2.0.5",
 		"@loadable/component": "^5.15.2",
 		"@mantine/core": "^4.2.7",
