@@ -23,7 +23,7 @@ export default function renderWithProviders(
 	includeRouter = true
 ): void {
 	render(ui, {
-		wrapper: ({ children }: PropsWithChildren<unknown>): ReactElement => (
+		wrapper: ({ children }: PropsWithChildren): ReactElement => (
 			<QueryClientProvider client={queryClient}>
 				{includeRouter ? <BrowserRouter>{children}</BrowserRouter> : children}
 			</QueryClientProvider>
