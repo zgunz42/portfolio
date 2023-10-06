@@ -2,8 +2,8 @@ import { Box, Container, Stack, Text, Title } from '@mantine/core'
 import CvPageLayout from 'components/CvPageLayout'
 import CvGithubRepos from 'containers/CvGithubRepos'
 import useLocale from 'hooks/useLocale'
+import Head from 'next/head'
 import type { ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
 import useAppStyles from 'themes/styles'
 
 function ProjectPage(): ReactElement {
@@ -12,9 +12,9 @@ function ProjectPage(): ReactElement {
 	return (
 		<CvPageLayout className='page'>
 			<Stack align='stretch' justify='center'>
-				<Helmet>
+				<Head>
 					<title>Project | Adi Gunawan</title>
-				</Helmet>
+				</Head>
 				<Container className='w-full'>
 					<Box className='mt-12 mb-4 text-center'>
 						<Title

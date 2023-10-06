@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { useQueries } from '@tanstack/react-query'
 import { getConfig, getPinnedProjects } from 'api'
 import type { CVProperties } from 'cvUtils'
-import { createCVPdf, Language } from 'cvUtils'
+import { Language, createCVPdf } from 'cvUtils'
 import { saveAs } from 'file-saver'
 import { useCallback, useEffect, useState } from 'react'
-import { useQueries } from 'react-query'
 import useLocale from './useLocale'
 
 const MaxProgress = 100
@@ -19,24 +19,26 @@ interface CreateCV {
 export default function useCreatorCv(): CreateCV {
 	const { locale } = useLocale()
 	const [progress, setProgress] = useState(0)
-	const [config, project] = useQueries([
-		{
-			queryKey: ['config', locale],
-			queryFn: getConfig.bind(undefined, locale),
-			onSuccess: (): void => {
-				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-				setProgress(50)
+	const [config, project] = useQueries({
+		queries: [
+			{
+				queryKey: ['config', locale],
+				queryFn: getConfig.bind(undefined, locale),
+				onSuccess: (): void => {
+					// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+					setProgress(50)
+				}
+			},
+			{
+				queryKey: ['pinProject', locale],
+				queryFn: getPinnedProjects.bind(undefined, locale),
+				onSuccess: (): void => {
+					// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+					setProgress(75)
+				}
 			}
-		},
-		{
-			queryKey: ['pinProject', locale],
-			queryFn: getPinnedProjects.bind(undefined, locale),
-			onSuccess: (): void => {
-				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-				setProgress(75)
-			}
-		}
-	])
+		]
+	})
 
 	const [cv, setCV] = useState<CVProperties>()
 

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Text } from '@mantine/core'
+import { useQuery } from '@tanstack/react-query'
 import type { IProjectList } from 'api'
 import { getPinnedProjects } from 'api'
 import CvCarousel from 'components/CvCarousel'
 import CvRepoCard from 'components/CvRepoCard'
 import useLocale from 'hooks/useLocale'
+import Link from 'next/link'
 import type { ReactElement } from 'react'
-import { useQuery } from 'react-query'
-import { Link } from 'react-router-dom'
 
 export default function CvGithubTopProject(): ReactElement {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
@@ -28,7 +28,7 @@ export default function CvGithubTopProject(): ReactElement {
 					className='block cursor-pointer'
 					key={item.link}
 					// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-					to={`/projects/${item.link}`}
+					href={`/projects/${item.link}`}
 				>
 					<CvRepoCard
 						title={item.name}

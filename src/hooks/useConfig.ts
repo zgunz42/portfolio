@@ -1,7 +1,7 @@
+import type { UseQueryResult } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import type { IConfig } from 'api'
 import { getConfig } from 'api'
-import type { UseQueryResult } from 'react-query'
-import { useQuery } from 'react-query'
 import useLocale from './useLocale'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

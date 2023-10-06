@@ -15,13 +15,13 @@ import {
 } from '@mantine/core'
 import { joiResolver, useForm } from '@mantine/form'
 import { showNotification } from '@mantine/notifications'
+import { useMutation } from '@tanstack/react-query'
 import type { ScheduleData } from 'api'
 import { addSchedule, Subject } from 'api'
 import { MeetDuration } from 'constant'
 import useLocale from 'hooks/useLocale'
 import Joi from 'joi'
 import type { ReactElement } from 'react'
-import { useMutation } from 'react-query'
 
 function CvContactForm(): ReactElement {
 	const { $t } = useLocale()
@@ -119,7 +119,7 @@ function CvContactForm(): ReactElement {
 							required
 							label={$t('contact.form.meet_date.label')}
 							placeholder={$t('contact.form.meet_date.placeholder')}
-							type='datetime-local'
+							type={'datetime-local' as 'url'}
 							{...form.getInputProps('meet_date')}
 						/>
 						<Select

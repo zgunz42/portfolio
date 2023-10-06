@@ -12,8 +12,8 @@ import {
 import CvContactForm from 'components/CvContactForm'
 import CvPageLayout from 'components/CvPageLayout'
 import useLocale from 'hooks/useLocale'
+import Head from 'next/head'
 import type { ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
 import { Mail, MapPin, PhoneCall } from 'tabler-icons-react'
 import useAppStyles from 'themes/styles'
 
@@ -24,9 +24,9 @@ function ContactPage(): ReactElement {
 	return (
 		<CvPageLayout>
 			<Stack>
-				<Helmet>
+				<Head>
 					<title>{$t('contact')} | I Kadek Adi Gunawan</title>
-				</Helmet>
+				</Head>
 				<Container className={classes.text}>
 					<Title className={`${classes.title} mb-16 mt-24`}>
 						{`${$t('contact')} `}

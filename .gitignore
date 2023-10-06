@@ -10,3 +10,5 @@ coverage
 cypress/videos
 .vercel
 .env
+.next
+next-env.d.ts

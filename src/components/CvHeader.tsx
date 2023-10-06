@@ -9,8 +9,9 @@ import {
 } from '@mantine/core'
 import { useBooleanToggle, useMediaQuery, useScrollLock } from '@mantine/hooks'
 import CvLogo from 'components/CvLogo'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
-import { Link, NavLink } from 'react-router-dom'
 import {
 	Apps,
 	Ballpen,
@@ -131,6 +132,7 @@ const scaleY = {
 export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 	const [opened, toggleOpened] = useBooleanToggle(false)
 	const { classes, cx } = useStyles()
+	const router = useRouter()
 	const [scrollLocked, setScrollLocked] = useScrollLock()
 	const isMobile = useMediaQuery('(max-width: 755px)')
 
@@ -164,30 +166,28 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 				Icon = undefined
 				break
 		}
+
+		const isActive = router.pathname === link.link
+
 		return (
-			<NavLink className='w-full md:w-auto' key={link.label} to={link.link}>
-				{
-					// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-					({ isActive }) => (
-						<span
-							className={cx(classes.link, {
-								[classes.linkActive]: isActive,
-								[classes.hightlight]: link.hightlight
-							})}
-						>
-							{Icon ? <Icon style={{ paddingBottom: 4 }} /> : undefined}
-							<span>{link.label}</span>
-						</span>
-					)
-				}
-			</NavLink>
+			<Link className='w-full md:w-auto' key={link.label} href={link.link}>
+				<span
+					className={cx(classes.link, {
+						[classes.linkActive]: isActive,
+						[classes.hightlight]: link.hightlight
+					})}
+				>
+					{Icon ? <Icon style={{ paddingBottom: 4 }} /> : undefined}
+					<span>{link.label}</span>
+				</span>
+			</Link>
 		)
 	})
 
 	return (
 		<Header className={classes.outerHeader} height={60}>
 			<Container className={classes.header}>
-				<Link to='/'>
+				<Link href='/'>
 					<CvLogo className={classes.logo} width={116.243} height={30} />
 				</Link>
 				{isMobile ? (

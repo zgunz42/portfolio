@@ -3,12 +3,11 @@
 import fetch from 'cross-fetch'
 import type { PDFPage, PDFPageDrawTextOptions } from 'pdf-lib'
 import {
-	layoutMultilineText,
 	PDFDocument,
-	PDFString,
-	rgb,
 	StandardFonts,
-	TextAlignment
+	TextAlignment,
+	layoutMultilineText,
+	rgb
 } from 'pdf-lib'
 
 interface CvJobExperience {
@@ -107,7 +106,7 @@ const margin = 20
 const marginSmall = 8
 const jobExperienceSpacing = 14
 const baseFontSize = 14
-const lineHeight = baseFontSize + marginSmall
+// const lineHeight = baseFontSize + marginSmall
 const marginWide = 30
 const jargonFontSize = 16
 const jargonYPosition = nameYPosition + jargonFontSize + marginSmall
@@ -663,24 +662,6 @@ function drawContact({
 	}
 
 	return info
-}
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function createPageLinkAnnotation(page: PDFPage, uri: string) {
-	return page.doc.context.register(
-		page.doc.context.obj({
-			Type: 'Annot',
-			Subtype: 'Link',
-			Rect: [0, 30, 40, 230],
-			Border: [0, 0, 2],
-			C: [0, 0, 1],
-			A: {
-				Type: 'Action',
-				S: 'URI',
-				URI: PDFString.of(uri)
-			}
-		})
-	)
 }
 
 function drawListItem<T>({

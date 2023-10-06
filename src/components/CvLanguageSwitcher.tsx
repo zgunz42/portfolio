@@ -2,6 +2,7 @@ import { Avatar, Group, Select, Text } from '@mantine/core'
 import type { IChoiceItem, TypeLanguages } from 'constant'
 import { LanguageChoice } from 'constant'
 import useLocale from 'hooks/useLocale'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { forwardRef } from 'react'
 import { useLanguageContext } from './CvLanguageContext'
@@ -37,8 +38,10 @@ export default function CvLanguageSwitcher(
 ): ReactElement {
 	const { language, setLanguage } = useLanguageContext()
 	const { $t } = useLocale()
+	const router = useRouter()
 	const onChangeLanguage = (value: TypeLanguages): void => {
 		setLanguage(value)
+		void router.push(router.pathname, router.pathname, { locale: value })
 	}
 
 	return (

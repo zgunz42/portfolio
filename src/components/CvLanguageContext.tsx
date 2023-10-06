@@ -4,10 +4,10 @@ import type { TypeLanguages } from 'constant'
 import { Languages } from 'constant'
 import enLanguages from 'data/langs/en-US/languages.json'
 import idLanguages from 'data/langs/id-ID/languages.json'
+import { useRouter } from 'next/router'
 import type { ReactElement, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 import { IntlProvider } from 'react-intl'
-import { getBrowserLanguage, localeName } from 'utils'
 
 interface ICvLanguageContext {
 	language: TypeLanguages
@@ -34,14 +34,6 @@ function loadLocalMessages(locale: string): Record<string, string> {
 	}
 	return messages
 }
-function keyPairQuery(search: string): Record<string, string> {
-	const query = new URLSearchParams(search)
-	const result: Record<string, string> = {}
-	for (const [key, value] of query.entries()) {
-		result[key] = value
-	}
-	return result
-}
 export function useLanguageContext(): ICvLanguageContext {
 	const { language, setLanguage } = useContext(LanguageContext)
 
@@ -56,15 +48,19 @@ export default function CvLocalProvider({
 }: {
 	children: ReactNode
 }): ReactElement {
-	const { search } = window.location
-	const searchQuery = search !== '' ? keyPairQuery(search) : undefined
-	const queryLocale =
-		typeof searchQuery?.lang === 'string'
-			? localeName(searchQuery.lang)
-			: undefined
+	// const { search } = window.location
+	const { locale: routeLocale } = useRouter()
+
+	if (
+		routeLocale === undefined ||
+		(routeLocale !== 'en-US' && routeLocale !== 'id-ID')
+	) {
+		throw new Error('routeLocale is undefined')
+	}
+
 	const [locale, setLocale] = useLocalStorage<TypeLanguages>({
 		key: 'language',
-		defaultValue: queryLocale ?? getBrowserLanguage()
+		defaultValue: routeLocale
 	})
 
 	const languageValue = useMemo(
@@ -77,8 +73,8 @@ export default function CvLocalProvider({
 
 	return (
 		<IntlProvider
-			messages={loadLocalMessages(queryLocale ?? locale)}
-			locale={queryLocale ?? locale}
+			messages={loadLocalMessages(routeLocale)}
+			locale={routeLocale}
 		>
 			<LanguageContext.Provider value={languageValue}>
 				{children}

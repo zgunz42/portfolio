@@ -12,8 +12,8 @@ import {
 	Title
 } from '@mantine/core'
 import useLocale from 'hooks/useLocale'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
-import { Link } from 'react-router-dom'
 import { FileDownload as FileDownloadIcon } from 'tabler-icons-react'
 import CvProfileAvatar from './CvProfileAvatar'
 
@@ -93,7 +93,16 @@ export default function CvHero({
 	github
 }: CvHeroProperties): ReactElement {
 	const { classes } = useStyles()
+	const router = useRouter()
 	const { $t } = useLocale()
+	const onToCv = (): void => {
+		router
+			.push('/download-cv')
+			.then(() => {})
+			.catch(error => {
+				console.error(error)
+			})
+	}
 	return (
 		<Box className={classes.layout}>
 			<BackgroundImage src='/images/background.webp'>
@@ -139,12 +148,12 @@ export default function CvHero({
 								>
 									{$t('cv.hero.view_project')}
 								</Button>
+
 								<Button
 									variant='gradient'
-									component={Link}
 									gradient={{ from: 'indigo', to: 'cyan', deg: 35 }}
 									radius='xl'
-									to='/download-cv'
+									onClick={onToCv}
 									size='md'
 									leftIcon={<FileDownloadIcon />}
 									className={classes.control}

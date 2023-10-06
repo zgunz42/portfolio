@@ -3,10 +3,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import type { ImageProps } from '@mantine/core'
 import { Image } from '@mantine/core'
+import { useQuery } from '@tanstack/react-query'
 import type { IMetaImage } from 'api'
 import fetch from 'cross-fetch'
 import type { ReactElement, RefAttributes } from 'react'
-import { useQuery } from 'react-query'
 import { readBlurImage } from 'utils'
 
 const fetchImage = async (url: string): Promise<string> => {
@@ -29,7 +29,7 @@ function CvImage({
 	...properties
 }: Omit<ImageProps, 'src'> &
 	RefAttributes<HTMLDivElement> & { src: string }): ReactElement {
-	const { data } = useQuery(src, fetchImage.bind(undefined, src))
+	const { data } = useQuery([src], fetchImage.bind(undefined, src))
 	return <Image src={data} alt={alt} withPlaceholder {...properties} />
 }
 

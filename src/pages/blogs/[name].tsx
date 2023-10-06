@@ -11,14 +11,23 @@ import {
 	Title,
 	TypographyStylesProvider
 } from '@mantine/core'
-import { getBlogArticle } from 'api'
+import { useQuery } from '@tanstack/react-query'
+import type { IBlogArticleDto } from 'api'
+import { getArticleList, getBlogArticle, getNodeArticleDetail } from 'api'
 import CvPageLayout from 'components/CvPageLayout'
+import LoadingOrError from 'components/LoadingOrError'
+import NotFoundError from 'errors/NotFoundError'
 import useLocale from 'hooks/useLocale'
+import type {
+	GetStaticPaths,
+	GetStaticPathsResult,
+	GetStaticProps,
+	InferGetStaticPropsType
+} from 'next'
+import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 import ReactMarkdown from 'react-markdown'
-import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
 import { Badge as BadgeIcon } from 'tabler-icons-react'
 import useAppStyles from 'themes/styles'
 
@@ -45,25 +54,39 @@ const useStyle = createStyles(() => ({
 }))
 
 /** Blog post article page */
-function BlogArticlePage(): ReactElement {
+function BlogArticlePage({
+	article,
+	name
+}: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
 	const { classes, theme, cx } = useStyle()
 	const { locale } = useLocale()
 	const { classes: appClasses } = useAppStyles()
-	const { articleSlug } = useParams()
-	if (!articleSlug) {
-		throw new Error('Article slug is required')
-	}
+	const router = useRouter()
+	console.log(name)
+
 	const { data, isError } = useQuery(
-		['blogArticle', articleSlug],
-		getBlogArticle.bind(undefined, articleSlug, locale)
+		['blogArticle', name, locale],
+		getBlogArticle.bind(undefined, name as string, locale),
+		{
+			onError(error) {
+				if (error instanceof NotFoundError) {
+					void router.push('/404')
+				}
+			}
+		}
 	)
-	if (data === undefined) {
-		return <Text>Loading...</Text>
+
+	if (!data || !name) {
+		return <LoadingOrError />
 	}
+
+	console.log(article.attributes.publishedAt)
+
+	const publishDate = new Date(article.attributes.publishedAt)
 	const publishAt = new Intl.DateTimeFormat('id-ID', {
 		dateStyle: 'full',
 		timeStyle: 'short'
-	}).format(data.attributes.publishedAt)
+	}).format(publishDate)
 
 	if (isError) {
 		return <Text>Error</Text>
@@ -73,28 +96,28 @@ function BlogArticlePage(): ReactElement {
 		<CvPageLayout>
 			<Stack className={classes.wrapper}>
 				<Helmet>
-					<title>{data.attributes.title} | Blog</title>
+					<title>{article.attributes.title} | Blog</title>
 				</Helmet>
 				<Card className={`${appClasses.text} giscus mt-16`}>
-					<Title>{data.attributes.title}</Title>
+					<Title>{article.attributes.title}</Title>
 					<Text className='mt-4 mb-12'>Diterbitkan {publishAt}</Text>
 					<Image
 						className={cx(
 							classes.imgArticle,
 							'mb-4 mt-12 h-64 overflow-hidden rounded-md object-cover shadow-md'
 						)}
-						src={data.attributes.thumbnail}
-						alt={data.attributes.title}
+						src={article.attributes.thumbnail}
+						alt={article.attributes.title}
 						withPlaceholder
 					/>
 					<article className={classes.articleBody}>
 						<TypographyStylesProvider>
-							<ReactMarkdown unwrapDisallowed>{data.body}</ReactMarkdown>
+							<ReactMarkdown unwrapDisallowed>{article.body}</ReactMarkdown>
 						</TypographyStylesProvider>
 						<Group className='mt-12'>
 							<Text>Tags:</Text>
 							<Box>
-								{data.attributes.label.map(tag => (
+								{(article.attributes.label ).map(tag => (
 									<Badge
 										className='mr-4'
 										leftSection={<BadgeIcon size={14} />}
@@ -121,6 +144,54 @@ function BlogArticlePage(): ReactElement {
 			</Stack>
 		</CvPageLayout>
 	)
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+	const paths: GetStaticPathsResult['paths'] = []
+
+	if (locales === undefined) {
+		throw new Error('Locales are required')
+	}
+
+	console.log('locales', locales)
+
+	for (const locale of locales) {
+		// eslint-disable-next-line no-await-in-loop
+		const items = await getArticleList(locale)
+		for (const item of items) {
+			paths.push({
+				params: {
+					name: item.link,
+					locale
+				}
+			})
+		}
+	}
+
+	console.log('paths', paths)
+
+	return {
+		paths,
+		fallback: true // false or "blocking"
+	}
+}
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export const getStaticProps: GetStaticProps<{
+	name?: string[] | string
+	article: IBlogArticleDto
+}> = async ({ params, locale }) => {
+	if (locale === undefined) {
+		throw new Error('Locale is required')
+	}
+	console.log('testing', params)
+	const article = await getNodeArticleDetail(params?.name as string, locale)
+	return {
+		props: {
+			article,
+			name: params?.name
+		}
+	}
 }
 
 export default BlogArticlePage

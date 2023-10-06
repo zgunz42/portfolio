@@ -3,18 +3,14 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Box, createStyles } from '@mantine/core'
-import useWindowSize from '@rehooks/window-size'
+import useWindowSize from 'hooks/useWindowSize'
 import { PietileCarousel } from 'pietile-carousel'
 import type * as React from 'react'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface CvCarouselProperties<C = any> {
-	padding?: number
-	gap?: number
 	items: C[]
 	children: (items: C) => React.ReactElement
-	velocity?: number
-	transition?: object
 }
 
 const useStyles = createStyles(() => ({
@@ -29,14 +25,11 @@ const useStyles = createStyles(() => ({
 
 export default function CvCarousel({
 	children,
-	padding,
-	items,
-	gap,
-	velocity,
-	transition
+	items
 }: CvCarouselProperties): React.ReactElement {
 	const { classes, theme } = useStyles()
 	const { innerWidth } = useWindowSize()
+
 	return (
 		<PietileCarousel
 			count={innerWidth < theme.breakpoints.md ? 2 : 4}

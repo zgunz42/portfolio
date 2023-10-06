@@ -66,3 +66,5 @@ export const PageSize = 5
 export const PageSizeMax = 100
 export const PageSizeMin = 1
 export const CountMargin = 1
+export const HttpOK = 200
+export const HttpInternalServerError = 500

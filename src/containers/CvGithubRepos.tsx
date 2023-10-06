@@ -11,8 +11,8 @@ import {
 import useLocale from 'hooks/useLocale'
 import useProjectList from 'hooks/useProjectList'
 import { flatten } from 'lodash'
+import Link from 'next/link'
 import type { ReactElement } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowWaveLeftDown, ArrowWaveRightDown } from 'tabler-icons-react'
 import useAppStyles from 'themes/styles'
 
@@ -43,7 +43,7 @@ export default function CvGithubRepos(): ReactElement {
 							className='block cursor-pointer'
 							key={project.link}
 							// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-							to={`/projects/${project.link}`}
+							href={`/projects/${project.link}`}
 						>
 							<CvRepoCard
 								title={project.name}

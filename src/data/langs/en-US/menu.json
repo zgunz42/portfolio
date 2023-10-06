@@ -26,7 +26,7 @@
 			"label": "Contact"
 		},
 		{
-			"link": "/download-cv",
+			"link": "/download",
 			"icon": "download",
 			"label": "Get My CV",
 			"hightlight": true

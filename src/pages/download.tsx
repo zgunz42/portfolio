@@ -5,9 +5,9 @@ import CvDownloadPrepare from 'components/CvDownloadPrepare'
 import CvDownloadSuccess from 'components/CvDownloadSuccess'
 import CvPageLayout from 'components/CvPageLayout'
 import useCreatorCv from 'hooks/useCreatorCv'
+import Head from 'next/head'
 import type { ReactElement } from 'react'
 import { useEffect } from 'react'
-import { Helmet } from 'react-helmet'
 
 function CvDownloadPage(): ReactElement {
 	const { createCV, isLoading, isError, progress } = useCreatorCv()
@@ -24,9 +24,9 @@ function CvDownloadPage(): ReactElement {
 
 	return (
 		<CvPageLayout className='page'>
-			<Helmet>
+			<Head>
 				<title>Download Resume | I Kadek Adi Gunawan</title>
-			</Helmet>
+			</Head>
 			<Container>
 				{progress < 100 && <CvDownloadPrepare progress={progress} />}
 				{progress >= 100 &&

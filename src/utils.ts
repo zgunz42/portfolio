@@ -51,11 +51,10 @@ export function composeImageUrl(
 }
 
 export function titlecase(title: string): string {
-	return title
-		.replaceAll(/[_-]/g, ' ')
-		.replace(/((\s\w)|(^\w))/g, (m, p1): string =>
-			` ${p1 as string}`.toUpperCase()
-		)
+	const cleanTitle = title.replaceAll(/[_-]/g, ' ')
+	return cleanTitle.replace(/((\s\w)|(^\w))/g, (_, p1): string =>
+		` ${p1 as string}`.toUpperCase()
+	)
 }
 
 export function readBlurImage(blurHash: string): string {

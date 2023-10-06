@@ -3,6 +3,10 @@ import { FirstPage, HttpNotFound } from 'constant'
 import fetch from 'cross-fetch'
 import LoadMoreError from 'errors/LoadMoreError'
 import NotFoundError from 'errors/NotFoundError'
+// eslint-disable-next-line unicorn/prefer-node-protocol
+import { promises as fs } from 'fs'
+// eslint-disable-next-line unicorn/prefer-node-protocol
+import path from 'path'
 
 export interface IMetaImage {
 	filename: string
@@ -29,6 +33,13 @@ export interface IBaseData {
 export interface IBlogArticle {
 	attributes: Omit<IBlogListItem, 'link'> & {
 		commentId: number
+	}
+	body: string
+}
+
+export interface IBlogArticleDto {
+	attributes: Omit<IBlogListItem, 'publishedAt'> & {
+		publishedAt: string
 	}
 	body: string
 }
@@ -190,6 +201,121 @@ export async function getProjectListPaged(
 		...data,
 		createdAt: new Date(String(data.createdAt))
 	}))
+}
+
+export async function getArticleList(
+	language: string
+): Promise<IBlogListItem[]> {
+	const articleList: IBlogListItem[] = []
+	const jsonDirectory = path.join(
+		process.cwd(),
+		`/public/_data/${language}/articles`
+	)
+	let page = FirstPage
+
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	while (true) {
+		try {
+			const indexFilePath = `${jsonDirectory}/index-page-${page}.json`
+			console.log('index', indexFilePath)
+
+			// eslint-disable-next-line no-await-in-loop
+			const result = await fs.readFile(indexFilePath)
+
+			const dataResult = JSON.parse(result.toString('utf8')) as IBlogListItem[]
+
+			for (const item of dataResult) {
+				articleList.push({
+					...item,
+					publishedAt: new Date(String(item.publishedAt))
+				})
+			}
+
+			// articleList.push(...dataResult)
+			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+			page += 1
+		} catch {
+			break
+		}
+	}
+
+	return articleList
+}
+
+export async function getNodeArticleDetail(
+	slug: string,
+	language: string
+): Promise<IBlogArticleDto> {
+	const jsonDirectory = path.join(
+		process.cwd(),
+		`/public/_data/${language}/articles`
+	)
+	const result = await fs.readFile(`${jsonDirectory}/${slug}.json`)
+	const article = JSON.parse(result.toString('utf8')) as IBlogArticleDto
+
+	return article
+}
+
+/**
+ * Retrieves a list of projects based on the specified language.
+ *
+ * @param {string} language - The language to filter the projects by.
+ * @return {Promise<IProjectList[]>} - A promise that resolves to an array of project lists.
+ */
+export async function getProjectList(
+	language: string
+): Promise<IProjectList[]> {
+	const projectList: IProjectList[] = []
+	const jsonDirectory = path.join(
+		process.cwd(),
+		`/public/_data/${language}/projects`
+	)
+	let page = FirstPage
+
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	while (true) {
+		try {
+			const indexFilePath = `${jsonDirectory}/index-page-${page}.json`
+			console.log('index', indexFilePath)
+
+			// eslint-disable-next-line no-await-in-loop
+			const result = await fs.readFile(indexFilePath)
+
+			const dataResult = JSON.parse(result.toString('utf8')) as IProjectList[]
+
+			projectList.push(...dataResult)
+			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+			page += 1
+		} catch {
+			break
+		}
+	}
+
+	return projectList
+}
+
+/**
+ * Retrieves the project details for a specific slug and language.
+ *
+ * @param {string} slug - The slug of the project.
+ * @param {string} language - The language of the project.
+ * @return {Promise<IProject>} A promise that resolves to the project details.
+ */
+export async function getNodeProjectDetail(
+	slug: string,
+	language: string
+): Promise<IProject> {
+	const jsonDirectory = path.join(
+		process.cwd(),
+		`/public/_data/${language}/projects`
+	)
+	const result = await fs.readFile(`${jsonDirectory}/${slug}.json`)
+	const project = JSON.parse(result.toString('utf8')) as IProject
+
+	return {
+		attributes: project.attributes,
+		body: project.body
+	}
 }
 
 export async function getBlogListPaged(

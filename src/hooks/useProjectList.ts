@@ -1,8 +1,8 @@
+import { useInfiniteQuery } from '@tanstack/react-query'
 import type { IProjectList } from 'api'
 import { getProjectListPaged } from 'api'
 import { CountMargin, FirstPage } from 'constant'
 import LoadMoreError from 'errors/LoadMoreError'
-import { useInfiniteQuery } from 'react-query'
 import useLocale from './useLocale'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -20,7 +20,7 @@ function useProjectList() {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 			getProjectListPaged(pageParam ?? FirstPage, locale),
 		{
-			getNextPageParam: (a, b) => b.length + CountMargin
+			getNextPageParam: (_, b) => b.length + CountMargin
 		}
 	)
 

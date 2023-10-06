@@ -20,9 +20,9 @@ import {
 import CvPageLayout from 'components/CvPageLayout'
 import useConfig from 'hooks/useConfig'
 import useLocale from 'hooks/useLocale'
+import Head from 'next/head'
 import type { ReactElement } from 'react'
 import GitHubCalendar from 'react-github-calendar'
-import { Helmet } from 'react-helmet'
 import { CircleCheck } from 'tabler-icons-react'
 import { composeImageUrl } from 'utils'
 
@@ -122,11 +122,11 @@ function AboutPage(): ReactElement {
 	return (
 		<CvPageLayout className='page'>
 			<Stack align='stretch' justify='center'>
-				<Helmet>
+				<Head>
 					<title>
 						{$t('about.title')} | {data?.fullName}
 					</title>
-				</Helmet>
+				</Head>
 				<Container className='mt-12'>
 					<Box className={classes.wrapper}>
 						<Box className={`${classes.introduction} mb-8`}>

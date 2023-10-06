@@ -13,9 +13,9 @@ import CvPageLayout from 'components/CvPageLayout'
 import useBlogList from 'hooks/useBlogList'
 import useLocale from 'hooks/useLocale'
 import { flatten } from 'lodash'
+import Link from 'next/link'
 import type { ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
 import { ArrowWaveLeftDown, ArrowWaveRightDown } from 'tabler-icons-react'
 import useAppStyles from 'themes/styles'
 
@@ -59,7 +59,7 @@ function BlogPage(): ReactElement {
 							]}
 						>
 							{flatten(data.pages).map(post => (
-								<Link key={post.link} to={post.link}>
+								<Link key={post.link} href={`blogs/${post.link}`}>
 									<CvBlogCard
 										title={post.title}
 										description={post.description}

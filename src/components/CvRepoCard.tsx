@@ -70,7 +70,7 @@ export default function CvRepoCard({
 	title,
 	description
 }: BadgeCardProperties): ReactElement {
-	const { height, width } = useViewportSize()
+	const { width } = useViewportSize()
 	const { classes, theme, cx } = useStyles()
 	const [scale, setScale] = useState(720)
 	const onHoverStart = (): void => {
