@@ -1,4 +1,6 @@
 {
 	"version": 2,
+	"buildCommand": "next build",
+	"installCommand": "pnpm install --frozen-lockfile",
 	"routes": [{ "handle": "filesystem" }, { "src": "/", "dest": "/index.html" }]
 }
