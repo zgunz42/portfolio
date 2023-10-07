@@ -1,0 +1,52 @@
+.card {
+	min-height: rem(240px);
+
+	@mixin dark {
+		background-color: var(--mantine-color-dark-7);
+	}
+
+	@mixin light {
+		background-color: var(--mantine-color-gray-8);
+	}
+}
+
+.like {
+	color: var(--mantine-color-red-6);
+}
+
+.label {
+	text-transform: uppercase;
+	font-size: var(--mantine-font-size-xs);
+	font-weight: 700;
+}
+
+.action-card {
+	color: var(--mantine-color-primary-color-5);
+	display: flex;
+	gap: calc(var(--mantine-spacing-md) / 2rem);
+	align-items: center;
+
+	.label {
+		line-height: 0.5em;
+	}
+
+	&:hover {
+		color: white;
+		transition: color position 0.2s ease-in-out;
+		transform: translateY(-4px);
+		background-color: var(--mantine-color-primary-color-6);
+	}
+
+	.image-hero {
+		@apply overflow-hidden rounded-lg;
+
+		max-width: 100%;
+		height: auto;
+
+		figure,
+		figure > div {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

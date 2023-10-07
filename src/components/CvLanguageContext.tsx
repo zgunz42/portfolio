@@ -5,7 +5,6 @@ import { Languages } from 'constant'
 import enLanguages from 'data/langs/en-US/languages.json'
 import idLanguages from 'data/langs/id-ID/languages.json'
 import { useRouter } from 'next/router'
-import type { ReactElement, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 import { IntlProvider } from 'react-intl'
 
@@ -46,8 +45,8 @@ export function useLanguageContext(): ICvLanguageContext {
 export default function CvLocalProvider({
 	children
 }: {
-	children: ReactNode
-}): ReactElement {
+	children: CompElement
+}): CompElement {
 	// const { search } = window.location
 	const { locale: routeLocale } = useRouter()
 
@@ -62,6 +61,10 @@ export default function CvLocalProvider({
 		key: 'language',
 		defaultValue: routeLocale
 	})
+
+	if (locale === undefined) {
+		throw new Error('locale is undefined')
+	}
 
 	const languageValue = useMemo(
 		() => ({

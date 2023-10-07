@@ -21,7 +21,7 @@ function CvDownloadSuccess({ onDownload }: Properties): ReactElement {
 				CV has been created, wait for it automatically download under 5 seconds.
 				When you click button below, it will download too.
 			</Text>
-			<Button onClick={onDownload} leftIcon={<CloudDownload />}>
+			<Button onClick={onDownload} leftSection={<CloudDownload />}>
 				Download Now
 			</Button>
 		</Card>

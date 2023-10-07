@@ -1,0 +1,73 @@
+.text {
+	@mixin dark {
+		color: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		color: var(--mantine-color-gray-8);
+	}
+}
+
+.title-decorate {
+	@mixin dark {
+		color: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		color: var(--mantine-color-gray-8);
+	}
+
+	span {
+		color: var(--mantine-color-primary-5);
+	}
+
+	@media (min-width: $mantine-breakpoint-md) {
+		text-align: center;
+	}
+}
+
+.title {
+	text-align: center;
+
+	@mixin dark {
+		color: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		color: var(--mantine-color-gray-8);
+	}
+
+	span {
+		color: var(--mantine-color-primary-5);
+	}
+}
+
+.blog-card {
+	cursor: pointer;
+
+	@mixin dark {
+		background: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		background: var(--mantine-color-gray-8);
+	}
+
+	.title {
+		min-height: 60px;
+	}
+
+	.content {
+		min-height: 74px;
+	}
+
+	&:hover .shine {
+		color: var(--mantine-color-primary-5);
+	}
+}
+
+.divider {
+	width: 100%;
+	height: 5px;
+	background-color: var(--mantine-color-primary-5);
+}

@@ -20,9 +20,20 @@
 		"allowJs": true,
 		"forceConsistentCasingInFileNames": true,
 		"incremental": true,
-		"plugins": [{ "name": "next" }],
-		"types": ["vite/client", "vitest/globals", "vite-plugin-pwa/client"]
+		"plugins": [
+			{
+				"name": "next"
+			},
+			{
+				"name": "typescript-plugin-css-modules"
+			}
+		]
 	},
-	"include": ["./src", "./dist/types/**/*.ts", "./next-env.d.ts"],
+	"include": [
+		"./src",
+		"./dist/types/**/*.ts",
+		"./next-env.d.ts",
+		".next/types/**/*.ts"
+	],
 	"exclude": ["./node_modules"]
 }

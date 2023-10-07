@@ -3,17 +3,17 @@ import {
 	Badge,
 	Box,
 	Card,
-	createStyles,
 	Group,
-	Image,
 	Stack,
 	Text,
 	Title,
 	TypographyStylesProvider
 } from '@mantine/core'
+import { useColorScheme } from '@mantine/hooks'
 import { useQuery } from '@tanstack/react-query'
 import type { IBlogArticleDto } from 'api'
 import { getArticleList, getBlogArticle, getNodeArticleDetail } from 'api'
+import CvImage from 'components/CvImage'
 import CvPageLayout from 'components/CvPageLayout'
 import LoadingOrError from 'components/LoadingOrError'
 import NotFoundError from 'errors/NotFoundError'
@@ -24,46 +24,22 @@ import type {
 	GetStaticProps,
 	InferGetStaticPropsType
 } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
 import ReactMarkdown from 'react-markdown'
 import { Badge as BadgeIcon } from 'tabler-icons-react'
-import useAppStyles from 'themes/styles'
-
-const useStyle = createStyles(() => ({
-	articleBody: {
-		letterSpacing: '0.01em',
-		lineHeight: '1.5em',
-		'ol, ul, menu': {
-			listStyle: 'inherit'
-		}
-	},
-	wrapper: {
-		margin: '0 auto',
-		padding: '0 1em',
-		maxWidth: '800px'
-	},
-	imgArticle: {
-		maxWidth: '100%',
-		height: 'auto',
-		'figure,figure>div': {
-			height: '100%'
-		}
-	}
-}))
+import classes from '../../themes/project.module.css'
+import appClasses from '../../themes/styles.module.css'
 
 /** Blog post article page */
 function BlogArticlePage({
 	article,
 	name
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
-	const { classes, theme, cx } = useStyle()
 	const { locale } = useLocale()
-	const { classes: appClasses } = useAppStyles()
 	const router = useRouter()
-	console.log(name)
-
+	const colorScheme = useColorScheme()
 	const { data, isError } = useQuery(
 		['blogArticle', name, locale],
 		getBlogArticle.bind(undefined, name as string, locale),
@@ -80,8 +56,6 @@ function BlogArticlePage({
 		return <LoadingOrError />
 	}
 
-	console.log(article.attributes.publishedAt)
-
 	const publishDate = new Date(article.attributes.publishedAt)
 	const publishAt = new Intl.DateTimeFormat('id-ID', {
 		dateStyle: 'full',
@@ -95,29 +69,25 @@ function BlogArticlePage({
 	return (
 		<CvPageLayout>
 			<Stack className={classes.wrapper}>
-				<Helmet>
+				<Head>
 					<title>{article.attributes.title} | Blog</title>
-				</Helmet>
+				</Head>
 				<Card className={`${appClasses.text} giscus mt-16`}>
 					<Title>{article.attributes.title}</Title>
 					<Text className='mt-4 mb-12'>Diterbitkan {publishAt}</Text>
-					<Image
-						className={cx(
-							classes.imgArticle,
-							'mb-4 mt-12 h-64 overflow-hidden rounded-md object-cover shadow-md'
-						)}
+					<CvImage
+						className={classes['img-hero']}
 						src={article.attributes.thumbnail}
 						alt={article.attributes.title}
-						withPlaceholder
 					/>
-					<article className={classes.articleBody}>
+					<article className={classes['article-body']}>
 						<TypographyStylesProvider>
 							<ReactMarkdown unwrapDisallowed>{article.body}</ReactMarkdown>
 						</TypographyStylesProvider>
 						<Group className='mt-12'>
 							<Text>Tags:</Text>
 							<Box>
-								{(article.attributes.label ).map(tag => (
+								{article.attributes.label.map(tag => (
 									<Badge
 										className='mr-4'
 										leftSection={<BadgeIcon size={14} />}
@@ -137,7 +107,7 @@ function BlogArticlePage({
 						mapping='number'
 						term='14'
 						reactionsEnabled='1'
-						theme={theme.colorScheme === 'dark' ? 'dark_dimmed' : 'light'}
+						theme={colorScheme === 'dark' ? 'dark_dimmed' : 'light'}
 						emitMetadata='1'
 					/>
 				</Card>

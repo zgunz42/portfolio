@@ -11,6 +11,11 @@
 			"label": "Tentang"
 		},
 		{
+			"link": "/products",
+			"icon": "product",
+			"label": "Produk"
+		},
+		{
 			"link": "/projects",
 			"icon": "app",
 			"label": "Proyek"

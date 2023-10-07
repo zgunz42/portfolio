@@ -14,7 +14,11 @@ export default function LoadingOrError({ error }: Properties): ReactElement {
 				{error ? (
 					<Stack align='center'>
 						<CvIconCat height={50} />
-						<Title data-testid='error-title-element' mt={12} color='red'>
+						<Title
+							data-testid='error-title-element'
+							mt={12}
+							style={{ color: 'var(--mantine-color-red-5)' }}
+						>
 							{error.message}
 						</Title>
 					</Stack>

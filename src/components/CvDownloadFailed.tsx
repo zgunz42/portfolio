@@ -1,8 +1,7 @@
 import { Button, Card, Image, Text, Title } from '@mantine/core'
-import type { ReactElement } from 'react'
 import { Refresh } from 'tabler-icons-react'
 
-function CvDownloadFailed(): ReactElement {
+function CvDownloadFailed(): CompElement {
 	return (
 		<Card className='mx-auto max-w-md text-center'>
 			<Image
@@ -17,7 +16,7 @@ function CvDownloadFailed(): ReactElement {
 				CV could not be prepared. Please try again later. by clicking button
 				below.
 			</Text>
-			<Button leftIcon={<Refresh />}>Retry</Button>
+			<Button leftSection={<Refresh />}>Retry</Button>
 		</Card>
 	)
 }

@@ -1,0 +1,112 @@
+.wrapper {
+	display: flex;
+
+	@mixin dark {
+		color: #fff;
+	}
+
+	@mixin light {
+		color: #000;
+	}
+
+	@media (max-width: $mantine-breakpoint-md) {
+		flex-direction: column-reverse;
+	}
+}
+
+.introduction {
+	flex: 2;
+
+	@media (max-width: $mantine-breakpoint-md) {
+		flex: 1;
+	}
+}
+
+.title-decoration {
+	margin-bottom: var(--mantine-spacing-xl);
+
+	span {
+		color: var(--mantine-color-primary-color-5);
+	}
+
+	@media (max-width: $mantine-breakpoint-md) {
+		text-align: center;
+	}
+}
+
+.filter-by {
+	filter: grayscale(100%) invert(100%);
+}
+
+.title {
+	text-align: center;
+	margin-bottom: var(--mantine-spacing-xl);
+
+	span {
+		color: var(--mantine-color-primary-color-5);
+	}
+
+	@mixin dark {
+		color: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		color: var(--mantine-color-gray-8);
+	}
+}
+
+.introduction-image {
+	flex: 1;
+}
+
+.card-skill {
+	border-radius: var(--mantine-radius-md);
+	cursor: 'pointer';
+	padding: 64;
+	position: 'relative';
+	overflow: 'hidden';
+	border: calc(0.2rem / 3rem) solid #fff;
+	box-shadow: 0 0 calc(0.2rem / 2rem) #fff, 0 0 0.1rem #fff,
+		0 0 calc(2rem / 3rem) var(--mantine-color-primary-color-3),
+		0 0 calc(0.8rem / 3rem) var(--mantine-color-primary-color-3),
+		0 0 calc(2.8rem / 3rem) var(--mantine-color-primary-color-3),
+		inset 0 0 calc(1.3rem / 2rem) var(--mantine-color-primary-color-3);
+
+	@mixin dark {
+		color: #fff;
+	}
+
+	@mixin light {
+		color: #000;
+	}
+
+	.card-skill-details {
+		padding: var(--mantine-spacing-lg);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: var(--mantine-color-primary-color-5);
+		text-align: center;
+		opacity: 0;
+
+		@media (max-width: $mantine-breakpoint-md) {
+			padding: var(--mantine-spacing-sm);
+			font-size: var(--mantine-font-size-md);
+		}
+	}
+
+	&:hover {
+		transform: scale(1.05);
+		border: calc(0.2rem / 2rem) solid #fff;
+		box-shadow: 0 0 calc(0.2rem / 2rem) #fff, 0 0 calc(0.2rem / 2rem) #fff,
+			0 0 calc(2rem / 2rem) var(--mantine-color-primary-color-5),
+			0 0 calc(0.8rem / 2rem) var(--mantine-color-primary-color-5),
+			0 0 calc(2.8rem / 2rem) var(--mantine-color-primary-color-5),
+			inset 0 0 calc(1.3rem / 2rem) var(--mantine-color-primary-color-5);
+
+		.card-skill-details {
+			opacity: 1;
+		}
+	}
+}

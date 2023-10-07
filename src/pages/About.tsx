@@ -7,117 +7,30 @@ import {
 	Blockquote,
 	Box,
 	Container,
-	createStyles,
 	Image,
 	List,
 	SimpleGrid,
 	Stack,
 	Text,
 	ThemeIcon,
-	Title,
-	useMantineTheme
+	Title
 } from '@mantine/core'
+import { useColorScheme } from '@mantine/hooks'
 import CvPageLayout from 'components/CvPageLayout'
 import useConfig from 'hooks/useConfig'
 import useLocale from 'hooks/useLocale'
+
 import Head from 'next/head'
 import type { ReactElement } from 'react'
 import GitHubCalendar from 'react-github-calendar'
 import { CircleCheck } from 'tabler-icons-react'
+import classes from 'themes/about.module.css'
+import { theme } from 'themes/theme'
 import { composeImageUrl } from 'utils'
-
-const useStyles = createStyles(theme => ({
-	wrapper: {
-		display: 'flex',
-		color: theme.colorScheme === 'dark' ? '#fff' : '#000',
-		[theme.fn.smallerThan('md')]: {
-			flexDirection: 'column-reverse'
-		}
-	},
-	introduction: {
-		flex: 2,
-		[theme.fn.smallerThan('md')]: {
-			flex: 1
-		}
-	},
-	titleDecorate: {
-		color:
-			theme.colorScheme === 'dark'
-				? theme.colors.gray[0]
-				: theme.colors.gray[8],
-		marginBottom: theme.spacing.xl,
-		span: {
-			color: theme.colors[theme.primaryColor][5]
-		},
-		[theme.fn.smallerThan('md')]: {
-			textAlign: 'center'
-		}
-	},
-	filterBg: {
-		filter: 'grayscale(100%) invert(100%)'
-	},
-	title: {
-		textAlign: 'center',
-		color:
-			theme.colorScheme === 'dark'
-				? theme.colors.gray[0]
-				: theme.colors.gray[8],
-		marginBottom: theme.spacing.xl,
-		span: {
-			color: theme.colors[theme.primaryColor][5]
-		}
-	},
-	introductionImage: {
-		flex: 1
-	},
-	cardSkill: {
-		borderRadius: theme.radius.md,
-		cursor: 'pointer',
-		padding: 64,
-		position: 'relative',
-		overflow: 'hidden',
-		border: `${0.2 / 3}rem solid #fff`,
-		boxShadow: `0 0 ${0.2 / 2}rem #fff,
-    0 0 ${0.2 / 2}rem #fff,
-    0 0 ${2 / 3}rem ${theme.colors[theme.primaryColor][3]},
-    0 0 ${0.8 / 3}rem ${theme.colors[theme.primaryColor][3]},
-    0 0 ${2.8 / 3}rem ${theme.colors[theme.primaryColor][3]},
-    inset 0 0 ${1.3 / 2}rem ${theme.colors[theme.primaryColor][3]}`,
-		color: theme.colorScheme === 'dark' ? '#fff' : '#000',
-		'.card-skill-details': {
-			padding: theme.spacing.lg,
-			position: 'absolute',
-			bottom: 0,
-			left: 0,
-			right: 0,
-			backgroundColor: theme.colors[theme.primaryColor][5],
-			textAlign: 'center',
-			opacity: 0,
-			[theme.fn.smallerThan('md')]: {
-				padding: theme.spacing.sm,
-				fontSize: theme.fontSizes.md
-			}
-		},
-		'&:hover': {
-			transform: 'scale(1.05)',
-			border: `${0.2 / 2}rem solid #fff`,
-			boxShadow: `0 0 ${0.2 / 2}rem #fff,
-			0 0 ${0.2 / 2}rem #fff,
-			0 0 ${2 / 2}rem ${theme.colors[theme.primaryColor][5]},
-			0 0 ${0.8 / 2}rem ${theme.colors[theme.primaryColor][5]},
-			0 0 ${2.8 / 2}rem ${theme.colors[theme.primaryColor][5]},
-			inset 0 0 ${1.3 / 2}rem ${theme.colors[theme.primaryColor][5]}`,
-			'.card-skill-details': {
-				opacity: 1
-			}
-		}
-	}
-}))
 
 function AboutPage(): ReactElement {
 	const { data } = useConfig()
-	const theme = useMantineTheme()
-	const { classes } = useStyles()
+	const colorScheme = useColorScheme()
 	const { $t } = useLocale()
 	return (
 		<CvPageLayout className='page'>
@@ -134,7 +47,7 @@ function AboutPage(): ReactElement {
 								dangerouslySetInnerHTML={{
 									__html: $t('about.headline')
 								}}
-								className={classes.titleDecorate}
+								className={classes['title-decoration']}
 							/>
 							<Text className='mt-4 mb-8'>{data?.about.intro}</Text>
 							<Box className='mb-8'>
@@ -180,11 +93,8 @@ function AboutPage(): ReactElement {
 					</Box>
 					<Box>
 						<SimpleGrid
-							cols={4}
-							breakpoints={[
-								{ maxWidth: 980, cols: 3, spacing: 'md' },
-								{ maxWidth: 755, cols: 2, spacing: 'sm' }
-							]}
+							cols={{ lg: 4, md: 3, sm: 2, xs: 1 }}
+							spacing={{ md: 'md', sm: 'sm' }}
 						>
 							{data?.about.skills.map(({ icon, name }) => (
 								<Box key={name} className={classes.cardSkill}>
@@ -208,11 +118,8 @@ function AboutPage(): ReactElement {
 					</Box>
 					<Box>
 						<SimpleGrid
-							cols={4}
-							breakpoints={[
-								{ maxWidth: 980, cols: 3, spacing: 'md' },
-								{ maxWidth: 755, cols: 2, spacing: 'sm' }
-							]}
+							cols={{ lg: 4, md: 3, sm: 2, xs: 1 }}
+							spacing={{ md: 'md', sm: 'sm' }}
 						>
 							{data?.about.tools.map(({ icon, name, hasColor }) => (
 								<Box key={name} className={classes.cardSkill}>
@@ -242,9 +149,9 @@ function AboutPage(): ReactElement {
 						<GitHubCalendar
 							username={data.github}
 							style={{
-								color: theme.colorScheme === 'light' ? '#000' : '#fff'
+								color: colorScheme === 'light' ? '#000' : '#fff'
 							}}
-							color={theme.colors[theme.primaryColor][5]}
+							color={theme.colors?.[theme.primaryColor ?? 'blue']?.[5]}
 						/>
 					) : undefined}
 				</Container>

@@ -1,13 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import {
-	Burger,
-	Container,
-	createStyles,
-	Group,
-	Header,
-	Transition
-} from '@mantine/core'
-import { useBooleanToggle, useMediaQuery, useScrollLock } from '@mantine/hooks'
+import { Burger, Container, Group, Text, Transition } from '@mantine/core'
+import { useMediaQuery, useToggle } from '@mantine/hooks'
 import CvLogo from 'components/CvLogo'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -15,108 +8,13 @@ import type { ReactElement } from 'react'
 import {
 	Apps,
 	Ballpen,
+	BuildingStore,
 	FileDownload,
 	Home,
 	User,
 	Wallpaper
 } from 'tabler-icons-react'
-
-const useStyles = createStyles(theme => ({
-	header: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		height: '100%'
-	},
-	outerHeader: {
-		backgroundColor: '#1b1a2ea9',
-		border: 'none',
-		boxShadow: '0px 10px 10px 0px rgba(9, 5, 29, 0.171)',
-		backdropFilter: 'blur(15px)'
-	},
-	links: {
-		[theme.fn.smallerThan('xs')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			gap: '1rem',
-			backgroundColor:
-				theme.colorScheme === 'dark'
-					? theme.colors.dark[7]
-					: theme.colors.gray[7],
-			width: '100%',
-			position: 'absolute',
-			top: 0,
-			left: 0,
-			right: 0,
-			padding: theme.spacing.sm,
-			paddingTop: 60,
-			paddingBottom: theme.spacing.md,
-			boxShadow: '0px 10px 10px 0px rgba(9, 5, 29, 0.171)'
-		}
-	},
-
-	burger: {
-		[theme.fn.largerThan('xs')]: {
-			display: 'none'
-		}
-	},
-
-	link: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		gap: 4,
-		lineHeight: 1,
-		padding: '8px 12px',
-		borderRadius: theme.radius.sm,
-		textDecoration: 'none',
-		color:
-			theme.colorScheme === 'dark'
-				? theme.colors.dark[0]
-				: theme.colors.gray[7],
-		fontSize: theme.fontSizes.sm,
-		fontWeight: 700,
-
-		'&:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark'
-					? theme.colors.dark[6]
-					: theme.colors.gray[0]
-		},
-		[theme.fn.smallerThan('xs')]: {
-			padding: '12px 16px',
-			justifyContent: 'start',
-			gap: 18,
-			width: '100%'
-		}
-	},
-
-	linkActive: {
-		'&, &:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark'
-					? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-					: theme.colors[theme.primaryColor][0],
-			color:
-				theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7]
-		}
-	},
-	hightlight: {
-		'&, &:hover': {
-			backgroundColor:
-				theme.colorScheme === 'dark'
-					? theme.fn.rgba(theme.colors[theme.primaryColor][9], 1)
-					: theme.colors[theme.primaryColor][7],
-			color:
-				theme.colorScheme !== 'dark'
-					? theme.colors.dark[7]
-					: theme.colors.gray[0]
-		}
-	},
-	logo: {
-		zIndex: 1
-	}
-}))
+import classes from './CvHeader.module.css'
 
 interface CvHeaderProperties {
 	links: { link: string; icon?: string; label: string; hightlight?: boolean }[]
@@ -130,15 +28,15 @@ const scaleY = {
 }
 
 export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
-	const [opened, toggleOpened] = useBooleanToggle(false)
-	const { classes, cx } = useStyles()
+	const [opened, toggleOpened] = useToggle([false])
+	// const { classes, cx } = useStyles()
 	const router = useRouter()
-	const [scrollLocked, setScrollLocked] = useScrollLock()
+	// const [scrollLocked, setScrollLocked] = useScrollLock()
 	const isMobile = useMediaQuery('(max-width: 755px)')
 
 	const onToggleBurger = (): void => {
 		toggleOpened()
-		setScrollLocked(!scrollLocked)
+		// setScrollLocked(!scrollLocked)
 	}
 
 	const items = links.map(link => {
@@ -149,6 +47,9 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 				break
 			case 'user':
 				Icon = User
+				break
+			case 'product':
+				Icon = BuildingStore
 				break
 			case 'app':
 				Icon = Apps
@@ -171,21 +72,20 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 
 		return (
 			<Link className='w-full md:w-auto' key={link.label} href={link.link}>
-				<span
-					className={cx(classes.link, {
-						[classes.linkActive]: isActive,
-						[classes.hightlight]: link.hightlight
-					})}
+				<Text
+					component='span'
+					className={classes.link}
+					mod={{ active: isActive, hightlight: link.hightlight }}
 				>
 					{Icon ? <Icon style={{ paddingBottom: 4 }} /> : undefined}
 					<span>{link.label}</span>
-				</span>
+				</Text>
 			</Link>
 		)
 	})
 
 	return (
-		<Header className={classes.outerHeader} height={60}>
+		<header className={classes['outer-header']}>
 			<Container className={classes.header}>
 				<Link href='/'>
 					<CvLogo className={classes.logo} width={116.243} height={30} />
@@ -200,14 +100,14 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 						{
 							// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 							styles => (
-								<Group spacing={5} className={classes.links} style={styles}>
+								<Group gap={5} className={classes.links} style={styles}>
 									{items}
 								</Group>
 							)
 						}
 					</Transition>
 				) : (
-					<Group spacing={5} className={classes.links}>
+					<Group gap={5} className={classes.links}>
 						{items}
 					</Group>
 				)}
@@ -220,6 +120,6 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 					size='sm'
 				/>
 			</Container>
-		</Header>
+		</header>
 	)
 }

@@ -4,13 +4,20 @@ import {
 	QueryClient,
 	QueryClientProvider
 } from '@tanstack/react-query'
-import App from 'App'
-import LoadingOrError from 'components/LoadingOrError'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import React from 'react'
 import type { ReactElement } from 'react-markdown/lib/react-markdown'
 import '../index.css'
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import { MantineProvider } from '@mantine/core'
+import '@mantine/core/styles.css'
+// import { ModalsProvider } from '@mantine/modals'
+// import { Notifications } from '@mantine/notifications'
+import CvLocalProvider from 'components/CvLanguageContext'
+import LoadingOrError from 'components/LoadingOrError'
+import { theme } from 'themes/theme'
 
 export default function MyApp({
 	Component,
@@ -60,9 +67,15 @@ export default function MyApp({
 	return (
 		<QueryClientProvider client={queryClient()}>
 			<Hydrate state={pageProps.dehydratedState}>
-				<App isLoading={loading} loadElement={<LoadingOrError />}>
-					<Component {...pageProps} />
-				</App>
+				<CvLocalProvider>
+					<MantineProvider theme={theme}>
+						{/* <ModalsProvider> */}
+						{/* <Notifications> */}
+						{loading ? <LoadingOrError /> : <Component {...pageProps} />}
+						{/* </Notifications> */}
+						{/* </ModalsProvider> */}
+					</MantineProvider>
+				</CvLocalProvider>
 			</Hydrate>
 		</QueryClientProvider>
 	)

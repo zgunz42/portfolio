@@ -1,63 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+'use client'
+
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {
 	AspectRatio,
 	Box,
 	Card,
-	createStyles,
 	Group,
-	Image,
 	Paper,
+	px,
 	Text,
 	Title
 } from '@mantine/core'
 import { useViewportSize } from '@mantine/hooks'
 import { motion } from 'framer-motion'
-import type { ReactElement } from 'react'
 import { useState } from 'react'
 import { Share as ShareIcon, Star as StarIcon } from 'tabler-icons-react'
+import { theme } from 'themes/theme'
 import { titlecase } from 'utils'
-
-const useStyles = createStyles(theme => ({
-	card: {
-		minHeight: '240px',
-		backgroundColor:
-			theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white
-	},
-
-	like: {
-		color: theme.colors.red[6]
-	},
-
-	label: {
-		textTransform: 'uppercase',
-		fontSize: theme.fontSizes.xs,
-		fontWeight: 700
-	},
-	actionCard: {
-		color: theme.colors[theme.primaryColor][5],
-		display: 'flex',
-		gap: theme.spacing.xs / 2,
-		alignItems: 'center',
-		'.label': {
-			lineHeight: '0.5em'
-		},
-		'&:hover': {
-			color: '#fff',
-			transition: 'color position 0.2s ease-in-out',
-			transform: 'translateY(-4px)',
-			backgroundColor: theme.colors[theme.primaryColor][6]
-		}
-	},
-	imgHero: {
-		maxWidth: '100%',
-		height: 'auto',
-		'figure,figure>div': {
-			height: '100%',
-			width: '100%'
-		}
-	}
-}))
+import CvImage from './CvImage'
+import classes from './CvRepoCard.module.css'
 
 interface BadgeCardProperties {
 	image: string
@@ -69,9 +32,9 @@ export default function CvRepoCard({
 	image,
 	title,
 	description
-}: BadgeCardProperties): ReactElement {
+}: BadgeCardProperties): CompElement {
 	const { width } = useViewportSize()
-	const { classes, theme, cx } = useStyles()
+	// const { theme, cx } = useStyles()
 	const [scale, setScale] = useState(720)
 	const onHoverStart = (): void => {
 		setScale(420)
@@ -100,29 +63,33 @@ export default function CvRepoCard({
 				radius='md'
 				className={`${classes.card} p-2 md:p-4`}
 				style={{
-					maxWidth: width <= 600 ? width - theme.spacing.md * 2 : 980 / 3
+					maxWidth:
+						width <= 600
+							? width - (px(theme.spacing?.md) as number) * 2
+							: 980 / 3
 				}}
 			>
 				<Box className='relative'>
 					<AspectRatio
 						ratio={1080 / scale}
-						sx={{
+						style={{
 							maxWidth:
-								width <= 600 ? width - (theme.spacing.md + 8) * 2 : 980 / 3
+								width <= 600
+									? width - ((px(theme.spacing?.md) as number) + 8) * 2
+									: 980 / 3
 						}}
 					>
-						<Image
+						<CvImage
 							src={image}
-							className={cx(classes.imgHero, 'overflow-hidden rounded-lg')}
-							radius={theme.radius.md}
+							className={classes['image-hero']}
+							radius={theme.radius?.md}
 							alt={title}
-							withPlaceholder
 						/>
 					</AspectRatio>
 					<Box className='absolute bottom-0 left-0 right-0 -mb-3 pl-2'>
-						<Group spacing={4}>
+						<Group gap={4}>
 							<Paper
-								className={classes.actionCard}
+								className={classes['action-card']}
 								shadow='lg'
 								radius='lg'
 								p='xs'
@@ -131,7 +98,7 @@ export default function CvRepoCard({
 								<ShareIcon size={16} />
 							</Paper>
 							<Paper
-								className={classes.actionCard}
+								className={classes['action-card']}
 								shadow='lg'
 								radius='lg'
 								p='xs'
@@ -148,10 +115,12 @@ export default function CvRepoCard({
 					className='mx-2 mt-4 mb-6'
 					style={{
 						maxWidth:
-							width <= 600 ? width - (theme.spacing.md + 8) * 2 : 980 / 3
+							width <= 600
+								? width - ((px(theme.spacing?.md) as number) + 8) * 2
+								: 980 / 3
 					}}
 				>
-					<Group position='apart'>
+					<Group justify='space-around'>
 						<Title className='line-clamp-1' order={4}>
 							{titlecase(title)}
 						</Title>

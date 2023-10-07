@@ -1,11 +1,17 @@
+'use client'
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import { Box, createStyles } from '@mantine/core'
-import useWindowSize from 'hooks/useWindowSize'
-import { PietileCarousel } from 'pietile-carousel'
+
+import { Carousel } from '@mantine/carousel'
+import '@mantine/carousel/styles.css'
+import { Box } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import type * as React from 'react'
+import { theme } from 'themes/theme'
+import classes from './CVCarousel.module.css'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface CvCarouselProperties<C = any> {
@@ -13,34 +19,24 @@ interface CvCarouselProperties<C = any> {
 	children: (items: C) => React.ReactElement
 }
 
-const useStyles = createStyles(() => ({
-	carouselStyle: {
-		width: '100%'
-	},
-	itemStyle: {
-		width: '100%',
-		height: '100%'
-	}
-}))
-
 export default function CvCarousel({
 	children,
 	items
-}: CvCarouselProperties): React.ReactElement {
-	const { classes, theme } = useStyles()
-	const { innerWidth } = useWindowSize()
+}: CvCarouselProperties): CompElement {
+	const matches = useMediaQuery(`(max-width: ${theme.breakpoints?.md})`)
 
 	return (
-		<PietileCarousel
-			count={innerWidth < theme.breakpoints.md ? 2 : 4}
-			margin={12}
-			className={classes.carouselStyle}
+		<Carousel
+			slideSize={matches ? '50%' : '25%'}
+			m={12}
+			slideGap='md'
+			className={classes['carousel-style']}
 		>
-			{items.map((child, index) => (
-				<Box className={classes.itemStyle} key={index}>
-					{children(child)}
-				</Box>
+			{items.map<CompElement>((child, index) => (
+				<Carousel.Slide key={index}>
+					<Box className={classes['item-style']}>{children(child)}</Box>
+				</Carousel.Slide>
 			))}
-		</PietileCarousel>
+		</Carousel>
 	)
 }

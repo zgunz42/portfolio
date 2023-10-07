@@ -7,9 +7,9 @@ import CvCarousel from 'components/CvCarousel'
 import CvRepoCard from 'components/CvRepoCard'
 import useLocale from 'hooks/useLocale'
 import Link from 'next/link'
-import type { ReactElement } from 'react'
+import type { JSX } from 'react'
 
-export default function CvGithubTopProject(): ReactElement {
+export default function CvGithubTopProject(): JSX.Element {
 	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 	const { locale } = useLocale()
 	const { data } = useQuery(
@@ -23,7 +23,7 @@ export default function CvGithubTopProject(): ReactElement {
 
 	return (
 		<CvCarousel items={data}>
-			{(item: IProjectList): ReactElement => (
+			{(item: IProjectList): CompElement => (
 				<Link
 					className='block cursor-pointer'
 					key={item.link}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-type-alias */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -6,8 +7,10 @@ import { Image } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
 import type { IMetaImage } from 'api'
 import fetch from 'cross-fetch'
-import type { ReactElement, RefAttributes } from 'react'
+import NextImage from 'next/image'
+import type { RefAttributes } from 'react'
 import { readBlurImage } from 'utils'
+import type { ArgumentsType } from 'vitest'
 
 const fetchImage = async (url: string): Promise<string> => {
 	const paths = url.split('/')
@@ -22,15 +25,32 @@ const fetchImage = async (url: string): Promise<string> => {
 	const blurImage = readBlurImage(imageMeta.hash)
 	return blurImage
 }
+
+type Properties = Omit<
+	// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents, @typescript-eslint/no-magic-numbers
+	ArgumentsType<typeof NextImage>[0] & ImageProps,
+	'src'
+> &
+	RefAttributes<HTMLDivElement> & { src: string }
+
 // NOTE: Expirenemntal
 function CvImage({
 	src,
 	alt,
 	...properties
-}: Omit<ImageProps, 'src'> &
-	RefAttributes<HTMLDivElement> & { src: string }): ReactElement {
+}: Omit<Properties, 'key'>): CompElement {
 	const { data } = useQuery([src], fetchImage.bind(undefined, src))
-	return <Image src={data} alt={alt} withPlaceholder {...properties} />
+	return (
+		<Image
+			component={NextImage}
+			src={data}
+			alt={alt}
+			fallbackSrc='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png'
+			width={600}
+			height={400}
+			{...properties}
+		/>
+	)
 }
 
 export default CvImage

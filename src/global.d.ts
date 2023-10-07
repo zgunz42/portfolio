@@ -63,6 +63,7 @@ declare module '@iak-id/iak-api-server-js' {
 		active_period: string
 		status: string
 		icon_url: string
+		product_category: string
 	}
 
 	interface CheckBalanceResult {
@@ -209,3 +210,18 @@ declare module '@iak-id/iak-api-server-js' {
 		apiKey: string
 	}
 }
+
+declare module '*.module.css' {
+	const classes: Record<string, string>
+	export default classes
+}
+
+// eslint-disable-next-line unicorn/prevent-abbreviations, @typescript-eslint/no-explicit-any
+declare type ArgumentsType<T> = T extends (...args: infer U) => any ? U : never
+
+declare type CompElement = ReactElement<
+	// eslint-disable-next-line @typescript-eslint/sort-type-union-intersection-members, @typescript-eslint/no-explicit-any, @typescript-eslint/no-redundant-type-constituents
+	any,
+	// eslint-disable-next-line @typescript-eslint/sort-type-union-intersection-members, @typescript-eslint/no-explicit-any, @typescript-eslint/no-redundant-type-constituents
+	string | JSXElementConstructor<any>
+>

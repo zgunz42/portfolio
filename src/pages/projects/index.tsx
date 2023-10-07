@@ -4,10 +4,9 @@ import CvGithubRepos from 'containers/CvGithubRepos'
 import useLocale from 'hooks/useLocale'
 import Head from 'next/head'
 import type { ReactElement } from 'react'
-import useAppStyles from 'themes/styles'
+import classes from '../../themes/styles.module.css'
 
 function ProjectPage(): ReactElement {
-	const { classes } = useAppStyles()
 	const { $t } = useLocale()
 	return (
 		<CvPageLayout className='page'>
@@ -21,7 +20,7 @@ function ProjectPage(): ReactElement {
 							dangerouslySetInnerHTML={{
 								__html: $t('project.body.title')
 							}}
-							className={`${classes.titleDecorate} mb-2`}
+							className={`${classes['title-decorate']} mb-2`}
 						/>
 						<Text className={`${classes.text} mx-auto max-w-sm`}>
 							{$t('project.body.description')}

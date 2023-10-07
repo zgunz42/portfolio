@@ -30,5 +30,6 @@
 	"stylelint.validate": ["css"],
 	"typescript.disableAutomaticTypeAcquisition": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"i18n-ally.localesPaths": ["src/data/langs"]
+	"i18n-ally.localesPaths": ["src/data/langs"],
+	"i18n-ally.keystyle": "flat"
 }

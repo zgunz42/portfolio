@@ -1,5 +1,11 @@
+import type { PriceListResult } from '@iak-id/iak-api-server-js'
 import supabase from 'client'
-import { FirstPage, HttpNotFound } from 'constant'
+import {
+	FirstPage,
+	HttpInternalServerError,
+	HttpNotFound,
+	ProductListEndpoint
+} from 'constant'
 import fetch from 'cross-fetch'
 import LoadMoreError from 'errors/LoadMoreError'
 import NotFoundError from 'errors/NotFoundError'
@@ -160,6 +166,10 @@ export interface Schedule extends ScheduleData {
 	created_at: string
 }
 
+export interface IPriceListApiResult {
+	result: PriceListResult
+}
+
 export async function getConfig(language: string): Promise<IConfig> {
 	const result = await fetch(`/_data/${language}/config.json`)
 	if (result.status === HttpNotFound) {
@@ -182,6 +192,18 @@ export async function getPinnedProjects(
 		...data,
 		createdAt: new Date(String(data.createdAt))
 	}))
+}
+
+export async function getProductList(): Promise<PriceListResult> {
+	const result = await fetch(ProductListEndpoint)
+
+	if (result.status === HttpInternalServerError) {
+		throw new Error('failed to load data')
+	}
+
+	const products = (await result.json()) as IPriceListApiResult
+
+	return products.result
 }
 
 export async function getProjectListPaged(

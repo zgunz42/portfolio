@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-type-alias */
 import type * as React from 'react'
 
 export default function CvIconCat(
-	properties: React.SVGProps<SVGSVGElement>
-): React.ReactElement {
+	properties: Omit<
+		React.SVGProps<SVGSVGElement>,
+		'dangerouslySetInnerHTML' | 'key'
+	>
+	// properties: React.SVGProps<SVGSVGElement>
+): CompElement {
 	return (
 		<svg
 			width={500.848}

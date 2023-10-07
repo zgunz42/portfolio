@@ -1,0 +1,17 @@
+.title {
+	text-align: left;
+	margin-top: var(--mantine-spacing-lg);
+
+	@mixin dark {
+		color: var(--mantine-color-gray-0);
+	}
+
+	@mixin light {
+		color: var(--mantine-color-gray-8);
+	}
+}
+
+.not-selectable {
+	user-select: none;
+	cursor: default;
+}

@@ -21,9 +21,8 @@ import { addSchedule, Subject } from 'api'
 import { MeetDuration } from 'constant'
 import useLocale from 'hooks/useLocale'
 import Joi from 'joi'
-import type { ReactElement } from 'react'
 
-function CvContactForm(): ReactElement {
+function CvContactForm(): CompElement {
 	const { $t } = useLocale()
 	const schema = Joi.object<ScheduleData & { termsOfService: boolean }>({
 		fullname: Joi.string()
@@ -56,7 +55,7 @@ function CvContactForm(): ReactElement {
 			message: '',
 			termsOfService: false
 		},
-		schema: joiResolver(schema)
+		validate: joiResolver(schema)
 	})
 
 	const scheduleMutate = useMutation(

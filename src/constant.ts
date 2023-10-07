@@ -47,17 +47,20 @@ export interface IChoiceItem {
 	flag: string
 	name: string
 	value: TypeLanguages
+	label: string
 }
 export const LanguageChoice: IChoiceItem[] = [
 	{
 		flag: 'indonesia_flag.svg',
 		name: 'Bahasa Indonesia',
-		value: Languages['1']
+		value: Languages['1'],
+		label: 'Bahasa Indonesia'
 	},
 	{
 		flag: 'united-states_flag.svg',
 		name: 'English',
-		value: Languages['0']
+		value: Languages['0'],
+		label: 'English'
 	}
 ]
 // Data Model
@@ -68,3 +71,5 @@ export const PageSizeMin = 1
 export const CountMargin = 1
 export const HttpOK = 200
 export const HttpInternalServerError = 500
+
+export const ProductListEndpoint = '/api/products'

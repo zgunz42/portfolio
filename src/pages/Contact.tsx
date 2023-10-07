@@ -15,10 +15,9 @@ import useLocale from 'hooks/useLocale'
 import Head from 'next/head'
 import type { ReactElement } from 'react'
 import { Mail, MapPin, PhoneCall } from 'tabler-icons-react'
-import useAppStyles from 'themes/styles'
+import classes from '../themes/styles.module.css'
 
 function ContactPage(): ReactElement {
-	const { classes } = useAppStyles()
 	// eslint-disable-next-line @typescript-eslint/unbound-method
 	const { $t } = useLocale()
 	return (
@@ -33,11 +32,9 @@ function ContactPage(): ReactElement {
 						<span>{$t('me')}</span>
 					</Title>
 					<SimpleGrid
-						cols={2}
-						breakpoints={[
-							// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-							{ maxWidth: 600, cols: 1, spacing: 'xl' }
-						]}
+						// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+						cols={{ lg: 2, md: 1 }}
+						spacing={{ md: 'xl' }}
 					>
 						<Box>
 							<Title order={2} className='mb-8'>

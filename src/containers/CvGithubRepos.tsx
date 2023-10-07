@@ -1,23 +1,15 @@
 import { Box, Button, SimpleGrid, Text } from '@mantine/core'
 import CvRepoCard from 'components/CvRepoCard'
-import {
-	ColumnMD,
-	ColumnSM,
-	ColumnXS,
-	ScreenSizeMD,
-	ScreenSizeSM,
-	ScreenSizeXS
-} from 'constant'
 import useLocale from 'hooks/useLocale'
 import useProjectList from 'hooks/useProjectList'
 import { flatten } from 'lodash'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
 import { ArrowWaveLeftDown, ArrowWaveRightDown } from 'tabler-icons-react'
-import useAppStyles from 'themes/styles'
+import classes from '../themes/styles.module.css'
 
 export default function CvGithubRepos(): ReactElement {
-	const { classes } = useAppStyles()
+	// const { classes } = useAppStyles()
 	const { data, fetchNextPage, isLoadMoreError } = useProjectList()
 	const { $t } = useLocale()
 
@@ -28,12 +20,9 @@ export default function CvGithubRepos(): ReactElement {
 	return (
 		<Box>
 			<SimpleGrid
-				cols={4}
-				breakpoints={[
-					{ maxWidth: ScreenSizeMD, cols: ColumnMD, spacing: 'md' },
-					{ maxWidth: ScreenSizeSM, cols: ColumnSM, spacing: 'sm' },
-					{ maxWidth: ScreenSizeXS, cols: ColumnXS, spacing: 'xs' }
-				]}
+				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+				cols={{ lg: 4, md: 3, sm: 2, xs: 1 }}
+				spacing={{ lg: 'md', md: 'sm', sm: 'xs', xs: 0 }}
 			>
 				{data === undefined ? (
 					<Text>Loading...</Text>
@@ -69,8 +58,8 @@ export default function CvGithubRepos(): ReactElement {
 					>
 						<Button
 							variant='subtle'
-							leftIcon={<ArrowWaveLeftDown />}
-							rightIcon={<ArrowWaveRightDown />}
+							leftSection={<ArrowWaveLeftDown />}
+							rightSection={<ArrowWaveRightDown />}
 							className='mx-auto block'
 							onClick={onLoadMore}
 						>

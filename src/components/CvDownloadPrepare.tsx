@@ -23,10 +23,11 @@ function CvDownloadPrepare({ progress }: Properties): ReactElement {
 			<Progress
 				className='mx-auto max-w-xs'
 				value={progress}
-				label={`${progress}%`}
 				size='xl'
 				radius='xl'
-			/>
+			>
+				<Progress.Label>{`${progress}%`}</Progress.Label>
+			</Progress>
 			<Text className='mt-4 mb-8 max-w-sm text-xs'>
 				<Clock size='0.75rem' className='ml-2 mr-1 inline-block' />
 				{$t('download.cv.prepare.text')}

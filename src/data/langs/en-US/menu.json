@@ -11,6 +11,11 @@
 			"label": "About"
 		},
 		{
+			"link": "/products",
+			"icon": "product",
+			"label": "Product"
+		},
+		{
 			"link": "/projects",
 			"icon": "app",
 			"label": "Projects"

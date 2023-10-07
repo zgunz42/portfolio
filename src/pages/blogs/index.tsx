@@ -13,14 +13,13 @@ import CvPageLayout from 'components/CvPageLayout'
 import useBlogList from 'hooks/useBlogList'
 import useLocale from 'hooks/useLocale'
 import { flatten } from 'lodash'
+import Head from 'next/head'
 import Link from 'next/link'
 import type { ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
 import { ArrowWaveLeftDown, ArrowWaveRightDown } from 'tabler-icons-react'
-import useAppStyles from 'themes/styles'
+import classes from 'themes/styles.module.css'
 
 function BlogPage(): ReactElement {
-	const { classes, theme } = useAppStyles()
 	const { data, fetchNextPage, isLoadMoreError } = useBlogList()
 	const { $t } = useLocale()
 
@@ -31,9 +30,9 @@ function BlogPage(): ReactElement {
 	return (
 		<CvPageLayout>
 			<Stack align='stretch' justify='center'>
-				<Helmet>
+				<Head>
 					<title>Blog | Adi Gunawan</title>
-				</Helmet>
+				</Head>
 				<Container>
 					<Box className='mt-12 mb-8 text-center'>
 						<Title
@@ -50,13 +49,8 @@ function BlogPage(): ReactElement {
 						<Text>Loading...</Text>
 					) : (
 						<SimpleGrid
-							cols={3}
-							spacing={theme.spacing.xl}
-							breakpoints={[
-								{ maxWidth: 980, cols: 3, spacing: 'md' },
-								{ maxWidth: 755, cols: 2, spacing: 'sm' },
-								{ maxWidth: 600, cols: 1, spacing: 'xs' }
-							]}
+							cols={{ lg: 3, md: 2, sm: 1 }}
+							spacing={{ lg: 'md', md: 'sm', sm: 'xs', xs: 0 }}
 						>
 							{flatten(data.pages).map(post => (
 								<Link key={post.link} href={`blogs/${post.link}`}>
@@ -79,8 +73,8 @@ function BlogPage(): ReactElement {
 						>
 							<Button
 								variant='subtle'
-								leftIcon={<ArrowWaveLeftDown />}
-								rightIcon={<ArrowWaveRightDown />}
+								leftSection={<ArrowWaveLeftDown />}
+								rightSection={<ArrowWaveRightDown />}
 								className='mx-auto block'
 								onClick={onLoadMore}
 							>

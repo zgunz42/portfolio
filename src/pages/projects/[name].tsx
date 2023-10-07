@@ -3,9 +3,7 @@ import {
 	Box,
 	Button,
 	Container,
-	createStyles,
 	Group,
-	Image,
 	Stack,
 	Text,
 	Title,
@@ -14,6 +12,7 @@ import {
 import { useQuery } from '@tanstack/react-query'
 import type { IProject } from 'api'
 import { getNodeProjectDetail, getProjectDetail, getProjectList } from 'api'
+import CvImage from 'components/CvImage'
 import CvPageLayout from 'components/CvPageLayout'
 import LoadingOrError from 'components/LoadingOrError'
 import NotFoundError from 'errors/NotFoundError'
@@ -28,34 +27,12 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import ReactMarkdown from 'react-markdown'
-
-const useStyle = createStyles(() => ({
-	articleBody: {
-		letterSpacing: '0.01em',
-		lineHeight: '1.5em',
-		'ol, ul, menu': {
-			listStyle: 'inherit'
-		}
-	},
-	wrapper: {
-		margin: '0 auto',
-		padding: '0 1em',
-		maxWidth: '800px'
-	},
-	imgHero: {
-		maxWidth: '100%',
-		height: 'auto',
-		'figure,figure>div': {
-			height: '100%'
-		}
-	}
-}))
+import classes from '../../themes/project.module.css'
 
 function ProjectDetailPage({
 	project,
 	name
 }: InferGetStaticPropsType<typeof getStaticProps>): ReactElement {
-	const { classes, cx } = useStyle()
 	const { $t, locale } = useLocale()
 	const router = useRouter()
 	const { data } = useQuery(
@@ -85,13 +62,13 @@ function ProjectDetailPage({
 						<Text className='mt-4'>{project.attributes.description}</Text>
 					</TypographyStylesProvider>
 					<Box className='mt-8 mb-12 h-72 w-full overflow-hidden rounded-md text-right'>
-						<Image
-							className={cx(classes.imgHero, ' h-72 w-full object-cover')}
+						<CvImage
+							className={classes['img-hero']}
 							src={project.attributes.thumbnail}
-							withPlaceholder
+							alt={project.attributes.name}
 						/>
 					</Box>
-					<Group spacing={8} className='mt-8 mb-12'>
+					<Group gap={8} className='mt-8 mb-12'>
 						<Button>
 							<a
 								href={project.attributes.demoUrl}
@@ -112,7 +89,7 @@ function ProjectDetailPage({
 						</Button>
 					</Group>
 					<TypographyStylesProvider>
-						<article className={classes.articleBody}>
+						<article className={classes['article-body']}>
 							<ReactMarkdown unwrapDisallowed>{project.body}</ReactMarkdown>
 						</article>
 					</TypographyStylesProvider>

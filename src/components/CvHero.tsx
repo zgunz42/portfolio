@@ -5,7 +5,6 @@ import {
 	Box,
 	Button,
 	Container,
-	createStyles,
 	Group,
 	Image,
 	Text,
@@ -15,71 +14,8 @@ import useLocale from 'hooks/useLocale'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { FileDownload as FileDownloadIcon } from 'tabler-icons-react'
+import classes from './CvHero.module.css'
 import CvProfileAvatar from './CvProfileAvatar'
-
-const useStyles = createStyles(theme => ({
-	layout: {
-		color: theme.colors.gray[0]
-	},
-	inner: {
-		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		// paddingTop: theme.spacing.xl * 4 + 60,
-		paddingBottom: theme.spacing.xl * 4,
-		[theme.fn.smallerThan('md')]: {
-			paddingTop: theme.spacing.md * 4,
-			textAlign: 'center',
-			flexWrap: 'wrap',
-			flexDirection: 'column-reverse'
-		}
-	},
-
-	content: {
-		flex: 50,
-		marginTop: 60,
-		[theme.fn.smallerThan('md')]: {
-			maxWidth: '100%',
-			flex: 1
-		}
-	},
-
-	title: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily ?? 'sans-serif'}`,
-		fontSize: 44,
-		lineHeight: 1.2,
-		fontWeight: 900,
-
-		[theme.fn.smallerThan('xs')]: {
-			fontSize: 28
-		}
-	},
-
-	subtitle: {
-		fontFamily: `Greycliff CF, ${theme.fontFamily ?? 'sans-serif'}`,
-		fontSize: 24,
-		lineHeight: 1.2,
-		maxWidth: theme.breakpoints.md
-	},
-
-	control: {
-		[theme.fn.smallerThan('xs')]: {
-			flex: 1
-		}
-	},
-
-	image: {
-		flex: 50,
-		alignSelf: 'center',
-		[theme.fn.smallerThan('md')]: {
-			width: '80%',
-			display: 'block',
-			margin: 'auto',
-			marginBottom: theme.spacing.sm,
-			flex: 1
-		}
-	}
-}))
 
 interface CvHeroProperties {
 	name: string
@@ -92,7 +28,6 @@ export default function CvHero({
 	bio,
 	github
 }: CvHeroProperties): ReactElement {
-	const { classes } = useStyles()
 	const router = useRouter()
 	const { $t } = useLocale()
 	const onToCv = (): void => {
@@ -114,7 +49,7 @@ export default function CvHero({
 								{bio}
 							</Text>
 
-							<Group mt={30} className='w-full' spacing='sm'>
+							<Group mt={30} className='w-full' gap='sm' align='center'>
 								<Image
 									src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${github}&layout=compact&text_color=1C7ED6&title_color=1C7ED6&bg_color=141321&count_private=true&include_all_commits=true&langs_count=10&hide_title=true`}
 									alt='github status'
@@ -122,21 +57,21 @@ export default function CvHero({
 									style={{
 										minHeight: 207
 									}}
-									withPlaceholder
-									caption={
-										<span>
-											{$t('cv.hero.githubStatus')}
-											<a
-												target='_blank'
-												className='ml-1 text-blue-500 underline'
-												href='https://github-readme-stats.vercel.app'
-												rel='noreferrer'
-											>
-												GithubReadmeStats
-											</a>
-										</span>
-									}
+									fallbackSrc='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png'
+									width={600}
+									height={400}
 								/>
+								<span>
+									{$t('cv.hero.githubStatus')}
+									<a
+										target='_blank'
+										className='ml-1 text-blue-500 underline'
+										href='https://github-readme-stats.vercel.app'
+										rel='noreferrer'
+									>
+										GithubReadmeStats
+									</a>
+								</span>
 							</Group>
 
 							<Group mt={30} className='flex w-full justify-center'>
@@ -155,7 +90,7 @@ export default function CvHero({
 									radius='xl'
 									onClick={onToCv}
 									size='md'
-									leftIcon={<FileDownloadIcon />}
+									leftSection={<FileDownloadIcon />}
 									className={classes.control}
 								>
 									{$t('cv.hero.download_cv')}

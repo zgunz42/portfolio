@@ -46,5 +46,7 @@
 	"contact.form.subject.placeholder": "Subject",
 	"contact.form.meet_date.placeholder": "Choose a date",
 	"contact.form.subject.label": "Subject",
-	"site.loadMore": "Show More"
+	"site.loadMore": "Show More",
+	"product.list.title": "<span>Products</span> and <span>Services</span> catalogues",
+	"product.list.text": "The following are the products and services available"
 }

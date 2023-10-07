@@ -1,0 +1,28 @@
+.article-body {
+	letter-spacing: 0.01em;
+	line-height: 1.5em;
+
+	ol,
+	ul,
+	menu {
+		list-style: inherit;
+	}
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 0 1rem;
+	max-width: 800px;
+}
+
+.img-article {
+	@apply mb-4 mt-12 h-64 overflow-hidden rounded-md object-cover shadow-md;
+
+	max-width: 100%;
+	height: auto;
+
+	figure,
+	figure > div {
+		height: 100%;
+	}
+}

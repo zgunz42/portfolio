@@ -1,7 +1,7 @@
 import { Badge, Box, Group, Text, Title } from '@mantine/core'
-import type { MouseEventHandler, ReactElement } from 'react'
+import type { MouseEventHandler } from 'react'
 import { ArrowRight } from 'tabler-icons-react'
-import useAppStyles from 'themes/styles'
+import classes from '../themes/styles.module.css'
 
 interface Properties {
 	tags: string[]
@@ -17,10 +17,9 @@ function CvBlogCard({
 	description,
 	readTime,
 	onMoreClick
-}: Properties): ReactElement {
-	const { classes } = useAppStyles()
+}: Properties): CompElement {
 	return (
-		<Box className={classes.blogCard}>
+		<Box className={classes['blog-card']}>
 			<Box className='flex items-center gap-2'>
 				{tags.map((tag: string) => (
 					<Badge key={tag} size='lg' radius='sm'>
@@ -36,7 +35,7 @@ function CvBlogCard({
 			</Text>
 			<Box>
 				<Box className='mt-8 flex items-baseline justify-between text-gray-400'>
-					<Group onClick={onMoreClick} className='shine' spacing='xs'>
+					<Group onClick={onMoreClick} className='shine' gap='xs'>
 						<Text>Read More</Text>
 						<ArrowRight />
 					</Group>

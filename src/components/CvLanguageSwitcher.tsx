@@ -1,24 +1,34 @@
-import { Avatar, Group, Select, Text } from '@mantine/core'
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+import {
+	Avatar,
+	Combobox,
+	Group,
+	Input,
+	InputBase,
+	Text,
+	useCombobox
+} from '@mantine/core'
 import type { IChoiceItem, TypeLanguages } from 'constant'
 import { LanguageChoice } from 'constant'
 import useLocale from 'hooks/useLocale'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 import { forwardRef } from 'react'
+import type { ArgumentsType } from 'vitest'
 import { useLanguageContext } from './CvLanguageContext'
 
 const SelectItem = forwardRef<HTMLDivElement, IChoiceItem>(
-	({ flag, name, ...others }: IChoiceItem, reference) => (
+	({ flag, name, label, value, ...others }: IChoiceItem, reference) => (
 		// eslint-disable-next-line react/jsx-props-no-spreading
-		<div ref={reference} {...others}>
-			<Group noWrap>
+		<Combobox.Option value={value} key={value} ref={reference} {...others}>
+			<Group>
 				<Avatar src={`/images/${flag}`} />
 
 				<div>
 					<Text size='sm'>{name}</Text>
 				</div>
 			</Group>
-		</div>
+		</Combobox.Option>
 	)
 )
 
@@ -26,34 +36,60 @@ function getLanguageName(language: TypeLanguages): string {
 	return LanguageChoice.find(item => item.value === language)?.name ?? ''
 }
 
-// eslint-disable-next-line @typescript-eslint/no-type-alias
-type Properties = Omit<
-	// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-	Parameters<typeof Select>[0],
-	'data' | 'itemComponent' | 'onChange' | 'value'
->
-
 export default function CvLanguageSwitcher(
-	properties: Properties
+	properties: ArgumentsType<typeof Combobox>[0]
 ): ReactElement {
+	const combobox = useCombobox({
+		onDropdownClose: () => combobox.resetSelectedOption()
+	})
 	const { language, setLanguage } = useLanguageContext()
+	// const [value, setValue] = useState<string | null>(null)
 	const { $t } = useLocale()
 	const router = useRouter()
-	const onChangeLanguage = (value: TypeLanguages): void => {
-		setLanguage(value)
-		void router.push(router.pathname, router.pathname, { locale: value })
+	const languageName = getLanguageName(language)
+
+	const onToggleClick = (): void => {
+		combobox.toggleDropdown()
+	}
+
+	const onComboClick = (value_: string): void => {
+		setLanguage(value_ as typeof language)
+		combobox.closeDropdown()
+		void router.push(router.pathname, router.pathname, { locale: value_ })
 	}
 
 	return (
-		<Select
+		<Combobox
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...properties}
-			label={$t('widget.language.title')}
-			placeholder={getLanguageName(language)}
-			value={language}
-			data={LanguageChoice}
-			itemComponent={SelectItem}
-			onChange={onChangeLanguage}
-		/>
+			// placeholder={getLanguageName(language)}
+			// value={language}
+			// data={LanguageChoice}
+			// itemComponent={SelectItem}
+			// onChange={onChangeLanguage}
+			onOptionSubmit={onComboClick}
+		>
+			<Combobox.Target>
+				<InputBase
+					component='button'
+					pointer
+					rightSection={<Combobox.Chevron />}
+					onClick={onToggleClick}
+				>
+					{languageName || (
+						<Input.Placeholder>{$t('widget.language.title')}</Input.Placeholder>
+					)}
+				</InputBase>
+			</Combobox.Target>
+
+			<Combobox.Dropdown>
+				<Combobox.Options>
+					{LanguageChoice.map((item, index) => (
+						// eslint-disable-next-line react/jsx-props-no-spreading, react/no-array-index-key
+						<SelectItem {...item} key={index} />
+					))}
+				</Combobox.Options>
+			</Combobox.Dropdown>
+		</Combobox>
 	)
 }
