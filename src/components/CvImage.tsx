@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /* eslint-disable @typescript-eslint/no-type-alias */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
@@ -5,14 +6,19 @@
 import type { ImageProps } from '@mantine/core'
 import { Image } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
-import type { IMetaImage } from 'api'
 import fetch from 'cross-fetch'
 import NextImage from 'next/image'
 import type { RefAttributes } from 'react'
 import { readBlurImage } from 'utils'
 import type { ArgumentsType } from 'vitest'
 
-const fetchImage = async (url: string): Promise<string> => {
+export interface ImageInfo {
+	filename: string
+	hash: string
+	sources: string[]
+}
+
+const fetchImage = async (url: string): Promise<ImageInfo> => {
 	const paths = url.split('/')
 	const filename = paths.pop()
 	if (!filename) {
@@ -21,9 +27,10 @@ const fetchImage = async (url: string): Promise<string> => {
 	const imageResponse = await fetch(
 		`${window.location.origin}${paths.join('/')}/__generated/${filename}.json`
 	)
-	const imageMeta = (await imageResponse.json()) as IMetaImage
+	const imageMeta = (await imageResponse.json()) as ImageInfo
 	const blurImage = readBlurImage(imageMeta.hash)
-	return blurImage
+	imageMeta.hash = blurImage
+	return imageMeta
 }
 
 type Properties = Omit<
@@ -43,11 +50,12 @@ function CvImage({
 	return (
 		<Image
 			component={NextImage}
-			src={data}
+			src={data ? `/images/__generated/${data.sources[1]}` : src}
 			alt={alt}
+			blurDataURL={data ? data.blur : undefined}
 			fallbackSrc='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png'
-			width={600}
-			height={400}
+			fill
+			style={{ objectFit: 'cover' }}
 			{...properties}
 		/>
 	)

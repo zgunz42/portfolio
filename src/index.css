@@ -421,13 +421,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: rgb(28 126 214);
+	background: var(--mantine-primary-color-filled-hover);
 	border-radius: 12px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(28 126 214);
+	background: var(--mantine-primary-color-filled-hover);
 	border-radius: 12px;
 }
 

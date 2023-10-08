@@ -22,7 +22,7 @@ function ProjectPage(): ReactElement {
 							}}
 							className={`${classes['title-decorate']} mb-2`}
 						/>
-						<Text className={`${classes.text} mx-auto max-w-sm`}>
+						<Text className={`${classes.text} mx-auto inline-block max-w-sm`}>
 							{$t('project.body.description')}
 						</Text>
 					</Box>

@@ -24,9 +24,9 @@ import Head from 'next/head'
 import type { ReactElement } from 'react'
 import GitHubCalendar from 'react-github-calendar'
 import { CircleCheck } from 'tabler-icons-react'
-import classes from 'themes/about.module.css'
 import { theme } from 'themes/theme'
 import { composeImageUrl } from 'utils'
+import classes from '../themes/about.module.css'
 
 function AboutPage(): ReactElement {
 	const { data } = useConfig()
@@ -74,7 +74,7 @@ function AboutPage(): ReactElement {
 							</Box>
 							<Blockquote cite={data?.fullName}>{data?.quote}</Blockquote>
 						</Box>
-						<Box className={classes.introductionImage}>
+						<Box className={classes['introduction-image']}>
 							<Image
 								src='/images/you%20got%20it%20boss.png'
 								alt='working on job'
@@ -97,9 +97,9 @@ function AboutPage(): ReactElement {
 							spacing={{ md: 'md', sm: 'sm' }}
 						>
 							{data?.about.skills.map(({ icon, name }) => (
-								<Box key={name} className={classes.cardSkill}>
+								<Box key={name} className={classes['card-skill']}>
 									<Image src={composeImageUrl(icon, 320 / 3)} alt={name} />
-									<Box className='card-skill-details'>
+									<Box className={classes['card-skill-details']}>
 										<Title order={3}>{name}</Title>
 									</Box>
 								</Box>
@@ -122,13 +122,13 @@ function AboutPage(): ReactElement {
 							spacing={{ md: 'md', sm: 'sm' }}
 						>
 							{data?.about.tools.map(({ icon, name, hasColor }) => (
-								<Box key={name} className={classes.cardSkill}>
+								<Box key={name} className={classes['card-skill']}>
 									<Image
 										src={composeImageUrl(icon, 320 / 3, 'ffffff')}
-										className={hasColor ? classes.filterBg : ''}
+										className={hasColor ? classes['filter-by'] : ''}
 										alt={name}
 									/>
-									<Box className='card-skill-details'>
+									<Box className={classes['card-skill-details']}>
 										<Title order={3}>{name}</Title>
 									</Box>
 								</Box>

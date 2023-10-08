@@ -17,8 +17,14 @@
 	padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
 
 	@media (max-width: $mantine-breakpoint-sm) {
+		flex-wrap: wrap;
+		align-items: center;
 		margin-top: var(--mantine-spacing-lg);
 		margin-bottom: var(--mantine-spacing-sm);
+	}
+
+	@media (max-width: $mantine-breakpoint-xs) {
+		justify-content: center;
 	}
 }
 @media (max-width: $mantine-breakpoint-sm) {

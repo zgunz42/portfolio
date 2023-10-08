@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-handler-names */
+
 'use client'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -6,11 +8,10 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { Carousel } from '@mantine/carousel'
-import '@mantine/carousel/styles.css'
 import { Box } from '@mantine/core'
-import { useMediaQuery } from '@mantine/hooks'
-import type * as React from 'react'
-import { theme } from 'themes/theme'
+import Autoplay from 'embla-carousel-autoplay'
+import type { EmblaPluginType } from 'embla-carousel-react'
+import * as React from 'react'
 import classes from './CVCarousel.module.css'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,14 +24,25 @@ export default function CvCarousel({
 	children,
 	items
 }: CvCarouselProperties): CompElement {
-	const matches = useMediaQuery(`(max-width: ${theme.breakpoints?.md})`)
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+	const autoplay = React.useRef(Autoplay({ delay: 2000 }))
 
 	return (
 		<Carousel
-			slideSize={matches ? '50%' : '25%'}
-			m={12}
-			slideGap='md'
-			className={classes['carousel-style']}
+			slideSize={{ lg: '25%', md: '50%', sm: '50%', base: '100%' }}
+			slideGap={{ lg: 'xl', md: 'md', sm: 'md', xs: 'sm' }}
+			align='start'
+			height='100%'
+			withControls={false}
+			plugins={[autoplay.current as unknown as EmblaPluginType]}
+			onMouseEnter={autoplay.current.stop}
+			onMouseLeave={autoplay.current.reset}
+			style={{ maxWidth: '100vw' }}
+			loop
+			classNames={{
+				root: classes['carousel-style'],
+				slide: classes.slide
+			}}
 		>
 			{items.map<CompElement>((child, index) => (
 				<Carousel.Slide key={index}>

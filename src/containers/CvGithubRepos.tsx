@@ -1,4 +1,4 @@
-import { Box, Button, SimpleGrid, Text } from '@mantine/core'
+import { Box, Button, Center, SimpleGrid, Text } from '@mantine/core'
 import CvRepoCard from 'components/CvRepoCard'
 import useLocale from 'hooks/useLocale'
 import useProjectList from 'hooks/useProjectList'
@@ -22,7 +22,7 @@ export default function CvGithubRepos(): ReactElement {
 			<SimpleGrid
 				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 				cols={{ lg: 4, md: 3, sm: 2, xs: 1 }}
-				spacing={{ lg: 'md', md: 'sm', sm: 'xs', xs: 0 }}
+				spacing={{ lg: 'md', md: 'md', sm: 'sm', xs: 'sm' }}
 			>
 				{data === undefined ? (
 					<Text>Loading...</Text>
@@ -44,33 +44,40 @@ export default function CvGithubRepos(): ReactElement {
 				)}
 			</SimpleGrid>
 			<Box
-				className='w-fill mt-8'
+				className='w-fill mt-8 mb-12'
 				style={{
 					maxWidth: '100vw'
 				}}
 			>
 				{data !== undefined && data.pages.length > 0 && !isLoadMoreError ? (
-					<Box
-						className='w-fill mt-8'
-						style={{
-							maxWidth: '100vw'
-						}}
-					>
-						<Button
-							variant='subtle'
-							leftSection={<ArrowWaveLeftDown />}
-							rightSection={<ArrowWaveRightDown />}
-							className='mx-auto block'
-							onClick={onLoadMore}
+					<Center>
+						<Box
+							className='w-fill mt-8'
+							style={{
+								maxWidth: '100vw'
+							}}
 						>
-							{$t('site.loadMore')}
-						</Button>
-					</Box>
+							<Button
+								variant='subtle'
+								leftSection={<ArrowWaveLeftDown />}
+								rightSection={<ArrowWaveRightDown />}
+								className='mx-auto block'
+								classNames={{
+									root: 'block'
+								}}
+								onClick={onLoadMore}
+							>
+								{$t('site.loadMore')}
+							</Button>
+						</Box>
+					</Center>
 				) : undefined}
 				{isLoadMoreError ? (
-					<Text className={`${classes.text} mt-8 text-center`}>
-						{$t('blog.list.loadMoreError')}
-					</Text>
+					<Center>
+						<Text className={`${classes.text} mt-8 text-center`}>
+							{$t('blog.list.loadMoreError')}
+						</Text>
+					</Center>
 				) : undefined}
 			</Box>
 		</Box>

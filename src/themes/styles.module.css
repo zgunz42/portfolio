@@ -27,7 +27,7 @@
 }
 
 .title {
-	text-align: center;
+	/* text-align: center; */
 
 	@mixin dark {
 		color: var(--mantine-color-gray-0);
@@ -46,7 +46,7 @@
 	cursor: pointer;
 
 	@mixin dark {
-		background: var(--mantine-color-gray-0);
+		background: transparent;
 	}
 
 	@mixin light {
@@ -69,5 +69,6 @@
 .divider {
 	width: 100%;
 	height: 5px;
-	background-color: var(--mantine-color-primary-5);
+	margin-bottom: var(--mantine-spacing-md);
+	background-color: var(--mantine-color-anchor);
 }

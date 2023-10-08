@@ -46,22 +46,39 @@ export default function CvFooterCentered({
 				<Group className={`${classes.links} ml-3`}>{items}</Group>
 
 				<Group gap={0} justify='right'>
-					<ActionIcon className='hover:scale-125 hover:text-facebook' size='lg'>
+					<ActionIcon
+						variant='transparent'
+						className='hover:scale-125 hover:text-facebook'
+						size='lg'
+					>
 						<BrandFacebook size={18} />
 					</ActionIcon>
-					<ActionIcon className='hover:scale-125 hover:text-twitter' size='lg'>
+					<ActionIcon
+						variant='transparent'
+						className='hover:scale-125 hover:text-twitter'
+						size='lg'
+					>
 						<BrandTwitter size={18} />
 					</ActionIcon>
 					<ActionIcon
+						variant='transparent'
 						className='hover:scale-125 hover:text-instagram'
 						size='lg'
 					>
 						<BrandInstagram size={18} />
 					</ActionIcon>
-					<ActionIcon className='hover:scale-125 hover:text-linkedin' size='lg'>
+					<ActionIcon
+						variant='transparent'
+						className='hover:scale-125 hover:text-linkedin'
+						size='lg'
+					>
 						<BrandLinkedin size={18} />
 					</ActionIcon>
-					<ActionIcon className='hover:scale-125 hover:text-whatsapp' size='lg'>
+					<ActionIcon
+						variant='transparent'
+						className='hover:scale-125 hover:text-whatsapp'
+						size='lg'
+					>
 						<BrandWhatsapp size={18} />
 					</ActionIcon>
 				</Group>

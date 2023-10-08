@@ -25,7 +25,7 @@ const nextConfig = withPlugins([withPWA, withBundleAnalyzer], {
 	// 	ignoreDuringBuilds: true
 	// },
 	images: {
-		domains: ['www.signfix.com.au']
+		domains: ['www.signfix.com.au', 'picsum.photos']
 	},
 	experimental: {
 		optimizePackageImports: ['@mantine/core', '@mantine/hooks']

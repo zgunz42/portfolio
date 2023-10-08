@@ -3,7 +3,7 @@ title: Kirim Email Menggunakan Echo
 description: |
   Kirim Email Menggunakan Golang Dengan Kekuatan SMTP
   pakai Echo (Golang Framework)
-thumbnail: http://placeimg.com/640/480/tank
+thumbnail: https://picsum.photos/640/480
 publishedAt: '2022-06-26T03:34:09.275Z'
 label:
   - golang

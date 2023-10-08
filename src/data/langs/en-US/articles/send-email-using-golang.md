@@ -2,7 +2,7 @@
 title: Send an email using Echo (Golang Framework)
 description: |
   Send email using golang with power of SMTP
-thumbnail: http://placeimg.com/640/480/tank
+thumbnail: https://picsum.photos/640/480
 publishedAt: '2022-06-26T03:34:09.275Z'
 label:
   - golang

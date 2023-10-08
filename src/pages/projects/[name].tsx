@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {
+	AspectRatio,
 	Box,
 	Button,
 	Container,
@@ -62,11 +63,13 @@ function ProjectDetailPage({
 						<Text className='mt-4'>{project.attributes.description}</Text>
 					</TypographyStylesProvider>
 					<Box className='mt-8 mb-12 h-72 w-full overflow-hidden rounded-md text-right'>
-						<CvImage
-							className={classes['img-hero']}
-							src={project.attributes.thumbnail}
-							alt={project.attributes.name}
-						/>
+						<AspectRatio ratio={1080 / 720}>
+							<CvImage
+								className={classes['img-hero']}
+								src={project.attributes.thumbnail}
+								alt={project.attributes.name}
+							/>
+						</AspectRatio>
 					</Box>
 					<Group gap={8} className='mt-8 mb-12'>
 						<Button>

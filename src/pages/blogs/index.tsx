@@ -2,6 +2,7 @@
 import {
 	Box,
 	Button,
+	Center,
 	Container,
 	SimpleGrid,
 	Stack,
@@ -41,7 +42,7 @@ function BlogPage(): ReactElement {
 							}}
 							className={`${classes.titleDecorate} mb-2`}
 						/>
-						<Text className={`${classes.text} mx-auto max-w-sm`}>
+						<Text className={`${classes.text} mx-auto inline-block max-w-sm`}>
 							{$t('blog.list.text')}
 						</Text>
 					</Box>
@@ -64,29 +65,31 @@ function BlogPage(): ReactElement {
 							))}
 						</SimpleGrid>
 					)}
-					{data !== undefined && data.pages.length > 0 && !isLoadMoreError ? (
-						<Box
-							className='w-fill mt-8'
-							style={{
-								maxWidth: '100vw'
-							}}
-						>
-							<Button
-								variant='subtle'
-								leftSection={<ArrowWaveLeftDown />}
-								rightSection={<ArrowWaveRightDown />}
-								className='mx-auto block'
-								onClick={onLoadMore}
-							>
-								{$t('site.loadMore')}
-							</Button>
-						</Box>
-					) : undefined}
-					{isLoadMoreError ? (
-						<Text className={`${classes.text} mt-8 text-center`}>
-							{$t('blog.list.loadMoreError')}
-						</Text>
-					) : undefined}
+					<Center>
+						{data !== undefined && data.pages.length > 0 && !isLoadMoreError ? (
+							<Center maw={100}>
+								<Box className='w-fill mt-8'>
+									<Button
+										variant='subtle'
+										leftSection={<ArrowWaveLeftDown />}
+										rightSection={<ArrowWaveRightDown />}
+										className='mx-auto block'
+										classNames={{
+											root: 'block'
+										}}
+										onClick={onLoadMore}
+									>
+										{$t('site.loadMore')}
+									</Button>
+								</Box>
+							</Center>
+						) : undefined}
+						{isLoadMoreError ? (
+							<Text className={`${classes.text} mt-8 text-center`}>
+								{$t('blog.list.loadMoreError')}
+							</Text>
+						) : undefined}
+					</Center>
 				</Container>
 			</Stack>
 		</CvPageLayout>

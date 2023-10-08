@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import Giscus from '@giscus/react'
 import {
+	AspectRatio,
 	Badge,
 	Box,
 	Card,
@@ -75,11 +77,13 @@ function BlogArticlePage({
 				<Card className={`${appClasses.text} giscus mt-16`}>
 					<Title>{article.attributes.title}</Title>
 					<Text className='mt-4 mb-12'>Diterbitkan {publishAt}</Text>
-					<CvImage
-						className={classes['img-hero']}
-						src={article.attributes.thumbnail}
-						alt={article.attributes.title}
-					/>
+					<AspectRatio ratio={1080 / 720}>
+						<CvImage
+							className={classes['img-hero']}
+							src={article.attributes.thumbnail}
+							alt={article.attributes.title}
+						/>
+					</AspectRatio>
 					<article className={classes['article-body']}>
 						<TypographyStylesProvider>
 							<ReactMarkdown unwrapDisallowed>{article.body}</ReactMarkdown>

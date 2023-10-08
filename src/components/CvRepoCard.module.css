@@ -8,6 +8,11 @@
 	@mixin light {
 		background-color: var(--mantine-color-gray-8);
 	}
+
+	@media (max-width: $mantine-breakpoint-sm) {
+		max-width: 393px;
+		margin-bottom: var(--mantine-spacing-md);
+	}
 }
 
 .like {
@@ -21,7 +26,7 @@
 }
 
 .action-card {
-	color: var(--mantine-color-primary-color-5);
+	color: var(--mantine-color-sambat-5);
 	display: flex;
 	gap: calc(var(--mantine-spacing-md) / 2rem);
 	align-items: center;
@@ -34,7 +39,7 @@
 		color: white;
 		transition: color position 0.2s ease-in-out;
 		transform: translateY(-4px);
-		background-color: var(--mantine-color-primary-color-6);
+		background-color: var(--mantine-color-sambat-6);
 	}
 
 	.image-hero {

@@ -27,10 +27,10 @@ function CvBlogCard({
 					</Badge>
 				))}
 			</Box>
-			<Title order={3} className='shine title my-4'>
+			<Title order={3} className={`${classes.shine} ${classes.title} my-4`}>
 				{title}
 			</Title>
-			<Text className='content' lineClamp={3}>
+			<Text className={classes.content} lineClamp={3}>
 				{description}
 			</Text>
 			<Box>
@@ -42,7 +42,7 @@ function CvBlogCard({
 
 					<Text>{readTime} minute read</Text>
 				</Box>
-				<Box className='divider' />
+				<Box className={classes.divider} />
 			</Box>
 		</Box>
 	)

@@ -15,3 +15,13 @@
 	user-select: none;
 	cursor: default;
 }
+
+.page {
+	background-color: rgb(31 32 41);
+}
+
+.container-content {
+	@media (min-width: $mantine-breakpoint-md) {
+		max-width: var($mantine-breakpoint-md);
+	}
+}

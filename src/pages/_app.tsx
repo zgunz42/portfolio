@@ -15,6 +15,7 @@ import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
 // import { ModalsProvider } from '@mantine/modals'
 // import { Notifications } from '@mantine/notifications'
+import '@mantine/carousel/styles.css'
 import CvLocalProvider from 'components/CvLanguageContext'
 import LoadingOrError from 'components/LoadingOrError'
 import { theme } from 'themes/theme'
@@ -68,7 +69,7 @@ export default function MyApp({
 		<QueryClientProvider client={queryClient()}>
 			<Hydrate state={pageProps.dehydratedState}>
 				<CvLocalProvider>
-					<MantineProvider theme={theme}>
+					<MantineProvider defaultColorScheme='dark' theme={theme}>
 						{/* <ModalsProvider> */}
 						{/* <Notifications> */}
 						{loading ? <LoadingOrError /> : <Component {...pageProps} />}

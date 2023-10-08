@@ -48,8 +48,12 @@ export default function CvHero({
 							<Text className={classes.subtitle} mt='md'>
 								{bio}
 							</Text>
-
-							<Group mt={30} className='w-full' gap='sm' align='center'>
+							<Box
+								mt={30}
+								gap='sm'
+								align='center'
+								className={classes['info-group']}
+							>
 								<Image
 									src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${github}&layout=compact&text_color=1C7ED6&title_color=1C7ED6&bg_color=141321&count_private=true&include_all_commits=true&langs_count=10&hide_title=true`}
 									alt='github status'
@@ -72,9 +76,9 @@ export default function CvHero({
 										GithubReadmeStats
 									</a>
 								</span>
-							</Group>
+							</Box>
 
-							<Group mt={30} className='flex w-full justify-center'>
+							<Group mt={30} className={classes['cta-btn']}>
 								<Button
 									variant='outline'
 									radius='xl'

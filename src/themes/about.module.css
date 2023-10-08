@@ -60,17 +60,14 @@
 }
 
 .card-skill {
-	border-radius: var(--mantine-radius-md);
-	cursor: 'pointer';
-	padding: 64;
-	position: 'relative';
-	overflow: 'hidden';
-	border: calc(0.2rem / 3rem) solid #fff;
-	box-shadow: 0 0 calc(0.2rem / 2rem) #fff, 0 0 0.1rem #fff,
-		0 0 calc(2rem / 3rem) var(--mantine-color-primary-color-3),
-		0 0 calc(0.8rem / 3rem) var(--mantine-color-primary-color-3),
-		0 0 calc(2.8rem / 3rem) var(--mantine-color-primary-color-3),
-		inset 0 0 calc(1.3rem / 2rem) var(--mantine-color-primary-color-3);
+	border-radius: 8px;
+	cursor: pointer;
+	padding: 64px;
+	position: relative;
+	overflow: hidden;
+	border: 0.0667rem solid rgb(255 255 255);
+	box-shadow: aliceblue;
+	color: rgb(255 255 255);
 
 	@mixin dark {
 		color: #fff;
@@ -80,17 +77,17 @@
 		color: #000;
 	}
 
-	.card-skill-details {
+	& .card-skill-details {
 		padding: var(--mantine-spacing-lg);
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--mantine-color-primary-color-5);
+		background-color: var(--mantine-color-sambat-5);
 		text-align: center;
 		opacity: 0;
 
-		@media (max-width: $mantine-breakpoint-md) {
+		@media (min-width: $mantine-breakpoint-md) {
 			padding: var(--mantine-spacing-sm);
 			font-size: var(--mantine-font-size-md);
 		}
@@ -99,11 +96,9 @@
 	&:hover {
 		transform: scale(1.05);
 		border: calc(0.2rem / 2rem) solid #fff;
-		box-shadow: 0 0 calc(0.2rem / 2rem) #fff, 0 0 calc(0.2rem / 2rem) #fff,
-			0 0 calc(2rem / 2rem) var(--mantine-color-primary-color-5),
-			0 0 calc(0.8rem / 2rem) var(--mantine-color-primary-color-5),
-			0 0 calc(2.8rem / 2rem) var(--mantine-color-primary-color-5),
-			inset 0 0 calc(1.3rem / 2rem) var(--mantine-color-primary-color-5);
+		box-shadow: rgb(255 255 255) 0 0 0.1rem, rgb(255 255 255) 0 0 0.1rem,
+			rgb(116 192 252) 0 0 0.6667rem, rgb(116 192 252) 0 0 0.2667rem,
+			rgb(116 192 252) 0 0 0.9333rem, rgb(116 192 252) 0 0 0.65rem inset;
 
 		.card-skill-details {
 			opacity: 1;

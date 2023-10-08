@@ -1,7 +1,7 @@
 ---
 title: Make Awesome Bot With NextJS
 description: Create your nextjs awesome bot by the power of nodejs
-thumbnail: http://placeimg.com/640/480/robot
+thumbnail: https://picsum.photos/640/480
 publishedAt: '2022-06-25T14:34:09.275Z'
 commentId: 14
 label:
@@ -34,8 +34,6 @@ Before diving into the code, ensure you have the following prerequisites:
    ```bash
    npx create-next-app your-chatbot-app
    ```
-
-````
 
 2. **Install Dependencies**: Navigate to your project directory and install any additional dependencies you may need for your chatbot, such as [Socket.io](https://socket.io/) for real-time communication or [React Simple Chatbot](https://lucasbassetti.com.br/react-simple-chatbot/) for chatbot components.
 
@@ -121,4 +119,7 @@ Happy bot-building with Next.js!
 
 This Markdown blog post provides an introductory guide on how to create an awesome chatbot using Next.js. You can further customize and expand upon this content with specific examples, real-time features, and additional details to suit your chatbot project's needs and goals.
 ```
-````
+
+```
+
+```

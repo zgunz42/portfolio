@@ -9,11 +9,9 @@ import {
 	Card,
 	Group,
 	Paper,
-	px,
 	Text,
 	Title
 } from '@mantine/core'
-import { useViewportSize } from '@mantine/hooks'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Share as ShareIcon, Star as StarIcon } from 'tabler-icons-react'
@@ -33,7 +31,6 @@ export default function CvRepoCard({
 	title,
 	description
 }: BadgeCardProperties): CompElement {
-	const { width } = useViewportSize()
 	// const { theme, cx } = useStyles()
 	const [scale, setScale] = useState(720)
 	const onHoverStart = (): void => {
@@ -43,6 +40,7 @@ export default function CvRepoCard({
 	const onHoverEnd = (): void => {
 		setScale(720)
 	}
+
 	return (
 		<motion.div
 			whileHover={{
@@ -58,30 +56,13 @@ export default function CvRepoCard({
 				transition: { duration: 300 / 1000 }
 			}}
 		>
-			<Card
-				withBorder
-				radius='md'
-				className={`${classes.card} p-2 md:p-4`}
-				style={{
-					maxWidth:
-						width <= 600
-							? width - (px(theme.spacing?.md) as number) * 2
-							: 980 / 3
-				}}
-			>
+			<Card withBorder radius='md' className={`${classes.card} p-2 md:p-4`}>
 				<Box className='relative'>
-					<AspectRatio
-						ratio={1080 / scale}
-						style={{
-							maxWidth:
-								width <= 600
-									? width - ((px(theme.spacing?.md) as number) + 8) * 2
-									: 980 / 3
-						}}
-					>
+					<AspectRatio ratio={1080 / scale}>
 						<CvImage
 							src={image}
 							className={classes['image-hero']}
+							fill
 							radius={theme.radius?.md}
 							alt={title}
 						/>
@@ -111,15 +92,7 @@ export default function CvRepoCard({
 					</Box>
 				</Box>
 
-				<Box
-					className='mx-2 mt-4 mb-6'
-					style={{
-						maxWidth:
-							width <= 600
-								? width - ((px(theme.spacing?.md) as number) + 8) * 2
-								: 980 / 3
-					}}
-				>
+				<Box className='mx-2 mt-4 mb-6'>
 					<Group justify='space-around'>
 						<Title className='line-clamp-1' order={4}>
 							{titlecase(title)}

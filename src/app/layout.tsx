@@ -20,9 +20,10 @@ export default function RootLayout({
 				<ColorSchemeScript />
 				<meta charSet='utf8' />
 				<link rel='icon' type='image/svg+xml' href='/icon.svg' />
+				<meta httpEquiv='X-UA-Compatible' content='IE=edge' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-				<title>My App</title>
-				<meta name='description' content='My App is a...' />
+				<title>Sambat</title>
+				<meta name='description' content='Sambat' />
 			</head>
 			<body>
 				<MantineProvider defaultColorScheme='dark' theme={theme}>

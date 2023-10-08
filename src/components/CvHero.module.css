@@ -31,9 +31,26 @@
 	font-size: rem(44px);
 	line-height: 1.2;
 	font-weight: 900;
+}
 
-	@media (max-width: $mantine-breakpoint-xs) {
-		font-size: 28rem;
+.info-group {
+	justify-content: start;
+	@media (max-width: $mantine-breakpoint-md) {
+		justify-content: center;
+	}
+}
+
+.cta-btn {
+	@apply flex w-full justify-center;
+
+	@media (max-width: $screens-breakpoint-tablet) {
+		flex-flow: column-reverse wrap;
+
+		& > * {
+			width: 100%;
+			display: inline-block;
+			min-height: 50px;
+		}
 	}
 }
 

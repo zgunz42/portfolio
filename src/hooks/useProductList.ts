@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { getProductList } from 'api'
-import { useQuery } from 'react-query'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function useProductList() {

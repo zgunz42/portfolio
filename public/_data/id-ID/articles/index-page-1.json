@@ -12,7 +12,7 @@
 	{
 		"title": "Kirim Email Menggunakan Echo",
 		"description": "Kirim Email Menggunakan Golang Dengan Kekuatan SMTP\npakai Echo (Golang Framework)\n",
-		"thumbnail": "http://placeimg.com/640/480/tank",
+		"thumbnail": "https://picsum.photos/640/480",
 		"publishedAt": "2022-06-26T03:34:09.275Z",
 		"label": ["golang", "smtp"],
 		"commentId": 14,
@@ -22,7 +22,7 @@
 	{
 		"title": "Menggunakan Kembali Typescript Type Definition",
 		"description": "Reusing existing type providing by the library into your\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"thumbnail": "https://picsum.photos/640/480",
 		"publishedAt": "2022-06-25T17:34:09.275Z",
 		"label": ["nextjs", "react"],
 		"commentId": 14,
@@ -30,19 +30,19 @@
 		"link": "reuse-type-in-typescript"
 	},
 	{
-		"title": "Integrasi Mantine dan Tailwind Css",
-		"description": "Mengintegrasikan dua perpustakaan CSS yang mengagumkan untuk berbunyi desain Anda\ndan komponen\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
+		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
+		"thumbnail": "/images/image_to_vector.jpeg",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["tailwind", "css"],
+		"label": ["nextjs", "react"],
 		"commentId": 14,
 		"readTime": 1,
-		"link": "integrate-tailwindcss-with-mantine"
+		"link": "convert-image-to-svg"
 	},
 	{
 		"title": "Membuat Todo App With Golang",
 		"description": "Create working todo app backend api to manage daily schedlue\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"thumbnail": "https://picsum.photos/640/480",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
 		"label": ["golang", "echo"],
 		"commentId": 15,

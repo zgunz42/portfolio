@@ -2,18 +2,19 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: var(--mantine-primary-color-filled);
 	height: 100%;
 }
 
 .outer-header {
-	background-color: #1b1a2ea9;
+	background-color: var(--mantine-primary-color-filled);
 	border: none;
 	box-shadow: 0 10px 10px 0 rgb(9 5 29 / 17.1%);
 	height: 60px;
 }
 
 .links {
-	@media (max-width: $mantine-breakpoint-xs) {
+	@media (max-width: $screens-breakpoint-tablet) {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -23,15 +24,17 @@
 		left: 0;
 		right: 0;
 		padding: var(--mantine-spacing-md);
-		padding-top: 60;
+		padding-top: 60px;
 		padding-bottom: theme.spacing.md;
+		background-color: var(--mantine-primary-color-filled);
 		box-shadow: 0 10px 10px 0 rgb(9 5 29 / 17.1%);
 	}
 }
 
 .burger {
-	@media (max-width: $mantine-breakpoint-xs) {
-		display: none;
+	display: none;
+	@media (max-width: $screens-breakpoint-tablet) {
+		display: block;
 	}
 }
 
@@ -76,13 +79,13 @@
 		&,
 		&:hover {
 			@mixin dark {
-				background-color: var(--mantine-color-primary-color-9);
-				color: var(--mantine-color-dark-3);
+				background-color: var(--mantine-color-sambat-9);
+				color: var(--mantine-color-anchor);
 			}
 
 			@mixin light {
-				background-color: var(--mantine-color-primary-color-0);
-				color: var(--mantine-color-dark-7);
+				background-color: var(--mantine-color-sambat-0);
+				color: var(--mantine-color-anchor);
 			}
 		}
 	}
@@ -91,12 +94,12 @@
 		&,
 		&:hover {
 			@mixin dark {
-				background-color: var(--mantine-color-primary-color-9);
+				background-color: var(--mantine-color-sambat-4);
 				color: var(--mantine-color-dark-7);
 			}
 
 			@mixin light {
-				background-color: var(--mantine-color-primary-color-7);
+				background-color: var(--mantine-color-sambat-7);
 				color: var(--mantine-color-gray-0);
 			}
 		}
