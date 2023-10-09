@@ -1,0 +1,7 @@
+.product-title {
+	@apply mb-4 mt-12;
+}
+
+.product-headline {
+	@apply mt-12 mb-8 text-center;
+}

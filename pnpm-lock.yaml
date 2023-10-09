@@ -47,6 +47,9 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^1.35.7
     version: 1.35.7(encoding@0.1.13)
+  '@tabler/icons-react':
+    specifier: ^2.38.0
+    version: 2.38.0(react@18.2.0)
   '@tanstack/react-query':
     specifier: ^4.36.1
     version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
@@ -62,6 +65,9 @@ dependencies:
   cross-fetch:
     specifier: ^3.1.8
     version: 3.1.8(encoding@0.1.13)
+  crypto-js:
+    specifier: ^4.1.1
+    version: 4.1.1
   embla-carousel-autoplay:
     specifier: 8.0.0-rc14
     version: 8.0.0-rc14(embla-carousel@8.0.0-rc14)
@@ -86,6 +92,9 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  mime-types:
+    specifier: ^2.1.35
+    version: 2.1.35
   next:
     specifier: ^13.5.4
     version: 13.5.4(@babel/core@7.18.2)(react-dom@18.2.0)(react@18.2.0)
@@ -166,6 +175,9 @@ devDependencies:
   '@tsconfig/node16':
     specifier: ^1.0.4
     version: 1.0.4
+  '@types/crypto-js':
+    specifier: ^4.1.2
+    version: 4.1.2
   '@types/css-mediaquery':
     specifier: 0.1.1
     version: 0.1.1
@@ -178,6 +190,9 @@ devDependencies:
   '@types/lodash':
     specifier: ^4.14.199
     version: 4.14.199
+  '@types/mime-types':
+    specifier: ^2.1.2
+    version: 2.1.2
   '@types/react':
     specifier: 18.2.25
     version: 18.2.25
@@ -3117,6 +3132,26 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@tabler/icons-react@2.38.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-4oLo7z7HkFQXZNNAo3tmhpdZTeFrSNSxngmrEOGZ6WsjT2WRlc6kcEHMVxfCekV19JeB6Yprg30Bdr4sUYJLiQ==
+      }
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.38.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.38.0:
+    resolution:
+      {
+        integrity: sha512-icDKK6n8jUYAavHK+L2Xe0/tYjwZVS7uhVazhCMVjdm3RfJLFbeLSNEIWcYdGOg6QAock9yqWse8hnhvsy2M3w==
+      }
+    dev: false
+
   /@tailwindcss/line-clamp@0.4.4(tailwindcss@3.1.4):
     resolution:
       {
@@ -3255,6 +3290,13 @@ packages:
     resolution:
       {
         integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==
+      }
+    dev: true
+
+  /@types/crypto-js@4.1.2:
+    resolution:
+      {
+        integrity: sha512-t33RNmTu5ufG/sorROIafiCVJMx3jz95bXUMoPAZcUD14fxMXnuTzqzXZoxpR0tNx2xpw11Dlmem9vGCsrSOfA==
       }
     dev: true
 
@@ -3430,6 +3472,13 @@ packages:
     dependencies:
       '@types/unist': 2.0.8
     dev: false
+
+  /@types/mime-types@2.1.2:
+    resolution:
+      {
+        integrity: sha512-q9QGHMGCiBJCHEvd4ZLdasdqXv570agPsUW0CeIm/B8DzhxsYMerD0l3IlI+EQ1A2RWHY2mmM9x1YIuuWxisCg==
+      }
+    dev: true
 
   /@types/minimatch@5.1.2:
     resolution:
@@ -5604,6 +5653,13 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /crypto-js@4.1.1:
+    resolution:
+      {
+        integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+      }
+    dev: false
 
   /crypto-random-string@2.0.0:
     resolution:

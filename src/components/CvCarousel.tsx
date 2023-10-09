@@ -30,7 +30,7 @@ export default function CvCarousel({
 	return (
 		<Carousel
 			slideSize={{ lg: '25%', md: '50%', sm: '50%', base: '100%' }}
-			slideGap={{ lg: 'xl', md: 'md', sm: 'md', xs: 'sm' }}
+			slideGap={{ lg: 'md', md: 'md', sm: 'md', xs: 'sm' }}
 			align='start'
 			height='100%'
 			withControls={false}

@@ -24,3 +24,19 @@
 	font-size: var(--mantine-font-size-xs);
 	font-weight: 700;
 }
+
+.card-image-box {
+	position: relative;
+}
+
+.card-image {
+	width: 100%;
+	height: 100%;
+}
+
+.card-image-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: var(--mantine-spacing-sm);
+}

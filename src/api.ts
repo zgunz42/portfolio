@@ -1,4 +1,4 @@
-import type { PriceListResult } from '@iak-id/iak-api-server-js'
+import type { PriceListData } from '@iak-id/iak-api-server-js'
 import supabase from 'client'
 import {
 	FirstPage,
@@ -167,7 +167,7 @@ export interface Schedule extends ScheduleData {
 }
 
 export interface IPriceListApiResult {
-	result: PriceListResult
+	result: PriceListData
 }
 
 export async function getConfig(language: string): Promise<IConfig> {
@@ -194,7 +194,7 @@ export async function getPinnedProjects(
 	}))
 }
 
-export async function getProductList(): Promise<PriceListResult> {
+export async function getProductList(): Promise<PriceListData> {
 	const result = await fetch(ProductListEndpoint)
 
 	if (result.status === HttpInternalServerError) {
@@ -202,7 +202,6 @@ export async function getProductList(): Promise<PriceListResult> {
 	}
 
 	const products = (await result.json()) as IPriceListApiResult
-
 	return products.result
 }
 

@@ -71,5 +71,7 @@ export const PageSizeMin = 1
 export const CountMargin = 1
 export const HttpOK = 200
 export const HttpInternalServerError = 500
+export const HttpBadRequest = 402
+export const HttpUnauthorized = 401
 
 export const ProductListEndpoint = '/api/products'
