@@ -58,8 +58,6 @@ export default function CvLanguageSwitcher(
 		void router.push(router.pathname, router.pathname, { locale: value_ })
 	}
 
-	console.log(LanguageChoice)
-
 	return (
 		<Combobox
 			// eslint-disable-next-line react/jsx-props-no-spreading

@@ -4,6 +4,7 @@ import {
 	QueryClient,
 	QueryClientProvider
 } from '@tanstack/react-query'
+import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import { Router } from 'next/router'
 import React from 'react'
@@ -22,7 +23,7 @@ import { theme } from 'themes/theme'
 
 export default function MyApp({
 	Component,
-	pageProps
+	pageProps: { session, ...pageProperties }
 }: AppProps): ReactElement {
 	const queryClient = React.useMemo(
 		() => () => {
@@ -66,18 +67,20 @@ export default function MyApp({
 	})
 
 	return (
-		<QueryClientProvider client={queryClient()}>
-			<Hydrate state={pageProps.dehydratedState}>
-				<CvLocalProvider>
-					<MantineProvider defaultColorScheme='dark' theme={theme}>
-						{/* <ModalsProvider> */}
-						{/* <Notifications> */}
-						{loading ? <LoadingOrError /> : <Component {...pageProps} />}
-						{/* </Notifications> */}
-						{/* </ModalsProvider> */}
-					</MantineProvider>
-				</CvLocalProvider>
-			</Hydrate>
-		</QueryClientProvider>
+		<SessionProvider session={session}>
+			<QueryClientProvider client={queryClient()}>
+				<Hydrate state={pageProperties.dehydratedState}>
+					<CvLocalProvider>
+						<MantineProvider defaultColorScheme='dark' theme={theme}>
+							{/* <ModalsProvider> */}
+							{/* <Notifications> */}
+							{loading ? <LoadingOrError /> : <Component {...pageProperties} />}
+							{/* </Notifications> */}
+							{/* </ModalsProvider> */}
+						</MantineProvider>
+					</CvLocalProvider>
+				</Hydrate>
+			</QueryClientProvider>
+		</SessionProvider>
 	)
 }

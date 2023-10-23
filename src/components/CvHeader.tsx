@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-handler-names */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Burger, Container, Group, Text, Transition } from '@mantine/core'
 import { useDisclosure, useMediaQuery } from '@mantine/hooks'
@@ -34,7 +35,7 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 	const router = useRouter()
 	// const [scrollLocked, setScrollLocked] = useScrollLock()
 	const isMobile = useMediaQuery('(max-width: 769px)')
-	console.log(isMobile, opened)
+	// const { data: session } = useSession()
 	const onToggleBurger = (): void => {
 		toggle()
 		// setScrollLocked(!scrollLocked)
@@ -84,6 +85,40 @@ export default function CvHeader({ links }: CvHeaderProperties): ReactElement {
 			</Link>
 		)
 	})
+
+	// if (session) {
+	// 	const element = (
+	// 		<Button
+	// 			className='w-full md:w-auto'
+	// 			key='login'
+	// 			onClick={(): void => {
+	// 				void signOut()
+	// 			}}
+	// 		>
+	// 			<Text component='span' className={classes.link}>
+	// 				Sign Out
+	// 			</Text>
+	// 		</Button>
+	// 	)
+
+	// 	items.push(element)
+	// } else {
+	// 	const element = (
+	// 		<Button
+	// 			className='w-full md:w-auto'
+	// 			key='login'
+	// 			onClick={(): void => {
+	// 				void signIn()
+	// 			}}
+	// 		>
+	// 			<Text component='span' className={classes.link}>
+	// 				Login
+	// 			</Text>
+	// 		</Button>
+	// 	)
+
+	// 	items.push(element)
+	// }
 
 	const removeScroll = isMobile && opened
 

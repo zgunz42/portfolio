@@ -6,8 +6,20 @@ import type {
 	PricelistInQuery
 } from '@iak-id/iak-api-server-js'
 import { IAKPrepaid } from '@iak-id/iak-api-server-js'
+import type { User } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
 import { HttpOK } from 'constant'
 import CryptoJS from 'crypto-js'
+
+const saltRounds = 11
+const prismaClient = new PrismaClient()
+
+interface RegisterData {
+	name: string
+	email: string
+	password: string
+}
 
 export function timestamp(): string {
 	// Format YYYYMMDDhhmmss
@@ -112,4 +124,37 @@ export async function getListPayment(): Promise<unknown> {
 	})
 
 	return response.json()
+}
+
+// export async function submitOrder(
+// 	productCode: string,
+// 	paymentChannel: string
+// ): Promise<unknown> {}
+
+export function hashPassword(password: string): string {
+	return bcrypt.hashSync(password, saltRounds)
+}
+
+export function comparePassword(password: string, hash: string): boolean {
+	return bcrypt.compareSync(password, hash)
+}
+
+export async function createUser(data: RegisterData): Promise<User> {
+	await prismaClient.$connect()
+	const user = await prismaClient.user.create({
+		data
+	})
+
+	return user
+}
+
+export async function getUserByEmail(email: string): Promise<User | null> {
+	await prismaClient.$connect()
+	const user = await prismaClient.user.findUnique({
+		where: {
+			email
+		}
+	})
+
+	return user
 }
