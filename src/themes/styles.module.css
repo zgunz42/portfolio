@@ -72,3 +72,25 @@
 	margin-bottom: var(--mantine-spacing-md);
 	background-color: var(--mantine-color-anchor);
 }
+
+.grid-inner {
+	@media (max-width: $mantine-breakpoint-md) {
+		flex-direction: column-reverse;
+	}
+}
+
+.price-detail-box {
+	padding: var(--mantine-spacing-sm);
+	background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='11' ry='11' stroke='%239B9B9BFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
+	border-radius: var(--mantine-radius-sm);
+}
+
+.price-detail-title {
+	text-align: left;
+	font-weight: bold;
+	color: var(--mantine-color-anchor);
+}
+
+.price-detail-amount {
+	text-align: right;
+}

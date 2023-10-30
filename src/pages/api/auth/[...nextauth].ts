@@ -5,7 +5,7 @@
 
 import Joi from 'joi'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Session, User } from 'next-auth'
+import type { AuthOptions, Session, User } from 'next-auth'
 import NextAuth from 'next-auth'
 import type { DefaultJWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -71,6 +71,69 @@ async function register(request: NextApiRequest, response: NextApiResponse) {
 	}
 }
 
+const callbacks: ArgumentsType<typeof NextAuth>['2']['callbacks'] = {
+	async session({ session, token }: { session: Session; token: DefaultJWT }) {
+		const mSession = { ...session }
+		mSession.user = {}
+		mSession.user.email = token.email ?? ''
+		mSession.user.name = token.name ?? ''
+		mSession.user.image = token.picture ?? ''
+		return mSession
+	}
+}
+
+const providers: ArgumentsType<typeof NextAuth>['2']['providers'] = [
+	CredentialsProvider({
+		// The name to display on the sign in form (e.g. "Sign in with...")
+		name: 'Credentials',
+		credentials: {
+			email: {
+				label: 'Email',
+				type: 'text',
+				placeholder: 'sample@email.com'
+			},
+			password: { label: 'Password', type: 'password' }
+		},
+		async authorize(credentials, request_): Promise<User> {
+			// Add logic here to look up the user from the credentials supplied
+
+			if (credentials?.email) {
+				const user = await getUserByEmail(credentials.email)
+
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+				if (user) {
+					if (!user.password) {
+						throw new Error('Invalid credentials')
+					}
+
+					if (comparePassword(credentials.password, user.password)) {
+						// Any object returned will be saved in `user` property of the JWT
+						return {
+							id: user.id.toString(),
+							name: user.name
+						}
+					}
+				}
+			}
+			// If you return null then an error will be displayed advising the user to check their details.
+			throw new Error('Invalid credentials')
+		}
+	})
+]
+
+export const authOptions: AuthOptions = {
+	providers,
+	pages: {
+		signIn: '/auth',
+		error: '/auth'
+	},
+	session: {
+		strategy: 'jwt'
+	},
+	secret: process.env.NEXTAUTH_SECRET,
+	callbacks
+}
+
 export default async function auth(
 	request: NextApiRequest,
 	response: NextApiResponse
@@ -82,132 +145,14 @@ export default async function auth(
 		return register(request, response)
 	}
 
-	const providers: ArgumentsType<typeof NextAuth>['2']['providers'] = [
-		CredentialsProvider({
-			// The name to display on the sign in form (e.g. "Sign in with...")
-			name: 'Credentials',
-			credentials: {
-				email: {
-					label: 'Email',
-					type: 'text',
-					placeholder: 'sample@email.com'
-				},
-				password: { label: 'Password', type: 'password' }
-			},
-			async authorize(credentials, request_): Promise<User> {
-				// Add logic here to look up the user from the credentials supplied
-
-				if (credentials?.email) {
-					const user = await getUserByEmail(credentials.email)
-
-					// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-					if (user) {
-						if (!user.password) {
-							throw new Error('Invalid credentials')
-						}
-
-						if (comparePassword(credentials.password, user.password)) {
-							// Any object returned will be saved in `user` property of the JWT
-							return {
-								id: user.id.toString(),
-								name: user.name
-							}
-						}
-					}
-				}
-				// If you return null then an error will be displayed advising the user to check their details.
-				throw new Error('Invalid credentials')
-			}
-		})
-		// CredentialsProvider({
-		// 	name: 'Ethereum',
-		// 	credentials: {
-		// 		message: {
-		// 			label: 'Message',
-		// 			type: 'text',
-		// 			placeholder: '0x0'
-		// 		},
-		// 		signature: {
-		// 			label: 'Signature',
-		// 			type: 'text',
-		// 			placeholder: '0x0'
-		// 		}
-		// 	},
-		// 	async authorize(credentials) {
-		// 		try {
-		// 			const options = JSON.parse(
-		// 				credentials?.message ?? '{}'
-		// 			) as Partial<SiweMessage>
-		// 			const siwe = new SiweMessage(options)
-		// 			const authUrl = process.env.NEXTAUTH_URL
-
-		// 			const nextAuthUrl = new URL(authUrl ?? '/')
-		// 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-		// 			const csrfToken = await getCsrfToken({ req: request })
-
-		// 			if (csrfToken) {
-		// 				const result = await siwe.verify({
-		// 					signature: credentials?.signature ?? '',
-		// 					domain: nextAuthUrl.host,
-		// 					nonce: csrfToken
-		// 				})
-
-		// 				if (result.success) {
-		// 					return {
-		// 						id: siwe.address
-		// 					}
-		// 				}
-		// 				if (result.error) {
-		// 					throw new Error(
-		// 						`${result.error.expected}: ${result.error.received}`
-		// 					)
-		// 				}
-		// 			}
-
-		// 			throw new Error('CSRF token not found')
-		// 		} catch (error) {
-		// 			if (error instanceof Error) {
-		// 				throw new TypeError(error.message)
-		// 			}
-
-		// 			throw error
-		// 		}
-		// 	}
-		// })
-	]
-
-	const isDefaultSigninPage =
-		request.method === 'GET' && request.query.nextauth?.includes('signin')
-
 	// Hide Sign-In with Ethereum from default sign page
 	// if (isDefaultSigninPage && Array.isArray(providers)) {
 	// 	providers.pop()
 	// }
 	const jwtSecret = process.env.NEXTAUTH_SECRET
-	const callbacks: ArgumentsType<typeof NextAuth>['2']['callbacks'] = {
-		async session({ session, token }: { session: Session; token: DefaultJWT }) {
-			const mSession = { ...session }
-			mSession.user = {}
-			mSession.user.email = token.email ?? ''
-			mSession.user.name = token.name ?? ''
-			mSession.user.image = token.picture ?? ''
-			return mSession
-		}
-	}
 
 	if (jwtSecret) {
-		const result = await NextAuth(request, response, {
-			providers,
-			pages: {
-				signIn: '/auth',
-				error: '/auth'
-			},
-			session: {
-				strategy: 'jwt'
-			},
-			secret: jwtSecret,
-			callbacks
-		})
+		const result = await NextAuth(request, response, authOptions)
 
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		return result

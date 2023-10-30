@@ -8,15 +8,58 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
+enum OrderStatus {
+  INQUIRY
+  CONFIRMED
+  PROCESSING
+  SUCCESS
+  CANCEL
+  FAILED
+}
+
+enum TransactionStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum MarginKind {
+  BASE
+  TYPE
+  GROUP
+  ITEM
+}
+
+enum TransactionType {
+  CASH
+  EWALLET
+}
+
+enum MarginType {
+  FIXED
+  PERCENTAGE
+}
+
+enum FeeSource {
+  PAYMENT_GATEWAY
+  SYSTEM
+}
+
 model Post {
   id        Int     @id @default(autoincrement())
   title     String
   content   String?
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int? @map("author_id")
+  authorId  Int?    @map("author_id")
 
   @@index([authorId])
+  @@map("posts")
 }
 
 model Account {
@@ -38,8 +81,8 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-  @@map("accounts")
   @@index([userId])
+  @@map("accounts")
 }
 
 model Session {
@@ -49,23 +92,25 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("sessions")
-
   @@index([userId])
+  @@map("sessions")
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
+  id            Int            @id @default(autoincrement())
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   password      String?
-  emailVerified DateTime? @map("email_verified")
+  emailVerified DateTime?      @map("email_verified")
   image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  createdAt     DateTime       @default(now()) @map(name: "created_at")
+  updatedAt     DateTime       @updatedAt @map(name: "updated_at")
   posts         Post[]
   accounts      Account[]
   sessions      Session[]
+  coupons       Coupon[]
+  ProductOrder  ProductOrder[]
+  Transaction   Transaction[]
 
   @@map(name: "users")
 }
@@ -79,24 +124,196 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
+model ProductMargin {
+  id              Int               @id @default(autoincrement())
+  kind            MarginKind
+  reference       String?           @map("product_code")
+  type            MarginType
+  amount          BigInt
+  createdDate     DateTime          @default(now()) @map("created_date")
+  updatedDate     DateTime          @updatedAt @map("updated_date")
+  ProductOrderFee ProductOrderFee[]
+
+  @@map("product_margins")
+}
+
+enum ProductStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum ProductType {
+  PREPAID
+  POSTPAID
+}
+
+enum IncomeType {
+  COMISSION
+  REVENUE
+}
+
+enum Applyment {
+  KIND
+  OPERATOR
+  PRODUCT
+}
+
+enum VoucerStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model ProductCategory {
+  id       Int        @id @default(autoincrement())
+  name     String
+  code     String @unique
+  Operator Operator[]
+
+  @@unique([id, code])
+  @@map("product_categories")
+}
+
+model Operator {
+  id         Int             @id @default(autoincrement())
+  categoryId Int             @map("category_id")
+  name       String
+  code       String @unique
+  category   ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  Product    Product[]
+
+  @@index([code])
+  @@index([name])
+  @@index([categoryId])
+
+  @@unique([id, code])
+  @@map("operators")
+}
+
+model Product {
+  id                Int            @id @default(autoincrement())
+  code              String @unique
+  type              ProductType
+  isFixed           Boolean        @default(false) @map("is_fixed")
+  operatorId        Int            @map("operator_id")
+  name              String
+  description       String?        @db.Text
+  iconUrl           String?        @map("icon_url")
+  incomeType        IncomeType     @map("income_type")
+  price             BigInt
+  status            ProductStatus
+  lastPullDate      DateTime?
+  createdDate       DateTime       @default(now()) @map("created_date")
+  updatedDate       DateTime       @updatedAt @map("updated_date")
+  ProductOrderFee   ProductOrder[]
+  operator          Operator       @relation(fields: [operatorId], references: [id], onDelete: Cascade)
+
+  @@index([code, incomeType, type, status])
+  @@index([operatorId])
+
+  @@unique([id, code])
+  @@map("products")
+}
+
+model Voucer {
+  id          Int          @id @default(autoincrement())
+  code        String       @unique
+  amount      BigInt
+  applyment   Applyment
+  type        MarginType
+  status      VoucerStatus
+  limitUsage  BigInt       @map("limit_usage")
+  startDate   DateTime?    @map("start_date")
+  endDate     DateTime?    @map("end_date")
+  createdDate DateTime     @default(now()) @map("created_date")
+  updatedDate DateTime     @updatedAt @map("updated_date")
+  coupons     Coupon[]
+
+  @@map("voucers")
+}
+
+model Coupon {
+  id           Int           @id @default(autoincrement())
+  voucerId     Int
+  userId       Int
+  claimDate    DateTime?     @map("claim_date")
+  redeemDate   DateTime?     @map("redeem_date")
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  voucer       Voucer        @relation(fields: [voucerId], references: [id], onDelete: Cascade)
+  ProductOrder ProductOrder?
+
+  @@unique([voucerId, userId])
+  @@index([voucerId])
+  @@index([userId])
+  @@map("coupons")
+}
+
+model ProductOrderFee {
+  id          Int        @id @default(autoincrement())
+  orderId     Int        @map("order_id")
+  marginId    Int?       @map("margin_id")
+  amount      BigInt
+  addition    BigInt
+  source      FeeSource
+  type        MarginType
+  createdDate DateTime   @default(now()) @map("created_date")
+  updatedDate DateTime   @updatedAt @map("updated_date")
+
+  productOrder  ProductOrder   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productMargin ProductMargin? @relation(fields: [marginId], references: [id], onDelete: Cascade)
+
+  @@unique([orderId, marginId])
+  @@index([marginId])
+
+  @@map("product_order_fees")
+}
+
+model ProductOrder {
+  id              Int               @id @default(autoincrement())
+  refId           String            @unique() @map("ref_id")
+  userId          Int               @map("user_id")
+  productId       Int               @map("product_id")
+  transactionId   Int?              @unique @map("transaction_id")
+  productCode     String            @map("product_code")
+  price           BigInt            @map("price")
+  fee             BigInt
+  couponId        Int?              @unique @map("coupon_id")
+  status          OrderStatus
+  createdDate     DateTime          @default(now()) @map("created_date")
+  updatedDate     DateTime          @updatedAt @map("updated_date")
+  ProductOrderFee ProductOrderFee[]
+  transaction     Transaction?      @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+  product         Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
+  coupon          Coupon?           @relation(fields: [couponId], references: [id], onDelete: Cascade)
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([productCode, userId])
+  @@index([productId])
+  @@index([couponId])
+  @@index([userId])
+
+  @@map("product_orders")
+}
+
 model Transaction {
-  transactionId Int    @id @default(autoincrement())
-  userId Int      @map("user_id")
-  sessionId     String @map("session_id")
-  referenceId   Int? @map("reference_id")
-  relatedId     Int @map("related_id")
-  sender        String
-  receiver      String
-  amount        Int
-  fee           Int
-  status        Int
-  statusDesc    String @map("status_desc")
-  type          Int
-  productCode String @map("product_code")
-  typeDesc      String @map("type_desc")
-  notes         String
-  createdDate   DateTime @default(now()) @map("created_date")
-  expiredDate   DateTime @map("expired_date")
-  successDate   DateTime? @map("success_date")
-  settlementDate DateTime? @map("settlement_date")
+  id             Int               @id @default(autoincrement())
+  referenceId    String?           @unique @map("reference_id")
+  userId         Int               @map("user_id")
+  amount         BigInt
+  status         TransactionStatus
+  statusDesc     String            @map("status_desc")
+  type           TransactionType
+  productCode    String            @map("product_code")
+  typeDesc       String            @map("type_desc")
+  notes          String
+  createdDate    DateTime          @default(now()) @map("created_date")
+  expiredDate    DateTime          @map("expired_date")
+  successDate    DateTime?         @map("success_date")
+  settlementDate DateTime?         @map("settlement_date")
+  ProductOrder   ProductOrder[]
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([referenceId])
+  @@index([userId])
+
+  @@map("transactions")
 }

@@ -71,7 +71,48 @@ export const PageSizeMin = 1
 export const CountMargin = 1
 export const HttpOK = 200
 export const HttpInternalServerError = 500
-export const HttpBadRequest = 402
+export const HttpBadRequest = 400
 export const HttpUnauthorized = 401
 
 export const ProductListEndpoint = '/api/products'
+export const PaymentListEndpoint = '/api/payments'
+export const ProductInQueryEndpoint = '/api/inquery'
+export const GetGameServerEndpoint = '/api/game/serverList'
+
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
+export const gameCodeValue = {
+	mobileLegend: 103,
+	ragnarok: 127,
+	pointBlank: 130,
+	freeFire: 135,
+	speedDrifters: 136,
+	arenaOfValor: 139,
+	bleachMobile_3D: 140,
+	eraOfCelestial: 141,
+	dragonNest: 142,
+	bleachMobile: 146,
+	marvelSuperWar: 150,
+	lightOfThelGloryOfCepheus: 152,
+	lordsMobile: 153,
+	lifeAfter: 154,
+	genshinImpact: 172,
+	loLWildRift: 176
+}
+
+export const gameServerMap = {
+	'Mobile Legend': gameCodeValue.mobileLegend,
+	'Ragnarok M': gameCodeValue.ragnarok,
+	'Genshin Impact': gameCodeValue.genshinImpact
+}
+
+export const knownLabels = new Set([
+	'voucher',
+	'data',
+	'pln',
+	'game',
+	'etoll',
+	'pulsa',
+	'streaming',
+	'emeterai'
+])

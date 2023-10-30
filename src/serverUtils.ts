@@ -2,18 +2,38 @@
 /* eslint-disable import/prefer-default-export */
 import type {
 	Credential,
+	InquiryGameIdData,
+	InquiryGameServer,
+	InquiryGameServerRequest,
+	InquiryPlnData,
+	InquiryPlnRequest,
+	PostpaidInqueryData,
+	PostpaidInqueryRequest,
+	PostPaidPriceListQuery,
+	PostPiadPriceListData,
 	PriceListData,
-	PricelistInQuery
+	PricelistInQuery,
+	TopUpPrepaidData,
+	TopUpPrepaidRequest
 } from '@iak-id/iak-api-server-js'
-import { IAKPrepaid } from '@iak-id/iak-api-server-js'
+import { IAKPostpaid, IAKPrepaid } from '@iak-id/iak-api-server-js'
 import type { User } from '@prisma/client'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
-import { HttpOK } from 'constant'
 import CryptoJS from 'crypto-js'
+import short from 'short-uuid'
+import type {
+	IpayMuDatum,
+	IpayMuDirectPayData,
+	IpayMuDirectPayRequest,
+	IpayMuDirectPayResponse,
+	IPayMuPaymetListResponse
+} from 'types'
+import type GameIdBuilder from 'utils/game/builder'
+import { HttpOK } from './constant'
 
 const saltRounds = 11
-const prismaClient = new PrismaClient()
+export const prismaClient = new PrismaClient()
 
 interface RegisterData {
 	name: string
@@ -42,10 +62,10 @@ function initIAKPrepaid(credential: Credential): IAKPrepaid {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// function initIAKPostpaid(credential: Credential): IAKPostpaid {
-// 	const prepaid = new IAKPostpaid(credential)
-// 	return prepaid
-// }
+function initIAKPostpaid(credential: Credential): IAKPostpaid {
+	const prepaid = new IAKPostpaid(credential)
+	return prepaid
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function initCredential(): Credential {
@@ -69,7 +89,19 @@ function initCredential(): Credential {
 	throw new Error('Please set IAK_USERNAME, IAK_STAGE and IAK_API_KEY')
 }
 
-export async function getProductList(
+export async function getPostpaidProductList(
+	query?: PostPaidPriceListQuery
+): Promise<PostPiadPriceListData> {
+	const client = initIAKPostpaid(initCredential())
+	const result = await client.pricelist(query)
+	if (result.data.message !== 'SUCCESS') {
+		throw new Error(result.data.message)
+	}
+
+	return result.data
+}
+
+export async function getPrepaidProductList(
 	query?: PricelistInQuery
 ): Promise<PriceListData> {
 	const client = initIAKPrepaid(initCredential())
@@ -80,6 +112,63 @@ export async function getProductList(
 	}
 
 	return result.data
+}
+
+export async function inqueryPostpaid(
+	query: PostpaidInqueryRequest
+): Promise<PostpaidInqueryData> {
+	const client = initIAKPostpaid(initCredential())
+	const result = await client.inquiry(query)
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
+	}
+
+	return result.data
+}
+
+export async function inqueryPlnPrepaid(
+	query: InquiryPlnRequest
+): Promise<InquiryPlnData> {
+	const client = initIAKPrepaid(initCredential())
+	const result = await client.inquiryPln(query)
+
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
+	}
+
+	return result.data
+}
+
+export async function inqueryGameClient(
+	gameCode: number,
+	gameIdBuilder: GameIdBuilder
+): Promise<InquiryGameIdData> {
+	const client = initIAKPrepaid(initCredential())
+	const customerId = gameIdBuilder.build()
+	// TODO: broken by IAK
+	const result = await client.inquiryGameId({
+		customerId,
+		gameCode
+	})
+
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
+	}
+
+	return result.data
+}
+
+export async function inquiryGameServer(
+	quiry: InquiryGameServerRequest
+): Promise<InquiryGameServer[]> {
+	const client = initIAKPrepaid(initCredential())
+	const result = await client.inquiryGameServer(quiry)
+
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
+	}
+
+	return result.data.servers
 }
 
 const apikey = process.env.IPAYMU_API_KEY
@@ -111,7 +200,41 @@ export function signGet(): string {
 	return signature
 }
 
-export async function getListPayment(): Promise<unknown> {
+export async function directPay(
+	input: IpayMuDirectPayRequest
+): Promise<IpayMuDirectPayData> {
+	const url = `${indexPaymuEndpoint}/payment/direct`
+	const formData = new FormData()
+
+	// eslint-disable-next-line @typescript-eslint/no-for-in-array, no-restricted-syntax
+	for (const entry in Object.entries(input)) {
+		if (Object.hasOwn(input, entry[0])) {
+			formData.append(entry[0], entry[1])
+		}
+	}
+
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'multipart/form-data',
+			va,
+			signature: signPost(formData),
+			timestamp: timestamp()
+		} as Record<string, string>,
+		body: formData
+	})
+
+	const data = (await response.json()) as IpayMuDirectPayResponse
+
+	if (data.Status !== HttpOK) {
+		throw new Error(data.Message)
+	}
+
+	return data.Data
+}
+
+export async function getListPayment(): Promise<IpayMuDatum[]> {
 	const url = `${indexPaymuEndpoint}/payment-method-list`
 	const response = await fetch(url, {
 		method: 'GET',
@@ -123,13 +246,27 @@ export async function getListPayment(): Promise<unknown> {
 		} as Record<string, string>
 	})
 
-	return response.json()
+	const data = (await response.json()) as IPayMuPaymetListResponse
+
+	if (!data.Success) {
+		throw new Error(data.Message)
+	}
+
+	return data.Data
 }
 
-// export async function submitOrder(
-// 	productCode: string,
-// 	paymentChannel: string
-// ): Promise<unknown> {}
+export async function topUp(
+	input: TopUpPrepaidRequest
+): Promise<TopUpPrepaidData> {
+	const client = initIAKPrepaid(initCredential())
+	const result = await client.topUp(input)
+
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
+	}
+
+	return result.data
+}
 
 export function hashPassword(password: string): string {
 	return bcrypt.hashSync(password, saltRounds)
@@ -157,4 +294,8 @@ export async function getUserByEmail(email: string): Promise<User | null> {
 	})
 
 	return user
+}
+
+export function getUniqueReferenceId(): string {
+	return short.generate()
 }

@@ -14,9 +14,18 @@
 			// compilerOptions specified here will override those declared below,
 			// but *only* in ts-node.  Useful if you want ts-node and tsc to use
 			// different options with a single tsconfig.json.
+			"baseUrl": "src"
 		}
 	},
 	"compilerOptions": {
 		// typescript options here
-	}
+		"baseUrl": "src"
+	},
+	"include": [
+		"./src",
+		"./dist/types/**/*.ts",
+		"./next-env.d.ts",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["./node_modules"]
 }

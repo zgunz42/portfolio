@@ -1,9 +1,18 @@
-import type { PriceListData } from '@iak-id/iak-api-server-js'
+import type {
+	InquiryGameServer,
+	PostpaidInqueryData,
+	Pricelist
+} from '@iak-id/iak-api-server-js'
+import type { Record } from '@prisma/client/runtime/library'
 import supabase from 'client'
 import {
 	FirstPage,
+	GetGameServerEndpoint,
 	HttpInternalServerError,
 	HttpNotFound,
+	HttpOK,
+	PaymentListEndpoint,
+	ProductInQueryEndpoint,
 	ProductListEndpoint
 } from 'constant'
 import fetch from 'cross-fetch'
@@ -13,6 +22,7 @@ import NotFoundError from 'errors/NotFoundError'
 import { promises as fs } from 'fs'
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import path from 'path'
+import type { InqueryInOrder, IpayMuDatum } from 'types'
 
 export interface IMetaImage {
 	filename: string
@@ -166,8 +176,13 @@ export interface Schedule extends ScheduleData {
 	created_at: string
 }
 
+export interface ProductList extends Pricelist {
+	kind: 'postpaid' | 'prepaid'
+}
+
 export interface IPriceListApiResult {
-	result: PriceListData
+	indexs: Record<string, Record<string, string[]>>
+	pricelist: ProductList[]
 }
 
 export async function getConfig(language: string): Promise<IConfig> {
@@ -178,6 +193,35 @@ export async function getConfig(language: string): Promise<IConfig> {
 	const config = (await result.json()) as IConfig
 
 	return config
+}
+
+export async function getGameServer(
+	gameCode: number
+): Promise<InquiryGameServer[]> {
+	if (gameCode === 0) {
+		return []
+	}
+	const result = await fetch(`${GetGameServerEndpoint}?gameCode=${gameCode}`)
+
+	if (result.status !== HttpOK) {
+		throw new Error(await result.text())
+	}
+
+	const servers = (await result.json()) as InquiryGameServer[]
+
+	return servers
+}
+
+export async function getPaymentList(): Promise<IpayMuDatum[]> {
+	const result = await fetch(PaymentListEndpoint)
+
+	if (result.status !== HttpOK) {
+		throw new Error(await result.text())
+	}
+
+	const paymentList: IpayMuDatum[] = (await result.json()) as IpayMuDatum[]
+
+	return paymentList
 }
 
 export async function getPinnedProjects(
@@ -194,7 +238,7 @@ export async function getPinnedProjects(
 	}))
 }
 
-export async function getProductList(): Promise<PriceListData> {
+export async function getProductList(): Promise<IPriceListApiResult> {
 	const result = await fetch(ProductListEndpoint)
 
 	if (result.status === HttpInternalServerError) {
@@ -202,7 +246,27 @@ export async function getProductList(): Promise<PriceListData> {
 	}
 
 	const products = (await result.json()) as IPriceListApiResult
-	return products.result
+	return products
+}
+
+export async function inqueryOrder(
+	data: InqueryInOrder
+): Promise<PostpaidInqueryData> {
+	const result = await fetch(ProductInQueryEndpoint, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	})
+
+	if (result.status === HttpInternalServerError) {
+		throw new Error('failed to send data')
+	}
+
+	const order = (await result.json()) as PostpaidInqueryData
+
+	return order
 }
 
 export async function getProjectListPaged(

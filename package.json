@@ -15,6 +15,7 @@
 		"prisma:migrate": "prisma migrate dev",
 		"prisma:init": "prisma migrate dev --name init",
 		"prisma:studio": "prisma studio",
+		"prisma:seed": "prisma db seed",
 		"cli": "ts-node --transpile-only --project ./tsconfig.cli.json ./src/cli.ts",
 		"cli:translate": "pnpm cli compile ./src/data/langs -d -o ./public/_data",
 		"cli:images": "pnpm cli image ./public/images -d -o ./public/images/__generated",
@@ -80,6 +81,7 @@
 		"react-remove-scroll": "^2.5.6",
 		"react-router-dom": "6.3.0",
 		"sharp": "^0.30.7",
+		"short-uuid": "^4.2.2",
 		"siwe": "^2.1.4",
 		"tabler-icons-react": "^1.56.0",
 		"yaml-front-matter": "^4.1.1"
@@ -141,7 +143,7 @@
 		"postcss-simple-vars": "^7.0.1",
 		"prettier": "2.6.2",
 		"prettier-plugin-tailwindcss": "0.1.11",
-		"prisma": "^5.4.1",
+		"prisma": "^5.5.2",
 		"rollup": "2.75.5",
 		"rollup-plugin-istanbul": "3.0.0",
 		"start-server-and-test": "1.14.0",
@@ -183,5 +185,13 @@
 		"reporter": [
 			"lcov"
 		]
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"@iak-id/iak-api-server-js@1.0.0": "patches/@iak-id__iak-api-server-js@1.0.0.patch"
+		}
+	},
+	"prisma": {
+		"seed": "ts-node --transpile-only --project ./tsconfig.cli.json ./src/seed.ts"
 	}
 }

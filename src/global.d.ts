@@ -9,13 +9,81 @@ declare module '@iak-id/iak-api-server-js' {
 		constructor(credential: Credential)
 		checkBalance(): Promise<CheckBalanceResult>
 		pricelist(query?: PricelistInQuery): Promise<PriceListResult>
-		topUp(request: TopUpRequest): Promise<TopUpResult>
+		topUp(request: TopUpPrepaidRequest): Promise<TopUpPrepaidResult>
+		inquiryGameId(query: InquiryGameIdRequest): Promise<InquiryGameIdResponse>
+		inquiryGameServer(
+			query: InquiryGameServerRequest
+		): Promise<InquiryGameServerResponse>
+		inquiryPln(query: InquiryPlnRequest): Promise<InquiryPlnResponse>
 	}
 	class IAKPostpaid {
 		constructor(credential: Credential)
+		pricelist(query?: PostPaidPriceListQuery): Promise<PostpaidPriceListResult>
+		inquiry(query: PostpaidInqueryRequest): Promise<PostpaidInqueryResponse>
 	}
 
-	interface TopUpRequest {
+	export interface InquiryPlnRequest {
+		customerId: string
+	}
+
+	export interface InquiryPlnResponse {
+		status: string
+		code: number
+		data: InquiryPlnData
+	}
+
+	export interface InquiryPlnData {
+		status: string
+		customer_id: string
+		meter_no: string
+		subscriber_id: string
+		name: string
+		segment_power: string
+		message: string
+		rc: string
+	}
+
+	export interface InquiryGameIdRequest {
+		customerId: string
+		gameCode: number
+	}
+
+	export interface InquiryGameIdResponse {
+		status: string
+		code: number
+		data: InquiryGameIdData
+	}
+
+	export interface InquiryGameIdData {
+		username: string
+		status: number
+		message: string
+		rc: string
+	}
+
+	interface InquiryGameServerRequest {
+		gameCode: string
+	}
+
+	export interface InquiryGameServerResponse {
+		status: string
+		code: number
+		data: InquiryGameServerData
+	}
+
+	export interface InquiryGameServerData {
+		servers: InquiryGameServer[]
+		status: number
+		message: string
+		rc: string
+	}
+
+	export interface InquiryGameServer {
+		name: string
+		value: string
+	}
+
+	interface TopUpPrepaidRequest {
 		customerId: string
 		/** must be unique */
 		refId: string
@@ -23,13 +91,64 @@ declare module '@iak-id/iak-api-server-js' {
 		productCode: string
 	}
 
-	interface TopUpResult {
-		status: string
-		code: number
-		data: PriceListData
+	interface ResponseError {
+		response_code: string
+		message: string
 	}
 
-	interface PriceListData {
+	interface PostPaidPriceListQuery {
+		type: string
+		province: string
+	}
+
+	export interface PostpaidInqueryRequest {
+		code: string
+		hp: string
+		refId: string
+		nomorIdentitas?: string
+		month?: string
+		desc?: {
+			amount: number
+		}
+	}
+
+	export interface PostpaidInqueryResponse {
+		status: string
+		code: number
+		data: PostpaidInqueryData
+	}
+
+	export interface PostpaidInqueryData {
+		tr_id: number
+		code: string
+		hp: string
+		tr_name: string
+		period: string
+		nominal: number
+		admin: number
+		ref_id: string
+		response_code: string
+		message: string
+		price: number
+		selling_price: number
+		desc: PostpaidInqueryDesc
+	}
+
+	export interface PostpaidInqueryDesc {
+		kode_cabang: string
+		nama_cabang: string
+		sisa_pembayaran: string
+		jumlah_peserta: string
+		product_desc: string
+	}
+
+	interface TopUpPrepaidResult {
+		status: string
+		code: number
+		data: TopUpPrepaidData
+	}
+
+	interface TopUpPrepaidData {
 		ref_id: string
 		status: number
 		product_code: string
@@ -39,6 +158,25 @@ declare module '@iak-id/iak-api-server-js' {
 		balance: number
 		tr_id: number
 		rc: string
+	}
+
+	export interface PostpaidPriceListResult {
+		data: PostPiadPriceListData & ResponseError
+		meta: unknown[]
+	}
+
+	export interface PostPiadPriceListData {
+		pasca: Pasca[]
+	}
+
+	export interface Pasca {
+		code: string
+		name: string
+		status: number
+		fee: number
+		komisi: number
+		type: string
+		category: string
 	}
 
 	interface PriceListResult {

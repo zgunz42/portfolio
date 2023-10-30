@@ -1,0 +1,4 @@
+/* stylelint-disable custom-property-pattern */
+.hint-color {
+	color: var(--_input-color);
+}

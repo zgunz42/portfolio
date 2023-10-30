@@ -1,0 +1,12 @@
+diff --git a/src/iak/postpaid.js b/src/iak/postpaid.js
+index 09e830b6060e72dc1b7455cb47558995f1d8b7b7..d525beac8e4c97fbe981f26d13748fb477718b2d 100755
+--- a/src/iak/postpaid.js
++++ b/src/iak/postpaid.js
+@@ -75,6 +75,7 @@ class IAKPostpaid extends IAK {
+       hp: params.hp,
+       code: params.code,
+       sign: this.generateSign(params.refId),
++      desc: params.desc,
+     };
+ 
+     if (params.code.toLowerCase() === 'bpjs') {
