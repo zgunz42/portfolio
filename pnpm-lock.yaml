@@ -106,6 +106,9 @@ dependencies:
   file-saver:
     specifier: ^2.0.5
     version: 2.0.5
+  formidable:
+    specifier: ^3.5.1
+    version: 3.5.1
   framer-motion:
     specifier: ^6.5.1
     version: 6.5.1(react-dom@18.2.0)(react@18.2.0)
@@ -225,6 +228,9 @@ devDependencies:
   '@types/file-saver':
     specifier: ^2.0.5
     version: 2.0.5
+  '@types/formidable':
+    specifier: ^3.4.4
+    version: 3.4.4
   '@types/js-yaml':
     specifier: ^4.0.6
     version: 4.0.6
@@ -3622,6 +3628,15 @@ packages:
       }
     dev: true
 
+  /@types/formidable@3.4.4:
+    resolution:
+      {
+        integrity: sha512-0yRhMir7fdWIGfiCoYcqF6fQ2NXpb/0WwWQzg6n+K4IEIeqDVDDiDZfgfLJpi1Tbj8nvVKOAcyLVKAT3f0ZTiw==
+      }
+    dependencies:
+      '@types/node': 20.8.3
+    dev: true
+
   /@types/glob@7.2.0:
     resolution:
       {
@@ -4894,6 +4909,13 @@ packages:
       }
     engines: { node: '>=0.10.0' }
     dev: true
+
+  /asap@2.0.6:
+    resolution:
+      {
+        integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==
+      }
+    dev: false
 
   /asn1@0.2.6:
     resolution:
@@ -6529,6 +6551,16 @@ packages:
       minimist: 1.2.8
     dev: true
 
+  /dezalgo@1.0.4:
+    resolution:
+      {
+        integrity: sha512-rXSP0bf+5n0Qonsb+SVVfNfIsimO4HEtmnIpPHY8Q1UCzKlQrDMfdobr8nJOOsRgWCyMRqeSBQzmWUMq7zvVig==
+      }
+    dependencies:
+      asap: 2.0.6
+      wrappy: 1.0.2
+    dev: false
+
   /didyoumean@1.2.2:
     resolution:
       {
@@ -8126,6 +8158,17 @@ packages:
       mime-types: 2.1.35
     dev: true
 
+  /formidable@3.5.1:
+    resolution:
+      {
+        integrity: sha512-WJWKelbRHN41m5dumb0/k8TeAx7Id/y3a+Z7QfhxP/htI9Js5zYaEDtG8uMgG0vM0lOlqnmjE99/kfpOYi/0Og==
+      }
+    dependencies:
+      dezalgo: 1.0.4
+      hexoid: 1.0.0
+      once: 1.4.0
+    dev: false
+
   /fraction.js@4.3.6:
     resolution:
       {
@@ -8800,6 +8843,14 @@ packages:
       {
         integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==
       }
+    dev: false
+
+  /hexoid@1.0.0:
+    resolution:
+      {
+        integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==
+      }
+    engines: { node: '>=8' }
     dev: false
 
   /hey-listen@1.0.8:

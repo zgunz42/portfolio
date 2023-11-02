@@ -170,3 +170,37 @@ export type PrismaTx = Omit<
 	PrismaClient<Prisma.PrismaClientOptions, never>,
 	'$connect' | '$disconnect' | '$extends' | '$on' | '$transaction' | '$use'
 >
+
+export interface IpayMuCallbackResponse {
+	trx_id: string
+	status: string
+	status_code: string
+	sid: string
+	reference_id: string
+}
+
+export interface IpayMuCheckTransactionResponse {
+	Status: number
+	Data: IpayMuCheckTransactionData
+	Message: string
+}
+
+export interface IpayMuCheckTransactionData {
+	TransactionId: number
+	SessionId: string
+	ReferenceId: null
+	RelatedId: number
+	Sender: string
+	Receiver: string
+	Amount: number
+	Fee: number
+	Status: number
+	StatusDesc: string
+	Type: number
+	TypeDesc: string
+	Notes: string
+	CreatedDate: Date
+	ExpiredDate: Date
+	SuccessDate: string
+	SettlementDate: string
+}

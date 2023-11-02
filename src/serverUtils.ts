@@ -24,6 +24,7 @@ import type {
 	ProductCategory,
 	ProductOrder,
 	ProductOrderFee,
+	Transaction,
 	User
 } from '@prisma/client'
 import {
@@ -38,6 +39,8 @@ import bcrypt from 'bcrypt'
 import CryptoJS from 'crypto-js'
 import short from 'short-uuid'
 import type {
+	IpayMuCheckTransactionData,
+	IpayMuCheckTransactionResponse,
 	IpayMuDatum,
 	IpayMuDirectPayData,
 	IpayMuDirectPayRequest,
@@ -218,6 +221,33 @@ export function signGet(): string {
 		CryptoJS.HmacSHA256(stringtosign, apikey)
 	)
 	return signature
+}
+
+export async function checkIpayMuTransaction(
+	transId: number
+): Promise<IpayMuCheckTransactionData> {
+	const url = `${indexPaymuEndpoint}/transaction`
+	const formData = new FormData()
+
+	formData.append('transactionId', transId as unknown as string)
+
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			va,
+			signature: signPost(formData),
+			timestamp: timestamp()
+		} as Record<string, string>,
+		body: formData
+	})
+
+	const data = (await response.json()) as IpayMuCheckTransactionResponse
+
+	if (data.Status !== HttpOK) {
+		throw new Error(data.Message)
+	}
+
+	return data.Data
 }
 
 export async function directPay(
@@ -624,4 +654,43 @@ export async function getProductOrderByRef(
 
 export function getPrice(money: bigint): number {
 	return Number(money) / BasePrice
+}
+
+export async function getTransaction(
+	referenceCode: number
+): Promise<Transaction> {
+	await prismaClient.$connect()
+	try {
+		const result = await prismaClient.transaction.findUniqueOrThrow({
+			where: {
+				referenceId: String(referenceCode)
+			}
+		})
+
+		return result
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export async function proccessOrder(referenceId: number): Promise<unknown> {
+	await prismaClient.$connect()
+	try {
+		const transaction = await prismaClient.transaction.findFirstOrThrow({
+			where: {
+				referenceId: String(referenceId)
+			},
+			include: {
+				ProductOrder: {
+					include: {
+						product: true
+					}
+				}
+			}
+		})
+
+		return transaction
+	} finally {
+		await prismaClient.$disconnect()
+	}
 }
