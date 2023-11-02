@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
+import type { PostpaidInqueryRequest } from '@iak-id/iak-api-server-js'
+import { ProductType } from '@prisma/client'
 import { HttpBadRequest, HttpOK, HttpUnauthorized } from 'constant'
 import Joi from 'joi'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth'
 import { authOptions } from 'pages/api/auth/[...nextauth]'
 import {
+	createPrepaidInqueryProductOrder,
+	getProductByCode,
 	getUniqueReferenceId,
 	inqueryGameClient,
 	inqueryPlnPrepaid,
@@ -15,9 +19,7 @@ import gameCodes from 'utils/game/gameCodes'
 
 const inqueryOrderSchema = Joi.object<InqueryOrder>({
 	customerId: Joi.string().required(),
-	productKind: Joi.string().required(),
 	productCode: Joi.string().required(),
-	priceType: Joi.string().valid('postpaid', 'prepaid').required(),
 	month: Joi.number().optional().empty(),
 	nomine: Joi.number().optional().empty(),
 	server: Joi.string().optional().empty(),
@@ -31,7 +33,7 @@ async function handler(
 ): Promise<unknown> {
 	const session = await getServerSession(request, response, authOptions)
 
-	if (!session) {
+	if (!session || !session.user || !session.user.email) {
 		const unauthorizedResponse = response.status(HttpUnauthorized)
 
 		unauthorizedResponse.json({ error: 'unauthorized' })
@@ -54,10 +56,10 @@ async function handler(
 		return responseError
 	}
 	try {
-		const referenceId = getUniqueReferenceId()
-		switch (value.priceType) {
-			case 'prepaid':
-				if (value.productKind === 'pln') {
+		const product = await getProductByCode(value.productCode)
+		switch (product.type) {
+			case ProductType.PREPAID:
+				if (product.operator.category.code === 'pln') {
 					const result = await inqueryPlnPrepaid({
 						customerId: value.customerId
 					})
@@ -69,7 +71,7 @@ async function handler(
 
 					return successResponse
 				}
-				if (value.productKind === 'game') {
+				if (product.operator.category.code === 'game') {
 					if (!value.gameCode) {
 						responseError.json({ error: 'invalid game code' })
 						return responseError
@@ -98,21 +100,42 @@ async function handler(
 					return successResponse
 				}
 				break
-			case 'postpaid':
+			case ProductType.POSTPAID:
 				// eslint-disable-next-line no-case-declarations
-				const result = await inqueryPostpaid({
+				const referenceId = getUniqueReferenceId()
+				// eslint-disable-next-line no-case-declarations
+				const inqueryRequest: PostpaidInqueryRequest = {
 					code: value.productCode,
 					hp: value.customerId,
-					refId: referenceId,
-					desc: {
-						amount: 10_000
+					refId: referenceId
+				}
+
+				if (value.month || value.nomine) {
+					inqueryRequest.desc = {
+						amount: value.month ?? value.nomine ?? 0
 					}
+				}
+
+				// eslint-disable-next-line no-case-declarations
+				const result = await inqueryPostpaid(inqueryRequest)
+
+				// eslint-disable-next-line no-case-declarations
+				const productOrder = await createPrepaidInqueryProductOrder({
+					price: result.price,
+					productCode: value.productCode,
+					productId: product.id,
+					refId: referenceId,
+					email: session.user.email,
+					trxId: result.tr_id
 				})
 
 				// eslint-disable-next-line no-case-declarations
 				const successResponse = response.status(HttpOK)
 
-				successResponse.json(result)
+				successResponse.json({
+					...result,
+					productOrderId: productOrder.id
+				})
 
 				return successResponse
 			default:
@@ -120,7 +143,7 @@ async function handler(
 				return responseError
 		}
 
-		return response.status(HttpOK).end()
+		throw new Error('invalid product type')
 	} catch (_error) {
 		if (_error instanceof Error) {
 			responseError.json({ error: _error.message })

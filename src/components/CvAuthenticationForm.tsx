@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -18,6 +20,7 @@ import {
 import { useForm } from '@mantine/form'
 import { upperFirst, useToggle } from '@mantine/hooks'
 import { showNotification } from '@mantine/notifications'
+import { parseUrl } from 'next/dist/shared/lib/router/utils/parse-url'
 import GoogleButton from './GoogleButton'
 import TwitterButton from './TwitterButton'
 
@@ -72,8 +75,22 @@ export default function CvAuthenticationForm({
 									'Content-Type': 'application/json'
 								}
 							})
-							console.log(form.values)
-							console.log(result)
+							if (result.url.includes('error')) {
+								const urlResult = parseUrl(result.url)
+								showNotification({
+									title: 'Error',
+									message: urlResult.query.error,
+									color: 'red'
+								})
+							} else {
+								showNotification({
+									title: 'Success',
+									message: 'Logged in successfully',
+									color: 'green'
+								})
+
+								window.location.href = result.url
+							}
 						}
 
 						if (type === 'register') {
@@ -84,15 +101,24 @@ export default function CvAuthenticationForm({
 									'Content-Type': 'application/json'
 								}
 							})
-							console.log(form.values)
-							console.log(result)
-						}
 
-						showNotification({
-							title: 'Success',
-							message: 'Account created successfully',
-							color: 'green'
-						})
+							if (result.url.includes('error')) {
+								const urlResult = parseUrl(result.url)
+								showNotification({
+									title: 'Error',
+									message: urlResult.query.error,
+									color: 'red'
+								})
+							} else {
+								showNotification({
+									title: 'Success',
+									message: 'Registered successfully',
+									color: 'green'
+								})
+
+								window.location.href = result.url
+							}
+						}
 					} catch {
 						showNotification({
 							title: 'Error',

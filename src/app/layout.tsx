@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ColorSchemeScript, MantineProvider } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
 import { theme } from 'themes/theme'
 
 type Property = ArgumentsType<typeof MantineProvider>[0]
@@ -27,6 +28,7 @@ export default function RootLayout({
 			</head>
 			<body>
 				<MantineProvider defaultColorScheme='dark' theme={theme}>
+					<Notifications />
 					{children}
 				</MantineProvider>
 			</body>

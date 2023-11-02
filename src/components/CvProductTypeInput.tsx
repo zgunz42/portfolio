@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-handler-names */
 import type { InputBaseProps } from '@mantine/core'
@@ -10,13 +11,28 @@ import {
 	useCombobox
 } from '@mantine/core'
 import {
+	IconBuildingHospital,
+	IconCalendar,
+	IconCar,
+	IconCards,
+	IconCash,
 	IconDeviceGamepad,
+	IconDeviceTv,
+	IconDroplet,
+	IconGasStation,
+	IconHome,
+	IconHttpConnect,
 	IconMobiledata,
 	IconPhone,
 	IconRoad,
+	IconSchool,
 	IconSignature,
 	IconSolarElectricity,
+	IconTag,
 	IconTicket,
+	IconTrain,
+	IconUserBolt,
+	IconUsersGroup,
 	IconVideo,
 	IconWorld
 } from '@tabler/icons-react'
@@ -24,8 +40,9 @@ import type { ReactElement } from 'react'
 import classes from './CvProductTypeInput.module.css'
 
 interface Properties extends InputBaseProps {
-	labels: string[]
+	labels: { label: string; value: string }[] | string[]
 	value: string
+	onOpen: () => void
 	onChange: (value: string) => void
 }
 
@@ -33,10 +50,11 @@ function CvProducTypeInput({
 	labels,
 	value,
 	onChange,
+	onOpen,
 	...properties
 }: Properties): ReactElement {
 	const getIcon = (label: string): ReactElement => {
-		switch (label) {
+		switch (label.toLowerCase()) {
 			case 'voucher':
 				return <IconTicket />
 			case 'data':
@@ -55,22 +73,65 @@ function CvProducTypeInput({
 				return <IconSignature />
 			case 'international':
 				return <IconWorld />
+			case 'pdam':
+				return <IconDroplet />
+			case 'emoney':
+				return <IconCash />
+			case 'bpjs':
+				return <IconBuildingHospital />
+			case 'internet':
+				return <IconHttpConnect />
+			case 'tv':
+				return <IconDeviceTv />
+			case 'hp':
+				return <IconPhone />
+			case 'finance':
+				return <IconCards />
+			case 'iuran':
+				return <IconCalendar />
+			case 'kereta':
+				return <IconTrain />
+			case 'pbb':
+				return <IconHome />
+			case 'gas':
+				return <IconGasStation />
+			case 'pendidikan':
+				return <IconSchool />
+			case 'pajak-kendaraan':
+				return <IconCar />
+			case 'dm-member':
+				return <IconUsersGroup />
+			case 'dm-nonmember':
+				return <IconUserBolt />
 			default:
-				return <IconWorld />
+				return <IconTag />
 		}
 	}
 
 	const combobox = useCombobox()
 
-	const options = labels.map(item => (
-		<Combobox.Option value={item} key={item}>
-			<Flex>
-				{getIcon(item)}
-				<Space w='sm' />
-				{item}
-			</Flex>
-		</Combobox.Option>
-	))
+	const options = labels.map(item => {
+		if (typeof item === 'string') {
+			return (
+				<Combobox.Option value={item} key={item}>
+					<Flex>
+						{getIcon(item)}
+						<Space w='sm' />
+						{item}
+					</Flex>
+				</Combobox.Option>
+			)
+		}
+		return (
+			<Combobox.Option value={item.value} key={item.value}>
+				<Flex>
+					{getIcon(item.value)}
+					<Space w='sm' />
+					{item.label}
+				</Flex>
+			</Combobox.Option>
+		)
+	})
 
 	return (
 		<Combobox
@@ -78,6 +139,7 @@ function CvProducTypeInput({
 				onChange(optionValue)
 				combobox.closeDropdown()
 			}}
+			onOpen={onOpen}
 			store={combobox}
 		>
 			<Combobox.Target targetType='button'>
@@ -106,7 +168,7 @@ function CvProducTypeInput({
 			</Combobox.Target>
 
 			<Combobox.Dropdown>
-				<Combobox.Options>
+				<Combobox.Options style={{ overflowY: 'auto', maxHeight: 200 }}>
 					{options.length === 0 ? (
 						<Combobox.Empty>Nothing found</Combobox.Empty>
 					) : (

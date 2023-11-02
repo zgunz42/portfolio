@@ -38,6 +38,7 @@ enum MarginKind {
 enum TransactionType {
   CASH
   EWALLET
+  GATEWAYS
 }
 
 enum MarginType {
@@ -48,6 +49,7 @@ enum MarginType {
 enum FeeSource {
   PAYMENT_GATEWAY
   SYSTEM
+  IAK
 }
 
 model Post {
@@ -166,7 +168,7 @@ enum VoucerStatus {
 model ProductCategory {
   id       Int        @id @default(autoincrement())
   name     String
-  code     String @unique
+  code     String     @unique
   Operator Operator[]
 
   @@unique([id, code])
@@ -177,40 +179,38 @@ model Operator {
   id         Int             @id @default(autoincrement())
   categoryId Int             @map("category_id")
   name       String
-  code       String @unique
+  code       String          @unique
   category   ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   Product    Product[]
 
+  @@unique([id, code])
   @@index([code])
   @@index([name])
   @@index([categoryId])
-
-  @@unique([id, code])
   @@map("operators")
 }
 
 model Product {
-  id                Int            @id @default(autoincrement())
-  code              String @unique
-  type              ProductType
-  isFixed           Boolean        @default(false) @map("is_fixed")
-  operatorId        Int            @map("operator_id")
-  name              String
-  description       String?        @db.Text
-  iconUrl           String?        @map("icon_url")
-  incomeType        IncomeType     @map("income_type")
-  price             BigInt
-  status            ProductStatus
-  lastPullDate      DateTime?
-  createdDate       DateTime       @default(now()) @map("created_date")
-  updatedDate       DateTime       @updatedAt @map("updated_date")
-  ProductOrderFee   ProductOrder[]
-  operator          Operator       @relation(fields: [operatorId], references: [id], onDelete: Cascade)
-
-  @@index([code, incomeType, type, status])
-  @@index([operatorId])
+  id              Int            @id @default(autoincrement())
+  code            String         @unique
+  type            ProductType
+  isFixed         Boolean        @default(false) @map("is_fixed")
+  operatorId      Int            @map("operator_id")
+  name            String
+  description     String?        @db.Text
+  iconUrl         String?        @map("icon_url")
+  incomeType      IncomeType     @map("income_type")
+  price           BigInt
+  status          ProductStatus
+  lastPullDate    DateTime?
+  createdDate     DateTime       @default(now()) @map("created_date")
+  updatedDate     DateTime       @updatedAt @map("updated_date")
+  ProductOrderFee ProductOrder[]
+  operator        Operator       @relation(fields: [operatorId], references: [id], onDelete: Cascade)
 
   @@unique([id, code])
+  @@index([code, incomeType, type, status])
+  @@index([operatorId])
   @@map("products")
 }
 
@@ -263,13 +263,13 @@ model ProductOrderFee {
 
   @@unique([orderId, marginId])
   @@index([marginId])
-
   @@map("product_order_fees")
 }
 
 model ProductOrder {
   id              Int               @id @default(autoincrement())
   refId           String            @unique() @map("ref_id")
+  trxId           Int?              @unique() @map("trx_id")
   userId          Int               @map("user_id")
   productId       Int               @map("product_id")
   transactionId   Int?              @unique @map("transaction_id")
@@ -280,7 +280,7 @@ model ProductOrder {
   status          OrderStatus
   createdDate     DateTime          @default(now()) @map("created_date")
   updatedDate     DateTime          @updatedAt @map("updated_date")
-  ProductOrderFee ProductOrderFee[]
+  productOrderFee ProductOrderFee[]
   transaction     Transaction?      @relation(fields: [transactionId], references: [id], onDelete: Cascade)
   product         Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
   coupon          Coupon?           @relation(fields: [couponId], references: [id], onDelete: Cascade)
@@ -290,7 +290,6 @@ model ProductOrder {
   @@index([productId])
   @@index([couponId])
   @@index([userId])
-
   @@map("product_orders")
 }
 
@@ -299,12 +298,13 @@ model Transaction {
   referenceId    String?           @unique @map("reference_id")
   userId         Int               @map("user_id")
   amount         BigInt
+  paymentNo      String?           @map("payment_no")
+  paymentName    String?           @map("payment_name")
+  paymentVia     String?           @map("payment_via")
   status         TransactionStatus
-  statusDesc     String            @map("status_desc")
   type           TransactionType
   productCode    String            @map("product_code")
-  typeDesc       String            @map("type_desc")
-  notes          String
+  notes          String?
   createdDate    DateTime          @default(now()) @map("created_date")
   expiredDate    DateTime          @map("expired_date")
   successDate    DateTime?         @map("success_date")
@@ -314,6 +314,5 @@ model Transaction {
 
   @@index([referenceId])
   @@index([userId])
-
   @@map("transactions")
 }

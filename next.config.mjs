@@ -26,10 +26,14 @@ const nextConfig = withPlugins([withPWA, withBundleAnalyzer], {
 	// },
 	images: {
 		domains: ['www.signfix.com.au', 'picsum.photos']
-	},
-	experimental: {
-		optimizePackageImports: ['@mantine/core', '@mantine/hooks']
 	}
+	// experimental: {
+	// optimizePackageImports: [
+	// 	'@mantine/core',
+	// 	'@mantine/hooks',
+	// 	'@mantine/notifications'
+	// ]
+	// }
 })
 
 export default nextConfig

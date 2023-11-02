@@ -65,7 +65,7 @@
 		"js-yaml": "^4.1.0",
 		"lodash": "^4.17.21",
 		"mime-types": "^2.1.35",
-		"next": "^13.5.4",
+		"next": "^13.5.6",
 		"next-auth": "^4.24.3",
 		"next-compose-plugins": "^2.2.1",
 		"next-pwa": "^5.6.0",
@@ -188,7 +188,9 @@
 	},
 	"pnpm": {
 		"patchedDependencies": {
-			"@iak-id/iak-api-server-js@1.0.0": "patches/@iak-id__iak-api-server-js@1.0.0.patch"
+			"@iak-id/iak-api-server-js@1.0.0": "patches/@iak-id__iak-api-server-js@1.0.0.patch",
+			"@mantine/core@7.1.5": "patches/@mantine__core@7.1.5.patch",
+			"@mantine/notifications@7.1.5": "patches/@mantine__notifications@7.1.5.patch"
 		}
 	},
 	"prisma": {

@@ -41,11 +41,11 @@ async function main(): Promise<void> {
 
 	for (const item of prepaidProduct.pricelist) {
 		let label = item.product_type
-		if (!knownLabels.has(item.product_type)) {
-			label = 'international'
-		}
-		productCategoryInputs[item.product_type] = {
-			code: item.product_type,
+		label = !knownLabels.has(item.product_type)
+			? 'international'
+			: item.product_type
+		productCategoryInputs[label] = {
+			code: label,
 			name: label
 		}
 		const operatorKey =
@@ -57,7 +57,7 @@ async function main(): Promise<void> {
 				: item.product_description
 
 		productOperatorInputs[operatorKey] = {
-			category: item.product_type,
+			category: label,
 			name: operatorKey,
 			code: operatorKey
 		}

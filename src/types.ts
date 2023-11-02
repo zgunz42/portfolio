@@ -1,12 +1,17 @@
+import type { PostpaidInqueryData } from '@iak-id/iak-api-server-js'
+import type { Prisma, PrismaClient } from '@prisma/client'
+
 export interface InqueryInOrder {
 	customerId: string
-	productKind: string
 	productCode: string
-	priceType: 'postpaid' | 'prepaid'
 	month?: number
 	nomine?: number
 	server?: string
 	gameCode?: number
+}
+
+export interface InqueryWithOrder extends PostpaidInqueryData {
+	productOrderId?: number
 }
 
 export interface InqueryOrder extends InqueryInOrder {
@@ -16,9 +21,11 @@ export interface InqueryOrder extends InqueryInOrder {
 export interface ToupRequest {
 	priceType: 'postpaid' | 'prepaid'
 	customerId: string
-	trId: number
-	refId: string
+	trId?: number
+	refId?: string
 	productCode: string
+	paymentMethod: string
+	paymentChannel: string
 }
 
 export interface IPayMuPaymetListResponse {
@@ -157,3 +164,9 @@ export interface IpayMuDirectPayData {
 	Fee: number
 	Expired: Date
 }
+
+// eslint-disable-next-line @typescript-eslint/no-type-alias
+export type PrismaTx = Omit<
+	PrismaClient<Prisma.PrismaClientOptions, never>,
+	'$connect' | '$disconnect' | '$extends' | '$on' | '$transaction' | '$use'
+>

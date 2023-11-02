@@ -17,8 +17,23 @@ import type {
 	TopUpPrepaidRequest
 } from '@iak-id/iak-api-server-js'
 import { IAKPostpaid, IAKPrepaid } from '@iak-id/iak-api-server-js'
-import type { User } from '@prisma/client'
-import { PrismaClient } from '@prisma/client'
+import type {
+	Operator as ProductOperator,
+	Prisma,
+	Product,
+	ProductCategory,
+	ProductOrder,
+	ProductOrderFee,
+	User
+} from '@prisma/client'
+import {
+	OrderStatus,
+	PrismaClient,
+	ProductStatus,
+	TransactionStatus,
+	TransactionType
+} from '@prisma/client'
+import type { Optional } from '@prisma/client/runtime/library'
 import bcrypt from 'bcrypt'
 import CryptoJS from 'crypto-js'
 import short from 'short-uuid'
@@ -27,10 +42,11 @@ import type {
 	IpayMuDirectPayData,
 	IpayMuDirectPayRequest,
 	IpayMuDirectPayResponse,
-	IPayMuPaymetListResponse
+	IPayMuPaymetListResponse,
+	PrismaTx
 } from 'types'
 import type GameIdBuilder from 'utils/game/builder'
-import { HttpOK } from './constant'
+import { BasePrice, HttpOK } from './constant'
 
 const saltRounds = 11
 export const prismaClient = new PrismaClient()
@@ -39,6 +55,10 @@ interface RegisterData {
 	name: string
 	email: string
 	password: string
+}
+
+export function toMoney(price: number): bigint {
+	return BigInt(price * BasePrice)
 }
 
 export function timestamp(): string {
@@ -207,17 +227,21 @@ export async function directPay(
 	const formData = new FormData()
 
 	// eslint-disable-next-line @typescript-eslint/no-for-in-array, no-restricted-syntax
-	for (const entry in Object.entries(input)) {
-		if (Object.hasOwn(input, entry[0])) {
-			formData.append(entry[0], entry[1])
+	for (const key of Object.keys(input)) {
+		if (Object.hasOwn(input, key)) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+			formData.append(
+				key,
+				input[key as keyof IpayMuDirectPayRequest] as unknown as string
+			)
 		}
 	}
 
 	const response = await fetch(url, {
 		method: 'POST',
 		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'multipart/form-data',
+			// Accept: 'application/json',
+			// 'Content-Type': 'multipart/form-data',
 			va,
 			signature: signPost(formData),
 			timestamp: timestamp()
@@ -230,6 +254,8 @@ export async function directPay(
 	if (data.Status !== HttpOK) {
 		throw new Error(data.Message)
 	}
+
+	data.Data.Expired = new Date(data.Data.Expired)
 
 	return data.Data
 }
@@ -298,4 +324,304 @@ export async function getUserByEmail(email: string): Promise<User | null> {
 
 export function getUniqueReferenceId(): string {
 	return short.generate()
+}
+
+export async function getCategories(): Promise<ProductCategory[]> {
+	await prismaClient.$connect()
+	try {
+		const categories = await prismaClient.productCategory.findMany({})
+
+		return categories
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export async function getOperators(
+	categoryCode: string
+): Promise<ProductOperator[]> {
+	await prismaClient.$connect()
+	try {
+		const operators = await prismaClient.operator.findMany({
+			where: {
+				category: {
+					code: categoryCode
+				}
+			}
+		})
+
+		return operators
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export async function getProductByCode(code: string): Promise<
+	Prisma.ProductGetPayload<{
+		include: {
+			operator: {
+				include: {
+					category: true
+				}
+			}
+		}
+	}>
+> {
+	await prismaClient.$connect()
+	try {
+		const product = await prismaClient.product.findUniqueOrThrow({
+			where: {
+				code
+			},
+			include: {
+				operator: {
+					include: {
+						category: true
+					}
+				}
+			}
+		})
+
+		return product
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export async function getProducts(
+	providerCode: string,
+	status = 0
+): Promise<Product[]> {
+	await prismaClient.$connect()
+	try {
+		const products = await prismaClient.product.findMany({
+			where: {
+				operator: {
+					code: providerCode
+				},
+				status: {
+					equals:
+						status > 0
+							? // eslint-disable-next-line unicorn/no-nested-ternary
+							  status > 1
+								? ProductStatus.INACTIVE
+								: ProductStatus.ACTIVE
+							: undefined
+				}
+			}
+		})
+		return products
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export async function createPrepaidInqueryProductOrder({
+	price,
+	productId,
+	productCode,
+	refId,
+	email,
+	fee,
+	status,
+	transactionId,
+	trxId,
+	tx
+}: Optional<
+	Omit<
+		Prisma.ProductOrderCreateInput,
+		'coupon' | 'product' | 'transaction' | 'user'
+	>,
+	| 'createdDate'
+	| 'fee'
+	| 'productOrderFee'
+	| 'status'
+	| 'transaction'
+	| 'updatedDate'
+> & {
+	productId: number
+	email: string
+	transactionId?: number
+	trxId?: number
+	tx?: PrismaTx
+}): Promise<ProductOrder> {
+	const client = tx ?? prismaClient
+	if (!tx) {
+		await prismaClient.$connect()
+	}
+	try {
+		const order = await client.productOrder.create({
+			data: {
+				refId,
+				fee: fee ?? 0,
+				trxId,
+				price: toMoney(price as number),
+				product: {
+					connect: {
+						id: productId
+					}
+				},
+				productCode,
+				status: status ?? OrderStatus.INQUIRY,
+				user: {
+					connect: {
+						email
+					}
+				},
+				transaction: transactionId
+					? { connect: { id: transactionId } }
+					: undefined
+			}
+		})
+
+		return order
+	} finally {
+		if (!tx) {
+			await prismaClient.$disconnect()
+		}
+	}
+}
+
+export async function placeProduceOrder(
+	type: 'postpaid' | 'prepaid',
+	price: number,
+	product: Product,
+	userName: string,
+	email: string,
+	referenceId: string,
+	paymentMethod: string,
+	paymentChannel: string,
+	trxId: number | undefined,
+	fees: Pick<ProductOrderFee, 'addition' | 'amount' | 'source' | 'type'>[]
+): Promise<IpayMuDirectPayData> {
+	await prismaClient.$connect()
+	try {
+		const payment = await directPay({
+			amount: price,
+			paymentMethod: paymentMethod as 'cc',
+			paymentChannel,
+			email,
+			name: userName,
+			feeDirection: 'BUYER',
+			notifyUrl: process.env.IPAYMU_CALLBACK_URL ?? '',
+			referenceId,
+			phone: process.env.IPAYMU_PHONE_NUMBER ?? '',
+			product: [product.name],
+			price: [Number(product.price) / BasePrice]
+		})
+
+		const resultTr = await prismaClient.$transaction<IpayMuDirectPayData>(
+			async tx => {
+				const transaction = await tx.transaction.create({
+					data: {
+						referenceId: String(payment.TransactionId),
+						amount: payment.Total * BasePrice,
+						expiredDate: payment.Expired,
+						status: TransactionStatus.PENDING,
+						type: TransactionType.GATEWAYS,
+						productCode: product.code,
+						paymentNo: payment.PaymentNo,
+						paymentName: payment.PaymentName,
+						paymentVia: payment.Via,
+						user: {
+							connect: {
+								email
+							}
+						}
+					}
+				})
+				let result: ProductOrder | undefined
+				if (type === 'prepaid') {
+					result = await createPrepaidInqueryProductOrder({
+						email,
+						tx,
+						fee: fees.reduce(
+							(accumulator, fee) => accumulator + Number(fee.amount),
+							0
+						),
+						price: toMoney(price),
+						productId: product.id,
+						productCode: product.code,
+						refId: referenceId,
+						status: OrderStatus.CONFIRMED,
+						transactionId: transaction.id,
+						trxId
+					})
+				}
+
+				if (type === 'postpaid') {
+					result = await tx.productOrder.findUniqueOrThrow({
+						where: {
+							refId: referenceId
+						}
+					})
+
+					await tx.productOrder.update({
+						where: {
+							id: result.id
+						},
+						data: {
+							fee: fees.reduce(
+								(accumulator, fee) => accumulator + Number(fee.amount),
+								0
+							),
+							price,
+							transactionId: transaction.id,
+							status: OrderStatus.CONFIRMED
+						}
+					})
+				}
+
+				if (!result) {
+					throw new Error('failed to create product order')
+				}
+
+				const resultFee = []
+				// initialize fee
+				for (const item of fees) {
+					resultFee.push(
+						tx.productOrderFee.create({
+							data: {
+								addition: item.addition,
+								amount: item.amount,
+								source: item.source,
+								type: item.type,
+								orderId: result.id
+							}
+						})
+					)
+				}
+
+				await Promise.all(resultFee)
+
+				return payment
+			}
+		)
+
+		return resultTr
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export async function getProductOrderByRef(
+	referenceId: string
+): Promise<ProductOrder> {
+	await prismaClient.$connect()
+	try {
+		const result = await prismaClient.productOrder.findUniqueOrThrow({
+			where: {
+				refId: referenceId
+			}
+		})
+
+		return result
+	} finally {
+		await prismaClient.$disconnect()
+	}
+}
+
+export function getPrice(money: bigint): number {
+	return Number(money) / BasePrice
 }

@@ -4,7 +4,13 @@ import { HttpBadRequest, HttpOK, HttpUnauthorized } from 'constant'
 import Joi from 'joi'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from 'next-auth'
-import { directPay } from 'serverUtils'
+import {
+	getPrice,
+	getProductByCode,
+	getProductOrderByRef,
+	getUniqueReferenceId,
+	placeProduceOrder
+} from 'serverUtils'
 import type { ToupRequest } from 'types'
 import { authOptions } from './auth/[...nextauth]'
 
@@ -18,9 +24,11 @@ const topUpSchema = Joi.object<ToupRequest>({
 		is: 'prepaid',
 		then: Joi.string().required()
 	}),
+	paymentMethod: Joi.string().required(),
+	paymentChannel: Joi.string().required(),
 	refId: Joi.when('priceType', {
 		is: 'postpaid',
-		then: Joi.string().required()
+		then: Joi.string().optional().empty()
 	}),
 	trId: Joi.when('priceType', {
 		is: 'postpaid',
@@ -35,7 +43,7 @@ export default async function handler(
 ) {
 	const session = await getServerSession(request, response, authOptions)
 
-	if (!session) {
+	if (!session || !session.user || !session.user.email || !session.user.name) {
 		const unauthorizedResponse = response.status(HttpUnauthorized)
 
 		unauthorizedResponse.json({ error: 'unauthorized' })
@@ -59,26 +67,42 @@ export default async function handler(
 	}
 
 	try {
-		if (value.priceType === 'prepaid') {
-			// create order and transaction
-			const result = await directPay({
-				amount: 10_000,
-				email: session.user?.email ?? 'adi_gunawan@live.com',
-				name: session.user?.name ?? 'Adi Gunawan',
-				phone: '081234567890',
-				notifyUrl: 'https://example.com',
-				paymentChannel: 'bca',
-				paymentMethod: 'va'
-			})
+		const { operator, ...product } = await getProductByCode(value.productCode)
+		const { name, email } = session.user
+		const { refId, trId, priceType, paymentChannel, paymentMethod } = value
+		let price = getPrice(product.price)
 
-			// eslint-disable-next-line no-case-declarations
-			const successResponse = response.status(HttpOK)
-
-			successResponse.json(result)
-
-			return successResponse
+		if (
+			priceType === 'postpaid' &&
+			product.type === 'POSTPAID' &&
+			operator.category.code === 'internet'
+		) {
+			if (!refId) {
+				throw new Error('invalid refId')
+			}
+			const productOrder = await getProductOrderByRef(refId)
+			price = getPrice(productOrder.price) + price
 		}
-		throw new Error('invalid price type')
+
+		// create order and transaction
+		const result = await placeProduceOrder(
+			priceType,
+			price,
+			product,
+			name,
+			email,
+			!refId || refId === '' ? getUniqueReferenceId() : refId,
+			paymentMethod,
+			paymentChannel,
+			trId,
+			[]
+		)
+		// eslint-disable-next-line no-case-declarations
+		const successResponse = response.status(HttpOK)
+
+		successResponse.json(result)
+
+		return successResponse
 	} catch (error_) {
 		if (error_ instanceof Error) {
 			responseError.json({ error: error_.message })

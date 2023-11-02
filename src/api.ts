@@ -3,15 +3,23 @@ import type {
 	PostpaidInqueryData,
 	Pricelist
 } from '@iak-id/iak-api-server-js'
+import type {
+	Operator as ProductOperator,
+	Product,
+	ProductCategory
+} from '@prisma/client'
 import type { Record } from '@prisma/client/runtime/library'
 import supabase from 'client'
 import {
+	CategoryListEndpoint,
 	FirstPage,
 	GetGameServerEndpoint,
 	HttpInternalServerError,
 	HttpNotFound,
 	HttpOK,
+	OperatorListEndpoint,
 	PaymentListEndpoint,
+	PlaceOrderEndpoint,
 	ProductInQueryEndpoint,
 	ProductListEndpoint
 } from 'constant'
@@ -22,7 +30,13 @@ import NotFoundError from 'errors/NotFoundError'
 import { promises as fs } from 'fs'
 // eslint-disable-next-line unicorn/prefer-node-protocol
 import path from 'path'
-import type { InqueryInOrder, IpayMuDatum } from 'types'
+import type {
+	InqueryInOrder,
+	InqueryWithOrder,
+	IpayMuDatum,
+	IpayMuDirectPayData,
+	ToupRequest
+} from 'types'
 
 export interface IMetaImage {
 	filename: string
@@ -238,15 +252,41 @@ export async function getPinnedProjects(
 	}))
 }
 
-export async function getProductList(): Promise<IPriceListApiResult> {
-	const result = await fetch(ProductListEndpoint)
+export async function getProductList(operatroCode: string): Promise<Product[]> {
+	const result = await fetch(`${ProductListEndpoint}?code=${operatroCode}`)
 
-	if (result.status === HttpInternalServerError) {
+	if (result.status !== HttpOK) {
 		throw new Error('failed to load data')
 	}
 
-	const products = (await result.json()) as IPriceListApiResult
+	const products = (await result.json()) as Product[]
 	return products
+}
+
+export async function getCategoryList(): Promise<ProductCategory[]> {
+	const result = await fetch(CategoryListEndpoint)
+
+	if (result.status !== HttpOK) {
+		throw new Error('failed to load data')
+	}
+
+	const category = (await result.json()) as ProductCategory[]
+
+	return category
+}
+
+export async function getOperatorList(
+	categoryCode: string
+): Promise<ProductOperator[]> {
+	const result = await fetch(`${OperatorListEndpoint}?code=${categoryCode}`)
+
+	if (result.status !== HttpOK) {
+		throw new Error('failed to load data')
+	}
+
+	const operators = (await result.json()) as ProductOperator[]
+
+	return operators
 }
 
 export async function inqueryOrder(
@@ -264,7 +304,7 @@ export async function inqueryOrder(
 		throw new Error('failed to send data')
 	}
 
-	const order = (await result.json()) as PostpaidInqueryData
+	const order = (await result.json()) as InqueryWithOrder
 
 	return order
 }
@@ -480,4 +520,24 @@ export async function addSchedule(schedule: ScheduleData): Promise<Schedule> {
 	}
 
 	return data[0]
+}
+
+export async function placeOrder(
+	topup: ToupRequest
+): Promise<IpayMuDirectPayData> {
+	const result = await fetch(PlaceOrderEndpoint, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(topup)
+	})
+
+	if (result.status === HttpInternalServerError) {
+		throw new Error('failed to send data')
+	}
+
+	const order = (await result.json()) as IpayMuDirectPayData
+
+	return order
 }

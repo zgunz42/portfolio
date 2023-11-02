@@ -110,7 +110,9 @@ const providers: ArgumentsType<typeof NextAuth>['2']['providers'] = [
 						// Any object returned will be saved in `user` property of the JWT
 						return {
 							id: user.id.toString(),
-							name: user.name
+							name: user.name,
+							email: user.email,
+							image: user.image
 						}
 					}
 				}

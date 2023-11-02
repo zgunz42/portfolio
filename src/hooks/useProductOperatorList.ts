@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { getProductList } from 'api'
+import { getOperatorList } from 'api'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default function useProductList(operatorCode: string) {
+export default function useProductOperatorList(categoryCode: string) {
 	const result = useQuery(
-		['products', operatorCode],
-		async () => getProductList(operatorCode),
+		['products', categoryCode],
+		async () => getOperatorList(categoryCode),
 		{
 			initialData: [],
 			enabled: false

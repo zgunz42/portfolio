@@ -1,0 +1,26 @@
+diff --git a/cjs/core/MantineProvider/use-props/use-props.js b/cjs/core/MantineProvider/use-props/use-props.js
+index 7c2a9ff44983249eee9d96f40135068abf7c52ff..8cd9724e31932555bda0a27b0e6dd08e26e0ca7e 100644
+--- a/cjs/core/MantineProvider/use-props/use-props.js
++++ b/cjs/core/MantineProvider/use-props/use-props.js
+@@ -24,7 +24,7 @@ var __spreadValues = (a, b) => {
+ };
+ function useProps(component, defaultProps, props) {
+   var _a;
+-  const theme = MantineThemeProvider.useMantineTheme();
++  const theme = MantineThemeProvider.useSafeMantineTheme();
+   const contextPropsPayload = (_a = theme.components[component]) == null ? void 0 : _a.defaultProps;
+   const contextProps = typeof contextPropsPayload === "function" ? contextPropsPayload(theme) : contextPropsPayload;
+   return __spreadValues(__spreadValues(__spreadValues({}, defaultProps), contextProps), filterProps.filterProps(props));
+diff --git a/cjs/core/styles-api/use-styles/use-styles.js b/cjs/core/styles-api/use-styles/use-styles.js
+index 0670b5dcd07d8d9b4facf252e7bdf52dcdf13b47..d91789634425f43a5f8aff17ace6aea96beea023 100644
+--- a/cjs/core/styles-api/use-styles/use-styles.js
++++ b/cjs/core/styles-api/use-styles/use-styles.js
+@@ -22,7 +22,7 @@ function useStyles({
+   vars,
+   varsResolver
+ }) {
+-  const theme = MantineThemeProvider.useMantineTheme();
++  const theme = MantineThemeProvider.useSafeMantineTheme();
+   const classNamesPrefix = Mantine_context.useMantineClassNamesPrefix();
+   const themeName = (Array.isArray(name) ? name : [name]).filter((n) => n);
+   return (selector, options) => ({

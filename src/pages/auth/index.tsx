@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable unicorn/prevent-abbreviations */
 /* eslint-disable react/jsx-props-no-spreading */

@@ -1,0 +1,13 @@
+diff --git a/cjs/Notifications.js b/cjs/Notifications.js
+index 76ba3768b41d9a6c4e65ccbfa0cbfd205a5cfb24..b537376ab5ab49dbfe8fc57ebe7795f3e63a34e3 100644
+--- a/cjs/Notifications.js
++++ b/cjs/Notifications.js
+@@ -112,7 +112,7 @@ const Notifications = core.factory((_props, ref) => {
+     "portalProps",
+     "withinPortal"
+   ]);
+-  const theme = core.useMantineTheme();
++  const theme = core.useSafeMantineTheme();
+   const data = notifications_store.useNotifications(store);
+   const forceUpdate = hooks.useForceUpdate();
+   const shouldReduceMotion = hooks.useReducedMotion();

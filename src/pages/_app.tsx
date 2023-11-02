@@ -1,3 +1,5 @@
+'use client'
+
 /* eslint-disable react/jsx-props-no-spreading */
 import {
 	Hydrate,
@@ -12,14 +14,12 @@ import type { ReactElement } from 'react-markdown/lib/react-markdown'
 import '../index.css'
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
-import { MantineProvider } from '@mantine/core'
-import '@mantine/core/styles.css'
-// import { ModalsProvider } from '@mantine/modals'
-// import { Notifications } from '@mantine/notifications'
 import '@mantine/carousel/styles.css'
+import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
 import CvLocalProvider from 'components/CvLanguageContext'
+import CvMantineRegistry from 'components/CvMantineRegistry'
 import LoadingOrError from 'components/LoadingOrError'
-import { theme } from 'themes/theme'
 
 export default function MyApp({
 	Component,
@@ -71,13 +71,9 @@ export default function MyApp({
 			<QueryClientProvider client={queryClient()}>
 				<Hydrate state={pageProperties.dehydratedState}>
 					<CvLocalProvider>
-						<MantineProvider defaultColorScheme='dark' theme={theme}>
-							{/* <ModalsProvider> */}
-							{/* <Notifications> */}
+						<CvMantineRegistry>
 							{loading ? <LoadingOrError /> : <Component {...pageProperties} />}
-							{/* </Notifications> */}
-							{/* </ModalsProvider> */}
-						</MantineProvider>
+						</CvMantineRegistry>
 					</CvLocalProvider>
 				</Hydrate>
 			</QueryClientProvider>

@@ -74,10 +74,15 @@ export const HttpInternalServerError = 500
 export const HttpBadRequest = 400
 export const HttpUnauthorized = 401
 
-export const ProductListEndpoint = '/api/products'
+export const ProductListEndpoint = '/api/products/lists'
+export const CategoryListEndpoint = '/api/products/categories'
+export const OperatorListEndpoint = '/api/products/operators'
 export const PaymentListEndpoint = '/api/payments'
 export const ProductInQueryEndpoint = '/api/inquery'
 export const GetGameServerEndpoint = '/api/game/serverList'
+export const PlaceOrderEndpoint = '/api/order'
+
+export const BasePrice = Number.parseInt(process.env.PRICE_BASE ?? '100', 10)
 
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
