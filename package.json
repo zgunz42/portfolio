@@ -59,7 +59,7 @@
 		"react-github-calendar": "^3.3.1",
 		"react-helmet": "^6.1.0",
 		"react-intl": "^6.0.4",
-		"react-markdown": "^8.0.3",
+		"react-markdown": "^9.0.0",
 		"react-query": "3.39.1",
 		"react-router-dom": "6.3.0",
 		"sharp": "^0.30.6",
