@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.6.8",
-		"@giscus/react": "^2.0.5",
+		"@giscus/react": "^3.0.0",
 		"@loadable/component": "^5.15.2",
 		"@mantine/core": "^4.2.7",
 		"@mantine/form": "^4.2.7",
