@@ -33,7 +33,8 @@ import {
 	useCombobox,
 	useMantineTheme
 } from '@mantine/core'
-import { useForm } from '@mantine/form'
+import { joiResolver, useForm } from '@mantine/form'
+import { modals } from '@mantine/modals'
 import { showNotification } from '@mantine/notifications'
 import { ProductType } from '@prisma/client'
 import {
@@ -44,6 +45,7 @@ import {
 } from '@tabler/icons-react'
 import CvImageCheckbox from 'components/CvImageCheckboxs'
 import CvPageLayout from 'components/CvPageLayout'
+import type { InnerProperties } from 'components/CvPaymentInfoModal'
 import CvProducTypeInput from 'components/CvProductTypeInput'
 import CvSearchField from 'components/CvSearchField'
 import CvUserButton from 'components/CvUserButton'
@@ -56,6 +58,7 @@ import useProductCategoryList from 'hooks/useProductCategoryList'
 import useProductList from 'hooks/useProductList'
 import useProductOperatorList from 'hooks/useProductOperatorList'
 import useSendInquery from 'hooks/useSendInquery'
+import Joi from 'joi'
 import { delay } from 'lodash'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -66,6 +69,27 @@ import type { IPayMuChannel } from 'types'
 import calcPricing from 'utils/money/calcPricing'
 
 const PRIMARY_COL_HEIGHT = rem(300)
+const formInitValue = {
+	category: '',
+	operator: '',
+	customerNum: '',
+	code: '',
+	kind: '',
+	paymentCode: '',
+	server: '',
+	nomine: 0
+}
+
+const schema = Joi.object<typeof formInitValue>({
+	category: Joi.string().required(),
+	operator: Joi.string().required(),
+	customerNum: Joi.string(),
+	paymentCode: Joi.string().required(),
+	code: Joi.string().required(),
+	kind: Joi.string(),
+	server: Joi.string().empty('').optional(),
+	nomine: Joi.number().empty().optional()
+})
 
 const wrapper = (child: ReactElement): ReactElement => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
@@ -106,18 +130,13 @@ function ProductsPage(): ReactElement {
 		onDropdownClose: () => combobox.resetSelectedOption()
 	})
 	const placeOrderAct = usePlaceOrder()
-
+	const formatter = Intl.NumberFormat('id-ID', {
+		style: 'currency',
+		currency: 'IDR'
+	})
 	const form = useForm({
-		initialValues: {
-			category: '',
-			operator: '',
-			customerNum: '',
-			code: '',
-			kind: '',
-			paymentCode: '',
-			server: '',
-			nomine: 0
-		}
+		validate: joiResolver(schema),
+		initialValues: formInitValue
 	})
 
 	const {
@@ -153,18 +172,24 @@ function ProductsPage(): ReactElement {
 	const gameServers = useGameServer(gameCode)
 	const [product, setProduct] = useState(productData)
 
-	const onSubmitOrder = (
+	const onSubmitOrder = async (
 		values: { category: string },
 		event: FormEvent<HTMLFormElement> | undefined
-	): void => {
+	): Promise<void> => {
 		let paymentChannel = ''
 		let paymentMethod = ''
+		let channelName = ''
+		let methodName = ''
+		let instructionUrl = ''
 
 		for (const payment of paymentLists.data ?? []) {
 			for (const channel of payment.Channels) {
 				if (channel.Code === form.values.paymentCode) {
 					paymentChannel = channel.Code
 					paymentMethod = payment.Code
+					channelName = channel.Name
+					methodName = payment.Name ?? paymentMethod
+					instructionUrl = channel.PaymentIntrucionsDoc ?? ''
 				}
 			}
 		}
@@ -178,15 +203,54 @@ function ProductsPage(): ReactElement {
 			return
 		}
 
-		placeOrderAct.mutate({
-			customerId: form.values.customerNum,
-			refId: inqueryMutate.data?.ref_id,
-			paymentChannel,
-			paymentMethod,
-			priceType: form.values.kind === 'prepaid' ? 'prepaid' : 'postpaid',
-			productCode: form.values.code,
-			trId: inqueryMutate.data?.tr_id
-		})
+		if (form.values.kind === 'postpaid' && !inqueryMutate.data) {
+			showNotification({
+				title: 'Customer Not Inquired',
+				message: 'Click inquired button on left side customer number',
+				color: 'red'
+			})
+
+			// return
+		}
+
+		try {
+			const mutateResult = await placeOrderAct.mutateAsync({
+				customerId: form.values.customerNum,
+				refId: inqueryMutate.data?.ref_id,
+				paymentChannel,
+				paymentMethod,
+				priceType: form.values.kind === 'prepaid' ? 'prepaid' : 'postpaid',
+				productCode: form.values.code,
+				trId: inqueryMutate.data?.tr_id
+			})
+
+			modals.openContextModal({
+				modal: 'payInfo',
+				title: `(${methodName}) ${channelName} Payment`,
+				onClose: (): void => {
+					showNotification({
+						title: 'Order Success',
+						message: 'Order Success',
+						color: 'green'
+					})
+				},
+				innerProps: {
+					paymentChannel: channelName,
+					paymentFee: formatter.format(mutateResult.Fee),
+					paymentTotal: formatter.format(mutateResult.Total),
+					paymentInstructionUrl: instructionUrl,
+					paymentMethod: methodName,
+					paymentNo: mutateResult.PaymentNo,
+					paymentDate: mutateResult.Expired as unknown as string
+				} as InnerProperties
+			})
+		} catch (error) {
+			showNotification({
+				title: 'Error',
+				message: (error as Error).message,
+				color: 'red'
+			})
+		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -281,16 +345,12 @@ function ProductsPage(): ReactElement {
 	let productPaymentFee = 'Rp. 0'
 	let totalPayment = 'Rp. 0'
 	let adminFee = 'Rp. 0'
+	let isActionClick = false
 
 	if (form.values.code !== '') {
 		const item = productData.find(it => it.code === form.values.code)
 
 		if (item) {
-			const formatter = Intl.NumberFormat('id-ID', {
-				style: 'currency',
-				currency: 'IDR'
-			})
-
 			const { fee, price, subtotal } = calcPricing(
 				item,
 				inqueryMutate.data,
@@ -368,7 +428,35 @@ function ProductsPage(): ReactElement {
 			</Grid.Col>
 			<Grid.Col span={{ xs: 12, md: 5 }}>
 				<Card mih={PRIMARY_COL_HEIGHT} radius='md'>
-					<form onSubmit={form.onSubmit(onSubmitOrder)}>
+					<form
+						onSubmit={(event): void => {
+							event.stopPropagation()
+							event.preventDefault()
+
+							if (!isActionClick) {
+								return
+							}
+							isActionClick = false
+
+							form.validate()
+							if (!form.isValid()) {
+								for (const key of Object.keys(form.errors)) {
+									if (Object.hasOwn(form.errors, key)) {
+										showNotification({
+											title: 'Form Error',
+											message: form.errors[key],
+											color: 'red'
+										})
+									}
+								}
+
+								return
+							}
+
+							// eslint-disable-next-line @typescript-eslint/no-misused-promises
+							form.onSubmit(onSubmitOrder)(event)
+						}}
+					>
 						<CvProducTypeInput
 							labels={categoryData.map(it => ({
 								value: it.code,
@@ -601,7 +689,13 @@ function ProductsPage(): ReactElement {
 							</SimpleGrid>
 						</Box>
 						<Group justify='center' mt='md'>
-							<Button w='100%' type='submit'>
+							<Button
+								onClick={(): void => {
+									isActionClick = true
+								}}
+								w='100%'
+								type='submit'
+							>
 								Order
 							</Button>
 						</Group>

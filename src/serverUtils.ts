@@ -9,6 +9,8 @@ import type {
 	InquiryPlnRequest,
 	PostpaidInqueryData,
 	PostpaidInqueryRequest,
+	PostpaidPaymentInternetData,
+	PostpaidPaymentRequest,
 	PostPaidPriceListQuery,
 	PostPiadPriceListData,
 	PriceListData,
@@ -31,6 +33,7 @@ import {
 	OrderStatus,
 	PrismaClient,
 	ProductStatus,
+	ProductType,
 	TransactionStatus,
 	TransactionType
 } from '@prisma/client'
@@ -119,6 +122,19 @@ export async function getPostpaidProductList(
 	const result = await client.pricelist(query)
 	if (result.data.message !== 'SUCCESS') {
 		throw new Error(result.data.message)
+	}
+
+	return result.data
+}
+
+export async function postpaidPay(
+	input: PostpaidPaymentRequest
+): Promise<PostpaidPaymentInternetData> {
+	const client = initIAKPostpaid(initCredential())
+	const result = await client.payment(input)
+
+	if (result.code !== HttpOK) {
+		throw new Error(result.status)
 	}
 
 	return result.data
@@ -246,6 +262,16 @@ export async function checkIpayMuTransaction(
 	if (data.Status !== HttpOK) {
 		throw new Error(data.Message)
 	}
+	const settleDate = data.Data.SettlementDate
+	const successDate = data.Data.SuccessDate
+	data.Data.SettlementDate =
+		typeof settleDate === 'string' && settleDate !== '-'
+			? new Date(settleDate)
+			: undefined
+	data.Data.SuccessDate =
+		typeof successDate === 'string' && successDate !== '-'
+			? new Date(successDate)
+			: undefined
 
 	return data.Data
 }
@@ -485,7 +511,7 @@ export async function createPrepaidInqueryProductOrder({
 				refId,
 				fee: fee ?? 0,
 				trxId,
-				price: toMoney(price as number),
+				price: typeof price !== 'bigint' ? toMoney(price) : price,
 				product: {
 					connect: {
 						id: productId
@@ -673,7 +699,11 @@ export async function getTransaction(
 	}
 }
 
-export async function proccessOrder(referenceId: number): Promise<unknown> {
+export async function proccessOrder(
+	referenceId: number,
+	settleDate?: Date,
+	successDate?: Date
+): Promise<unknown> {
 	await prismaClient.$connect()
 	try {
 		const transaction = await prismaClient.transaction.findFirstOrThrow({
@@ -681,7 +711,7 @@ export async function proccessOrder(referenceId: number): Promise<unknown> {
 				referenceId: String(referenceId)
 			},
 			include: {
-				ProductOrder: {
+				productOrder: {
 					include: {
 						product: true
 					}
@@ -689,6 +719,53 @@ export async function proccessOrder(referenceId: number): Promise<unknown> {
 			}
 		})
 
+		if (transaction.productOrder) {
+			switch (transaction.productOrder.product.type) {
+				case ProductType.POSTPAID:
+					// eslint-disable-next-line no-case-declarations
+					const paidResult = await postpaidPay({
+						trId: transaction.productOrder.trxId ?? 0
+					})
+
+					// eslint-disable-next-line no-case-declarations
+					const trResult = await prismaClient.$transaction(async tx => {
+						await tx.productOrder.update({
+							where: {
+								id: transaction.productOrder?.id
+							},
+							data: {
+								status:
+									paidResult.response_code === '39'
+										? OrderStatus.PROCESSING
+										: // eslint-disable-next-line unicorn/no-nested-ternary
+										paidResult.response_code === '00'
+										? OrderStatus.SUCCESS
+										: OrderStatus.FAILED,
+								updatedDate: new Date()
+							}
+						})
+
+						return tx.transaction.update({
+							where: {
+								id: transaction.id
+							},
+							data: {
+								status: TransactionStatus.SUCCESS,
+								settlementDate: settleDate,
+								successDate
+							}
+						})
+					})
+
+					return trResult
+				case ProductType.PREPAID:
+					console.log('proccessing prepaid')
+					break
+
+				default:
+					throw new Error('invalid type')
+			}
+		}
 		return transaction
 	} finally {
 		await prismaClient.$disconnect()

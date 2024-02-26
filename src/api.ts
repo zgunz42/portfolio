@@ -533,7 +533,7 @@ export async function placeOrder(
 		body: JSON.stringify(topup)
 	})
 
-	if (result.status === HttpInternalServerError) {
+	if (result.status !== HttpOK) {
 		throw new Error('failed to send data')
 	}
 

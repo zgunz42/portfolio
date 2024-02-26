@@ -272,7 +272,7 @@ model ProductOrder {
   trxId           Int?              @unique() @map("trx_id")
   userId          Int               @map("user_id")
   productId       Int               @map("product_id")
-  transactionId   Int?              @unique @map("transaction_id")
+  transactionId   Int?              @unique() @map("transaction_id")
   productCode     String            @map("product_code")
   price           BigInt            @map("price")
   fee             BigInt
@@ -281,7 +281,7 @@ model ProductOrder {
   createdDate     DateTime          @default(now()) @map("created_date")
   updatedDate     DateTime          @updatedAt @map("updated_date")
   productOrderFee ProductOrderFee[]
-  transaction     Transaction?      @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+  transaction     Transaction?      @relation(fields: [transactionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   product         Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
   coupon          Coupon?           @relation(fields: [couponId], references: [id], onDelete: Cascade)
   user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -290,6 +290,7 @@ model ProductOrder {
   @@index([productId])
   @@index([couponId])
   @@index([userId])
+  @@index([transactionId])
   @@map("product_orders")
 }
 
@@ -309,7 +310,7 @@ model Transaction {
   expiredDate    DateTime          @map("expired_date")
   successDate    DateTime?         @map("success_date")
   settlementDate DateTime?         @map("settlement_date")
-  ProductOrder   ProductOrder[]
+  productOrder   ProductOrder?
   user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([referenceId])

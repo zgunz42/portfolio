@@ -20,6 +20,50 @@ declare module '@iak-id/iak-api-server-js' {
 		constructor(credential: Credential)
 		pricelist(query?: PostPaidPriceListQuery): Promise<PostpaidPriceListResult>
 		inquiry(query: PostpaidInqueryRequest): Promise<PostpaidInqueryResponse>
+		payment(
+			input: PostpaidPaymentRequest
+		): Promise<PostpaidPaymentInternetResponse>
+		checkStatus(
+			input: PostpaidCheckStatusRequest
+		): Promise<PostpaidPaymentInternetResponse>
+	}
+
+	export interface PostpaidCheckStatusRequest {
+		refId: string
+	}
+
+	export interface PostpaidPaymentRequest {
+		trId: number
+	}
+
+	export interface PostpaidPaymentInternetResponse {
+		data: PostpaidPaymentInternetData
+		meta: unknown[]
+		status: string
+		code: number
+	}
+
+	export interface PostpaidPaymentInternetData {
+		tr_id: number
+		code: string
+		datetime: string
+		hp: string
+		tr_name: string
+		period: string
+		nominal: number
+		admin: number
+		response_code: string
+		message: string
+		price: number
+		selling_price: number
+		balance: number
+		noref: string
+		ref_id: string
+		desc: PostpaidPaymentInternetDesc
+	}
+
+	export interface PostpaidPaymentInternetDesc {
+		product_desc: string
 	}
 
 	export interface InquiryPlnRequest {

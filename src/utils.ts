@@ -78,3 +78,22 @@ export function readBlurImage(blurHash: string): string {
 
 	return canvas.toDataURL()
 }
+
+export function addSpaceChar(text: string, gap: number, divider = ' '): string {
+	if (gap > text.length) {
+		throw new Error('gap must less than size of text')
+	}
+	let result = ''
+	// eslint-disable-next-line no-plusplus
+	for (let index = 0; index < text.length; index++) {
+		const element = text.charAt(index)
+		result += element
+
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		if ((index + 1) % gap === 0 && index !== 0 && index + 1 !== text.length) {
+			result += divider
+		}
+	}
+
+	return result
+}

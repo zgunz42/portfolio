@@ -1,0 +1,21 @@
+.fee-banner {
+	background-color: var(--mantine-color-yellow-6);
+	color: var(--mantine-color-black);
+	border-radius: var(--mantine-radius-sm);
+	padding: var(--mantine-spacing-sm);
+	display: flex;
+
+	svg {
+		margin-right: var(--mantine-spacing-sm);
+	}
+
+	> * {
+		display: inline-block;
+	}
+}
+
+.instruction {
+	background-color: var(--mantine-color-gray-8);
+	border-radius: var(--mantine-radius-sm);
+	padding: var(--mantine-spacing-sm);
+}

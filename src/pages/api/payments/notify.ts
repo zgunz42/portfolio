@@ -20,7 +20,13 @@ const notifySchema = Joi.object<IpayMuCallbackResponse>({
 	status: Joi.string().required(),
 	status_code: Joi.string().required(),
 	sid: Joi.string().required(),
-	reference_id: Joi.string().required()
+	reference_id: Joi.string().required(),
+	total: Joi.string().required(),
+	fee: Joi.string().required(),
+	sub_total: Joi.number().required(),
+	va: Joi.string().required(),
+	via: Joi.string().required(),
+	channel: Joi.string().required()
 })
 
 // set bodyparser
@@ -87,7 +93,11 @@ export default async function handler(
 				const transactionDetails = await checkIpayMuTransaction(trxId)
 
 				if (transactionDetails.Status === 1) {
-					await proccessOrder(trxId)
+					await proccessOrder(
+						trxId,
+						transactionDetails.SettlementDate,
+						transactionDetails.SuccessDate
+					)
 					// proccess the order
 					successResponse.json({
 						id: transaction.id,

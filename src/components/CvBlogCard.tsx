@@ -20,7 +20,7 @@ function CvBlogCard({
 }: Properties): CompElement {
 	return (
 		<Box className={classes['blog-card']}>
-			<Box className='flex items-center gap-2'>
+			<Box className={classes['card-tag']}>
 				{tags.map((tag: string) => (
 					<Badge key={tag} size='lg' radius='sm'>
 						{tag}

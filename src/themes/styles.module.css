@@ -1,4 +1,6 @@
 .text {
+	margin-top: var(--mantine-spacing-sm);
+
 	@mixin dark {
 		color: var(--mantine-color-gray-0);
 	}
@@ -6,6 +8,13 @@
 	@mixin light {
 		color: var(--mantine-color-gray-8);
 	}
+}
+
+.card-tag {
+	/* flex items-center gap-2 */
+	@apply flex items-center gap-2;
+
+	margin-bottom: var(--mantine-spacing-sm);
 }
 
 .title-decorate {

@@ -173,9 +173,15 @@ export type PrismaTx = Omit<
 
 export interface IpayMuCallbackResponse {
 	trx_id: string
-	status: string
-	status_code: string
 	sid: string
+	sub_total: string
+	total: string
+	fee: string
+	status_code: string
+	status: string
+	va: string
+	via: string
+	channel: string
 	reference_id: string
 }
 
@@ -201,6 +207,6 @@ export interface IpayMuCheckTransactionData {
 	Notes: string
 	CreatedDate: Date
 	ExpiredDate: Date
-	SuccessDate: string
-	SettlementDate: string
+	SuccessDate?: Date
+	SettlementDate?: Date
 }
