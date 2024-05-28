@@ -139,8 +139,8 @@
 		"vitest": "0.13.1",
 		"webpack": "5.72.1",
 		"whatwg-fetch": "3.6.2",
-		"workbox-build": "6.5.3",
-		"workbox-window": "6.5.3"
+		"workbox-build": "7.1.1",
+		"workbox-window": "7.1.0"
 	},
 	"browserslist": {
 		"production": "Edge >= 18, Firefox >= 60, Chrome >= 61, Safari >= 11, Opera >= 48",
