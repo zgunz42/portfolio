@@ -98,7 +98,7 @@
 		"autoprefixer": "10.4.7",
 		"babel-loader": "8.2.5",
 		"babel-plugin-formatjs": "^10.3.24",
-		"c8": "7.11.3",
+		"c8": "10.1.2",
 		"commitizen": "4.2.4",
 		"css-mediaquery": "0.1.2",
 		"cypress": "9.7.0",
