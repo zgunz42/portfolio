@@ -1,5 +1,15 @@
 [
 	{
+		"name": "Android Hot Movie",
+		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
+		"pinned": true,
+		"tags": ["android", "java"],
+		"thumbnail": "/images/hot_movie.jpg",
+		"demoUrl": "https://github.com/zgunz42/hot-movie",
+		"sourceUrl": "https://github.com/zgunz42/hot-movie",
+		"link": "android-hot-movie"
+	},
+	{
 		"name": "E-Balian Chatboot",
 		"description": "Chatbot hari baik Hindu menggunakan data di scrap online\n",
 		"pinned": true,
@@ -30,14 +40,14 @@
 		"link": "otonan"
 	},
 	{
-		"name": "Android Hot Movie",
-		"description": "Aplikasi ini menampilkan daftar film yang diambil dari API IMDB\n",
+		"name": "Pawiwahan Website",
+		"description": "Website undangan acara pernikahan online sederhana\n",
 		"pinned": true,
-		"tags": ["android", "java"],
-		"thumbnail": "/images/hot_movie.jpg",
-		"demoUrl": "https://github.com/zgunz42/hot-movie",
-		"sourceUrl": "https://github.com/zgunz42/hot-movie",
-		"link": "android-hot-movie"
+		"tags": ["nextjs", "react"],
+		"thumbnail": "/images/weeding.png",
+		"demoUrl": "http://pawiwahan.netlify.app",
+		"sourceUrl": "http://pawiwahan.netlify.app",
+		"link": "pawiwahan"
 	},
 	{
 		"name": "Svelte SlideIT",
@@ -48,15 +58,5 @@
 		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
 		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
 		"link": "slideit"
-	},
-	{
-		"name": "Pawiwahan Website",
-		"description": "Website undangan acara pernikahan online sederhana\n",
-		"pinned": true,
-		"tags": ["nextjs", "react"],
-		"thumbnail": "/images/weeding.png",
-		"demoUrl": "http://pawiwahan.netlify.app",
-		"sourceUrl": "http://pawiwahan.netlify.app",
-		"link": "pawiwahan"
 	}
 ]

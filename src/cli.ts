@@ -62,7 +62,7 @@ program
 		const cv: CVProperties = {
 			avatar: 'https://avatars.githubusercontent.com/u/11344981?v=4',
 			name: 'devbox',
-			background: 'https://i.ibb.co/mhTvXNw/cv-bg.png',
+			// background: undefined,
 			birthdate: new Date('1995-08-01T05:31:32.099Z'),
 			contact: {
 				address:

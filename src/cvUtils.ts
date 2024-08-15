@@ -85,7 +85,7 @@ export interface CVProject {
 
 export interface CVProperties {
 	avatar: string
-	background: string
+	background?: string
 	name: string
 	birthdate: Date
 	jargon: string
@@ -169,21 +169,24 @@ export async function createCVPdf(
 	const avatarImageBytes = await fetch(data.avatar).then(async res =>
 		res.arrayBuffer()
 	)
-	// eslint-disable-next-line unicorn/prevent-abbreviations
-	const bgImageBytes = await fetch(data.background).then(async res =>
-		res.arrayBuffer()
-	)
 	const avatarImage = await pdfDocument.embedJpg(avatarImageBytes)
-	const bgImage = await pdfDocument.embedPng(bgImageBytes)
 	const page = pdfDocument.addPage([Width, Height])
 	const ImageSize = 80
-	// at very bottom of layer
-	page.drawImage(bgImage, {
-		x: 0,
-		y: 0,
-		width: Width,
-		height: Height
-	})
+
+	if (data.background) {
+		// eslint-disable-next-line unicorn/prevent-abbreviations
+		const bgImageBytes = await fetch(data.background).then(async res =>
+			res.arrayBuffer()
+		)
+		const bgImage = await pdfDocument.embedPng(bgImageBytes)
+		// at very bottom of layer
+		page.drawImage(bgImage, {
+			x: 0,
+			y: 0,
+			width: Width,
+			height: Height
+		})
+	}
 
 	page.drawImage(avatarImage, {
 		x: leftMargin,
