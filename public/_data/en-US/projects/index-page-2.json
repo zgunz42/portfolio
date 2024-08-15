@@ -1,12 +1,12 @@
 [
 	{
-		"name": "Otonan Website",
-		"description": "Digital Otonan Invitation (Birthday of Bali) with greeting features\nand countdown\n",
+		"name": "Svelte SlideIT",
+		"description": "Sebuah libaray svelte untuk membuat slider atau carousel\n",
 		"pinned": true,
-		"tags": ["nextjs", "react"],
-		"thumbnail": "/images/birthday.png",
-		"demoUrl": "http://otonan.netlify.app",
-		"sourceUrl": "http://otonan.netlify.app",
-		"link": "otonan"
+		"tags": ["svelte", "js"],
+		"thumbnail": "/images/carousel_addon.png",
+		"demoUrl": "https://github.com/zgunz42/svelte-slideit",
+		"sourceUrl": "https://github.com/zgunz42/svelte-slideit",
+		"link": "slideit"
 	}
 ]

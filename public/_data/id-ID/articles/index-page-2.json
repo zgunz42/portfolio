@@ -1,13 +1,13 @@
 [
 	{
-		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
-		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
-		"thumbnail": "/images/image_to_vector.jpeg",
+		"title": "Integrasi Mantine dan Tailwind Css",
+		"description": "Mengintegrasikan dua perpustakaan CSS yang mengagumkan untuk berbunyi desain Anda\ndan komponen\n",
+		"thumbnail": "http://placeimg.com/640/480/robot",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["nextjs", "react"],
+		"label": ["tailwind", "css"],
 		"commentId": 14,
 		"readTime": 1,
-		"link": "convert-image-to-svg"
+		"link": "integrate-tailwindcss-with-mantine"
 	},
 	{
 		"title": "Buat bot yang luar biasa dengan NextJs",

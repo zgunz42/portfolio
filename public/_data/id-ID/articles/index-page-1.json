@@ -30,14 +30,14 @@
 		"link": "reuse-type-in-typescript"
 	},
 	{
-		"title": "Integrasi Mantine dan Tailwind Css",
-		"description": "Mengintegrasikan dua perpustakaan CSS yang mengagumkan untuk berbunyi desain Anda\ndan komponen\n",
-		"thumbnail": "http://placeimg.com/640/480/robot",
+		"title": "Mengubah Gambar ke Vector Graphic (SVG)",
+		"description": "Hemat waktu untuk mengonversi gambar menjadi SVG secara otomatis\n",
+		"thumbnail": "/images/image_to_vector.jpeg",
 		"publishedAt": "2022-06-25T14:34:09.275Z",
-		"label": ["tailwind", "css"],
+		"label": ["nextjs", "react"],
 		"commentId": 14,
 		"readTime": 1,
-		"link": "integrate-tailwindcss-with-mantine"
+		"link": "convert-image-to-svg"
 	},
 	{
 		"title": "Membuat Todo App With Golang",
