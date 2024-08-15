@@ -134,7 +134,7 @@ importers:
         version: 5.0.2
       '@nabla/vite-plugin-eslint':
         specifier: 1.4.0
-        version: 1.4.0(eslint@8.16.0)(vite@2.9.9)
+        version: 1.4.0(eslint@8.16.0)(vite@2.9.18)
       '@rollup/plugin-yaml':
         specifier: 3.1.0
         version: 3.1.0(rollup@2.75.5)
@@ -319,14 +319,14 @@ importers:
         specifier: 4.7.2
         version: 4.7.2
       vite:
-        specifier: 2.9.9
-        version: 2.9.9
+        specifier: 2.9.18
+        version: 2.9.18
       vite-plugin-pwa:
         specifier: 0.12.0
-        version: 0.12.0(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3)
+        version: 0.12.0(vite@2.9.18)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3)
       vite-tsconfig-paths:
         specifier: 3.5.0
-        version: 3.5.0(vite@2.9.9)
+        version: 3.5.0(vite@2.9.18)
       vitest:
         specifier: 0.13.1
         version: 0.13.1(c8@7.11.3)(jsdom@19.0.0(bufferutil@4.0.6)(utf-8-validate@5.0.9))
@@ -5560,8 +5560,8 @@ packages:
     peerDependencies:
       vite: '>2.0.0-0'
 
-  vite@2.9.9:
-    resolution: {integrity: sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==}
+  vite@2.9.18:
+    resolution: {integrity: sha512-sAOqI5wNM9QvSEE70W3UGMdT8cyEn0+PmJMTFvTB8wB0YbYUWw3gUbY62AOyrXosGieF2htmeLATvNxpv/zNyQ==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -7007,12 +7007,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@nabla/vite-plugin-eslint@1.4.0(eslint@8.16.0)(vite@2.9.9)':
+  '@nabla/vite-plugin-eslint@1.4.0(eslint@8.16.0)(vite@2.9.18)':
     dependencies:
       '@types/eslint': 8.4.2
       chalk: 4.1.2
       eslint: 8.16.0
-      vite: 2.9.9
+      vite: 2.9.18
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -11843,29 +11843,29 @@ snapshots:
       unist-util-stringify-position: 3.0.2
       vfile-message: 3.1.2
 
-  vite-plugin-pwa@0.12.0(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3):
+  vite-plugin-pwa@0.12.0(vite@2.9.18)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3):
     dependencies:
       debug: 4.3.4(supports-color@9.2.2)
       fast-glob: 3.2.11
       pretty-bytes: 6.0.0
       rollup: 2.75.5
-      vite: 2.9.9
+      vite: 2.9.18
       workbox-build: 6.5.3(@types/babel__core@7.1.19)
       workbox-window: 6.5.3
     transitivePeerDependencies:
       - supports-color
 
-  vite-tsconfig-paths@3.5.0(vite@2.9.9):
+  vite-tsconfig-paths@3.5.0(vite@2.9.18):
     dependencies:
       debug: 4.3.4(supports-color@9.2.2)
       globrex: 0.1.2
       recrawl-sync: 2.2.2
       tsconfig-paths: 4.0.0
-      vite: 2.9.9
+      vite: 2.9.18
     transitivePeerDependencies:
       - supports-color
 
-  vite@2.9.9:
+  vite@2.9.18:
     dependencies:
       esbuild: 0.14.42
       postcss: 8.4.14
@@ -11883,7 +11883,7 @@ snapshots:
       local-pkg: 0.4.1
       tinypool: 0.1.3
       tinyspy: 0.3.2
-      vite: 2.9.9
+      vite: 2.9.18
     optionalDependencies:
       c8: 7.11.3
       jsdom: 19.0.0(bufferutil@4.0.6)(utf-8-validate@5.0.9)
