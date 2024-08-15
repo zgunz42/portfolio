@@ -16,7 +16,7 @@ interface CvJobExperience {
 	location: string
 	position: string
 	startAt: Date
-	endAt: Date
+	endAt?: Date
 	description: string
 }
 
@@ -60,7 +60,7 @@ export interface ListItem {
 	title: string
 	subtitle?: string
 	startAt: Date
-	endAt: Date
+	endAt?: Date
 	description: string
 }
 
@@ -484,7 +484,7 @@ function drawItem({
 		day: 'numeric'
 	})
 	const startDate = dateFormatter.format(data.startAt)
-	const endDate = dateFormatter.format(data.endAt)
+	const endDate = data.endAt ? dateFormatter.format(data.endAt) : 'Present'
 	page.drawText(`${startDate} - ${endDate}`, {
 		x: position.x,
 		y: workTimeYPosition,

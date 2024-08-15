@@ -91,7 +91,7 @@ export interface JobExperience {
 	location: string
 	position: string
 	startAt: Date
-	endAt: Date
+	endAt?: Date
 	description: string
 }
 

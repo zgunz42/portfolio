@@ -43,14 +43,6 @@
 		"intro": "Hello, I'm Adi Gunawan from Bali, Indonesia! I started my programming career right out of school and studied online. Beautiful Bali has inspired me in developing my programming skills.\n",
 		"jobExperiences": [
 			{
-				"company": "Bungamata",
-				"location": "Dalung, Bali",
-				"position": "Junior Software Engginer",
-				"startAt": "2017-07-01T05:31:32.099Z",
-				"endAt": "2018-01-08T05:31:32.099Z",
-				"description": "Create a wordpress template, develop\nMarketplace Platform Buying and Selling Images, Making Applications\nfor hotel visitors feedback in the form of rating\n"
-			},
-			{
 				"company": "Sindata",
 				"location": "DKI Jakarta",
 				"position": "Remote Front End Develope",
@@ -65,6 +57,13 @@
 				"startAt": "2022-08-29T05:31:32.099Z",
 				"endAt": "2023-08-29T05:31:32.099Z",
 				"description": "Migration from monolithic to microservices\nusing golang, manage hotel management system. Develop smarthome system \ndeploy to google home\n"
+			},
+			{
+				"company": "Starworks",
+				"location": "Bali, Indonesia",
+				"position": "NodeJS Backend Developer",
+				"startAt": "2023-11-01T05:31:32.099Z",
+				"description": "Develop backend for reward system with nestjs\nCreate booking system for hotel with reward system\nMaintenance and develop HRM system\n"
 			}
 		],
 		"educations": [
