@@ -12,7 +12,7 @@ import { Box } from '@mantine/core'
 import Autoplay from 'embla-carousel-autoplay'
 import type { EmblaPluginType } from 'embla-carousel-react'
 import * as React from 'react'
-import classes from './CVCarousel.module.css'
+import classes from './CvCarousel.module.css'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface CvCarouselProperties<C = any> {
