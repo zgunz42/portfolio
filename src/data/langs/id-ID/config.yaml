@@ -53,15 +53,15 @@ about:
     pemrograman setelah lulus sekolah dan belajar secara online. 
     Bali yang indah memberi inspirasi dalam pengembangan skill pemrograman saya.
   jobExperiences:
-    - company: Bungamata
-      location: Dalung, Bali
-      position: Junior Software Engginer
-      startAt: '2017-07-01T05:31:32.099Z'
-      endAt: '2018-01-08T05:31:32.099Z'
-      description: |
-        Membuat template wordpress, mengembangkan 
-        platform marketplace jual beli gambar, membuat aplikasi 
-        untuk feedback pengunjung hotel berupa rating
+    # - company: Bungamata
+    #   location: Dalung, Bali
+    #   position: Junior Software Engginer
+    #   startAt: '2017-07-01T05:31:32.099Z'
+    #   endAt: '2018-01-08T05:31:32.099Z'
+    #   description: |
+    #     Membuat template wordpress, mengembangkan
+    #     platform marketplace jual beli gambar, membuat aplikasi
+    #     untuk feedback pengunjung hotel berupa rating
     - company: Sindata
       location: DKI Jakarta
       position: Remote Front End Develope
@@ -80,6 +80,14 @@ about:
         Bermigrasi dari monolitik ke layanan mikro menggunakan golang,
         pengembangan sistem manajemen hotel.
         Sistem rumah pintar dan diterapkan ke google home
+    - company: Starworks
+      location: 'Bali, Indonesia'
+      position: NodeJS Backend Developer
+      startAt: '2023-11-01T05:31:32.099Z'
+      description: |
+        Mengembangkan backend untuk sistem reward hadiah dengan nestjs
+        Membuat sistem pemesanan hotel dengan sistem reward hadiah
+        Pemeliharaan dan pengembangan sistem manajemen SDM
 
   educations:
     - type: school

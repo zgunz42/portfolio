@@ -70,7 +70,7 @@ export default function useCreatorCv(): CreateCV {
 				jobExperience: config.data.about.jobExperiences.map(jobExperience => ({
 					...jobExperience,
 					startAt: new Date(jobExperience.startAt),
-					endAt: new Date(jobExperience.endAt)
+					endAt: jobExperience.endAt ? new Date(jobExperience.endAt) : undefined
 				})),
 				projects: project.data.map(item => ({
 					...item,
