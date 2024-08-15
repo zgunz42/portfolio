@@ -21,7 +21,7 @@ function AuthPage({
 			<Head>
 				<title>Authentication | I Kadek Adi Gunawan</title>
 			</Head>
-			<Stack py={80}>
+			<Stack py={80} style={{ height: 'calc(100vh - 204px)' }}>
 				<Center>
 					<CvAuthenticationForm csrfToken={csrfToken} />
 				</Center>

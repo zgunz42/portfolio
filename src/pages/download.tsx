@@ -27,7 +27,7 @@ function CvDownloadPage(): ReactElement {
 			<Head>
 				<title>Download Resume | I Kadek Adi Gunawan</title>
 			</Head>
-			<Container>
+			<Container style={{ height: 'calc(100vh - 204px)' }}>
 				{progress < 100 && <CvDownloadPrepare progress={progress} />}
 				{progress >= 100 &&
 					(!isLoading && !isError ? (
