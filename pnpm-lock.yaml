@@ -244,8 +244,8 @@ importers:
         specifier: 8.5.0
         version: 8.5.0(eslint@8.16.0)
       eslint-plugin-cypress:
-        specifier: 2.12.1
-        version: 2.12.1(eslint@8.16.0)
+        specifier: 3.5.0
+        version: 3.5.0(eslint@8.16.0)
       eslint-plugin-import:
         specifier: 2.26.0
         version: 2.26.0(@typescript-eslint/parser@5.27.0(eslint@8.16.0)(typescript@4.7.2))(eslint@8.16.0)
@@ -2807,10 +2807,10 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-cypress@2.12.1:
-    resolution: {integrity: sha512-c2W/uPADl5kospNDihgiLc7n87t5XhUbFDoTl6CfVkmG+kDAb5Ux10V9PoLPu9N+r7znpc+iQlcmAqT1A/89HA==}
+  eslint-plugin-cypress@3.5.0:
+    resolution: {integrity: sha512-JZQ6XnBTNI8h1B9M7wJSFzc48SYbh7VMMKaNTQOFa3BQlnmXPrVc4PKen8R+fpv6VleiPeej6VxloGb42zdRvw==}
     peerDependencies:
-      eslint: '>= 3.2.1'
+      eslint: '>=7'
 
   eslint-plugin-import@2.26.0:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
@@ -3229,6 +3229,10 @@ packages:
 
   globals@13.15.0:
     resolution: {integrity: sha512-bpzcOlgDhMG070Av0Vy5Owklpv1I6+j96GhUI7Rh7IzDCKLzboflLrrfqMu8NquDbiR4EOQk7XzJwqVJxicxog==}
+    engines: {node: '>=8'}
+
+  globals@13.24.0:
+    resolution: {integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==}
     engines: {node: '>=8'}
 
   globby@11.0.4:
@@ -8735,10 +8739,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-cypress@2.12.1(eslint@8.16.0):
+  eslint-plugin-cypress@3.5.0(eslint@8.16.0):
     dependencies:
       eslint: 8.16.0
-      globals: 11.12.0
+      globals: 13.24.0
 
   eslint-plugin-import@2.26.0(@typescript-eslint/parser@5.27.0(eslint@8.16.0)(typescript@4.7.2))(eslint@8.16.0):
     dependencies:
@@ -9272,6 +9276,10 @@ snapshots:
   globals@11.12.0: {}
 
   globals@13.15.0:
+    dependencies:
+      type-fest: 0.20.2
+
+  globals@13.24.0:
     dependencies:
       type-fest: 0.20.2
 
