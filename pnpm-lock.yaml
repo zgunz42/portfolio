@@ -128,7 +128,7 @@ importers:
         version: 7.18.2(@babel/core@7.18.2)
       '@cypress/code-coverage':
         specifier: 3.10.0
-        version: 3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)
+        version: 3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.76.0))(cypress@9.7.0)(webpack@5.76.0)
       '@formatjs/cli':
         specifier: 5.0.2
         version: 5.0.2
@@ -209,7 +209,7 @@ importers:
         version: 10.4.7(postcss@8.4.14)
       babel-loader:
         specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.18.2)(webpack@5.72.1)
+        version: 8.2.5(@babel/core@7.18.2)(webpack@5.76.0)
       babel-plugin-formatjs:
         specifier: 10.3.24
         version: 10.3.24
@@ -331,8 +331,8 @@ importers:
         specifier: 0.13.1
         version: 0.13.1(c8@7.11.3)(jsdom@19.0.0(bufferutil@4.0.6)(utf-8-validate@5.0.9))
       webpack:
-        specifier: 5.72.1
-        version: 5.72.1
+        specifier: 5.76.0
+        version: 5.76.0
       whatwg-fetch:
         specifier: 3.6.2
         version: 3.6.2
@@ -2575,8 +2575,8 @@ packages:
   end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
 
-  enhanced-resolve@5.9.3:
-    resolution: {integrity: sha512-Bq9VSor+kjvW3f9/MiiR4eE3XYgOl7/rS8lnSxbRbF3kS0B2r+Y9w5krBWxZgDxASVZbdYrn5wT4j/Wb0J9qow==}
+  enhanced-resolve@5.17.1:
+    resolution: {integrity: sha512-LMHl3dXhTcfv8gM4kEzIUeTQ+7fpdA0l2tUf34BddXPkz2A5xJ5L/Pchd5BL6rdccM9QGvu0sWZzK1Z1t4wwyg==}
     engines: {node: '>=10.13.0'}
 
   enquirer@2.3.6:
@@ -5611,8 +5611,8 @@ packages:
   warning@4.0.3:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
 
-  watchpack@2.3.1:
-    resolution: {integrity: sha512-x0t0JuydIo8qCNctdDrn1OzH/qDzk2+rdCOC3YzumZ42fiMqmQ7T3xQurykYMhYfHaPHTp4ZxAx2NfUo1K6QaA==}
+  watchpack@2.4.2:
+    resolution: {integrity: sha512-TnbFSbcOCcDgjZ4piURLCbJ3nJhznVh9kw6F6iokjiFPl8ONxe9A6nMDVXDiNbrSfLILs6vB07F7wLBrwPYzJw==}
     engines: {node: '>=10.13.0'}
 
   wcwidth@1.0.1:
@@ -5632,8 +5632,8 @@ packages:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.72.1:
-    resolution: {integrity: sha512-dXG5zXCLspQR4krZVR6QgajnZOjW2K/djHvdcRaDQvsjV9z9vaW6+ja5dZOYbqBBjF6kGXka/2ZyxNdc+8Jung==}
+  webpack@5.76.0:
+    resolution: {integrity: sha512-l5sOdYBDunyf72HW8dF23rFtWq/7Zgvt/9ftMof71E/yUb1YLOBmTgA2K4vQthB3kotMrSj609txVE0dnr2fjA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -6665,9 +6665,9 @@ snapshots:
 
   '@cush/relative@1.0.0': {}
 
-  '@cypress/code-coverage@3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)':
+  '@cypress/code-coverage@3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.76.0))(cypress@9.7.0)(webpack@5.76.0)':
     dependencies:
-      '@cypress/webpack-preprocessor': 5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)
+      '@cypress/webpack-preprocessor': 5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.76.0))(webpack@5.76.0)
       chalk: 4.1.2
       cypress: 9.7.0
       dayjs: 1.10.7
@@ -6705,15 +6705,15 @@ snapshots:
       tunnel-agent: 0.6.0
       uuid: 8.3.2
 
-  '@cypress/webpack-preprocessor@5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)':
+  '@cypress/webpack-preprocessor@5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.76.0))(webpack@5.76.0)':
     dependencies:
       '@babel/core': 7.18.2
       '@babel/preset-env': 7.18.2(@babel/core@7.18.2)
-      babel-loader: 8.2.5(@babel/core@7.18.2)(webpack@5.72.1)
+      babel-loader: 8.2.5(@babel/core@7.18.2)(webpack@5.76.0)
       bluebird: 3.7.1
       debug: 4.3.4(supports-color@9.2.2)
       lodash: 4.17.21
-      webpack: 5.72.1
+      webpack: 5.76.0
     transitivePeerDependencies:
       - supports-color
 
@@ -7821,14 +7821,14 @@ snapshots:
 
   axobject-query@2.2.0: {}
 
-  babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1):
+  babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.76.0):
     dependencies:
       '@babel/core': 7.18.2
       find-cache-dir: 3.3.2
       loader-utils: 2.0.2
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.72.1
+      webpack: 5.76.0
 
   babel-plugin-dynamic-import-node@2.3.3:
     dependencies:
@@ -8518,7 +8518,7 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  enhanced-resolve@5.9.3:
+  enhanced-resolve@5.17.1:
     dependencies:
       graceful-fs: 4.2.10
       tapable: 2.2.1
@@ -11528,14 +11528,14 @@ snapshots:
       type-fest: 0.16.0
       unique-string: 2.0.0
 
-  terser-webpack-plugin@5.3.1(webpack@5.72.1):
+  terser-webpack-plugin@5.3.1(webpack@5.76.0):
     dependencies:
       jest-worker: 27.5.1
       schema-utils: 3.1.1
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.14.0
-      webpack: 5.72.1
+      webpack: 5.76.0
 
   terser@5.14.0:
     dependencies:
@@ -11915,7 +11915,7 @@ snapshots:
     dependencies:
       loose-envify: 1.4.0
 
-  watchpack@2.3.1:
+  watchpack@2.4.2:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.10
@@ -11932,7 +11932,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack@5.72.1:
+  webpack@5.76.0:
     dependencies:
       '@types/eslint-scope': 3.7.3
       '@types/estree': 0.0.51
@@ -11943,7 +11943,7 @@ snapshots:
       acorn-import-assertions: 1.8.0(acorn@8.7.1)
       browserslist: 4.20.3
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.9.3
+      enhanced-resolve: 5.17.1
       es-module-lexer: 0.9.3
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -11955,8 +11955,8 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.1.1
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.1(webpack@5.72.1)
-      watchpack: 2.3.1
+      terser-webpack-plugin: 5.3.1(webpack@5.76.0)
+      watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - '@swc/core'
