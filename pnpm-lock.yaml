@@ -325,8 +325,8 @@ importers:
         specifier: 0.12.0
         version: 0.12.0(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3)
       vite-tsconfig-paths:
-        specifier: 3.5.0
-        version: 3.5.0(vite@2.9.9)
+        specifier: 3.6.0
+        version: 3.6.0(vite@2.9.9)
       vitest:
         specifier: 0.13.1
         version: 0.13.1(c8@7.11.3)(jsdom@19.0.0(bufferutil@4.0.6)(utf-8-validate@5.0.9))
@@ -5555,8 +5555,8 @@ packages:
       workbox-build: ^6.4.0
       workbox-window: ^6.4.0
 
-  vite-tsconfig-paths@3.5.0:
-    resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
+  vite-tsconfig-paths@3.6.0:
+    resolution: {integrity: sha512-UfsPYonxLqPD633X8cWcPFVuYzx/CMNHAjZTasYwX69sXpa4gNmQkR0XCjj82h7zhLGdTWagMjC1qfb9S+zv0A==}
     peerDependencies:
       vite: '>2.0.0-0'
 
@@ -11855,7 +11855,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-tsconfig-paths@3.5.0(vite@2.9.9):
+  vite-tsconfig-paths@3.6.0(vite@2.9.9):
     dependencies:
       debug: 4.3.4(supports-color@9.2.2)
       globrex: 0.1.2
