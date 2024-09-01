@@ -140,7 +140,7 @@ importers:
         version: 3.1.0(rollup@2.75.5)
       '@tailwindcss/line-clamp':
         specifier: 0.4.0
-        version: 0.4.0(tailwindcss@3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)))
+        version: 0.4.0(tailwindcss@3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)))
       '@testing-library/cypress':
         specifier: 8.0.2
         version: 8.0.2(cypress@9.7.0)
@@ -206,7 +206,7 @@ importers:
         version: 1.3.2
       autoprefixer:
         specifier: 10.4.7
-        version: 10.4.7(postcss@8.4.14)
+        version: 10.4.7(postcss@8.4.31)
       babel-loader:
         specifier: 8.2.5
         version: 8.2.5(@babel/core@7.18.2)(webpack@5.72.1)
@@ -283,8 +283,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5
       postcss:
-        specifier: 8.4.14
-        version: 8.4.14
+        specifier: 8.4.31
+        version: 8.4.31
       prettier:
         specifier: 2.6.2
         version: 2.6.2
@@ -311,7 +311,7 @@ importers:
         version: 25.0.0(stylelint@14.8.5)
       tailwindcss:
         specifier: 3.1.4
-        version: 3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
+        version: 3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
       ts-node:
         specifier: 10.8.1
         version: 10.8.1(@types/node@17.0.38)(typescript@4.7.2)
@@ -4090,8 +4090,8 @@ packages:
   nano-time@1.0.0:
     resolution: {integrity: sha512-flnngywOoQ0lLQOTRNexn2gGSNuM9bKj9RZAWSzhQ+UJYaAFG9bac4DW9VHjUAzrOaIcajHybCTHe/bkvozQqA==}
 
-  nanoid@3.3.4:
-    resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
+  nanoid@3.3.7:
+    resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -4449,8 +4449,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.4.14:
-    resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
+  postcss@8.4.31:
+    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   prebuild-install@7.1.1:
@@ -7209,9 +7209,9 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.7
 
-  '@tailwindcss/line-clamp@0.4.0(tailwindcss@3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)))':
+  '@tailwindcss/line-clamp@0.4.0(tailwindcss@3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)))':
     dependencies:
-      tailwindcss: 3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
+      tailwindcss: 3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
 
   '@testing-library/cypress@8.0.2(cypress@9.7.0)':
     dependencies:
@@ -7797,14 +7797,14 @@ snapshots:
 
   atob@2.1.2: {}
 
-  autoprefixer@10.4.7(postcss@8.4.14):
+  autoprefixer@10.4.7(postcss@8.4.31):
     dependencies:
       browserslist: 4.20.3
       caniuse-lite: 1.0.30001344
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.14
+      postcss: 8.4.31
       postcss-value-parser: 4.2.0
 
   aws-sign2@0.7.0: {}
@@ -10259,7 +10259,7 @@ snapshots:
     dependencies:
       big-integer: 1.6.51
 
-  nanoid@3.3.4: {}
+  nanoid@3.3.7: {}
 
   napi-build-utils@1.0.2: {}
 
@@ -10583,38 +10583,38 @@ snapshots:
       style-value-types: 5.0.0
       tslib: 2.4.0
 
-  postcss-import@14.1.0(postcss@8.4.14):
+  postcss-import@14.1.0(postcss@8.4.31):
     dependencies:
-      postcss: 8.4.14
+      postcss: 8.4.31
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.0
 
-  postcss-js@4.0.0(postcss@8.4.14):
+  postcss-js@4.0.0(postcss@8.4.31):
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.14
+      postcss: 8.4.31
 
-  postcss-load-config@3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)):
+  postcss-load-config@3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)):
     dependencies:
       lilconfig: 2.0.5
       yaml: 1.10.2
     optionalDependencies:
-      postcss: 8.4.14
+      postcss: 8.4.31
       ts-node: 10.8.1(@types/node@17.0.38)(typescript@4.7.2)
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-nested@5.0.6(postcss@8.4.14):
+  postcss-nested@5.0.6(postcss@8.4.31):
     dependencies:
-      postcss: 8.4.14
+      postcss: 8.4.31
       postcss-selector-parser: 6.0.10
 
   postcss-resolve-nested-selector@0.1.1: {}
 
-  postcss-safe-parser@6.0.0(postcss@8.4.14):
+  postcss-safe-parser@6.0.0(postcss@8.4.31):
     dependencies:
-      postcss: 8.4.14
+      postcss: 8.4.31
 
   postcss-selector-parser@6.0.10:
     dependencies:
@@ -10623,9 +10623,9 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.4.14:
+  postcss@8.4.31:
     dependencies:
-      nanoid: 3.3.4
+      nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
@@ -11415,10 +11415,10 @@ snapshots:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.14
+      postcss: 8.4.31
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0(postcss@8.4.14)
+      postcss-safe-parser: 6.0.0(postcss@8.4.31)
       postcss-selector-parser: 6.0.10
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
@@ -11475,7 +11475,7 @@ snapshots:
     dependencies:
       react: 17.0.2
 
-  tailwindcss@3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)):
+  tailwindcss@3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2)):
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -11490,11 +11490,11 @@ snapshots:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.14
-      postcss-import: 14.1.0(postcss@8.4.14)
-      postcss-js: 4.0.0(postcss@8.4.14)
-      postcss-load-config: 3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
-      postcss-nested: 5.0.6(postcss@8.4.14)
+      postcss: 8.4.31
+      postcss-import: 14.1.0(postcss@8.4.31)
+      postcss-js: 4.0.0(postcss@8.4.31)
+      postcss-load-config: 3.1.4(postcss@8.4.31)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
+      postcss-nested: 5.0.6(postcss@8.4.31)
       postcss-selector-parser: 6.0.10
       postcss-value-parser: 4.2.0
       quick-lru: 5.1.1
@@ -11868,7 +11868,7 @@ snapshots:
   vite@2.9.9:
     dependencies:
       esbuild: 0.14.42
-      postcss: 8.4.14
+      postcss: 8.4.31
       resolve: 1.22.0
       rollup: 2.75.5
     optionalDependencies:
