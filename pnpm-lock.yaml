@@ -190,8 +190,8 @@ importers:
         specifier: 0.23.8
         version: 0.23.8
       '@types/sharp':
-        specifier: 0.30.4
-        version: 0.30.4
+        specifier: 0.32.0
+        version: 0.32.0
       '@types/testing-library__jest-dom':
         specifier: 5.14.3
         version: 5.14.3
@@ -1585,8 +1585,9 @@ packages:
   '@types/set-cookie-parser@2.4.2':
     resolution: {integrity: sha512-fBZgytwhYAUkj/jC/FAV4RQ5EerRup1YQsXQCh8rZfiHkc4UahC192oH0smGwsXol3cL3A5oETuAHeQHmhXM4w==}
 
-  '@types/sharp@0.30.4':
-    resolution: {integrity: sha512-6oJEzKt7wZeS7e+6x9QFEOWGs0T/6of00+0onZGN1zSmcSjcTDZKgIGZ6YWJnHowpaKUCFBPH52mYljWqU32Eg==}
+  '@types/sharp@0.32.0':
+    resolution: {integrity: sha512-OOi3kL+FZDnPhVzsfD37J88FNeZh6gQsGcLc95NbeURRGvmSjeXiDcyWzF2o3yh/gQAUn2uhh/e+CPCa5nwAxw==}
+    deprecated: This is a stub types definition. sharp provides its own type definitions, so you do not need this installed.
 
   '@types/sinonjs__fake-timers@8.1.1':
     resolution: {integrity: sha512-0kSuKjAS0TrGLJ0M/+8MaFkGsQhZpB6pxOmvS3K8FYI72K//YmdfoW9X2qPsAKh1mkwxGD5zib9s1FIFed6E8g==}
@@ -7427,9 +7428,9 @@ snapshots:
     dependencies:
       '@types/node': 17.0.38
 
-  '@types/sharp@0.30.4':
+  '@types/sharp@0.32.0':
     dependencies:
-      '@types/node': 17.0.38
+      sharp: 0.30.6
 
   '@types/sinonjs__fake-timers@8.1.1': {}
 
