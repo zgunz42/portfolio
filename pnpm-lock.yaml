@@ -166,8 +166,8 @@ importers:
         specifier: 0.1.1
         version: 0.1.1
       '@types/file-saver':
-        specifier: 2.0.5
-        version: 2.0.5
+        specifier: 2.0.7
+        version: 2.0.7
       '@types/js-yaml':
         specifier: 4.0.5
         version: 4.0.5
@@ -1489,8 +1489,8 @@ packages:
   '@types/estree@0.0.51':
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
 
-  '@types/file-saver@2.0.5':
-    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
+  '@types/file-saver@2.0.7':
+    resolution: {integrity: sha512-dNKVfHd/jk0SkR/exKGj2ggkB45MAkzvWCaqLUUgkyjITkGNzH8H+yUwr+BLJUBjZOe9w8X3wgmXhZDRg1ED6A==}
 
   '@types/hast@2.3.4':
     resolution: {integrity: sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==}
@@ -7328,7 +7328,7 @@ snapshots:
 
   '@types/estree@0.0.51': {}
 
-  '@types/file-saver@2.0.5': {}
+  '@types/file-saver@2.0.7': {}
 
   '@types/hast@2.3.4':
     dependencies:
