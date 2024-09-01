@@ -259,8 +259,8 @@ importers:
         specifier: 4.5.0
         version: 4.5.0(eslint@8.16.0)
       eslint-plugin-react-prefer-function-component:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 3.3.0
+        version: 3.3.0
       eslint-plugin-testing-library:
         specifier: 5.5.1
         version: 5.5.1(eslint@8.16.0)(typescript@4.7.2)
@@ -2834,8 +2834,8 @@ packages:
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
 
-  eslint-plugin-react-prefer-function-component@2.0.0:
-    resolution: {integrity: sha512-f/S1k3FXEGk5s+q2nOL4VxAXWGbWElVidmXcDlulo7kt5py5OS2dB0NzuAH6bASihJWEM9GqFXfBmyiYRvR55A==}
+  eslint-plugin-react-prefer-function-component@3.3.0:
+    resolution: {integrity: sha512-BJXHT8gn3tLd9pTrX7v9hozZA79p1s29mEPomg/laOK/1yt6KPFgIYWuxpq4I4C+x88APRVVBVtvW1rdCjeFxQ==}
 
   eslint-plugin-react@7.30.0:
     resolution: {integrity: sha512-RgwH7hjW48BleKsYyHK5vUAvxtE9SMPDKmcPRQgtRCYaZA0XQPt5FSkrU3nhz5ifzMZcA8opwmRJ2cmOO8tr5A==}
@@ -8783,7 +8783,7 @@ snapshots:
     dependencies:
       eslint: 8.16.0
 
-  eslint-plugin-react-prefer-function-component@2.0.0: {}
+  eslint-plugin-react-prefer-function-component@3.3.0: {}
 
   eslint-plugin-react@7.30.0(eslint@8.16.0):
     dependencies:
