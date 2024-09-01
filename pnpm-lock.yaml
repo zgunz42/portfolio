@@ -15,8 +15,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@loadable/component':
-        specifier: 5.15.2
-        version: 5.15.2(react@17.0.2)
+        specifier: 5.16.4
+        version: 5.16.4(react@17.0.2)
       '@mantine/core':
         specifier: 4.2.7
         version: 4.2.7(@babel/core@7.18.2)(@mantine/hooks@4.2.7(react@17.0.2))(@types/react@17.0.45)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
@@ -1159,11 +1159,11 @@ packages:
   '@lit/reactive-element@1.3.2':
     resolution: {integrity: sha512-A2e18XzPMrIh35nhIdE4uoqRzoIpEU5vZYuQN4S3Ee1zkGdYC27DP12pewbw/RLgPHzaE4kx/YqxMzebOpm0dA==}
 
-  '@loadable/component@5.15.2':
-    resolution: {integrity: sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==}
+  '@loadable/component@5.16.4':
+    resolution: {integrity: sha512-fJWxx9b5WHX90QKmizo9B+es2so8DnBthI1mbflwCoOyvzEwxiZ/SVDCTtXEnHG72/kGBdzr297SSIekYtzSOQ==}
     engines: {node: '>=8'}
     peerDependencies:
-      react: '>=16.3.0'
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
 
   '@mantine/core@4.2.7':
     resolution: {integrity: sha512-WlieaDsqsFhtebRhP/pFNCuqTqPCihkNHHPL6tbd02psEqM8crPrktaO9cAJNyHa3Jna8eUthRRMp8737IHDjg==}
@@ -6918,7 +6918,7 @@ snapshots:
 
   '@lit/reactive-element@1.3.2': {}
 
-  '@loadable/component@5.15.2(react@17.0.2)':
+  '@loadable/component@5.16.4(react@17.0.2)':
     dependencies:
       '@babel/runtime': 7.18.3
       hoist-non-react-statics: 3.3.2
