@@ -93,8 +93,8 @@ importers:
         specifier: 7.0.14
         version: 7.0.14(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       react-github-calendar:
-        specifier: 3.3.1
-        version: 3.3.1(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2)
+        specifier: 3.4.0
+        version: 3.4.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2)
       react-helmet:
         specifier: 6.1.0
         version: 6.1.0(react@17.0.2)
@@ -935,6 +935,10 @@ packages:
     resolution: {integrity: sha512-38Y8f7YUhce/K7RMwTp7m0uCumpv9hZkitCbBClqQIow1qSbCvGkcegKOXpEWCQLfWmevgRiWokZ1GkpfhbZug==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/runtime@7.25.6':
+    resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/template@7.16.7':
     resolution: {integrity: sha512-I8j/x8kHUrbYRTUxXrrMbfCa7jxkE7tZre39x3kjr9hvI82cK1FfqLygotcWN5kdPGWcLdWMHpSBavse5tWw3w==}
     engines: {node: '>=6.9.0'}
@@ -1596,6 +1600,9 @@ packages:
 
   '@types/testing-library__jest-dom@5.14.3':
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
+
+  '@types/tinycolor2@1.4.6':
+    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
   '@types/trusted-types@2.0.2':
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
@@ -2378,8 +2385,8 @@ packages:
     resolution: {integrity: sha512-Jy/tj3ldjZJo63sVAvg6LHt2mHvl4V6AgRAmNDtLdm7faqtsx+aJG42rsyCo9JCoRVKwPFzKlIPx3DIibwSIaQ==}
     engines: {node: '>=12'}
 
-  date-fns@2.28.0:
-    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+  date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
 
   dayjs@1.10.7:
@@ -4544,12 +4551,15 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  react-activity-calendar@1.6.0:
-    resolution: {integrity: sha512-Pyar4K9S2/SKdAF0ZIRZHBUAchOof8m34HRLrkI1uTjU38a1c2LNBcoQBiQEr4s6ZtNjzy0ZHUHiZdCBbUC12g==}
+  react-activity-calendar@1.7.0:
+    resolution: {integrity: sha512-iyUNhnYYM2zuSI5KUD4xjTbWH4wBFYFm7M1FwZ1J+g8jK7o48730n9v7OemcP++PouH9f4G/oVSGF4Nk3BBcnQ==}
     peerDependencies:
-      react: ^17.0.0
-      react-dom: ^17.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
       react-tooltip: ^4.2.0
+    peerDependenciesMeta:
+      react-tooltip:
+        optional: true
 
   react-dom@17.0.2:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
@@ -4572,12 +4582,15 @@ packages:
       react: '>= 16.x'
       react-dom: '>= 16.x'
 
-  react-github-calendar@3.3.1:
-    resolution: {integrity: sha512-0m9qnia/HbAYQdbOvr7l59zxLFSs3ZRzJYyXXKSUxGKdScHSipiGw3g2pu6rS1VGAPE9NtVJhuLq1qrbItlVpA==}
+  react-github-calendar@3.4.0:
+    resolution: {integrity: sha512-3HiUjZAivwcDhNdL3Nwz5MNSUolOwsIuyrBnq6fYfJJE7l0CONHKX9N0lJ/4wpJWZBBYMHOmvFM10sNCRPpYaQ==}
     peerDependencies:
-      react: ^17.0.0
-      react-dom: ^17.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
       react-tooltip: ^4.2.0
+    peerDependenciesMeta:
+      react-tooltip:
+        optional: true
 
   react-helmet@6.1.0:
     resolution: {integrity: sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==}
@@ -4713,6 +4726,9 @@ packages:
 
   regenerator-runtime@0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+
+  regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
   regenerator-transform@0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
@@ -6586,6 +6602,10 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.13.9
 
+  '@babel/runtime@7.25.6':
+    dependencies:
+      regenerator-runtime: 0.14.1
+
   '@babel/template@7.16.7':
     dependencies:
       '@babel/code-frame': 7.16.7
@@ -7438,6 +7458,8 @@ snapshots:
   '@types/testing-library__jest-dom@5.14.3':
     dependencies:
       '@types/jest': 27.5.1
+
+  '@types/tinycolor2@1.4.6': {}
 
   '@types/trusted-types@2.0.2': {}
 
@@ -8364,7 +8386,9 @@ snapshots:
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
 
-  date-fns@2.28.0: {}
+  date-fns@2.30.0:
+    dependencies:
+      '@babel/runtime': 7.25.6
 
   dayjs@1.10.7: {}
 
@@ -10714,13 +10738,15 @@ snapshots:
       minimist: 1.2.6
       strip-json-comments: 2.0.1
 
-  react-activity-calendar@1.6.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2):
+  react-activity-calendar@1.7.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2):
     dependencies:
-      date-fns: 2.28.0
+      '@types/tinycolor2': 1.4.6
+      date-fns: 2.30.0
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-      react-tooltip: 4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       tinycolor2: 1.4.2
+    optionalDependencies:
+      react-tooltip: 4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
 
   react-dom@17.0.2(react@17.0.2):
     dependencies:
@@ -10743,11 +10769,12 @@ snapshots:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
 
-  react-github-calendar@3.3.1(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2):
+  react-github-calendar@3.4.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2):
     dependencies:
       react: 17.0.2
-      react-activity-calendar: 1.6.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2)
+      react-activity-calendar: 1.7.0(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2)
       react-dom: 17.0.2(react@17.0.2)
+    optionalDependencies:
       react-tooltip: 4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
 
   react-helmet@6.1.0(react@17.0.2):
@@ -10852,6 +10879,7 @@ snapshots:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       uuid: 7.0.3
+    optional: true
 
   react-transition-group@4.4.2(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
@@ -10925,6 +10953,8 @@ snapshots:
   regenerate@1.4.2: {}
 
   regenerator-runtime@0.13.9: {}
+
+  regenerator-runtime@0.14.1: {}
 
   regenerator-transform@0.15.0:
     dependencies:
@@ -11799,7 +11829,8 @@ snapshots:
 
   uuid@3.4.0: {}
 
-  uuid@7.0.3: {}
+  uuid@7.0.3:
+    optional: true
 
   uuid@8.3.2: {}
 
