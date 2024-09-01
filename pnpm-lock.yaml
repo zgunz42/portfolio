@@ -12,8 +12,8 @@ importers:
         specifier: ^3.6.8
         version: 3.6.8(graphql@16.5.0)(react@17.0.2)
       '@giscus/react':
-        specifier: 2.0.5
-        version: 2.0.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        specifier: 3.0.0
+        version: 3.0.0(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@loadable/component':
         specifier: 5.15.2
         version: 5.15.2(react@17.0.2)
@@ -1094,8 +1094,8 @@ packages:
       ts-jest:
         optional: true
 
-  '@giscus/react@2.0.5':
-    resolution: {integrity: sha512-QTK4Buv+TqSJx9wovjANW130sFxnZ4/xtm2fEZifNSGaEVeT0AqfRM9Roe6n8OaJhBz5hZnlUpFWUZeHnTuu+A==}
+  '@giscus/react@3.0.0':
+    resolution: {integrity: sha512-hgCjLpg3Wgh8VbTF5p8ZLcIHI74wvDk1VIFv12+eKhenNVUDjgwNg2B1aq/3puyHOad47u/ZSyqiMtohjy/OOA==}
     peerDependencies:
       react: ^16 || ^17 || ^18
       react-dom: ^16 || ^17 || ^18
@@ -1156,8 +1156,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@lit/reactive-element@1.3.2':
-    resolution: {integrity: sha512-A2e18XzPMrIh35nhIdE4uoqRzoIpEU5vZYuQN4S3Ee1zkGdYC27DP12pewbw/RLgPHzaE4kx/YqxMzebOpm0dA==}
+  '@lit-labs/ssr-dom-shim@1.2.1':
+    resolution: {integrity: sha512-wx4aBmgeGvFmOKucFKY+8VFJSYZxs9poN3SDNQFF6lT6NrQUnHiPB2PWz2sc4ieEcAaYYzN+1uWahEeTq2aRIQ==}
+
+  '@lit/reactive-element@2.0.4':
+    resolution: {integrity: sha512-GFn91inaUa2oHLak8awSIigYz0cU0Payr1rcFsrkf5OJ5eSPxElyZfKh0f2p9FsTiZWXQdWGJeXZICEfXXYSXQ==}
 
   '@loadable/component@5.15.2':
     resolution: {integrity: sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==}
@@ -3171,8 +3174,8 @@ packages:
   getpass@0.1.7:
     resolution: {integrity: sha512-0fzj9JxOLfJ+XGLhR8ze3unN0KZCgZwiSSDz168VERjK8Wl8kVSdcu2kspd4s4wtAa1y/qrVRiAA0WclVsu0ng==}
 
-  giscus@1.0.5:
-    resolution: {integrity: sha512-jg+4qUtyn2r9gCZJthbgPn/hLaoZAcZVhWx6d7+TYrrojMjAltrlSzYdsL++4iutVmGEYktp+nUJn2rQgZzvTg==}
+  giscus@1.5.0:
+    resolution: {integrity: sha512-t3LL0qbSO3JXq3uyQeKpF5CegstGfKX/0gI6eDe1cmnI7D56R7j52yLdzw4pdKrg3VnufwCgCM3FDz7G1Qr6lg==}
 
   github-from-package@0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
@@ -3795,14 +3798,14 @@ packages:
       enquirer:
         optional: true
 
-  lit-element@3.2.0:
-    resolution: {integrity: sha512-HbE7yt2SnUtg5DCrWt028oaU4D5F4k/1cntAFHTkzY8ZIa8N0Wmu92PxSxucsQSOXlODFrICkQ5x/tEshKi13g==}
+  lit-element@4.1.0:
+    resolution: {integrity: sha512-gSejRUQJuMQjV2Z59KAS/D4iElUhwKpIyJvZ9w+DIagIQjfJnhR20h2Q5ddpzXGS+fF0tMZ/xEYGMnKmaI/iww==}
 
-  lit-html@2.2.6:
-    resolution: {integrity: sha512-xOKsPmq/RAKJ6dUeOxhmOYFjcjf0Q7aSdfBJgdJkOfCUnkmmJPxNrlZpRBeVe1Gg50oYWMlgm6ccAE/SpJgSdw==}
+  lit-html@3.2.0:
+    resolution: {integrity: sha512-pwT/HwoxqI9FggTrYVarkBKFN9MlTUpLrDHubTmW4SrkL3kkqW5gxwbxMMUnbbRHBC0WTZnYHcjDSCM559VyfA==}
 
-  lit@2.2.6:
-    resolution: {integrity: sha512-K2vkeGABfSJSfkhqHy86ujchJs3NR9nW1bEEiV+bXDkbiQ60Tv5GUausYN2mXigZn8lC1qXuc46ArQRKYmumZw==}
+  lit@3.2.0:
+    resolution: {integrity: sha512-s6tI33Lf6VpDu7u4YqsSX78D28bYQulM+VAzsGch4fx2H0eLZnJsUBsPWmGYSGoKDNbjtRv02rio1o+UdPVwvw==}
 
   load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
@@ -6848,9 +6851,9 @@ snapshots:
       tslib: 2.4.0
       typescript: 4.7.2
 
-  '@giscus/react@2.0.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)':
+  '@giscus/react@3.0.0(react-dom@17.0.2(react@17.0.2))(react@17.0.2)':
     dependencies:
-      giscus: 1.0.5
+      giscus: 1.5.0
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
 
@@ -6916,7 +6919,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.0.7
       '@jridgewell/sourcemap-codec': 1.4.13
 
-  '@lit/reactive-element@1.3.2': {}
+  '@lit-labs/ssr-dom-shim@1.2.1': {}
+
+  '@lit/reactive-element@2.0.4':
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.2.1
 
   '@loadable/component@5.15.2(react@17.0.2)':
     dependencies:
@@ -9200,9 +9207,9 @@ snapshots:
     dependencies:
       assert-plus: 1.0.0
 
-  giscus@1.0.5:
+  giscus@1.5.0:
     dependencies:
-      lit: 2.2.6
+      lit: 3.2.0
 
   github-from-package@0.0.0: {}
 
@@ -9865,20 +9872,21 @@ snapshots:
     optionalDependencies:
       enquirer: 2.3.6
 
-  lit-element@3.2.0:
+  lit-element@4.1.0:
     dependencies:
-      '@lit/reactive-element': 1.3.2
-      lit-html: 2.2.6
+      '@lit-labs/ssr-dom-shim': 1.2.1
+      '@lit/reactive-element': 2.0.4
+      lit-html: 3.2.0
 
-  lit-html@2.2.6:
+  lit-html@3.2.0:
     dependencies:
       '@types/trusted-types': 2.0.2
 
-  lit@2.2.6:
+  lit@3.2.0:
     dependencies:
-      '@lit/reactive-element': 1.3.2
-      lit-element: 3.2.0
-      lit-html: 2.2.6
+      '@lit/reactive-element': 2.0.4
+      lit-element: 4.1.0
+      lit-html: 3.2.0
 
   load-json-file@4.0.0:
     dependencies:
