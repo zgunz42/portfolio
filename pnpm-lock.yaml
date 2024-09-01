@@ -187,8 +187,8 @@ importers:
         specifier: 5.3.3
         version: 5.3.3
       '@types/react-slick':
-        specifier: 0.23.8
-        version: 0.23.8
+        specifier: 0.23.13
+        version: 0.23.13
       '@types/sharp':
         specifier: 0.30.4
         version: 0.30.4
@@ -1567,8 +1567,8 @@ packages:
   '@types/react-router@5.1.18':
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
 
-  '@types/react-slick@0.23.8':
-    resolution: {integrity: sha512-SfzSg++/3uyftVZaCgHpW+2fnJFsyJEQ/YdsuqfOWQ5lqUYV/gY/UwAnkw4qksCj5jalto/T5rKXJ8zeFldQeA==}
+  '@types/react-slick@0.23.13':
+    resolution: {integrity: sha512-bNZfDhe/L8t5OQzIyhrRhBr/61pfBcWaYJoq6UDqFtv5LMwfg4NsVDD2J8N01JqdAdxLjOt66OZEp6PX+dGs/A==}
 
   '@types/react@17.0.45':
     resolution: {integrity: sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==}
@@ -7401,7 +7401,7 @@ snapshots:
       '@types/history': 4.7.11
       '@types/react': 18.0.10
 
-  '@types/react-slick@0.23.8':
+  '@types/react-slick@0.23.13':
     dependencies:
       '@types/react': 17.0.45
 
