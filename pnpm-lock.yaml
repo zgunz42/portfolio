@@ -160,8 +160,8 @@ importers:
         specifier: 14.2.0
         version: 14.2.0(@testing-library/dom@8.13.0)
       '@tsconfig/node16':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 1.0.4
+        version: 1.0.4
       '@types/css-mediaquery':
         specifier: 0.1.1
         version: 0.1.1
@@ -1441,8 +1441,8 @@ packages:
   '@tsconfig/node14@1.0.1':
     resolution: {integrity: sha512-509r2+yARFfHHE7T6Puu2jjkoycftovhXRqW328PDXTVGKihlb1P8Z9mMZH04ebyajfRY7dedfGynlrFHJUQCg==}
 
-  '@tsconfig/node16@1.0.3':
-    resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+  '@tsconfig/node16@1.0.4':
+    resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
   '@types/aria-query@4.2.2':
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
@@ -7271,7 +7271,7 @@ snapshots:
 
   '@tsconfig/node14@1.0.1': {}
 
-  '@tsconfig/node16@1.0.3': {}
+  '@tsconfig/node16@1.0.4': {}
 
   '@types/aria-query@4.2.2': {}
 
@@ -11613,7 +11613,7 @@ snapshots:
       '@tsconfig/node10': 1.0.8
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
-      '@tsconfig/node16': 1.0.3
+      '@tsconfig/node16': 1.0.4
       '@types/node': 17.0.38
       acorn: 8.7.1
       acorn-walk: 8.2.0
