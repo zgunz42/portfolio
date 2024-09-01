@@ -114,8 +114,8 @@ importers:
         specifier: ^0.30.6
         version: 0.30.6
       tabler-icons-react:
-        specifier: 1.48.1
-        version: 1.48.1(react@17.0.2)
+        specifier: 1.56.0
+        version: 1.56.0(react@17.0.2)
       yaml-front-matter:
         specifier: 4.1.1
         version: 4.1.1
@@ -5185,8 +5185,8 @@ packages:
     resolution: {integrity: sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==}
     engines: {node: '>=10.0.0'}
 
-  tabler-icons-react@1.48.1:
-    resolution: {integrity: sha512-TX12VEymcICeHOUd0f086JgMZhwogol36aTbEZBe4KnvHIjr7TyHFUUKkqydgPwjdJPEA+6Y1XOglJ9IGKVC5Q==}
+  tabler-icons-react@1.56.0:
+    resolution: {integrity: sha512-FOme3w6PJIWDpeXqQ4xjArQqdxzrr9xNy7PSSgWpRzOUQ71RyZ7jt6WThsfyLBz5os78TPJRA8f/0NLjnKcx9A==}
     peerDependencies:
       react: '>= 16.8.0'
 
@@ -11471,7 +11471,7 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
-  tabler-icons-react@1.48.1(react@17.0.2):
+  tabler-icons-react@1.56.0(react@17.0.2):
     dependencies:
       react: 17.0.2
 
