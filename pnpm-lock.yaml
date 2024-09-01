@@ -304,8 +304,8 @@ importers:
         specifier: 14.8.5
         version: 14.8.5
       stylelint-config-prettier:
-        specifier: 9.0.3
-        version: 9.0.3(stylelint@14.8.5)
+        specifier: 9.0.5
+        version: 9.0.5(stylelint@14.8.5)
       stylelint-config-standard:
         specifier: 25.0.0
         version: 25.0.0(stylelint@14.8.5)
@@ -5122,12 +5122,12 @@ packages:
   style-value-types@5.0.0:
     resolution: {integrity: sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==}
 
-  stylelint-config-prettier@9.0.3:
-    resolution: {integrity: sha512-5n9gUDp/n5tTMCq1GLqSpA30w2sqWITSSEiAWQlpxkKGAUbjcemQ0nbkRvRUa0B1LgD3+hCvdL7B1eTxy1QHJg==}
+  stylelint-config-prettier@9.0.5:
+    resolution: {integrity: sha512-U44lELgLZhbAD/xy/vncZ2Pq8sh2TnpiPvo38Ifg9+zeioR+LAkHu0i6YORIOxFafZoVg0xqQwex6e6F25S5XA==}
     engines: {node: '>= 12'}
     hasBin: true
     peerDependencies:
-      stylelint: '>=11.0.0'
+      stylelint: '>= 11.x < 15'
 
   stylelint-config-recommended@7.0.0:
     resolution: {integrity: sha512-yGn84Bf/q41J4luis1AZ95gj0EQwRX8lWmGmBwkwBNSkpGSpl66XcPTulxGa/Z91aPoNGuIGBmFkcM1MejMo9Q==}
@@ -11376,7 +11376,7 @@ snapshots:
       hey-listen: 1.0.8
       tslib: 2.4.0
 
-  stylelint-config-prettier@9.0.3(stylelint@14.8.5):
+  stylelint-config-prettier@9.0.5(stylelint@14.8.5):
     dependencies:
       stylelint: 14.8.5
 
