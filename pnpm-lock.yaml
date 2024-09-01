@@ -90,8 +90,8 @@ importers:
         specifier: 17.0.2
         version: 17.0.2(react@17.0.2)
       react-flip-toolkit:
-        specifier: 7.0.14
-        version: 7.0.14(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        specifier: 7.2.4
+        version: 7.2.4(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       react-github-calendar:
         specifier: 3.3.1
         version: 3.3.1(react-dom@17.0.2(react@17.0.2))(react-tooltip@4.2.21(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react@17.0.2)
@@ -3047,8 +3047,8 @@ packages:
   flatted@3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
 
-  flip-toolkit@7.0.14:
-    resolution: {integrity: sha512-mV3fwJuFxXU0tSiUL79NEfykwjEABV7I4gdx7S83GrQ0eJC/TIS1R8TW0u2qdDAtd5yhTcrm9IVfqyjJdGqrqQ==}
+  flip-toolkit@7.2.4:
+    resolution: {integrity: sha512-NT81ikyHPk72riMe1U01x698YIMSypMF5mQBhRklWVgf2xgWH3EPfrrVRAkz/+TSCq0rLPsr/uKIYkwHrowKZQ==}
     engines: {node: '>=8', npm: '>=5'}
 
   follow-redirects@1.15.1:
@@ -4565,8 +4565,8 @@ packages:
   react-fast-compare@3.2.0:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
 
-  react-flip-toolkit@7.0.14:
-    resolution: {integrity: sha512-4ezk9g9yPMDbePCTW81ZIG1dMXa3qCIlYhGnWjJb0fIJJOazSOwV2TXp0lB/kn4R8QK5N3AdwYKPwFQQY8TW3A==}
+  react-flip-toolkit@7.2.4:
+    resolution: {integrity: sha512-+aZBZwzHBDfJzMRLjAAOKiBkrk8PV0YFVE0k1x85+UsykApLwg8a0LlQ5H80uFltFZmGtrQ7EE1krhiZ1jI5ig==}
     engines: {node: '>=8', npm: '>=5'}
     peerDependencies:
       react: '>= 16.x'
@@ -9077,7 +9077,7 @@ snapshots:
 
   flatted@3.2.5: {}
 
-  flip-toolkit@7.0.14:
+  flip-toolkit@7.2.4:
     dependencies:
       rematrix: 0.2.2
 
@@ -10736,9 +10736,9 @@ snapshots:
 
   react-fast-compare@3.2.0: {}
 
-  react-flip-toolkit@7.0.14(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
+  react-flip-toolkit@7.2.4(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
-      flip-toolkit: 7.0.14
+      flip-toolkit: 7.2.4
       prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
