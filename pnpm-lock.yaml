@@ -322,8 +322,8 @@ importers:
         specifier: 2.9.9
         version: 2.9.9
       vite-plugin-pwa:
-        specifier: 0.12.0
-        version: 0.12.0(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3)
+        specifier: 0.20.5
+        version: 0.20.5(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3)
       vite-tsconfig-paths:
         specifier: 3.5.0
         version: 3.5.0(vite@2.9.9)
@@ -2422,6 +2422,15 @@ packages:
       supports-color:
         optional: true
 
+  debug@4.3.6:
+    resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
   decamelize-keys@1.1.0:
     resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==}
     engines: {node: '>=0.10.0'}
@@ -2991,6 +3000,14 @@ packages:
 
   fd-slicer@1.1.0:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
+
+  fdir@6.3.0:
+    resolution: {integrity: sha512-QOnuT+BOtivR77wYvCWHfGt9s4Pz1VIMbD463vegT5MLqNXy8rYFT/lPVEqf/bhYeT6qmqrNHhsX+rWwe3rOCQ==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
 
   figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==}
@@ -4364,6 +4381,10 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  picomatch@4.0.2:
+    resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
+    engines: {node: '>=12'}
+
   pidtree@0.3.1:
     resolution: {integrity: sha512-qQbW94hLHEqCg7nhby4yRC7G2+jYHY4Rguc2bjw7Uug4GIJuu1tvf2uHaZv5Q8zdt+WKJ6qK1FOI6amaWUo5FA==}
     engines: {node: '>=0.10'}
@@ -4481,8 +4502,8 @@ packages:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
     engines: {node: '>=6'}
 
-  pretty-bytes@6.0.0:
-    resolution: {integrity: sha512-6UqkYefdogmzqAZWzJ7laYeJnaXDy2/J+ZqiiMtS7t7OfpXWTlaeGMwX8U6EFvPV/YWWEKRkS8hKS4k60WHTOg==}
+  pretty-bytes@6.1.1:
+    resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
   pretty-format@27.5.1:
@@ -5253,6 +5274,10 @@ packages:
   tinycolor2@1.4.2:
     resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
 
+  tinyglobby@0.2.5:
+    resolution: {integrity: sha512-Dlqgt6h0QkoHttG53/WGADNh9QhcjCAIZMTERAVhdpmIBEejSuLI9ZmGKWzB7tweBjlk30+s/ofi4SLmBeTYhw==}
+    engines: {node: '>=12.0.0'}
+
   tinypool@0.1.3:
     resolution: {integrity: sha512-2IfcQh7CP46XGWGGbdyO4pjcKqsmVqFAPcXfPxcPXmOWt9cYkTP9HcDmGgsfijYoAEc4z9qcpM/BaBz46Y9/CQ==}
     engines: {node: '>=14.0.0'}
@@ -5548,12 +5573,17 @@ packages:
   vfile@5.3.4:
     resolution: {integrity: sha512-KI+7cnst03KbEyN1+JE504zF5bJBZa+J+CrevLeyIMq0aPU681I2rQ5p4PlnQ6exFtWiUrg26QUdFMnAKR6PIw==}
 
-  vite-plugin-pwa@0.12.0:
-    resolution: {integrity: sha512-KYD+cnS5ExLF3T28NkfzBLZ53ehHlp+qMhHGFNh0zlVGpFHrJkL2v9wd4AMi7ZkBTffgeNatIFiv8rhCsMSxBQ==}
+  vite-plugin-pwa@0.20.5:
+    resolution: {integrity: sha512-aweuI/6G6n4C5Inn0vwHumElU/UEpNuO+9iZzwPZGTCH87TeZ6YFMrEY6ZUBQdIHHlhTsbMDryFARcSuOdsz9Q==}
+    engines: {node: '>=16.0.0'}
     peerDependencies:
-      vite: ^2.0.0
-      workbox-build: ^6.4.0
-      workbox-window: ^6.4.0
+      '@vite-pwa/assets-generator': ^0.2.6
+      vite: ^3.1.0 || ^4.0.0 || ^5.0.0
+      workbox-build: ^7.1.0
+      workbox-window: ^7.1.0
+    peerDependenciesMeta:
+      '@vite-pwa/assets-generator':
+        optional: true
 
   vite-tsconfig-paths@3.5.0:
     resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
@@ -8396,6 +8426,10 @@ snapshots:
     optionalDependencies:
       supports-color: 9.2.2
 
+  debug@4.3.6:
+    dependencies:
+      ms: 2.1.2
+
   decamelize-keys@1.1.0:
     dependencies:
       decamelize: 1.2.0
@@ -9013,6 +9047,10 @@ snapshots:
   fd-slicer@1.1.0:
     dependencies:
       pend: 1.2.0
+
+  fdir@6.3.0(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
 
   figures@2.0.0:
     dependencies:
@@ -10556,6 +10594,8 @@ snapshots:
 
   picomatch@2.3.1: {}
 
+  picomatch@4.0.2: {}
+
   pidtree@0.3.1: {}
 
   pidtree@0.5.0: {}
@@ -10656,7 +10696,7 @@ snapshots:
 
   pretty-bytes@5.6.0: {}
 
-  pretty-bytes@6.0.0: {}
+  pretty-bytes@6.1.1: {}
 
   pretty-format@27.5.1:
     dependencies:
@@ -11558,6 +11598,11 @@ snapshots:
 
   tinycolor2@1.4.2: {}
 
+  tinyglobby@0.2.5:
+    dependencies:
+      fdir: 6.3.0(picomatch@4.0.2)
+      picomatch: 4.0.2
+
   tinypool@0.1.3: {}
 
   tinyspy@0.3.2: {}
@@ -11843,12 +11888,11 @@ snapshots:
       unist-util-stringify-position: 3.0.2
       vfile-message: 3.1.2
 
-  vite-plugin-pwa@0.12.0(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3):
+  vite-plugin-pwa@0.20.5(vite@2.9.9)(workbox-build@6.5.3(@types/babel__core@7.1.19))(workbox-window@6.5.3):
     dependencies:
-      debug: 4.3.4(supports-color@9.2.2)
-      fast-glob: 3.2.11
-      pretty-bytes: 6.0.0
-      rollup: 2.75.5
+      debug: 4.3.6
+      pretty-bytes: 6.1.1
+      tinyglobby: 0.2.5
       vite: 2.9.9
       workbox-build: 6.5.3(@types/babel__core@7.1.19)
       workbox-window: 6.5.3
