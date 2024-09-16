@@ -128,7 +128,7 @@ importers:
         version: 7.18.2(@babel/core@7.18.2)
       '@cypress/code-coverage':
         specifier: 3.10.0
-        version: 3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)
+        version: 3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.4.1(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)
       '@formatjs/cli':
         specifier: 5.0.2
         version: 5.0.2
@@ -208,8 +208,8 @@ importers:
         specifier: 10.4.7
         version: 10.4.7(postcss@8.4.14)
       babel-loader:
-        specifier: 8.2.5
-        version: 8.2.5(@babel/core@7.18.2)(webpack@5.72.1)
+        specifier: 8.4.1
+        version: 8.4.1(@babel/core@7.18.2)(webpack@5.72.1)
       babel-plugin-formatjs:
         specifier: 10.3.24
         version: 10.3.24
@@ -1945,8 +1945,8 @@ packages:
   axobject-query@2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
 
-  babel-loader@8.2.5:
-    resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==}
+  babel-loader@8.4.1:
+    resolution: {integrity: sha512-nXzRChX+Z1GoE6yWavBQg6jDslyFF3SDjl2paADuoQtQW10JqShJt62R6eJQ5m/pjJFDT8xgKIWSP85OY8eXeA==}
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -3812,8 +3812,8 @@ packages:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
     engines: {node: '>=6.11.5'}
 
-  loader-utils@2.0.2:
-    resolution: {integrity: sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==}
+  loader-utils@2.0.4:
+    resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
     engines: {node: '>=8.9.0'}
 
   local-pkg@0.4.1:
@@ -6665,9 +6665,9 @@ snapshots:
 
   '@cush/relative@1.0.0': {}
 
-  '@cypress/code-coverage@3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)':
+  '@cypress/code-coverage@3.10.0(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.4.1(@babel/core@7.18.2)(webpack@5.72.1))(cypress@9.7.0)(webpack@5.72.1)':
     dependencies:
-      '@cypress/webpack-preprocessor': 5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)
+      '@cypress/webpack-preprocessor': 5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.4.1(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)
       chalk: 4.1.2
       cypress: 9.7.0
       dayjs: 1.10.7
@@ -6705,11 +6705,11 @@ snapshots:
       tunnel-agent: 0.6.0
       uuid: 8.3.2
 
-  '@cypress/webpack-preprocessor@5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)':
+  '@cypress/webpack-preprocessor@5.11.1(@babel/core@7.18.2)(@babel/preset-env@7.18.2(@babel/core@7.18.2))(babel-loader@8.4.1(@babel/core@7.18.2)(webpack@5.72.1))(webpack@5.72.1)':
     dependencies:
       '@babel/core': 7.18.2
       '@babel/preset-env': 7.18.2(@babel/core@7.18.2)
-      babel-loader: 8.2.5(@babel/core@7.18.2)(webpack@5.72.1)
+      babel-loader: 8.4.1(@babel/core@7.18.2)(webpack@5.72.1)
       bluebird: 3.7.1
       debug: 4.3.4(supports-color@9.2.2)
       lodash: 4.17.21
@@ -7821,11 +7821,11 @@ snapshots:
 
   axobject-query@2.2.0: {}
 
-  babel-loader@8.2.5(@babel/core@7.18.2)(webpack@5.72.1):
+  babel-loader@8.4.1(@babel/core@7.18.2)(webpack@5.72.1):
     dependencies:
       '@babel/core': 7.18.2
       find-cache-dir: 3.3.2
-      loader-utils: 2.0.2
+      loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
       webpack: 5.72.1
@@ -9889,7 +9889,7 @@ snapshots:
 
   loader-runner@4.3.0: {}
 
-  loader-utils@2.0.2:
+  loader-utils@2.0.4:
     dependencies:
       big.js: 5.2.2
       emojis-list: 3.0.0
