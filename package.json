@@ -61,7 +61,7 @@
 		"react-intl": "6.0.4",
 		"react-markdown": "^8.0.3",
 		"react-query": "3.39.1",
-		"react-router-dom": "6.3.0",
+		"react-router-dom": "6.27.0",
 		"sharp": "^0.30.6",
 		"tabler-icons-react": "1.48.1",
 		"yaml-front-matter": "4.1.1"
