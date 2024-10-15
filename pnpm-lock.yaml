@@ -60,8 +60,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5
       framer-motion:
-        specifier: 6.3.10
-        version: 6.3.10(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        specifier: 11.11.9
+        version: 11.11.9(@emotion/is-prop-valid@0.8.8)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       front-matter:
         specifier: 4.0.2
         version: 4.0.2
@@ -79,7 +79,7 @@ importers:
         version: 1.17.1
       pietile-carousel:
         specifier: 3.2.0
-        version: 3.2.0(framer-motion@6.3.10(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+        version: 3.2.0(framer-motion@11.11.9(@emotion/is-prop-valid@0.8.8)(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       popmotion:
         specifier: 11.0.3
         version: 11.0.3
@@ -2880,6 +2880,7 @@ packages:
   eslint@8.16.0:
     resolution: {integrity: sha512-MBndsoXY/PeVTDJeWsYj7kLZ5hQpJOfMYLsF6LicLHQWbRDG19lK5jOix4DPl8yY4SUFcE3txy86OzFLWT+yoA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.3.2:
@@ -3078,11 +3079,19 @@ packages:
   fraction.js@4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
 
-  framer-motion@6.3.10:
-    resolution: {integrity: sha512-modFplFb1Fznsm0MrmRAJUC32UDA5jbGU9rDvkGzhAHksru2tnoKbU/Pa3orzdsJI0CJviG4NGBrmwGveU98Cg==}
+  framer-motion@11.11.9:
+    resolution: {integrity: sha512-XpdZseuCrZehdHGuW22zZt3SF5g6AHJHJi7JwQIigOznW4Jg1n0oGPMJQheMaKLC+0rp5gxUKMRYI6ytd3q4RQ==}
     peerDependencies:
-      react: '>=16.8 || ^17.0.0 || ^18.0.0'
-      react-dom: '>=16.8 || ^17.0.0 || ^18.0.0'
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   framesync@6.0.1:
     resolution: {integrity: sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA==}
@@ -9106,17 +9115,13 @@ snapshots:
 
   fraction.js@4.2.0: {}
 
-  framer-motion@6.3.10(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
+  framer-motion@11.11.9(@emotion/is-prop-valid@0.8.8)(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
-      framesync: 6.0.1
-      hey-listen: 1.0.8
-      popmotion: 11.0.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      style-value-types: 5.0.0
       tslib: 2.4.0
     optionalDependencies:
       '@emotion/is-prop-valid': 0.8.8
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
 
   framesync@6.0.1:
     dependencies:
@@ -10560,9 +10565,9 @@ snapshots:
 
   pidtree@0.5.0: {}
 
-  pietile-carousel@3.2.0(framer-motion@6.3.10(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
+  pietile-carousel@3.2.0(framer-motion@11.11.9(@emotion/is-prop-valid@0.8.8)(react-dom@17.0.2(react@17.0.2))(react@17.0.2))(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
-      framer-motion: 6.3.10(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
+      framer-motion: 11.11.9(@emotion/is-prop-valid@0.8.8)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
 
