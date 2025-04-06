@@ -307,8 +307,8 @@ importers:
         specifier: 9.0.3
         version: 9.0.3(stylelint@14.8.5)
       stylelint-config-standard:
-        specifier: 25.0.0
-        version: 25.0.0(stylelint@14.8.5)
+        specifier: 38.0.0
+        version: 38.0.0(stylelint@14.8.5)
       tailwindcss:
         specifier: 3.1.4
         version: 3.1.4(postcss@8.4.14)(ts-node@10.8.1(@types/node@17.0.38)(typescript@4.7.2))
@@ -1728,6 +1728,7 @@ packages:
   '@xmldom/xmldom@0.7.5':
     resolution: {integrity: sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version is no longer supported, please update to at least 0.8.*
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -1744,6 +1745,7 @@ packages:
 
   acorn-import-assertions@1.8.0:
     resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -2880,6 +2882,7 @@ packages:
   eslint@8.16.0:
     resolution: {integrity: sha512-MBndsoXY/PeVTDJeWsYj7kLZ5hQpJOfMYLsF6LicLHQWbRDG19lK5jOix4DPl8yY4SUFcE3txy86OzFLWT+yoA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.3.2:
@@ -5129,15 +5132,17 @@ packages:
     peerDependencies:
       stylelint: '>=11.0.0'
 
-  stylelint-config-recommended@7.0.0:
-    resolution: {integrity: sha512-yGn84Bf/q41J4luis1AZ95gj0EQwRX8lWmGmBwkwBNSkpGSpl66XcPTulxGa/Z91aPoNGuIGBmFkcM1MejMo9Q==}
+  stylelint-config-recommended@16.0.0:
+    resolution: {integrity: sha512-4RSmPjQegF34wNcK1e1O3Uz91HN8P1aFdFzio90wNK9mjgAI19u5vsU868cVZboKzCaa5XbpvtTzAAGQAxpcXA==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
-      stylelint: ^14.4.0
+      stylelint: ^16.16.0
 
-  stylelint-config-standard@25.0.0:
-    resolution: {integrity: sha512-21HnP3VSpaT1wFjFvv9VjvOGDtAviv47uTp3uFmzcN+3Lt+RYRv6oAplLaV51Kf792JSxJ6svCJh/G18E9VnCA==}
+  stylelint-config-standard@38.0.0:
+    resolution: {integrity: sha512-uj3JIX+dpFseqd/DJx8Gy3PcRAJhlEZ2IrlFOc4LUxBX/PNMEQ198x7LCOE2Q5oT9Vw8nyc4CIL78xSqPr6iag==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
-      stylelint: ^14.4.0
+      stylelint: ^16.18.0
 
   stylelint@14.8.5:
     resolution: {integrity: sha512-e3t4H/hlWlspkcNUrkhf44RU3OpPTA7uBOoREGBzSwdEF+2g/+gbZq7WEpMP7BpopcSe/uLaTvDuL+URL7cdnQ==}
@@ -5791,6 +5796,7 @@ packages:
   yaeti@0.0.6:
     resolution: {integrity: sha512-MvQa//+KcZCUkBTIC9blM+CU9J2GzuTytsOUwf2lidtvkx/6gnEp1QvJv34t9vdjhFmha/mUiNDbN0D0mJWdug==}
     engines: {node: '>=0.10.32'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
@@ -11380,14 +11386,14 @@ snapshots:
     dependencies:
       stylelint: 14.8.5
 
-  stylelint-config-recommended@7.0.0(stylelint@14.8.5):
+  stylelint-config-recommended@16.0.0(stylelint@14.8.5):
     dependencies:
       stylelint: 14.8.5
 
-  stylelint-config-standard@25.0.0(stylelint@14.8.5):
+  stylelint-config-standard@38.0.0(stylelint@14.8.5):
     dependencies:
       stylelint: 14.8.5
-      stylelint-config-recommended: 7.0.0(stylelint@14.8.5)
+      stylelint-config-recommended: 16.0.0(stylelint@14.8.5)
 
   stylelint@14.8.5:
     dependencies:
