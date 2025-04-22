@@ -244,8 +244,8 @@ importers:
         specifier: 8.5.0
         version: 8.5.0(eslint@8.16.0)
       eslint-plugin-cypress:
-        specifier: 2.12.1
-        version: 2.12.1(eslint@8.16.0)
+        specifier: 4.3.0
+        version: 4.3.0(eslint@8.16.0)
       eslint-plugin-import:
         specifier: 2.26.0
         version: 2.26.0(@typescript-eslint/parser@5.27.0(eslint@8.16.0)(typescript@4.7.2))(eslint@8.16.0)
@@ -1728,6 +1728,7 @@ packages:
   '@xmldom/xmldom@0.7.5':
     resolution: {integrity: sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version is no longer supported, please update to at least 0.8.*
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -1744,6 +1745,7 @@ packages:
 
   acorn-import-assertions@1.8.0:
     resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -2807,10 +2809,10 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-cypress@2.12.1:
-    resolution: {integrity: sha512-c2W/uPADl5kospNDihgiLc7n87t5XhUbFDoTl6CfVkmG+kDAb5Ux10V9PoLPu9N+r7znpc+iQlcmAqT1A/89HA==}
+  eslint-plugin-cypress@4.3.0:
+    resolution: {integrity: sha512-CgS/S940MJlT8jtnWGKI0LvZQBGb/BB0QCpgBOxFMM/Z6znD+PZUwBhCTwHKN2GEr5AOny3xB92an0QfzBGooQ==}
     peerDependencies:
-      eslint: '>= 3.2.1'
+      eslint: '>=9'
 
   eslint-plugin-import@2.26.0:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
@@ -2880,6 +2882,7 @@ packages:
   eslint@8.16.0:
     resolution: {integrity: sha512-MBndsoXY/PeVTDJeWsYj7kLZ5hQpJOfMYLsF6LicLHQWbRDG19lK5jOix4DPl8yY4SUFcE3txy86OzFLWT+yoA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.3.2:
@@ -3230,6 +3233,10 @@ packages:
   globals@13.15.0:
     resolution: {integrity: sha512-bpzcOlgDhMG070Av0Vy5Owklpv1I6+j96GhUI7Rh7IzDCKLzboflLrrfqMu8NquDbiR4EOQk7XzJwqVJxicxog==}
     engines: {node: '>=8'}
+
+  globals@15.15.0:
+    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+    engines: {node: '>=18'}
 
   globby@11.0.4:
     resolution: {integrity: sha512-9O4MVG9ioZJ08ffbcyVYyLOJLk5JQ688pJ4eMGLpdWLHq/Wr1D9BlriLQyL0E+jbkuePVZXYFj47QM/v093wHg==}
@@ -5791,6 +5798,7 @@ packages:
   yaeti@0.0.6:
     resolution: {integrity: sha512-MvQa//+KcZCUkBTIC9blM+CU9J2GzuTytsOUwf2lidtvkx/6gnEp1QvJv34t9vdjhFmha/mUiNDbN0D0mJWdug==}
     engines: {node: '>=0.10.32'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
@@ -8735,10 +8743,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-cypress@2.12.1(eslint@8.16.0):
+  eslint-plugin-cypress@4.3.0(eslint@8.16.0):
     dependencies:
       eslint: 8.16.0
-      globals: 11.12.0
+      globals: 15.15.0
 
   eslint-plugin-import@2.26.0(@typescript-eslint/parser@5.27.0(eslint@8.16.0)(typescript@4.7.2))(eslint@8.16.0):
     dependencies:
@@ -9274,6 +9282,8 @@ snapshots:
   globals@13.15.0:
     dependencies:
       type-fest: 0.20.2
+
+  globals@15.15.0: {}
 
   globby@11.0.4:
     dependencies:
