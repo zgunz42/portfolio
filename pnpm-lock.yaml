@@ -259,8 +259,8 @@ importers:
         specifier: 4.5.0
         version: 4.5.0(eslint@8.16.0)
       eslint-plugin-react-prefer-function-component:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 4.0.1
+        version: 4.0.1
       eslint-plugin-testing-library:
         specifier: 5.5.1
         version: 5.5.1(eslint@8.16.0)(typescript@4.7.2)
@@ -1728,6 +1728,7 @@ packages:
   '@xmldom/xmldom@0.7.5':
     resolution: {integrity: sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version is no longer supported, please update to at least 0.8.*
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -1744,6 +1745,7 @@ packages:
 
   acorn-import-assertions@1.8.0:
     resolution: {integrity: sha512-m7VZ3jwz4eK6A4Vtt8Ew1/mNbP24u0FhdyfA7fSvnJR6LMdfOYnmuIrrJAgrYfYJ10F/otaHTtrtrtmHdMNzEw==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -2834,8 +2836,8 @@ packages:
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
 
-  eslint-plugin-react-prefer-function-component@2.0.0:
-    resolution: {integrity: sha512-f/S1k3FXEGk5s+q2nOL4VxAXWGbWElVidmXcDlulo7kt5py5OS2dB0NzuAH6bASihJWEM9GqFXfBmyiYRvR55A==}
+  eslint-plugin-react-prefer-function-component@4.0.1:
+    resolution: {integrity: sha512-Cos+wZTm7qEYYqsOnqvd8YYHmEanO92KjtKteurGPQxc6cexlitleRJ+vQwqxSFBpe8S/+2IDbE+Sl0Jr3Qxrg==}
 
   eslint-plugin-react@7.30.0:
     resolution: {integrity: sha512-RgwH7hjW48BleKsYyHK5vUAvxtE9SMPDKmcPRQgtRCYaZA0XQPt5FSkrU3nhz5ifzMZcA8opwmRJ2cmOO8tr5A==}
@@ -2880,6 +2882,7 @@ packages:
   eslint@8.16.0:
     resolution: {integrity: sha512-MBndsoXY/PeVTDJeWsYj7kLZ5hQpJOfMYLsF6LicLHQWbRDG19lK5jOix4DPl8yY4SUFcE3txy86OzFLWT+yoA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.3.2:
@@ -4975,6 +4978,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
@@ -5791,6 +5795,7 @@ packages:
   yaeti@0.0.6:
     resolution: {integrity: sha512-MvQa//+KcZCUkBTIC9blM+CU9J2GzuTytsOUwf2lidtvkx/6gnEp1QvJv34t9vdjhFmha/mUiNDbN0D0mJWdug==}
     engines: {node: '>=0.10.32'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
@@ -8783,7 +8788,7 @@ snapshots:
     dependencies:
       eslint: 8.16.0
 
-  eslint-plugin-react-prefer-function-component@2.0.0: {}
+  eslint-plugin-react-prefer-function-component@4.0.1: {}
 
   eslint-plugin-react@7.30.0(eslint@8.16.0):
     dependencies:
