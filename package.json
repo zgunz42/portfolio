@@ -87,7 +87,7 @@
 		"@types/lodash": "4.14.182",
 		"@types/react": "17.0.45",
 		"@types/react-dom": "17.0.17",
-		"@types/react-helmet": "6.1.5",
+		"@types/react-helmet": "6.1.11",
 		"@types/react-router-dom": "5.3.3",
 		"@types/react-slick": "0.23.8",
 		"@types/sharp": "0.30.4",
