@@ -49,7 +49,7 @@
 		"front-matter": "4.0.2",
 		"joi": "17.6.0",
 		"js-yaml": "4.1.0",
-		"lodash": "4.17.21",
+		"lodash": "4.18.1",
 		"pdf-lib": "1.17.1",
 		"pietile-carousel": "3.2.0",
 		"popmotion": "11.0.3",
